@@ -1,100 +1,138 @@
-# VERSAVISUAL — Hub Audiovisual
+# VERSAVISUAL Website
 
-> **"Imagem não é registro. É posicionamento."**  
-> Hub audiovisual autoral com base no Rio de Janeiro e atuação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas que tratam a imagem como decisão estratégica.
+Site institucional e portfólio da VERSAVISUAL, construído em React + Vite para apresentar serviços, segmentos, cases, galerias e o fluxo de Diagnóstico Visual.
 
----
+> Imagem não é registro. É posicionamento.
 
-## 🎯 Sobre o Projeto
+## Estado Do Projeto
 
-Plataforma web de alta performance desenvolvida para apresentar o portfólio, serviços e universo estético da **VERSAVISUAL**. O site foi arquitetado para oferecer uma experiência visual refinada, com galerias imersivas, navegação fluida por segmentos de mercado, estudos de caso detalhados e diagnóstico visual integrado.
+- Stack: React 19, Vite 8, TypeScript, Tailwind CSS v4 e React Router 7.
+- Analytics: Vercel Analytics via `@vercel/analytics/react`.
+- Design: tokens alinhados ao `Brand System RFC v3` da VERSAVISUAL.
+- SEO: metadados dinâmicos, canonical, JSON-LD, `robots.txt` e `sitemap.xml`.
+- Mídia: acervo local em `public/images`, logos em `public/logos` e vídeo em `public/videos`.
 
----
+## Brand System
 
-## 🚀 Tecnologias Utilizadas
+A interface segue o brandbook VERSAVISUAL v3:
 
-- **React 19** & **TypeScript** — Componentização moderna, performática e fortemente tipada
-- **Vite 8** — Build tool ultrarrápido com Hot Module Replacement (HMR)
-- **Tailwind CSS v4** — Design system com tokens semânticos e utilitários modernos
-- **React Router 7** — Roteamento declarativo com suporte a deep linking e URLs canônicas
-- **SEO & Schema.org** — Otimização técnica para motores de busca com JSON-LD dinâmico
+- `Brand Black`: `#050A0D`
+- `Deep Navy`: `#253540`
+- `Accent Teal`: `#5E7F8C`
+- `Mist`: `#A4B8BF`
+- `Off-White`: `#F2F2F2`
+- `White`: `#FFFFFF`
 
----
+Tipografia:
 
-## 📸 Estrutura de Segmentos & Cases
+- Display e wordmark: `Righteous`
+- Headlines, UI, botões e eyebrows: `Outfit`
+- Corpo, legenda longa, e-mail e rodapé: `DM Sans`
 
-O site organiza todo o trabalho da produtora em 8 segmentos estratégicos:
+Observação de acessibilidade: `Accent Teal` não deve ser usado em texto pequeno sobre fundo claro, porque não atinge contraste WCAG AA. Nesses casos, use `Deep Navy`.
 
-1. **Ativações & Eventos**: Lançamentos, feiras e summits corporativos com cobertura multicâmera e storymaking em tempo real *(ex: Lançamento Drinkball na APAS com Gkay, Megabloco Chá da Alice, FJT, Bonfim House, Syn Ice, Camarote Ondina)*.
-2. **Moda & Campanhas**: Editoriais, beauty, lifestyle e fashion film com direção criativa *(ex: Fashion Manners, Santa Lolla, Loja Frida)*.
-3. **Artistas & Videoclipes**: Direção de videoclipes, cobertura de shows, capas de single, teasers e making of *(ex: Babado Novo - Sururu, Megabloco Christian Chávez)*.
-4. **Posicionamento Profissional**: Retratos corporativos e imagem de autoridade para executivos, consultores e clínicas.
-5. **Imagem Pessoal & Lifestyle**: Ensaios autorais, retratos urbanos e ensaios femininos para redes sociais e presença digital.
-6. **Casamentos**: Cobertura integrada de foto e vídeo com olhar narrativo e sensibilidade documental.
-7. **Gestantes**: Fotografia de maternidade com luz natural, respeito ao momento e direção acolhedora.
-8. **Hotelaria & Lifestyle**: Produção audiovisual focada em desejo, atmosfera e conversão para hotéis, pousadas e resorts.
+## Rotas
 
----
+- `/`
+- `/portfolio`
+- `/portfolio/:caseSlug`
+- `/diagnostico-visual`
+- `/ativacoes-eventos`
+- `/moda-campanhas`
+- `/artistas-videoclipes`
+- `/posicionamento-profissional`
+- `/imagem-pessoal-lifestyle`
+- `/casamentos`
+- `/gestantes`
+- `/hotelaria-lifestyle`
 
-## 🛠️ Como Executar Localmente
+Também há compatibilidade para aliases em `/segmentos/:slug` e `/:slug`.
 
-### Pré-requisitos
-- **Node.js**: Versão 20 ou superior
-- **npm** ou gerenciador de pacotes equivalente
+## Segmentos
 
-### 1. Clonar o Repositório
-```bash
-git clone https://github.com/versavisual-vinicius/versavisual-site-new.git
-cd versavisual-site-new
+1. Ativações & Eventos
+2. Moda & Campanhas
+3. Artistas & Videoclipes
+4. Posicionamento Profissional
+5. Imagem Pessoal & Lifestyle
+6. Casamentos
+7. Gestantes
+8. Hotelaria & Lifestyle
+
+## Estrutura
+
+```text
+├── public/
+│   ├── brand-assets/          # Logos e ícones exportados
+│   ├── images/                # Fotos organizadas por produção
+│   ├── logos/                 # Wordmarks em SVG/PNG
+│   ├── videos/                # Vídeos do site
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/            # Header, Footer, cards, galeria, CTA, FAQ
+│   ├── data/
+│   │   └── site.ts            # Conteúdo, segmentos, cases e contatos
+│   ├── lib/
+│   │   ├── images.ts          # Catálogo e helper de imagens
+│   │   ├── seo.tsx            # SEO, canonical, OG e JSON-LD
+│   │   └── useParallax.ts     # Parallax leve
+│   ├── pages/                 # Home, Portfolio, SegmentPage, CaseStudy, Diagnostico
+│   ├── App.tsx                # Rotas e Analytics
+│   ├── index.css              # Tailwind v4 e tokens globais
+│   └── main.tsx
+├── index.html
+├── package.json
+└── vite.config.ts
 ```
 
-### 2. Instalar as Dependências
+## Desenvolvimento
+
+Pré-requisitos:
+
+- Node.js compatível com o projeto.
+- npm.
+
+Instalar dependências:
+
 ```bash
 npm install
 ```
 
-### 3. Iniciar o Servidor de Desenvolvimento
+Rodar localmente:
+
 ```bash
 npm run dev
 ```
-O servidor estará acessível em `http://localhost:8443` (ou porta informada no terminal).
 
-### 4. Gerar Build de Produção
+No Figma Make, o servidor costuma rodar na porta definida pelo ambiente. Fora dele, o Vite informa a URL no terminal.
+
+Build de produção:
+
 ```bash
 npm run build
 ```
 
----
+Formatar:
 
-## 📂 Estrutura de Diretórios
-
-```text
-├── public/
-│   ├── images/               # Catálogo completo das 484 fotos por produção
-│   ├── robots.txt            # Diretivas para crawlers
-│   └── sitemap.xml           # Mapa do site para indexação
-├── src/
-│   ├── components/           # Componentes reutilizáveis (Header, Footer, Gallery, CTA, Cards)
-│   ├── data/
-│   │   └── site.ts           # Configurações globais, textos, segmentos e itens de portfólio
-│   ├── lib/
-│   │   ├── images.ts         # Sistema e catalogação de imagens
-│   │   └── seo.tsx           # Utilitários de meta tags dinâmicas e JSON-LD
-│   ├── pages/                # Páginas da aplicação (Home, Segmentos, Portfólio, CaseStudy, Diagnóstico)
-│   ├── App.tsx               # Configuração das rotas
-│   ├── index.css             # Estilos globais e tokens de cor Tailwind
-│   └── main.tsx              # Ponto de entrada do React
-└── vite.config.ts            # Configuração do Vite e plugins
+```bash
+npm run format
 ```
 
----
+## Checklist Antes De Publicar
 
-## ✉️ Contato & Diagnóstico
+- `npm run format`
+- `npm run build`
+- Conferir contraste WCAG AA em textos pequenos.
+- Conferir navegação por âncoras: `/#nichos` e `/#processo`.
+- Conferir vídeo do portfólio em loop no filtro `Artistas & Videoclipes`.
+- Conferir formulário `/diagnostico-visual`.
+- Conferir `robots.txt`, `sitemap.xml`, titles, descriptions e canonical.
 
-- **WhatsApp**: [11 95074-7192](https://wa.me/5511950747192)
-- **E-mail**: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
-- **Diagnóstico Visual**: Disponível diretamente através da rota `/diagnostico-visual`
+## Contato
 
----
+- WhatsApp: [11 95074-7192](https://wa.me/5511950747192)
+- E-mail: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
+- Diagnóstico Visual: `/diagnostico-visual`
 
-© VERSAVISUAL. Todos os direitos reservados.
+© 2026 VERSAVISUAL.
