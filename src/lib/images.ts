@@ -607,5 +607,5 @@ export const PHOTOS = {
 } as const
 
 export const HERO_PHOTO =
-  "/images/megabloco-cha-da-alice/hero-poster.jpg" ||
+  "/images/megabloco-cha-da-alice/hero-poster.webp" ||
   MEGABLOCO_CHA_DA_ALICE_PHOTOS[0]

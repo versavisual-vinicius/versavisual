@@ -55,6 +55,9 @@ export function BeamsBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const beamsRef = useRef<Beam[]>([])
   const animationFrameRef = useRef<number>(0)
+  const lastFrameRef = useRef(0)
+  const interactionPauseRef = useRef(false)
+  const interactionTimeoutRef = useRef<number>(0)
   const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -77,7 +80,7 @@ export function BeamsBackground({
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      const totalBeams = Math.max(8, Math.round(width / 140))
+      const totalBeams = Math.max(5, Math.round(width / 260))
       beamsRef.current = Array.from({ length: totalBeams }, () =>
         createBeam(width, height),
       )
@@ -126,15 +129,31 @@ export function BeamsBackground({
     const paintStatic = () => {
       const rect = root.getBoundingClientRect()
       ctx.clearRect(0, 0, rect.width, rect.height)
-      ctx.filter = "blur(28px)"
       beamsRef.current.slice(0, 8).forEach(drawBeam)
-      ctx.filter = "none"
     }
 
-    const animate = () => {
+    const pauseDuringInteraction = () => {
+      interactionPauseRef.current = true
+      window.clearTimeout(interactionTimeoutRef.current)
+      interactionTimeoutRef.current = window.setTimeout(() => {
+        interactionPauseRef.current = false
+      }, 320)
+    }
+
+    const animate = (time = 0) => {
       const rect = root.getBoundingClientRect()
+      const frameBudget = 1000 / 20
+
+      if (
+        interactionPauseRef.current ||
+        time - lastFrameRef.current < frameBudget
+      ) {
+        animationFrameRef.current = requestAnimationFrame(animate)
+        return
+      }
+
+      lastFrameRef.current = time
       ctx.clearRect(0, 0, rect.width, rect.height)
-      ctx.filter = "blur(30px)"
 
       const totalBeams = beamsRef.current.length
       beamsRef.current.forEach((beam, index) => {
@@ -148,13 +167,21 @@ export function BeamsBackground({
         drawBeam(beam)
       })
 
-      ctx.filter = "none"
       animationFrameRef.current = requestAnimationFrame(animate)
     }
 
     resize()
     const resizeObserver = new ResizeObserver(resize)
     resizeObserver.observe(root)
+    window.addEventListener("keydown", pauseDuringInteraction, {
+      passive: true,
+    })
+    window.addEventListener("pointerdown", pauseDuringInteraction, {
+      passive: true,
+    })
+    window.addEventListener("touchstart", pauseDuringInteraction, {
+      passive: true,
+    })
 
     if (shouldReduceMotion) {
       paintStatic()
@@ -164,6 +191,10 @@ export function BeamsBackground({
 
     return () => {
       resizeObserver.disconnect()
+      window.removeEventListener("keydown", pauseDuringInteraction)
+      window.removeEventListener("pointerdown", pauseDuringInteraction)
+      window.removeEventListener("touchstart", pauseDuringInteraction)
+      window.clearTimeout(interactionTimeoutRef.current)
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
@@ -180,7 +211,7 @@ export function BeamsBackground({
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full blur-2xl"
         aria-hidden="true"
       />
 
