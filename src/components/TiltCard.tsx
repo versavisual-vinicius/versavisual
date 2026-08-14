@@ -1,11 +1,16 @@
-import { useRef, useState, type ReactNode, type MouseEvent } from "react"
+import {
+  useRef,
+  type CSSProperties,
+  type MouseEvent,
+  type ReactNode,
+} from "react"
 
 interface TiltCardProps {
   children: ReactNode
   className?: string
   maxTilt?: number
   glare?: boolean
-  style?: React.CSSProperties
+  style?: CSSProperties
 }
 
 export default function TiltCard({
@@ -16,46 +21,64 @@ export default function TiltCard({
   style,
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [transform, setTransform] = useState(
-    "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-  )
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 })
-  const [isHovered, setIsHovered] = useState(false)
+  const glareRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
+  const pointerRef = useRef({ x: 0.5, y: 0.5 })
 
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
-    // Only apply on devices with precision pointer (mouse)
-    if (window.matchMedia("(pointer: coarse)").matches) return
+  const applyTilt = () => {
+    rafRef.current = null
+    const card = cardRef.current
+    if (!card) return
 
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width
-    const y = (e.clientY - rect.top) / rect.height
-
+    const { x, y } = pointerRef.current
     const rotX = ((0.5 - y) * maxTilt).toFixed(2)
     const rotY = ((x - 0.5) * maxTilt).toFixed(2)
 
-    setTransform(
-      `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.015, 1.015, 1.015)`,
-    )
-    if (glare) {
-      setGlarePos({
-        x: x * 100,
-        y: y * 100,
-        opacity: 0.14,
-      })
+    card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.015, 1.015, 1.015)`
+
+    if (glare && glareRef.current) {
+      glareRef.current.style.opacity = "0.14"
+      glareRef.current.style.setProperty("--glare-x", `${x * 100}%`)
+      glareRef.current.style.setProperty("--glare-y", `${y * 100}%`)
+    }
+  }
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current
+    if (!card) return
+    if (window.matchMedia("(pointer: coarse)").matches) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    const rect = card.getBoundingClientRect()
+    pointerRef.current = {
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    }
+
+    if (rafRef.current === null) {
+      rafRef.current = requestAnimationFrame(applyTilt)
     }
   }
 
   const handleMouseEnter = () => {
-    setIsHovered(true)
+    if (!cardRef.current) return
+    cardRef.current.style.transition = "transform 120ms ease-out"
   }
 
   const handleMouseLeave = () => {
-    setIsHovered(false)
-    setTransform(
-      "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
-    )
-    setGlarePos((p) => ({ ...p, opacity: 0 }))
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    if (cardRef.current) {
+      cardRef.current.style.transition =
+        "transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1)"
+      cardRef.current.style.transform =
+        "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)"
+    }
+    if (glareRef.current) {
+      glareRef.current.style.opacity = "0"
+    }
   }
 
   return (
@@ -65,10 +88,9 @@ export default function TiltCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
-        transform,
-        transition: isHovered
-          ? "transform 0.12s ease-out"
-          : "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)",
+        transform:
+          "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+        transition: "transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1)",
         transformStyle: "preserve-3d",
         ...style,
       }}
@@ -77,11 +99,16 @@ export default function TiltCard({
       {children}
       {glare && (
         <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
-          style={{
-            opacity: glarePos.opacity,
-            background: `radial-gradient(circle 320px at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.4), transparent 80%)`,
-          }}
+          ref={glareRef}
+          className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-150"
+          style={
+            {
+              "--glare-x": "50%",
+              "--glare-y": "50%",
+              background:
+                "radial-gradient(circle 320px at var(--glare-x) var(--glare-y), rgba(255, 255, 255, 0.4), transparent 80%)",
+            } as CSSProperties
+          }
           aria-hidden="true"
         />
       )}

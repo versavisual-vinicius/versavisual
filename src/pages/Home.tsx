@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useSeo, SITE_URL } from "../lib/seo"
-import { img, HERO_PHOTO, PHOTOS } from "../lib/images"
+import { img, HERO_PHOTO, BONFIM_HOUSE_PHOTOS } from "../lib/images"
 import {
   HOME_SERVICES,
   HOME_PROCESS,
@@ -148,7 +148,7 @@ export default function Home() {
                 <Link
                   to={`/${s.slug}`}
                   viewTransition
-                  className="group relative flex h-full w-full overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-2xl"
+                  className="group relative flex h-full w-full overflow-hidden rounded-xl border border-line transition-shadow duration-250 ease-out hover:shadow-2xl"
                 >
                   <img
                     src={img(s.photos[0], 700, 900)}
@@ -157,7 +157,7 @@ export default function Home() {
                     height={900}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <span className="u-grade absolute inset-0" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
@@ -167,7 +167,7 @@ export default function Home() {
                     <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">
                       {s.nav}
                     </h3>
-                    <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
                       Ver mais →
                     </span>
                   </div>
@@ -199,7 +199,7 @@ export default function Home() {
               className="mt-8 hidden overflow-hidden rounded-xl border border-line md:block"
             >
               <img
-                src={img(PHOTOS.bts[0], 900, 700)}
+                src={img(BONFIM_HOUSE_PHOTOS[7], 900, 700)}
                 alt="Bastidores de produção audiovisual da VERSAVISUAL"
                 loading="lazy"
                 className="aspect-[4/3] w-full object-cover scale-105"

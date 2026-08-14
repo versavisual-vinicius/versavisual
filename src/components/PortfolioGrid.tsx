@@ -14,6 +14,7 @@ export default function PortfolioGrid({
     () => PORTFOLIO.filter((p) => matchesFilter(p, filter)),
     [filter],
   )
+  const featuredVideo = items.find((it) => it.video)
 
   return (
     <div>
@@ -42,6 +43,21 @@ export default function PortfolioGrid({
           )
         })}
       </div>
+
+      {filter === "Artistas & Videoclipes" && featuredVideo?.video && (
+        <div className="mb-8 overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="aspect-video w-full object-cover"
+          >
+            <source src={featuredVideo.video} type="video/mp4" />
+          </video>
+        </div>
+      )}
 
       <div
         key={filter}

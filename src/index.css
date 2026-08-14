@@ -5,15 +5,15 @@
    Mist #A4B8BF · Off-White #F2F2F2 */
 @theme {
   --color-ink: #050a0d;
-  --color-ink-800: #0a1114;
+  --color-ink-800: #050a0d;
   --color-navy: #253540;
-  --color-navy-600: #2f434f;
+  --color-navy-600: #253540;
   --color-teal: #5e7f8c;
-  --color-teal-400: #78a0af;
-  --color-teal-700: #47626d;
+  --color-teal-400: #5e7f8c;
+  --color-teal-700: #5e7f8c;
   --color-mist: #a4b8bf;
   --color-off: #f2f2f2;
-  --color-surface: #e9eef0;
+  --color-surface: #f2f2f2;
   --color-line: rgba(37, 53, 64, 0.10);
   --color-line-strong: rgba(37, 53, 64, 0.20);
 
@@ -45,10 +45,13 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-head);
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.02em;
     line-height: 1.02;
     text-wrap: balance;
+  }
+  button, input, select, textarea {
+    font-family: var(--font-head);
   }
   p, li {
     text-wrap: pretty;
@@ -82,8 +85,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(5,10,13,0.15) 0%, rgba(5,10,13,0.55) 60%, rgba(5,10,13,0.92) 100%),
-      radial-gradient(120% 90% at 70% 20%, rgba(94,127,140,0.22), transparent 60%);
+      linear-gradient(180deg, rgba(5,10,13,0.15) 0%, rgba(5,10,13,0.55) 60%, rgba(5,10,13,0.92) 100%);
     pointer-events: none;
   }
   .u-grade-soft::after {

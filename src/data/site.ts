@@ -1062,7 +1062,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "carnaval-de-rua-experiencia-publico",
     segmentSlug: "ativacoes-eventos",
     gallery: MEGABLOCO_CHA_DA_ALICE_PHOTOS,
-    video: "/videos/hero.mp4",
   },
   {
     category: "Ativações & Eventos",

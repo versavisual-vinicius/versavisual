@@ -172,7 +172,7 @@ export default function SegmentPage({
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 90% 60% at 50% -5%, rgba(94,127,140,0.28) 0%, transparent 70%)",
+              "linear-gradient(180deg, rgba(5,10,13,0.88) 0%, rgba(5,10,13,0.56) 48%, rgba(5,10,13,0.92) 100%)",
           }}
         />
         <HeroGridLines />
