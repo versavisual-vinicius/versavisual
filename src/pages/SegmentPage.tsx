@@ -235,6 +235,20 @@ export default function SegmentPage() {
             <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl">{seg.nav} em imagens.</h2>
             <p className="mt-3 max-w-xl text-navy">{seg.intro}</p>
           </Reveal>
+
+          {seg.slug === "artistas-videoclipes" && (
+            <Reveal className="mb-12 overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+              <video
+                controls
+                playsInline
+                poster={img(seg.photos[0], 1400, 800)}
+                className="aspect-video w-full object-cover"
+              >
+                <source src="/videos/hero.mp4" type="video/mp4" />
+              </video>
+            </Reveal>
+          )}
+
           <Reveal className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
             {portfolioPhotos.map((photoId, i) => (
               <button

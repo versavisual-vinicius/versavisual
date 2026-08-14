@@ -546,6 +546,7 @@ export type PortfolioItem = {
   caseSlug?: string;
   segmentSlug: string;
   gallery?: readonly string[];
+  video?: string;
 };
 
 const P = PHOTOS;
@@ -567,6 +568,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "carnaval-de-rua-experiencia-publico",
     segmentSlug: "ativacoes-eventos",
     gallery: MEGABLOCO_CHA_DA_ALICE_PHOTOS,
+    video: "/videos/hero.mp4",
   },
   {
     category: "Ativações & Eventos",
@@ -647,6 +649,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "babado-novo-sururu",
     segmentSlug: "artistas-videoclipes",
     gallery: BACKSTAGE_CLIPE_SURURU_PHOTOS,
+    video: "/videos/hero.mp4",
   },
   {
     category: "Artistas & Videoclipes",
@@ -656,6 +659,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "babado-novo-christian-chavez",
     segmentSlug: "artistas-videoclipes",
     gallery: MEGABLOCO_CHA_DA_ALICE_PHOTOS,
+    video: "/videos/hero.mp4",
   },
   {
     category: "Posicionamento Profissional",

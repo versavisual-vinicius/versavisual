@@ -41,12 +41,16 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative flex min-h-[100svh] items-end overflow-hidden">
-        <img
-          src={img(HERO_PHOTO, 2000, 1200)}
-          alt="Produção audiovisual da VERSAVISUAL em cena, com luz cinematográfica"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={img(HERO_PHOTO, 2000, 1200)}
           className="absolute inset-0 h-full w-full object-cover"
-          fetchPriority="high"
-        />
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
           <p className="u-eyebrow u-fade-in">Hub audiovisual autoral · Rio de Janeiro · Operação nacional</p>

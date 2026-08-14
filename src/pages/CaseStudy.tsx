@@ -101,6 +101,21 @@ export default function CaseStudy() {
         )}
       </section>
 
+      {item.video && (
+        <section className="mx-auto max-w-[1100px] px-5 pb-16 lg:px-10 lg:pb-24">
+          <div className="relative overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+            <video
+              controls
+              playsInline
+              poster={img(item.photo, 1400, 800)}
+              className="aspect-video w-full object-cover"
+            >
+              <source src={item.video} type="video/mp4" />
+            </video>
+          </div>
+        </section>
+      )}
+
       <section className="mx-auto max-w-[1320px] px-5 pb-20 lg:px-10 lg:pb-28">
         <Gallery photos={gallery} label={item.title} />
       </section>
