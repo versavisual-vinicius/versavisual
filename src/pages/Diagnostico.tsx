@@ -183,10 +183,10 @@ export default function Diagnostico() {
         <span className="flex h-16 w-16 items-center justify-center rounded-full border border-teal-400 bg-teal/10 text-3xl text-teal-400">
           ✓
         </span>
-        <h1 className="mt-6 text-4xl leading-tight sm:text-5xl">
+        <h1 className="mt-6 text-4xl leading-tight text-off sm:text-5xl">
           Diagnóstico enviado com sucesso!
         </h1>
-        <p className="mt-5 text-pretty text-navy text-lg max-w-xl">
+        <p className="mt-5 max-w-xl text-pretty text-lg text-mist">
           Recebemos o seu briefing com sucesso. Para acelerar o seu atendimento
           e tirar dúvidas imediatamente, você pode abrir a conversa no WhatsApp
           já com o resumo preenchido:
@@ -242,7 +242,7 @@ export default function Diagnostico() {
           <Link
             to="/portfolio"
             viewTransition
-            className="rounded-xs border border-line-strong px-7 py-3.5 font-medium text-ink transition-colors hover:border-teal flex items-center justify-center"
+            className="flex items-center justify-center rounded-xs border border-off/20 px-7 py-3.5 font-medium text-off transition-colors hover:border-teal"
           >
             Ver portfólio
           </Link>
@@ -251,7 +251,7 @@ export default function Diagnostico() {
         <button
           type="button"
           onClick={() => setSubmittedLead(null)}
-          className="mt-6 text-xs text-navy/70 underline transition-colors hover:text-ink"
+          className="mt-6 text-xs text-mist underline transition-colors hover:text-off"
         >
           Enviar outro diagnóstico
         </button>
@@ -263,7 +263,7 @@ export default function Diagnostico() {
     <section className="pt-[72px]">
       <div className="mx-auto grid max-w-[1320px] items-start gap-0 px-0 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Aside */}
-        <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] overflow-hidden border-r border-line lg:block">
+        <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] overflow-hidden border-r border-off/10 lg:block">
           <img
             src={img(PHOTOS.professional[0], 1000, 1400)}
             alt="Direção visual VERSAVISUAL"
@@ -302,7 +302,7 @@ export default function Diagnostico() {
         </aside>
 
         {/* Form */}
-        <div className="px-5 py-10 lg:px-12 lg:py-14">
+        <div className="bg-off/94 px-5 py-10 shadow-2xl backdrop-blur-md lg:min-h-[calc(100vh-72px)] lg:px-12 lg:py-14">
           <div>
             <p className="u-eyebrow">Diagnóstico Visual Gratuito</p>
             <h1 className="mb-8 mt-3 text-3xl leading-tight sm:text-4xl text-ink">

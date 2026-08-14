@@ -91,7 +91,7 @@ export default function Header() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
         transparent
           ? "border-b border-transparent bg-gradient-to-b from-ink/60 to-transparent"
-          : "border-b border-line bg-[#f0f3f4] backdrop-blur-md"
+          : "border-b border-off/10 bg-ink/75 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-10">
@@ -103,7 +103,7 @@ export default function Header() {
           className="flex items-center"
         >
           <Logo
-            variant={transparent ? "white" : "color"}
+            variant="white"
             className="block h-7 w-auto transition-all duration-300"
           />
         </Link>
@@ -122,10 +122,10 @@ export default function Header() {
                 isActive(l.href, l.hash)
                   ? transparent
                     ? "text-off"
-                    : "text-ink"
+                    : "text-off"
                   : transparent
                     ? "text-mist/90 hover:text-off"
-                    : "text-navy hover:text-ink"
+                    : "text-mist hover:text-off"
               }`}
             >
               {l.label}
@@ -148,7 +148,7 @@ export default function Header() {
         <button
           type="button"
           className={`flex h-10 w-10 items-center justify-center lg:hidden ${
-            transparent ? "text-off" : "text-ink"
+            transparent ? "text-off" : "text-off"
           }`}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
@@ -179,7 +179,7 @@ export default function Header() {
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-line bg-off shadow-2xl lg:hidden">
+          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink/95 shadow-2xl backdrop-blur-md lg:hidden">
             <nav aria-label="Navegação móvel" className="px-5 py-6">
               {navLinks.map((l) => (
                 <Link
@@ -187,7 +187,7 @@ export default function Header() {
                   to={l.href}
                   viewTransition={!l.hash}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-line py-3.5 text-lg text-ink transition-colors hover:text-teal"
+                  className="block border-b border-off/10 py-3.5 text-lg text-off transition-colors hover:text-teal"
                 >
                   {l.label}
                 </Link>

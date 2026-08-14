@@ -4,13 +4,13 @@ import Logo from "./Logo"
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-surface">
+    <footer className="border-t border-off/10 bg-ink/75 backdrop-blur-md">
       <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <Logo variant="color" className="block h-10 w-auto" />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-navy">
+            <Logo variant="white" className="block h-10 w-auto" />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
               Hub Criativo · Vídeo · Fotografia · Storymaking. Da cena ao frame,
               em todo o Brasil.
             </p>
@@ -18,13 +18,13 @@ export default function Footer() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+              className="mt-5 block text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
             >
               WhatsApp · 11 95074-7192
             </a>
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-2 block text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+              className="mt-2 block text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
             >
               {EMAIL}
             </a>
@@ -32,14 +32,14 @@ export default function Footer() {
 
           {/* Segments */}
           <nav aria-label="Segmentos">
-            <p className="u-eyebrow mb-4">Segmentos</p>
+            <p className="u-eyebrow mb-4 text-mist">Segmentos</p>
             <ul className="grid gap-2.5">
               {SEGMENT_NAV.map((s) => (
                 <li key={s.to}>
                   <Link
                     to={s.to}
                     viewTransition
-                    className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+                    className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                   >
                     {s.label}
                   </Link>
@@ -50,14 +50,14 @@ export default function Footer() {
 
           {/* Contact */}
           <nav aria-label="Contato e navegação">
-            <p className="u-eyebrow mb-4">Contato</p>
+            <p className="u-eyebrow mb-4 text-mist">Contato</p>
             <ul className="grid gap-2.5">
               <li>
                 <a
                   href={WHATSAPP}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   WhatsApp · 11 95074-7192
                 </a>
@@ -65,7 +65,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   {EMAIL}
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 <Link
                   to="/portfolio"
                   viewTransition
-                  className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   Portfólio
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <Link
                   to="/diagnostico-visual"
                   viewTransition
-                  className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
+                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   Diagnóstico gratuito
                 </Link>
@@ -92,9 +92,9 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-navy sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-off/10 pt-6 text-xs text-mist/80 sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 VERSAVISUAL — Hub Criativo Audiovisual</span>
-          <span className="u-wordmark tracking-widest text-navy/80">
+          <span className="u-wordmark tracking-widest text-mist/80">
             Rio de Janeiro · Brasil
           </span>
         </div>

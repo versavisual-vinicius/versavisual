@@ -164,19 +164,19 @@ export default function SegmentPage({
   const portfolioPhotos = [...seg.photos]
 
   return (
-    <>
+    <div className="relative overflow-hidden">
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative flex min-h-[88svh] items-end overflow-hidden bg-ink">
-        {/* glow */}
+      <section className="relative flex min-h-[74svh] items-end overflow-hidden">
+        <div className="absolute inset-0 bg-ink/10" />
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(5,10,13,0.88) 0%, rgba(5,10,13,0.56) 48%, rgba(5,10,13,0.92) 100%)",
+              "linear-gradient(180deg, rgba(5,10,13,0.34) 0%, rgba(5,10,13,0.18) 46%, rgba(5,10,13,0.78) 100%)",
           }}
         />
         <HeroGridLines />
-        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
+        <div className="relative z-10 mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
           <nav
             aria-label="Trilha"
             className="u-eyebrow mb-5 flex items-center gap-2"
@@ -214,7 +214,7 @@ export default function SegmentPage({
       </section>
 
       {/* ── PARA QUEM ─────────────────────────────────────── */}
-      <section className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-24">
+      <section className="relative z-10 mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-24">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <Reveal
@@ -247,9 +247,9 @@ export default function SegmentPage({
 
           {/* Text & Deliverables summary */}
           <Reveal className="flex flex-col lg:sticky lg:top-28">
-            <p className="u-eyebrow">Para quem é</p>
+            <p className="u-eyebrow text-mist">Para quem é</p>
             <h2
-              className="mt-4 text-balance text-ink"
+              className="mt-4 text-balance text-off"
               style={{
                 fontSize: "clamp(26px, 3.4vw, 40px)",
                 fontWeight: 800,
@@ -259,12 +259,12 @@ export default function SegmentPage({
             >
               {seg.audienceTitle}
             </h2>
-            <p className="mt-4 text-pretty leading-relaxed text-navy">
+            <p className="mt-4 text-pretty leading-relaxed text-mist">
               {seg.audienceText}
             </p>
             <ul className="mt-6 space-y-3">
               {seg.audienceList.map((b) => (
-                <li key={b} className="flex gap-3 text-navy">
+                <li key={b} className="flex gap-3 text-mist">
                   <span
                     aria-hidden
                     className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal"
@@ -289,7 +289,7 @@ export default function SegmentPage({
       </section>
 
       {/* ── PROBLEMA / SOLUÇÃO ────────────────────────────── */}
-      <section className="border-y border-line bg-surface py-20 lg:py-28">
+      <section className="relative z-10 border-y border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
             <div className="bg-surface p-8 lg:p-10">
@@ -331,11 +331,11 @@ export default function SegmentPage({
       </section>
 
       {/* ── SERVIÇOS ──────────────────────────────────────── */}
-      <section className="border-b border-line bg-off py-20 lg:py-28">
+      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-12 max-w-2xl">
-            <p className="u-eyebrow">Serviços inclusos</p>
-            <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+            <p className="u-eyebrow text-mist">Serviços inclusos</p>
+            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
               {seg.servicesTitle}
             </h2>
           </Reveal>
@@ -369,15 +369,15 @@ export default function SegmentPage({
 
       {/* ── CASES EM DESTAQUE DO SEGMENTO ─────────────────── */}
       {relatedCases.length > 0 && (
-        <section className="border-b border-line bg-surface py-20 lg:py-28">
+        <section className="relative z-10 border-b border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28">
           <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
             <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
               <div className="max-w-2xl">
-                <p className="u-eyebrow">Cases em destaque</p>
-                <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+                <p className="u-eyebrow text-mist">Cases em destaque</p>
+                <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
                   Projetos reais de {seg.nav}.
                 </h2>
-                <p className="mt-3 text-navy">
+                <p className="mt-3 text-mist">
                   Conheça como traduzimos a identidade e os objetivos de cada
                   cliente em resultados visuais de alto impacto.
                 </p>
@@ -385,7 +385,7 @@ export default function SegmentPage({
               <Link
                 to="/portfolio"
                 viewTransition
-                className="text-sm font-medium text-navy transition-colors hover:text-ink"
+                className="text-sm font-medium text-mist transition-colors hover:text-off"
               >
                 Ver todos os cases →
               </Link>
@@ -450,14 +450,14 @@ export default function SegmentPage({
       )}
 
       {/* ── PORTFÓLIO RELACIONADO / GALERIA DE FOTOS ─────── */}
-      <section className="border-b border-line bg-off py-20 lg:py-28">
+      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-10">
-            <p className="u-eyebrow">Galeria visual</p>
-            <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl">
+            <p className="u-eyebrow text-mist">Galeria visual</p>
+            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl">
               {seg.nav} em imagens.
             </h2>
-            <p className="mt-3 max-w-xl text-navy">{seg.intro}</p>
+            <p className="mt-3 max-w-xl text-mist">{seg.intro}</p>
           </Reveal>
 
           {seg.slug === "artistas-videoclipes" && (
@@ -506,12 +506,12 @@ export default function SegmentPage({
       {/* ── PROCESSO ──────────────────────────────────────── */}
       <section
         id="processo"
-        className="border-b border-line bg-surface py-20 lg:py-28"
+        className="relative z-10 border-b border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28"
       >
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-12 max-w-2xl">
-            <p className="u-eyebrow">Processo de trabalho</p>
-            <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+            <p className="u-eyebrow text-mist">Processo de trabalho</p>
+            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
               Do briefing à entrega, com método.
             </h2>
           </Reveal>
@@ -532,7 +532,7 @@ export default function SegmentPage({
             {seg.regions.map((r) => (
               <span
                 key={r}
-                className="rounded-full border border-line-strong px-4 py-1.5 text-xs text-navy"
+                className="rounded-full border border-off/20 px-4 py-1.5 text-xs text-mist"
               >
                 {r}
               </span>
@@ -550,22 +550,22 @@ export default function SegmentPage({
       />
 
       {/* ── FAQ ───────────────────────────────────────────── */}
-      <section className="border-b border-line bg-off py-20 lg:py-28">
+      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
         <div className="mx-auto max-w-[900px] px-5 lg:px-10">
           <Reveal>
-            <p className="u-eyebrow">Dúvidas comuns</p>
-            <h2 className="mb-10 mt-4 text-3xl leading-tight text-ink sm:text-4xl">
+            <p className="u-eyebrow text-mist">Dúvidas comuns</p>
+            <h2 className="mb-10 mt-4 text-3xl leading-tight text-off sm:text-4xl">
               {seg.faqTitle}
             </h2>
-            <FAQAccordion items={seg.faqs} />
+            <FAQAccordion items={seg.faqs} tone="dark" />
           </Reveal>
         </div>
       </section>
 
       {/* ── OUTROS SEGMENTOS ─────────────────────────────── */}
-      <section className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-24">
+      <section className="relative z-10 mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-24">
         <Reveal>
-          <p className="u-eyebrow mb-8">Explore outros segmentos</p>
+          <p className="u-eyebrow mb-8 text-mist">Explore outros segmentos</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {others.map((o) => (
               <Link
@@ -752,6 +752,6 @@ export default function SegmentPage({
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }

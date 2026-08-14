@@ -127,7 +127,7 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background-color: var(--color-off);
+    background-color: var(--color-ink);
     color: var(--color-ink);
     font-family: var(--font-body);
     font-weight: 400;

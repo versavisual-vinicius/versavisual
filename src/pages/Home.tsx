@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[100svh] items-end overflow-hidden">
+      <section className="relative flex min-h-[88svh] items-end overflow-hidden">
         <video
           autoPlay
           loop
@@ -65,7 +65,7 @@ export default function Home() {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         <div className="u-grade absolute inset-0" />
-        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
+        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
           <p className="u-eyebrow u-fade-in text-mist">
             Hub audiovisual autoral · Rio de Janeiro · Operação nacional
           </p>
@@ -83,7 +83,7 @@ export default function Home() {
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="rounded-xs bg-teal px-7 py-3.5 text-center font-medium text-ink transition-all duration-200 ease-out hover:bg-teal-400 hover:shadow-lg"
+              className="rounded-xs bg-teal px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400 hover:shadow-lg"
             >
               Fazer diagnóstico visual
             </Link>
@@ -99,17 +99,17 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="border-b border-line bg-surface">
-        <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-px bg-line px-0 lg:grid-cols-4">
+      <section className="border-b border-off/10 bg-ink/35 backdrop-blur-sm">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-px bg-off/10 px-0 lg:grid-cols-4">
           {HOME_STATS.map((s) => (
             <div
               key={s.label}
-              className="bg-surface px-5 py-8 text-center lg:py-10"
+              className="bg-ink/35 px-5 py-8 text-center lg:py-10"
             >
-              <p className="u-display text-3xl text-ink lg:text-4xl">
+              <p className="u-display text-3xl text-off lg:text-4xl">
                 {s.value}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-navy">
+              <p className="mt-1 text-xs uppercase tracking-widest text-mist">
                 {s.label}
               </p>
             </div>
@@ -120,11 +120,11 @@ export default function Home() {
       {/* SERVICES */}
       <section className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
         <div className="mb-12 max-w-2xl">
-          <p className="u-eyebrow">O que fazemos</p>
-          <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+          <p className="u-eyebrow text-mist">O que fazemos</p>
+          <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
             Uma estrutura audiovisual completa, do briefing à entrega.
           </h2>
-          <p className="mt-4 text-navy">
+          <p className="mt-4 text-mist">
             Reunimos direção, captação e pós-produção em uma operação só — para
             que a imagem comunique com coerência em cada ponto de contato.
           </p>
@@ -133,19 +133,22 @@ export default function Home() {
       </section>
 
       {/* SEGMENTS */}
-      <section id="nichos" className="border-y border-line bg-surface">
+      <section
+        id="nichos"
+        className="border-y border-off/10 bg-ink/35 backdrop-blur-sm"
+      >
         <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
-              <p className="u-eyebrow">Segmentos</p>
-              <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+              <p className="u-eyebrow text-mist">Segmentos</p>
+              <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
                 Escolha o seu contexto. A linguagem muda com ele.
               </h2>
             </div>
             <Link
               to="/portfolio"
               viewTransition
-              className="text-sm font-medium text-navy transition-colors hover:text-ink"
+              className="text-sm font-medium text-mist transition-colors hover:text-off"
             >
               Ver portfólio completo →
             </Link>

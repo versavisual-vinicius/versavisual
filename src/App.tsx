@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react"
+import { lazy, Suspense } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -12,12 +13,23 @@ import Diagnostico from "./pages/Diagnostico"
 import NotFound from "./pages/NotFound"
 import { SEGMENTS } from "./data/site"
 
+const BeamsBackground = lazy(async () => {
+  const module = await import("./components/ui/beams-background")
+  return { default: module.BeamsBackground }
+})
+
 export default function App() {
   return (
     <BrowserRouter>
+      <Suspense fallback={<div className="fixed inset-0 z-0 bg-ink" />}>
+        <BeamsBackground
+          intensity="medium"
+          className="pointer-events-none fixed inset-0 z-0 min-h-0 opacity-90"
+        />
+      </Suspense>
       <ScrollToTop />
       <Header />
-      <main>
+      <main className="relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<Portfolio />} />
@@ -36,7 +48,9 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <WhatsAppFloat />
       <Analytics />
     </BrowserRouter>

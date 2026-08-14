@@ -35,7 +35,7 @@ export default function PortfolioGrid({
               className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
                 on
                   ? "border-teal bg-teal font-medium text-ink shadow-xs"
-                  : "border-line-strong text-navy hover:border-teal hover:text-ink"
+                  : "border-off/20 bg-ink/30 text-mist hover:border-teal hover:text-off"
               }`}
             >
               {f}
@@ -45,7 +45,7 @@ export default function PortfolioGrid({
       </div>
 
       {filter === "Artistas & Videoclipes" && featuredVideo?.video && (
-        <div className="mb-8 overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+        <div className="mb-8 overflow-hidden rounded-xl border border-off/10 bg-navy shadow-2xl">
           <video
             autoPlay
             loop
@@ -97,7 +97,7 @@ export default function PortfolioGrid({
             </>
           )
           const cls =
-            "group relative flex h-full w-full flex-col overflow-hidden rounded-sm border border-line"
+            "group relative flex h-full w-full flex-col overflow-hidden rounded-sm border border-off/10"
           return (
             <TiltCard key={it.title} className="rounded-sm">
               {it.caseSlug ? (

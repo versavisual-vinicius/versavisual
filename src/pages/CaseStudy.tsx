@@ -52,7 +52,7 @@ export default function CaseStudy() {
 
   return (
     <>
-      <section className="relative flex min-h-[78svh] items-end overflow-hidden">
+      <section className="relative flex min-h-[68svh] items-end overflow-hidden">
         <img
           src={img(item.photo, 2000, 1200)}
           alt={item.title}
@@ -63,7 +63,7 @@ export default function CaseStudy() {
           decoding="async"
         />
         <div className="u-grade absolute inset-0" />
-        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-16 pt-32 lg:px-10 lg:pb-24">
+        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
           <nav
             aria-label="Trilha"
             className="u-eyebrow mb-5 flex flex-wrap items-center gap-2"
@@ -97,14 +97,14 @@ export default function CaseStudy() {
       </section>
 
       <section className="mx-auto max-w-[900px] px-5 py-12 lg:px-10 lg:py-16">
-        <p className="u-eyebrow">Sobre o projeto</p>
-        <p className="mt-5 text-pretty text-xl leading-relaxed text-ink">
+        <p className="u-eyebrow text-mist">Sobre o projeto</p>
+        <p className="mt-5 text-pretty text-xl leading-relaxed text-off">
           {item.title} nasceu de um objetivo claro de comunicação. A VERSAVISUAL
           conduziu briefing, direção visual, captação e pós-produção para
           traduzir o contexto de {item.category.toLowerCase()} em uma narrativa
           coesa.
         </p>
-        <p className="mt-5 text-pretty text-navy">
+        <p className="mt-5 text-pretty text-mist">
           Do reconhecimento de locação à gradação de cor, cada decisão serviu à
           intenção do projeto — enquadramento, luz, ritmo e curadoria pensados
           para o uso final, com entrega organizada por formato e plataforma.
@@ -114,7 +114,7 @@ export default function CaseStudy() {
           <Link
             to={`/${seg.slug}`}
             viewTransition
-            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-navy transition-colors hover:text-ink"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-mist transition-colors hover:text-off"
           >
             Ver o segmento {seg.nav} →
           </Link>
@@ -123,7 +123,7 @@ export default function CaseStudy() {
 
       {item.video && (
         <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
-          <div className="relative overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+          <div className="relative overflow-hidden rounded-xl border border-off/10 bg-navy shadow-2xl">
             <video
               controls
               playsInline
@@ -141,16 +141,16 @@ export default function CaseStudy() {
       </section>
 
       {related.length > 0 && (
-        <section className="border-t border-line bg-surface">
+        <section className="border-t border-off/10 bg-ink/35 backdrop-blur-sm">
           <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
-            <p className="u-eyebrow mb-8">Cases relacionados</p>
+            <p className="u-eyebrow mb-8 text-mist">Cases relacionados</p>
             <div className="grid gap-4 sm:grid-cols-3">
               {related.map((r) => (
                 <Link
                   key={r.caseSlug}
                   to={`/portfolio/${r.caseSlug}`}
                   viewTransition
-                  className="group relative aspect-[16/10] overflow-hidden rounded-sm border border-line"
+                  className="group relative aspect-[16/10] overflow-hidden rounded-sm border border-off/10"
                 >
                   <img
                     src={img(r.photo, 700, 440)}

@@ -1,10 +1,21 @@
 import { useState } from "react"
 import type { Faq } from "../data/site"
 
-export default function FAQAccordion({ items }: { items: Faq[] }) {
+export default function FAQAccordion({
+  items,
+  tone = "light",
+}: {
+  items: Faq[]
+  tone?: "light" | "dark"
+}) {
   const [open, setOpen] = useState<number | null>(null)
+  const isDark = tone === "dark"
   return (
-    <div className="divide-y divide-line border-y border-line">
+    <div
+      className={`divide-y border-y ${
+        isDark ? "divide-off/15 border-off/15" : "divide-line border-line"
+      }`}
+    >
       {items.map((it, i) => {
         const isOpen = open === i
         return (
@@ -15,12 +26,18 @@ export default function FAQAccordion({ items }: { items: Faq[] }) {
               onClick={() => setOpen(isOpen ? null : i)}
               className="flex w-full items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ease-out hover:text-teal"
             >
-              <span className="text-lg font-medium text-ink">{it.q}</span>
+              <span
+                className={`text-lg font-medium ${
+                  isDark ? "text-off" : "text-ink"
+                }`}
+              >
+                {it.q}
+              </span>
               <span
                 aria-hidden
-                className={`shrink-0 rounded-full border border-line p-1 text-teal transition-all duration-300 ease-out ${
-                  isOpen ? "rotate-45 border-teal bg-teal/10" : ""
-                }`}
+                className={`shrink-0 rounded-full border p-1 text-teal transition-all duration-300 ease-out ${
+                  isDark ? "border-off/15" : "border-line"
+                } ${isOpen ? "rotate-45 border-teal bg-teal/10" : ""}`}
               >
                 <svg
                   viewBox="0 0 16 16"
@@ -41,7 +58,13 @@ export default function FAQAccordion({ items }: { items: Faq[] }) {
                 opacity: isOpen ? 1 : 0,
               }}
             >
-              <p className="max-w-2xl text-pretty pb-6 text-navy">{it.a}</p>
+              <p
+                className={`max-w-2xl text-pretty pb-6 ${
+                  isDark ? "text-mist" : "text-navy"
+                }`}
+              >
+                {it.a}
+              </p>
             </div>
           </div>
         )

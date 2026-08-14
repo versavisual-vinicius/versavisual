@@ -55,11 +55,11 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
       <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
         <div className="grid items-start gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
           <div className="top-24 lg:sticky">
-            {eyebrow && <p className="u-eyebrow">{eyebrow}</p>}
-            <h2 className="mt-4 max-w-xl text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+            {eyebrow && <p className="u-eyebrow text-mist">{eyebrow}</p>}
+            <h2 className="mt-4 max-w-xl text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
               {title}
             </h2>
-            {text && <p className="mt-4 max-w-sm text-navy">{text}</p>}
+            {text && <p className="mt-4 max-w-sm text-mist">{text}</p>}
             {media && <div className="mt-8 hidden lg:block">{media}</div>}
           </div>
 
@@ -72,7 +72,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 <div className="sticky top-28 z-10 hidden w-48 shrink-0 self-start md:block lg:w-56">
                   <div className="pl-20">
                     {item.eyebrow && (
-                      <span className="u-display text-sm text-navy/80">
+                      <span className="u-display text-sm text-mist/80">
                         {item.eyebrow}
                       </span>
                     )}
@@ -80,7 +80,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 </div>
 
                 <div
-                  className={`absolute left-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-off shadow-xs md:left-4 ${
+                  className={`absolute left-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-off/15 bg-ink shadow-xs md:left-4 ${
                     index === 0 ? "top-0 md:top-0" : "top-10 md:top-20"
                   }`}
                   aria-hidden="true"
@@ -111,7 +111,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
 
             <div
               style={{ height }}
-              className="absolute left-8 top-0 w-[2px] overflow-hidden bg-gradient-to-b from-transparent via-line-strong to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_92%,transparent_100%)]"
+              className="absolute left-8 top-0 w-[2px] overflow-hidden bg-gradient-to-b from-transparent via-off/25 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_92%,transparent_100%)]"
               aria-hidden="true"
             >
               {shouldReduceMotion ? (
@@ -122,7 +122,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                     height: heightTransform,
                     opacity: opacityTransform,
                   }}
-                  className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b from-teal via-navy to-transparent"
+                  className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b from-teal via-mist to-transparent"
                 />
               )}
             </div>

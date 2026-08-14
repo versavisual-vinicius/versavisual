@@ -16,13 +16,13 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="border-b border-line bg-surface pt-[72px]">
-        <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-24">
-          <p className="u-eyebrow">Portfólio</p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl leading-[1.0] text-ink sm:text-5xl lg:text-6xl">
+      <section className="border-b border-off/10 bg-ink/35 pt-[72px] backdrop-blur-sm">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
+          <p className="u-eyebrow text-mist">Portfólio</p>
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl leading-[1.0] text-off sm:text-5xl lg:text-6xl">
             O trabalho fala. Cada segmento tem a sua linguagem.
           </h1>
-          <p className="mt-5 max-w-xl text-navy">
+          <p className="mt-5 max-w-xl text-mist">
             Uma seleção de cases autorais em fotografia, vídeo, ativações,
             campanhas e projetos pessoais. Filtre por segmento e abra os cases
             para ver a história completa.
