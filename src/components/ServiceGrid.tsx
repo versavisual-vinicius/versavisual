@@ -11,7 +11,7 @@ export default function ServiceGrid({ items }: { items: Service[] }) {
           className="group relative flex h-full flex-col justify-between bg-off p-7 transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
         >
           <div>
-            <span className="u-display text-sm font-semibold text-teal-700">
+            <span className="u-display text-sm font-semibold text-navy">
               {s.n}
             </span>
             <h3 className="mt-4 text-xl font-semibold text-ink">{s.title}</h3>

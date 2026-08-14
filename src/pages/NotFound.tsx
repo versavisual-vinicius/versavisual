@@ -13,7 +13,7 @@ export default function NotFound() {
 
   return (
     <section className="mx-auto flex min-h-[90svh] max-w-[820px] flex-col justify-center px-5 py-32 lg:px-10">
-      <span className="u-display text-6xl text-teal/60 sm:text-8xl">404</span>
+      <span className="u-display text-6xl text-navy/60 sm:text-8xl">404</span>
       <h1 className="mt-5 text-balance text-4xl leading-tight text-ink sm:text-5xl">
         Essa cena saiu do enquadramento.
       </h1>

@@ -330,7 +330,7 @@ export default function Diagnostico() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="nome" className={labelCls}>
-                  Nome <span className="text-teal-400">*</span>
+                  Nome <span className="text-navy">*</span>
                 </label>
                 <input
                   id="nome"
@@ -340,9 +340,7 @@ export default function Diagnostico() {
                   placeholder="Seu nome"
                 />
                 {errors.nome && (
-                  <p className="mt-1.5 text-xs text-teal-400">
-                    Informe seu nome.
-                  </p>
+                  <p className="mt-1.5 text-xs text-navy">Informe seu nome.</p>
                 )}
               </div>
               <div>
@@ -361,7 +359,7 @@ export default function Diagnostico() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="whatsapp" className={labelCls}>
-                  WhatsApp <span className="text-teal-400">*</span>
+                  WhatsApp <span className="text-navy">*</span>
                 </label>
                 <input
                   id="whatsapp"
@@ -373,14 +371,14 @@ export default function Diagnostico() {
                   placeholder="(00) 00000-0000"
                 />
                 {errors.whatsapp && (
-                  <p className="mt-1.5 text-xs text-teal-400">
+                  <p className="mt-1.5 text-xs text-navy">
                     Informe um WhatsApp para contato.
                   </p>
                 )}
               </div>
               <div>
                 <label htmlFor="email" className={labelCls}>
-                  E-mail <span className="text-teal-400">*</span>
+                  E-mail <span className="text-navy">*</span>
                 </label>
                 <input
                   id="email"
@@ -391,7 +389,7 @@ export default function Diagnostico() {
                   placeholder="voce@email.com"
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-xs text-teal-400">
+                  <p className="mt-1.5 text-xs text-navy">
                     Informe um e-mail válido.
                   </p>
                 )}

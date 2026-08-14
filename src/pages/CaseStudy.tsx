@@ -114,7 +114,7 @@ export default function CaseStudy() {
           <Link
             to={`/${seg.slug}`}
             viewTransition
-            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-ink"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-navy transition-colors hover:text-ink"
           >
             Ver o segmento {seg.nav} →
           </Link>

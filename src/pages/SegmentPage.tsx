@@ -275,7 +275,7 @@ export default function SegmentPage({
             </ul>
 
             <div className="mt-8 rounded-xl border border-line bg-surface/80 p-5">
-              <p className="text-xs font-semibold uppercase tracking-wider text-teal-700">
+              <p className="text-xs font-semibold uppercase tracking-wider text-navy">
                 Diretriz de Produção
               </p>
               <p className="mt-2 text-sm leading-relaxed text-navy">
@@ -348,7 +348,7 @@ export default function SegmentPage({
                 aria-label={`${s.title} — entender serviço`}
                 className="group relative bg-off p-7 text-left transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
               >
-                <span className="u-display text-sm font-semibold text-teal-700">
+                <span className="u-display text-sm font-semibold text-navy">
                   {s.n}
                 </span>
                 <h3 className="mt-4 text-xl font-semibold text-ink">
@@ -357,7 +357,7 @@ export default function SegmentPage({
                 <p className="mt-2 text-sm leading-relaxed text-navy">
                   {s.desc}
                 </p>
-                <span className="mt-4 block text-xs font-medium text-teal opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <span className="mt-4 block text-xs font-medium text-navy opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                   Entender serviço →
                 </span>
                 <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-teal transition-transform duration-500 ease-out group-hover:scale-x-100" />
@@ -385,7 +385,7 @@ export default function SegmentPage({
               <Link
                 to="/portfolio"
                 viewTransition
-                className="text-sm font-medium text-teal transition-colors hover:text-ink"
+                className="text-sm font-medium text-navy transition-colors hover:text-ink"
               >
                 Ver todos os cases →
               </Link>
@@ -419,7 +419,7 @@ export default function SegmentPage({
                       <h3 className="text-xl font-semibold leading-snug text-ink">
                         {c.title}
                       </h3>
-                      <p className="mt-2 text-xs uppercase tracking-wider text-teal">
+                      <p className="mt-2 text-xs uppercase tracking-wider text-navy">
                         {c.category} · {c.city}
                       </p>
                     </div>

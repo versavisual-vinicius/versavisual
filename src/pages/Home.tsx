@@ -137,7 +137,7 @@ export default function Home() {
             <Link
               to="/portfolio"
               viewTransition
-              className="text-sm text-teal transition-colors hover:text-ink"
+              className="text-sm font-medium text-navy transition-colors hover:text-ink"
             >
               Ver portfólio completo →
             </Link>
@@ -214,7 +214,7 @@ export default function Home() {
                 className="flex min-h-[200px] flex-col justify-between rounded-xl border border-line bg-off/95 p-7 shadow-xs backdrop-blur-md transition-shadow duration-300 hover:shadow-md lg:p-8"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="u-display text-3xl font-semibold text-teal-700 lg:text-4xl">
+                  <span className="u-display text-3xl font-semibold text-navy lg:text-4xl">
                     {p.n}
                   </span>
                   <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />
