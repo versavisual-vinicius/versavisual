@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import logo from "../imports/logo-white.png"
+import Logo from "./Logo"
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -62,15 +62,10 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-10">
         {/* Logo */}
-        <Link to="/" viewTransition aria-label="VERSAVISUAL — página inicial">
-          <img
-            src={logo}
-            alt="VERSAVISUAL"
-            width={112}
-            height={28}
-            className={`block h-7 w-auto transition-all duration-500 ${
-              transparent ? "" : "invert"
-            }`}
+        <Link to="/" viewTransition aria-label="VERSAVISUAL — página inicial" className="flex items-center">
+          <Logo
+            variant={transparent ? "white" : "color"}
+            className="block h-7 w-auto transition-all duration-300"
           />
         </Link>
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { SEGMENT_NAV, WHATSAPP, EMAIL } from "../data/site"
-import logo from "../imports/logo-white.png"
+import Logo from "./Logo"
 
 export default function Footer() {
   return (
@@ -9,12 +9,9 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <img
-              src={logo}
-              alt="VERSAVISUAL"
-              width={220}
-              height={55}
-              className="block h-14 w-auto invert"
+            <Logo
+              variant="color"
+              className="block h-10 w-auto"
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-navy">
               Hub Criativo · Vídeo · Fotografia · Storymaking. Da cena ao frame,
