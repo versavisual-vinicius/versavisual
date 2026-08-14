@@ -14,7 +14,7 @@ import CTASection from "../components/CTASection"
 import TiltCard from "../components/TiltCard"
 import { useParallax } from "../lib/useParallax"
 
-const METHOD_PHOTO = "/images/Foto-A-Produção nao-falha.JPG"
+const METHOD_PHOTO = "/images/foto-a-producao-nao-falha.webp"
 
 const Timeline = lazy(async () => {
   const module = await import("../components/ui/timeline")
