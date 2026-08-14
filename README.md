@@ -11,6 +11,7 @@ Site institucional e portfólio da VERSAVISUAL, construído em React + Vite para
 - Design: tokens alinhados ao `Brand System RFC v3` da VERSAVISUAL.
 - SEO: metadados dinâmicos, canonical, JSON-LD, `robots.txt` e `sitemap.xml`.
 - Mídia: acervo local em `public/images`, logos em `public/logos` e vídeo em `public/videos`.
+- Performance: fontes do brand system self-hosted em WOFF2 em `public/fonts`, sem stylesheet render-blocking do Google Fonts.
 
 ## Brand System
 
@@ -66,6 +67,7 @@ Também há compatibilidade para aliases em `/segmentos/:slug` e `/:slug`.
 │   ├── brand-assets/          # Logos e ícones exportados
 │   ├── images/                # Fotos organizadas por produção
 │   ├── logos/                 # Wordmarks em SVG/PNG
+│   ├── fonts/                 # Righteous, Outfit e DM Sans em WOFF2
 │   ├── videos/                # Vídeos do site
 │   ├── robots.txt
 │   └── sitemap.xml

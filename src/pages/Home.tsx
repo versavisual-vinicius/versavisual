@@ -1,6 +1,7 @@
+import { lazy, Suspense } from "react"
 import { Link } from "react-router-dom"
 import { useSeo, SITE_URL } from "../lib/seo"
-import { img, HERO_PHOTO, BONFIM_HOUSE_PHOTOS } from "../lib/images"
+import { img, HERO_PHOTO } from "../lib/images"
 import {
   HOME_SERVICES,
   HOME_PROCESS,
@@ -12,6 +13,13 @@ import ServiceGrid from "../components/ServiceGrid"
 import CTASection from "../components/CTASection"
 import TiltCard from "../components/TiltCard"
 import { useParallax } from "../lib/useParallax"
+
+const METHOD_PHOTO = "/images/Foto-A-Produção nao-falha.JPG"
+
+const Timeline = lazy(async () => {
+  const module = await import("../components/ui/timeline")
+  return { default: module.Timeline }
+})
 
 export default function Home() {
   useSeo({
@@ -178,59 +186,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROCESS — sticky stacked cards */}
-      <section
-        id="processo"
-        className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28"
-      >
-        <div className="grid items-start md:grid-cols-2 md:gap-12">
-          <div className="top-24 md:sticky md:py-6">
-            <p className="u-eyebrow">Método</p>
-            <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
-              A produção falha antes da câmera ligar.
-            </h2>
-            <p className="mt-4 max-w-sm text-navy">
-              Por isso o planejamento é parte do produto. Cada etapa existe para
-              que a captação chegue ao set já resolvida.
-            </p>
-            <div
-              ref={btsParallaxRef}
-              style={btsParallaxStyle}
-              className="mt-8 hidden overflow-hidden rounded-xl border border-line md:block"
-            >
-              <img
-                src={img(BONFIM_HOUSE_PHOTOS[7], 900, 700)}
-                alt="Bastidores de produção audiovisual da VERSAVISUAL"
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover scale-105"
-              />
-            </div>
-          </div>
-
-          <div className="mt-10 space-y-5 md:mt-0">
-            {HOME_PROCESS.map((p) => (
+      {/* PROCESS */}
+      <section id="processo">
+        <Suspense
+          fallback={
+            <div className="mx-auto min-h-[640px] max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28" />
+          }
+        >
+          <Timeline
+            eyebrow="Método"
+            title="A produção falha antes da câmera ligar."
+            text="Por isso o planejamento é parte do produto. Cada etapa existe para que a captação chegue ao set já resolvida."
+            media={
               <div
-                key={p.n}
-                className="flex min-h-[200px] flex-col justify-between rounded-xl border border-line bg-off/95 p-7 shadow-xs backdrop-blur-md transition-shadow duration-300 hover:shadow-md lg:p-8"
+                ref={btsParallaxRef}
+                style={btsParallaxStyle}
+                className="overflow-hidden rounded-xl border border-line"
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="u-display text-3xl font-semibold text-navy lg:text-4xl">
-                    {p.n}
-                  </span>
-                  <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />
-                </div>
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold text-ink lg:text-2xl">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2.5 max-w-md text-sm leading-relaxed text-navy">
-                    {p.desc}
-                  </p>
-                </div>
+                <img
+                  src={img(METHOD_PHOTO, 900, 700)}
+                  alt="Bastidores de produção audiovisual da VERSAVISUAL"
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover scale-105"
+                />
               </div>
-            ))}
-          </div>
-        </div>
+            }
+            data={HOME_PROCESS.map((p) => ({
+              eyebrow: p.n,
+              title: p.title,
+              content: (
+                <p className="max-w-lg text-sm leading-relaxed text-navy">
+                  {p.desc}
+                </p>
+              ),
+            }))}
+          />
+        </Suspense>
       </section>
 
       <CTASection
