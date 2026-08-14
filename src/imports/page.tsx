@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import HeroGridLines from "@/components/HeroGridLines";
-import Reveal from "@/components/Reveal";
-import { optimizedPhotoSrc, resolvePhotoSrc } from "@/data/photoLibrary";
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import HeroGridLines from "@/components/HeroGridLines"
+import Reveal from "@/components/Reveal"
+import { optimizedPhotoSrc, resolvePhotoSrc } from "@/data/photoLibrary"
 
 export const metadata: Metadata = {
   title: "VERSAVISUAL | Fotografia, Vídeo e Storymaking para Marcas",
   description:
     "Hub criativo audiovisual especializado em fotografia, vídeo, direção visual e storymaking para marcas, artistas, eventos, campanhas e experiências no Rio de Janeiro e em todo o Brasil.",
-};
+}
 
 const niches = [
   {
@@ -84,7 +84,7 @@ const niches = [
     ),
     alt: "Sala de hotel com luz natural, plantas e atmosfera acolhedora",
   },
-];
+]
 
 const services = [
   {
@@ -117,7 +117,7 @@ const services = [
     title: "Cobertura de Eventos",
     desc: "Presença completa nos eventos dos clientes — antes, durante e depois.",
   },
-];
+]
 
 const steps = [
   {
@@ -140,7 +140,7 @@ const steps = [
     title: "Pós & entrega",
     desc: "Tratamento de cor coeso, curadoria autoral e entrega por formato e plataforma.",
   },
-];
+]
 
 export default function Home() {
   return (
@@ -419,5 +419,5 @@ export default function Home() {
         </Reveal>
       </section>
     </>
-  );
+  )
 }

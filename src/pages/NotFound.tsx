@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
-import { useSeo } from "../lib/seo";
-import { SEGMENT_NAV } from "../data/site";
+import { Link } from "react-router-dom"
+import { useSeo } from "../lib/seo"
+import { SEGMENT_NAV } from "../data/site"
 
 export default function NotFound() {
   useSeo({
     title: "Página não encontrada | VERSAVISUAL",
-    description: "A página que você procura não existe. Volte para o início ou explore o portfólio.",
+    description:
+      "A página que você procura não existe. Volte para o início ou explore o portfólio.",
     path: "/404",
     noindex: true,
-  });
+  })
 
   return (
     <section className="mx-auto flex min-h-[90svh] max-w-[820px] flex-col justify-center px-5 py-32 lg:px-10">
@@ -17,7 +18,8 @@ export default function NotFound() {
         Essa cena saiu do enquadramento.
       </h1>
       <p className="mt-5 max-w-lg text-navy">
-        A página que você procura não existe ou mudou de lugar. Vamos te reposicionar:
+        A página que você procura não existe ou mudou de lugar. Vamos te
+        reposicionar:
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
@@ -43,11 +45,15 @@ export default function NotFound() {
       <p className="u-eyebrow mb-4 mt-14">Segmentos</p>
       <div className="grid gap-2 sm:grid-cols-2">
         {SEGMENT_NAV.map((s) => (
-          <Link key={s.to} to={s.to} className="text-navy transition-colors hover:text-ink">
+          <Link
+            key={s.to}
+            to={s.to}
+            className="text-navy transition-colors hover:text-ink"
+          >
             {s.label}
           </Link>
         ))}
       </div>
     </section>
-  );
+  )
 }

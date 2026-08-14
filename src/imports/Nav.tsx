@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import Link from "next/link"
+import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -11,11 +11,11 @@ const navLinks = [
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#nichos", label: "Segmentos" },
   { href: "/#processo", label: "Processo" },
-];
+]
 
 export default function Nav() {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
   return (
     <header className="nav">
@@ -37,7 +37,12 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className={`nav-link${pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href)) ? " active" : ""}`}
+              className={`nav-link${
+                pathname === l.href ||
+                (l.href !== "/" && pathname.startsWith(l.href))
+                  ? " active"
+                  : ""
+              }`}
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -75,5 +80,5 @@ export default function Nav() {
         </button>
       </div>
     </header>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { SEGMENT_NAV, WHATSAPP, EMAIL } from "../data/site";
-import logo from "../imports/logo-white.png";
+import { Link } from "react-router-dom"
+import { SEGMENT_NAV, WHATSAPP, EMAIL } from "../data/site"
+import logo from "../imports/logo-white.png"
 
 export default function Footer() {
   return (
@@ -100,9 +100,11 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-navy sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 VERSAVISUAL — Hub Criativo Audiovisual</span>
-          <span className="u-wordmark tracking-widest text-navy/50">Rio de Janeiro · Brasil</span>
+          <span className="u-wordmark tracking-widest text-navy/50">
+            Rio de Janeiro · Brasil
+          </span>
         </div>
       </div>
     </footer>
-  );
+  )
 }

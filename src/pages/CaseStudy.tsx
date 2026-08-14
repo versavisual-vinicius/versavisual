@@ -1,21 +1,27 @@
-import { useParams, Link } from "react-router-dom";
-import { getCase, getSegment, PORTFOLIO, WHATSAPP } from "../data/site";
-import { useSeo, SITE_URL, breadcrumb } from "../lib/seo";
-import { img } from "../lib/images";
-import Gallery from "../components/Gallery";
-import CTASection from "../components/CTASection";
-import NotFound from "./NotFound";
+import { useParams, Link } from "react-router-dom"
+import { getCase, getSegment, PORTFOLIO, WHATSAPP } from "../data/site"
+import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
+import { img } from "../lib/images"
+import Gallery from "../components/Gallery"
+import CTASection from "../components/CTASection"
+import NotFound from "./NotFound"
 
 export default function CaseStudy() {
-  const { caseSlug = "" } = useParams();
-  const item = getCase(caseSlug);
-  if (!item) return <NotFound />;
+  const { caseSlug = "" } = useParams()
+  const item = getCase(caseSlug)
+  if (!item) return <NotFound />
 
-  const seg = getSegment(item.segmentSlug);
-  const gallery = item.gallery && item.gallery.length > 0 ? item.gallery : (seg ? seg.photos : [item.photo]);
+  const seg = getSegment(item.segmentSlug)
+  const gallery =
+    item.gallery && item.gallery.length > 0
+      ? item.gallery
+      : seg
+        ? seg.photos
+        : [item.photo]
   const related = PORTFOLIO.filter(
-    (p) => p.caseSlug && p.caseSlug !== caseSlug && p.category === item.category,
-  ).slice(0, 3);
+    (p) =>
+      p.caseSlug && p.caseSlug !== caseSlug && p.category === item.category,
+  ).slice(0, 3)
 
   useSeo({
     title: `${item.title} — ${item.category} | VERSAVISUAL`,
@@ -34,11 +40,15 @@ export default function CaseStudy() {
         about: item.category,
         contentLocation: item.city,
         image: img(item.photo, 1200, 800),
-        creator: { "@type": "Organization", name: "VERSAVISUAL", url: SITE_URL },
+        creator: {
+          "@type": "Organization",
+          name: "VERSAVISUAL",
+          url: SITE_URL,
+        },
         url: `${SITE_URL}/portfolio/${caseSlug}`,
       },
     ],
-  });
+  })
 
   return (
     <>
@@ -54,7 +64,10 @@ export default function CaseStudy() {
         />
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-16 pt-32 lg:px-10 lg:pb-24">
-          <nav aria-label="Trilha" className="u-eyebrow mb-5 flex flex-wrap items-center gap-2">
+          <nav
+            aria-label="Trilha"
+            className="u-eyebrow mb-5 flex flex-wrap items-center gap-2"
+          >
             <Link to="/" viewTransition className="hover:text-off">
               Início
             </Link>
@@ -76,7 +89,8 @@ export default function CaseStudy() {
               <span className="text-teal-400">Local</span> · {item.city}
             </span>
             <span>
-              <span className="text-teal-400">Entrega</span> · Foto · Vídeo · Direção
+              <span className="text-teal-400">Entrega</span> · Foto · Vídeo ·
+              Direção
             </span>
           </div>
         </div>
@@ -85,14 +99,15 @@ export default function CaseStudy() {
       <section className="mx-auto max-w-[900px] px-5 py-16 lg:px-10 lg:py-24">
         <p className="u-eyebrow">Sobre o projeto</p>
         <p className="mt-5 text-pretty text-xl leading-relaxed text-ink">
-          {item.title} nasceu de um objetivo claro de comunicação. A VERSAVISUAL conduziu
-          briefing, direção visual, captação e pós-produção para traduzir o contexto de{" "}
-          {item.category.toLowerCase()} em uma narrativa coesa.
+          {item.title} nasceu de um objetivo claro de comunicação. A VERSAVISUAL
+          conduziu briefing, direção visual, captação e pós-produção para
+          traduzir o contexto de {item.category.toLowerCase()} em uma narrativa
+          coesa.
         </p>
         <p className="mt-5 text-pretty text-navy">
-          Do reconhecimento de locação à gradação de cor, cada decisão serviu à intenção do
-          projeto — enquadramento, luz, ritmo e curadoria pensados para o uso final, com entrega
-          organizada por formato e plataforma.
+          Do reconhecimento de locação à gradação de cor, cada decisão serviu à
+          intenção do projeto — enquadramento, luz, ritmo e curadoria pensados
+          para o uso final, com entrega organizada por formato e plataforma.
         </p>
 
         {seg && (
@@ -163,5 +178,5 @@ export default function CaseStudy() {
         photo={item.photo}
       />
     </>
-  );
+  )
 }

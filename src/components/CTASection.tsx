@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
-import { WHATSAPP } from "../data/site";
-import { img, HERO_PHOTO } from "../lib/images";
+import { Link } from "react-router-dom"
+import { WHATSAPP } from "../data/site"
+import { img, HERO_PHOTO } from "../lib/images"
 
 type Props = {
-  eyebrow?: string;
-  title: string;
-  text: string;
-  photo?: string;
-};
+  eyebrow?: string
+  title: string
+  text: string
+  photo?: string
+}
 
-export default function CTASection({ eyebrow = "Diagnóstico Visual", title, text, photo }: Props) {
+export default function CTASection({
+  eyebrow = "Diagnóstico Visual",
+  title,
+  text,
+  photo,
+}: Props) {
   return (
     <section className="relative overflow-hidden border-y border-line">
       <img
@@ -25,7 +30,9 @@ export default function CTASection({ eyebrow = "Diagnóstico Visual", title, tex
       <div className="u-grade absolute inset-0" />
       <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
         <p className="u-eyebrow">{eyebrow}</p>
-        <h2 className="mt-5 text-balance text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{title}</h2>
+        <h2 className="mt-5 text-balance text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">
+          {title}
+        </h2>
         <p className="mx-auto mt-5 max-w-xl text-pretty text-mist">{text}</p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
@@ -46,5 +53,5 @@ export default function CTASection({ eyebrow = "Diagnóstico Visual", title, tex
         </div>
       </div>
     </section>
-  );
+  )
 }

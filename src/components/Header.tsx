@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../imports/logo-white.png";
+import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
+import logo from "../imports/logo-white.png"
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -8,47 +8,49 @@ const navLinks = [
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#nichos", label: "Segmentos", hash: true },
   { href: "/#processo", label: "Processo", hash: true },
-];
+]
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
+    document.body.style.overflow = open ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [open])
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [open]);
+      if (e.key === "Escape") setOpen(false)
+    }
+    document.addEventListener("keydown", onKey)
+    return () => document.removeEventListener("keydown", onKey)
+  }, [open])
 
-  const noHeroRoutes = ["/portfolio", "/diagnostico-visual", "/404"];
-  const isHeroPage = !noHeroRoutes.some((r) => pathname.startsWith(r));
-  const transparent = !scrolled && !open && isHeroPage;
+  const noHeroRoutes = ["/portfolio", "/diagnostico-visual", "/404"]
+  const isHeroPage = !noHeroRoutes.some((r) => pathname.startsWith(r))
+  const transparent = !scrolled && !open && isHeroPage
 
   const isActive = (href: string, hash?: boolean) => {
-    if (hash) return false;
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
+    if (hash) return false
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
 
   return (
     <header
@@ -66,12 +68,17 @@ export default function Header() {
             alt="VERSAVISUAL"
             width={112}
             height={28}
-            className={`block h-7 w-auto transition-all duration-500 ${transparent ? "" : "invert"}`}
+            className={`block h-7 w-auto transition-all duration-500 ${
+              transparent ? "" : "invert"
+            }`}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Navegação principal" className="hidden items-center gap-7 lg:flex">
+        <nav
+          aria-label="Navegação principal"
+          className="hidden items-center gap-7 lg:flex"
+        >
           {navLinks.map((l) => (
             <Link
               key={l.href}
@@ -79,8 +86,12 @@ export default function Header() {
               viewTransition={!l.hash}
               className={`text-sm tracking-wide transition-colors duration-200 ease-out ${
                 isActive(l.href, l.hash)
-                  ? transparent ? "text-off" : "text-ink"
-                  : transparent ? "text-mist/90 hover:text-off" : "text-navy hover:text-ink"
+                  ? transparent
+                    ? "text-off"
+                    : "text-ink"
+                  : transparent
+                    ? "text-mist/90 hover:text-off"
+                    : "text-navy hover:text-ink"
               }`}
             >
               {l.label}
@@ -102,12 +113,21 @@ export default function Header() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className={`flex h-10 w-10 items-center justify-center lg:hidden ${transparent ? "text-off" : "text-ink"}`}
+          className={`flex h-10 w-10 items-center justify-center lg:hidden ${
+            transparent ? "text-off" : "text-ink"
+          }`}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+          >
             {open ? (
               <path d="M18 6L6 18M6 6l12 12" />
             ) : (
@@ -151,5 +171,5 @@ export default function Header() {
         </>
       )}
     </header>
-  );
+  )
 }

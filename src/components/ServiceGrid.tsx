@@ -1,4 +1,4 @@
-import type { Service } from "../data/site";
+import type { Service } from "../data/site"
 
 export default function ServiceGrid({ items }: { items: Service[] }) {
   return (
@@ -15,5 +15,5 @@ export default function ServiceGrid({ items }: { items: Service[] }) {
         </div>
       ))}
     </div>
-  );
+  )
 }

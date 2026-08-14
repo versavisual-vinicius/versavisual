@@ -1,6 +1,6 @@
-import { useSeo, SITE_URL, breadcrumb } from "../lib/seo";
-import PortfolioGrid from "../components/PortfolioGrid";
-import CTASection from "../components/CTASection";
+import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
+import PortfolioGrid from "../components/PortfolioGrid"
+import CTASection from "../components/CTASection"
 
 export default function Portfolio() {
   useSeo({
@@ -12,7 +12,7 @@ export default function Portfolio() {
       { name: "Início", path: "/" },
       { name: "Portfólio", path: "/portfolio" },
     ]),
-  });
+  })
 
   return (
     <>
@@ -23,8 +23,9 @@ export default function Portfolio() {
             O trabalho fala. Cada segmento tem a sua linguagem.
           </h1>
           <p className="mt-5 max-w-xl text-navy">
-            Uma seleção de cases autorais em fotografia, vídeo, ativações, campanhas e projetos
-            pessoais. Filtre por segmento e abra os cases para ver a história completa.
+            Uma seleção de cases autorais em fotografia, vídeo, ativações,
+            campanhas e projetos pessoais. Filtre por segmento e abra os cases
+            para ver a história completa.
           </p>
         </div>
       </section>
@@ -38,5 +39,5 @@ export default function Portfolio() {
         text="Comece pelo diagnóstico visual: contamos qual formato, direção e produção fazem sentido para o seu objetivo."
       />
     </>
-  );
+  )
 }

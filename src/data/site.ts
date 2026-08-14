@@ -13,15 +13,15 @@ import {
   MEGABLOCO_CHA_DA_ALICE_PHOTOS,
   MODA_SANTALOLA_PHOTOS,
   SYN_ICE_PHOTOS,
-} from "../lib/images";
+} from "../lib/images"
 
-export const WHATSAPP = "https://wa.me/5511950747192";
-export const WHATSAPP_LABEL = "11 95074-7192";
-export const EMAIL = "hub@versavisual.com.br";
+export const WHATSAPP = "https://wa.me/5511950747192"
+export const WHATSAPP_LABEL = "11 95074-7192"
+export const EMAIL = "hub@versavisual.com.br"
 
-export type NavItem = { label: string; to: string; hash?: boolean };
+export type NavItem = { label: string to: string hash?: boolean }
 
-export const SEGMENT_NAV: { label: string; to: string }[] = [
+export const SEGMENT_NAV: { label: string to: string }[] = [
   { label: "Ativações & Eventos", to: "/ativacoes-eventos" },
   { label: "Moda & Campanhas", to: "/moda-campanhas" },
   { label: "Artistas & Videoclipes", to: "/artistas-videoclipes" },
@@ -30,65 +30,105 @@ export const SEGMENT_NAV: { label: string; to: string }[] = [
   { label: "Casamentos", to: "/casamentos" },
   { label: "Gestantes", to: "/gestantes" },
   { label: "Hotelaria & Lifestyle", to: "/hotelaria-lifestyle" },
-];
+]
 
-export type Service = { n: string; title: string; desc: string };
+export type Service = { n: string title: string desc: string }
 
 export const HOME_SERVICES: Service[] = [
-  { n: "01", title: "Fotografia", desc: "Direção de cena, leitura de luz e sensibilidade editorial. Imagens com peso, presença e intenção." },
-  { n: "02", title: "Storymaking", desc: "Narrativas visuais para redes sociais. Posts, carrosséis e reels que comunicam com coerência." },
-  { n: "03", title: "Videomaking", desc: "Cobertura completa com equipe técnica, operação multicâmera e entrega editada com identidade." },
-  { n: "04", title: "Roteiros", desc: "Roteiros para vídeos institucionais, conteúdo e coberturas temáticas. A narrativa começa antes da câmera ligar." },
-  { n: "05", title: "Direção", desc: "Tradução de um objetivo de comunicação em escolhas concretas de enquadramento, luz, movimento e composição." },
-  { n: "06", title: "Cobertura de Eventos", desc: "Presença completa nos eventos dos clientes — antes, durante e depois." },
-];
+  {
+    n: "01",
+    title: "Fotografia",
+    desc: "Direção de cena, leitura de luz e sensibilidade editorial. Imagens com peso, presença e intenção.",
+  },
+  {
+    n: "02",
+    title: "Storymaking",
+    desc: "Narrativas visuais para redes sociais. Posts, carrosséis e reels que comunicam com coerência.",
+  },
+  {
+    n: "03",
+    title: "Videomaking",
+    desc: "Cobertura completa com equipe técnica, operação multicâmera e entrega editada com identidade.",
+  },
+  {
+    n: "04",
+    title: "Roteiros",
+    desc: "Roteiros para vídeos institucionais, conteúdo e coberturas temáticas. A narrativa começa antes da câmera ligar.",
+  },
+  {
+    n: "05",
+    title: "Direção",
+    desc: "Tradução de um objetivo de comunicação em escolhas concretas de enquadramento, luz, movimento e composição.",
+  },
+  {
+    n: "06",
+    title: "Cobertura de Eventos",
+    desc: "Presença completa nos eventos dos clientes — antes, durante e depois.",
+  },
+]
 
 export const HOME_PROCESS = [
-  { n: "01", title: "Briefing", desc: "A maioria das produções falha não na captação — falha no que veio antes dela. Na VERSAVISUAL, o planejamento é parte do produto entregue." },
-  { n: "02", title: "Pré-produção", desc: "Alinhamento de briefing, roteiro ou pauta de cobertura, reconhecimento de locação, definição de linguagem visual e organização logística da equipe." },
-  { n: "03", title: "Execução", desc: "Chegamos ao set com briefing definido, pauta estruturada e linguagem visual alinhada. A execução em campo é disciplinada — mas sensível." },
-  { n: "04", title: "Pós & entrega", desc: "Transformamos material bruto em entrega com identidade — tratamento de cor coeso, curadoria autoral e formatos por plataforma." },
-];
+  {
+    n: "01",
+    title: "Briefing",
+    desc: "A maioria das produções falha não na captação — falha no que veio antes dela. Na VERSAVISUAL, o planejamento é parte do produto entregue.",
+  },
+  {
+    n: "02",
+    title: "Pré-produção",
+    desc: "Alinhamento de briefing, roteiro ou pauta de cobertura, reconhecimento de locação, definição de linguagem visual e organização logística da equipe.",
+  },
+  {
+    n: "03",
+    title: "Execução",
+    desc: "Chegamos ao set com briefing definido, pauta estruturada e linguagem visual alinhada. A execução em campo é disciplinada — mas sensível.",
+  },
+  {
+    n: "04",
+    title: "Pós & entrega",
+    desc: "Transformamos material bruto em entrega com identidade — tratamento de cor coeso, curadoria autoral e formatos por plataforma.",
+  },
+]
 
 export const HOME_STATS = [
   { value: "+120", label: "Projetos Autorais" },
   { value: "25+", label: "Marcas Atendidas" },
   { value: "18", label: "Estados Cobertos" },
   { value: "5+", label: "Anos de Operação" },
-];
+]
 
-export type Faq = { q: string; a: string };
-export type SegProcess = { n: string; title: string; desc: string };
+export type Faq = { q: string a: string }
+export type SegProcess = { n: string title: string desc: string }
 
 export type Segment = {
-  slug: string;
-  index: string; // 01..08
-  nav: string;
-  category: string; // portfolio category name
-  discoverAnchor: string; // enriched anchor text
-  seoTitle: string;
-  seoDesc: string;
-  eyebrow: string;
-  h1: string;
-  intro: string;
-  audienceTitle: string;
-  audienceText: string;
-  audienceList: string[];
-  problemTitle: string;
-  problemText: string;
-  solutionTitle: string;
-  solutionText: string;
-  servicesTitle: string;
-  services: Service[];
-  process: SegProcess[];
-  ctaEyebrow: string;
-  ctaTitle: string;
-  ctaText: string;
-  faqTitle: string;
-  faqs: Faq[];
-  photos: readonly string[];
-  regions: string[];
-};
+  slug: string
+  index: string // 01..08
+  nav: string
+  category: string // portfolio category name
+  discoverAnchor: string // enriched anchor text
+  seoTitle: string
+  seoDesc: string
+  eyebrow: string
+  h1: string
+  intro: string
+  audienceTitle: string
+  audienceText: string
+  audienceList: string[]
+  problemTitle: string
+  problemText: string
+  solutionTitle: string
+  solutionText: string
+  servicesTitle: string
+  services: Service[]
+  process: SegProcess[]
+  ctaEyebrow: string
+  ctaTitle: string
+  ctaText: string
+  faqTitle: string
+  faqs: Faq[]
+  photos: readonly string[]
+  regions: string[]
+}
 
 export const SEGMENTS: Segment[] = [
   {
@@ -97,7 +137,8 @@ export const SEGMENTS: Segment[] = [
     nav: "Ativações & Eventos",
     category: "Ativações & Eventos",
     discoverAnchor: "Ver fotografia para ativações e eventos",
-    seoTitle: "Fotografia e Vídeo para Ativações de Marca e Eventos Corporativos",
+    seoTitle:
+      "Fotografia e Vídeo para Ativações de Marca e Eventos Corporativos",
     seoDesc:
       "Cobertura audiovisual para ativações, feiras, lançamentos e eventos corporativos com fotografia, vídeo, storymaking em tempo real e direção visual.",
     eyebrow: "Início · Ativações & Eventos",
@@ -120,31 +161,90 @@ export const SEGMENTS: Segment[] = [
       "Chegamos com pauta de cobertura definida, hierarquia de momentos e linguagem visual alinhada. Operação multicâmera, storymaking em tempo real para as redes e entrega editada por formato e plataforma.",
     servicesTitle: "Uma operação, cobertura completa.",
     services: [
-      { n: "01", title: "Fotografia", desc: "Registro com direção de cena: equipe, interação com público, detalhes de marca e momentos-chave." },
-      { n: "02", title: "Vídeo", desc: "Cobertura multicâmera, aftermovie e cortes verticais para redes. Identidade visual da marca preservada." },
-      { n: "03", title: "Storymaking", desc: "Conteúdo em tempo real durante o evento — stories, reels e posts publicados enquanto a ação acontece." },
-      { n: "04", title: "Direção visual", desc: "Linguagem alinhada ao posicionamento da marca, do enquadramento ao tratamento de cor." },
-      { n: "05", title: "Conteúdo p/ redes", desc: "Entregáveis nos formatos certos: 9:16, 1:1 e 16:9, prontos para publicar." },
-      { n: "06", title: "Relatório de uso", desc: "Material organizado por momento e câmera, com curadoria e nomenclatura para o time da marca." },
+      {
+        n: "01",
+        title: "Fotografia",
+        desc: "Registro com direção de cena: equipe, interação com público, detalhes de marca e momentos-chave.",
+      },
+      {
+        n: "02",
+        title: "Vídeo",
+        desc: "Cobertura multicâmera, aftermovie e cortes verticais para redes. Identidade visual da marca preservada.",
+      },
+      {
+        n: "03",
+        title: "Storymaking",
+        desc: "Conteúdo em tempo real durante o evento — stories, reels e posts publicados enquanto a ação acontece.",
+      },
+      {
+        n: "04",
+        title: "Direção visual",
+        desc: "Linguagem alinhada ao posicionamento da marca, do enquadramento ao tratamento de cor.",
+      },
+      {
+        n: "05",
+        title: "Conteúdo p/ redes",
+        desc: "Entregáveis nos formatos certos: 9:16, 1:1 e 16:9, prontos para publicar.",
+      },
+      {
+        n: "06",
+        title: "Relatório de uso",
+        desc: "Material organizado por momento e câmera, com curadoria e nomenclatura para o time da marca.",
+      },
     ],
     process: [
-      { n: "01", title: "Briefing", desc: "Entendemos a ativação, os momentos prioritários e onde o conteúdo será usado." },
-      { n: "02", title: "Pauta", desc: "Hierarquia de captação, posicionamento de câmera e estimativa por cena." },
-      { n: "03", title: "Operação", desc: "Equipe coordenada em campo, com storymaking publicado em tempo real." },
-      { n: "04", title: "Entrega", desc: "Edição por formato, curadoria de imagens e material organizado para o time." },
+      {
+        n: "01",
+        title: "Briefing",
+        desc: "Entendemos a ativação, os momentos prioritários e onde o conteúdo será usado.",
+      },
+      {
+        n: "02",
+        title: "Pauta",
+        desc: "Hierarquia de captação, posicionamento de câmera e estimativa por cena.",
+      },
+      {
+        n: "03",
+        title: "Operação",
+        desc: "Equipe coordenada em campo, com storymaking publicado em tempo real.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Edição por formato, curadoria de imagens e material organizado para o time.",
+      },
     ],
     ctaEyebrow: "Próxima ativação",
     ctaTitle: "Sua próxima ativação merece um registro à altura.",
-    ctaText: "Conte o que vem por aí. Montamos a operação audiovisual ideal para o seu evento.",
+    ctaText:
+      "Conte o que vem por aí. Montamos a operação audiovisual ideal para o seu evento.",
     faqTitle: "FAQ — Ativações & Eventos.",
     faqs: [
-      { q: "Vocês entregam conteúdo durante o evento?", a: "Sim. O storymaking em tempo real é parte central do serviço — publicamos stories, reels e posts enquanto a ativação acontece, alinhados ao tom da marca." },
-      { q: "Atendem fora do Rio de Janeiro?", a: "Sim. A operação é nacional — vamos onde a história acontece. Logística e equipe são dimensionadas no briefing." },
-      { q: "Qual o prazo de entrega do material editado?", a: "Conteúdo em tempo real sai durante o evento. O material editado completo é definido em briefing conforme o uso — normalmente entre 3 e 10 dias úteis." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento." },
+      {
+        q: "Vocês entregam conteúdo durante o evento?",
+        a: "Sim. O storymaking em tempo real é parte central do serviço — publicamos stories, reels e posts enquanto a ativação acontece, alinhados ao tom da marca.",
+      },
+      {
+        q: "Atendem fora do Rio de Janeiro?",
+        a: "Sim. A operação é nacional — vamos onde a história acontece. Logística e equipe são dimensionadas no briefing.",
+      },
+      {
+        q: "Qual o prazo de entrega do material editado?",
+        a: "Conteúdo em tempo real sai durante o evento. O material editado completo é definido em briefing conforme o uso — normalmente entre 3 e 10 dias úteis.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.events,
-    regions: ["Rio de Janeiro", "São Paulo", "Belo Horizonte", "Salvador", "Operação nacional"],
+    regions: [
+      "Rio de Janeiro",
+      "São Paulo",
+      "Belo Horizonte",
+      "Salvador",
+      "Operação nacional",
+    ],
   },
   {
     slug: "moda-campanhas",
@@ -175,28 +275,81 @@ export const SEGMENTS: Segment[] = [
       "Partimos do posicionamento da marca para desenhar referência, styling, luz e tratamento. Cada frame serve à narrativa da campanha — do editorial ao fashion film, do beauty ao lifestyle.",
     servicesTitle: "Da referência ao frame final.",
     services: [
-      { n: "01", title: "Direção criativa", desc: "Conceito visual, moodboard, referências e linguagem alinhados ao posicionamento da marca." },
-      { n: "02", title: "Fotografia editorial", desc: "Editorial de moda com leitura de luz e composição intencional. Imagens com assinatura." },
-      { n: "03", title: "Beauty", desc: "Fotografia de beauty com foco em pele, detalhe e textura — respeitando o produto." },
-      { n: "04", title: "Lifestyle", desc: "Imagens de lifestyle e produto em contexto, para feed, e-commerce e mídia." },
-      { n: "05", title: "Fashion film", desc: "Vídeo de moda e campanha — movimento, ritmo e estética para redes e mídia paga." },
-      { n: "06", title: "Tratamento", desc: "Correção e gradação de cor coesa entre todos os materiais da campanha." },
+      {
+        n: "01",
+        title: "Direção criativa",
+        desc: "Conceito visual, moodboard, referências e linguagem alinhados ao posicionamento da marca.",
+      },
+      {
+        n: "02",
+        title: "Fotografia editorial",
+        desc: "Editorial de moda com leitura de luz e composição intencional. Imagens com assinatura.",
+      },
+      {
+        n: "03",
+        title: "Beauty",
+        desc: "Fotografia de beauty com foco em pele, detalhe e textura — respeitando o produto.",
+      },
+      {
+        n: "04",
+        title: "Lifestyle",
+        desc: "Imagens de lifestyle e produto em contexto, para feed, e-commerce e mídia.",
+      },
+      {
+        n: "05",
+        title: "Fashion film",
+        desc: "Vídeo de moda e campanha — movimento, ritmo e estética para redes e mídia paga.",
+      },
+      {
+        n: "06",
+        title: "Tratamento",
+        desc: "Correção e gradação de cor coesa entre todos os materiais da campanha.",
+      },
     ],
     process: [
-      { n: "01", title: "Conceito", desc: "Posicionamento, referências e moodboard da campanha." },
-      { n: "02", title: "Pré-produção", desc: "Styling, locação, casting e linguagem visual definidos." },
-      { n: "03", title: "Produção", desc: "Direção ativa no set — luz, composição e estética sob controle." },
-      { n: "04", title: "Entrega", desc: "Tratamento de cor e entrega por formato e plataforma." },
+      {
+        n: "01",
+        title: "Conceito",
+        desc: "Posicionamento, referências e moodboard da campanha.",
+      },
+      {
+        n: "02",
+        title: "Pré-produção",
+        desc: "Styling, locação, casting e linguagem visual definidos.",
+      },
+      {
+        n: "03",
+        title: "Produção",
+        desc: "Direção ativa no set — luz, composição e estética sob controle.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Tratamento de cor e entrega por formato e plataforma.",
+      },
     ],
     ctaEyebrow: "Sua próxima campanha",
     ctaTitle: "Sua marca merece uma imagem que vende.",
-    ctaText: "Conte o conceito da campanha. Desenhamos a direção visual e a produção ideais.",
+    ctaText:
+      "Conte o conceito da campanha. Desenhamos a direção visual e a produção ideais.",
     faqTitle: "FAQ — Moda & Campanhas.",
     faqs: [
-      { q: "Vocês fazem direção criativa ou só fotografam?", a: "Fazemos direção criativa completa — conceito, referências, styling e linguagem visual. A fotografia é a execução de uma estratégia, não um clique isolado." },
-      { q: "Atendem e-commerce e catálogo?", a: "Sim. Produzimos desde editorial de campanha até lifestyle de produto e imagens para e-commerce, com tratamento coeso entre os materiais." },
-      { q: "Fazem fashion film?", a: "Sim. Produzimos vídeo de moda e campanha para redes e mídia paga, com a mesma direção visual da fotografia." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Vocês fazem direção criativa ou só fotografam?",
+        a: "Fazemos direção criativa completa — conceito, referências, styling e linguagem visual. A fotografia é a execução de uma estratégia, não um clique isolado.",
+      },
+      {
+        q: "Atendem e-commerce e catálogo?",
+        a: "Sim. Produzimos desde editorial de campanha até lifestyle de produto e imagens para e-commerce, com tratamento coeso entre os materiais.",
+      },
+      {
+        q: "Fazem fashion film?",
+        a: "Sim. Produzimos vídeo de moda e campanha para redes e mídia paga, com a mesma direção visual da fotografia.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.fashion,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
@@ -230,28 +383,81 @@ export const SEGMENTS: Segment[] = [
       "Construímos a imagem do artista em torno da música — videoclipe com direção, fotografia de divulgação, capa, teaser, making of e cortes para redes. Tudo coerente, do single ao show.",
     servicesTitle: "Do clipe ao conteúdo de redes.",
     services: [
-      { n: "01", title: "Direção de clipe", desc: "Conceito, roteiro e direção de videoclipe alinhados à narrativa da música." },
-      { n: "02", title: "Captação de vídeo", desc: "Operação multicâmera com movimento e linguagem coerentes ao tom do projeto." },
-      { n: "03", title: "Fotografia", desc: "Fotos de divulgação, capa e ensaio do artista com direção de cena." },
-      { n: "04", title: "Cobertura de shows", desc: "Registro de shows e turnê — palco, bastidor e público." },
-      { n: "05", title: "Teaser & making of", desc: "Conteúdo de antecipação e bastidor para alimentar o lançamento." },
-      { n: "06", title: "Cortes para redes", desc: "Reels e cortes verticais para sustentar o release nas plataformas." },
+      {
+        n: "01",
+        title: "Direção de clipe",
+        desc: "Conceito, roteiro e direção de videoclipe alinhados à narrativa da música.",
+      },
+      {
+        n: "02",
+        title: "Captação de vídeo",
+        desc: "Operação multicâmera com movimento e linguagem coerentes ao tom do projeto.",
+      },
+      {
+        n: "03",
+        title: "Fotografia",
+        desc: "Fotos de divulgação, capa e ensaio do artista com direção de cena.",
+      },
+      {
+        n: "04",
+        title: "Cobertura de shows",
+        desc: "Registro de shows e turnê — palco, bastidor e público.",
+      },
+      {
+        n: "05",
+        title: "Teaser & making of",
+        desc: "Conteúdo de antecipação e bastidor para alimentar o lançamento.",
+      },
+      {
+        n: "06",
+        title: "Cortes para redes",
+        desc: "Reels e cortes verticais para sustentar o release nas plataformas.",
+      },
     ],
     process: [
-      { n: "01", title: "Conceito", desc: "Imersão na música, referências e universo visual do artista." },
-      { n: "02", title: "Roteiro", desc: "Roteiro do clipe, decupagem e plano de captação." },
-      { n: "03", title: "Captação", desc: "Direção ativa em set ou show, com operação multicâmera." },
-      { n: "04", title: "Pós & entrega", desc: "Montagem, cor e entrega de clipe, teaser e cortes para redes." },
+      {
+        n: "01",
+        title: "Conceito",
+        desc: "Imersão na música, referências e universo visual do artista.",
+      },
+      {
+        n: "02",
+        title: "Roteiro",
+        desc: "Roteiro do clipe, decupagem e plano de captação.",
+      },
+      {
+        n: "03",
+        title: "Captação",
+        desc: "Direção ativa em set ou show, com operação multicâmera.",
+      },
+      {
+        n: "04",
+        title: "Pós & entrega",
+        desc: "Montagem, cor e entrega de clipe, teaser e cortes para redes.",
+      },
     ],
     ctaEyebrow: "Seu próximo release",
     ctaTitle: "Transforme sua música em um universo visual.",
-    ctaText: "Conte o conceito do seu lançamento. Montamos o pacote audiovisual ideal para o artista.",
+    ctaText:
+      "Conte o conceito do seu lançamento. Montamos o pacote audiovisual ideal para o artista.",
     faqTitle: "FAQ — Artistas & Videoclipes.",
     faqs: [
-      { q: "Vocês produzem o clipe do conceito à entrega?", a: "Sim. Fazemos conceito, roteiro, direção, captação e pós-produção do videoclipe, além do material de divulgação." },
-      { q: "Fazem cobertura de shows e turnê?", a: "Sim. Cobrimos shows e turnês com registro de palco, bastidor e público, entregando vídeo e fotografia." },
-      { q: "Entregam conteúdo para redes além do clipe?", a: "Sim. Teaser, making of e cortes verticais fazem parte do pacote para sustentar o lançamento nas plataformas." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Vocês produzem o clipe do conceito à entrega?",
+        a: "Sim. Fazemos conceito, roteiro, direção, captação e pós-produção do videoclipe, além do material de divulgação.",
+      },
+      {
+        q: "Fazem cobertura de shows e turnê?",
+        a: "Sim. Cobrimos shows e turnês com registro de palco, bastidor e público, entregando vídeo e fotografia.",
+      },
+      {
+        q: "Entregam conteúdo para redes além do clipe?",
+        a: "Sim. Teaser, making of e cortes verticais fazem parte do pacote para sustentar o lançamento nas plataformas.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.artists,
     regions: ["Rio de Janeiro", "Salvador", "São Paulo", "Operação nacional"],
@@ -285,28 +491,81 @@ export const SEGMENTS: Segment[] = [
       "Construímos um sistema visual de posicionamento: retratos com direção, vídeo institucional e linguagem coerente para site, redes e materiais. Confiança que se vê antes de se contratar.",
     servicesTitle: "Retrato, vídeo e marca pessoal.",
     services: [
-      { n: "01", title: "Retrato corporativo", desc: "Retratos com direção de pose, luz e expressão que comunicam autoridade e confiança." },
-      { n: "02", title: "Vídeo institucional", desc: "Vídeo de apresentação para clínicas e profissionais — claro, sóbrio e profissional." },
-      { n: "03", title: "Direção visual", desc: "Linguagem visual coerente para site, redes sociais e materiais de divulgação." },
-      { n: "04", title: "Ambiente & equipe", desc: "Registro de consultório, clínica e equipe para transmitir estrutura e cuidado." },
-      { n: "05", title: "Conteúdo p/ redes", desc: "Material de autoridade para alimentar perfis profissionais com consistência." },
-      { n: "06", title: "Tratamento", desc: "Tratamento de imagem que respeita a pele e mantém naturalidade profissional." },
+      {
+        n: "01",
+        title: "Retrato corporativo",
+        desc: "Retratos com direção de pose, luz e expressão que comunicam autoridade e confiança.",
+      },
+      {
+        n: "02",
+        title: "Vídeo institucional",
+        desc: "Vídeo de apresentação para clínicas e profissionais — claro, sóbrio e profissional.",
+      },
+      {
+        n: "03",
+        title: "Direção visual",
+        desc: "Linguagem visual coerente para site, redes sociais e materiais de divulgação.",
+      },
+      {
+        n: "04",
+        title: "Ambiente & equipe",
+        desc: "Registro de consultório, clínica e equipe para transmitir estrutura e cuidado.",
+      },
+      {
+        n: "05",
+        title: "Conteúdo p/ redes",
+        desc: "Material de autoridade para alimentar perfis profissionais com consistência.",
+      },
+      {
+        n: "06",
+        title: "Tratamento",
+        desc: "Tratamento de imagem que respeita a pele e mantém naturalidade profissional.",
+      },
     ],
     process: [
-      { n: "01", title: "Briefing", desc: "Entendemos o posicionamento, o público e onde a imagem será usada." },
-      { n: "02", title: "Direção", desc: "Definição de locação, styling e linguagem visual do profissional." },
-      { n: "03", title: "Produção", desc: "Sessão com direção de pose, luz e expressão — sem improviso." },
-      { n: "04", title: "Entrega", desc: "Tratamento e entrega de retratos, vídeo e material para redes." },
+      {
+        n: "01",
+        title: "Briefing",
+        desc: "Entendemos o posicionamento, o público e onde a imagem será usada.",
+      },
+      {
+        n: "02",
+        title: "Direção",
+        desc: "Definição de locação, styling e linguagem visual do profissional.",
+      },
+      {
+        n: "03",
+        title: "Produção",
+        desc: "Sessão com direção de pose, luz e expressão — sem improviso.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Tratamento e entrega de retratos, vídeo e material para redes.",
+      },
     ],
     ctaEyebrow: "Sua marca pessoal",
     ctaTitle: "Comunique autoridade antes da primeira conversa.",
-    ctaText: "Conte sobre o seu posicionamento. Desenhamos o sistema visual ideal para a sua marca pessoal.",
+    ctaText:
+      "Conte sobre o seu posicionamento. Desenhamos o sistema visual ideal para a sua marca pessoal.",
     faqTitle: "FAQ — Posicionamento Profissional.",
     faqs: [
-      { q: "Atendem clínicas e equipes, não só indivíduos?", a: "Sim. Produzimos retratos individuais, de equipe e registro de ambiente para clínicas e consultórios." },
-      { q: "Fazem vídeo institucional além de foto?", a: "Sim. Produzimos vídeo de apresentação e conteúdo de autoridade alinhados à identidade visual." },
-      { q: "A sessão é dirigida? Não sou modelo.", a: "Totalmente dirigida. Conduzimos pose, expressão e luz — você não precisa saber posar, nós conduzimos." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Atendem clínicas e equipes, não só indivíduos?",
+        a: "Sim. Produzimos retratos individuais, de equipe e registro de ambiente para clínicas e consultórios.",
+      },
+      {
+        q: "Fazem vídeo institucional além de foto?",
+        a: "Sim. Produzimos vídeo de apresentação e conteúdo de autoridade alinhados à identidade visual.",
+      },
+      {
+        q: "A sessão é dirigida? Não sou modelo.",
+        a: "Totalmente dirigida. Conduzimos pose, expressão e luz — você não precisa saber posar, nós conduzimos.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.professional,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
@@ -340,28 +599,81 @@ export const SEGMENTS: Segment[] = [
       "Conduzimos pose, expressão, movimento, locação e ritmo da sessão. A ideia não é fabricar personagem: é encontrar uma imagem bonita, honesta e publicável de quem você já é.",
     servicesTitle: "Da autoestima ao feed.",
     services: [
-      { n: "01", title: "Ensaio autoral", desc: "Sessão fotográfica com conceito leve, direção de pose e estética pessoal." },
-      { n: "02", title: "Fotos para Instagram", desc: "Imagens pensadas para feed, stories, perfil e presença digital." },
-      { n: "03", title: "Direção de pose", desc: "Condução completa de corpo, olhar, mãos e expressão. Você não precisa saber posar." },
-      { n: "04", title: "Lifestyle externo", desc: "Locações urbanas, praia, casa, hotel ou espaços com luz natural e atmosfera." },
-      { n: "05", title: "Beauty natural", desc: "Retratos com foco em pele, presença e beleza real, sem descaracterizar." },
-      { n: "06", title: "Curadoria", desc: "Seleção e tratamento de imagens para entregar um conjunto coeso e fácil de usar." },
+      {
+        n: "01",
+        title: "Ensaio autoral",
+        desc: "Sessão fotográfica com conceito leve, direção de pose e estética pessoal.",
+      },
+      {
+        n: "02",
+        title: "Fotos para Instagram",
+        desc: "Imagens pensadas para feed, stories, perfil e presença digital.",
+      },
+      {
+        n: "03",
+        title: "Direção de pose",
+        desc: "Condução completa de corpo, olhar, mãos e expressão. Você não precisa saber posar.",
+      },
+      {
+        n: "04",
+        title: "Lifestyle externo",
+        desc: "Locações urbanas, praia, casa, hotel ou espaços com luz natural e atmosfera.",
+      },
+      {
+        n: "05",
+        title: "Beauty natural",
+        desc: "Retratos com foco em pele, presença e beleza real, sem descaracterizar.",
+      },
+      {
+        n: "06",
+        title: "Curadoria",
+        desc: "Seleção e tratamento de imagens para entregar um conjunto coeso e fácil de usar.",
+      },
     ],
     process: [
-      { n: "01", title: "Conversa", desc: "Entendemos seu momento, referências, inseguranças e onde as fotos serão usadas." },
-      { n: "02", title: "Direção", desc: "Definimos clima, locação, roupa e caminho visual da sessão." },
-      { n: "03", title: "Sessão", desc: "Condução leve de pose e movimento para você relaxar e se reconhecer." },
-      { n: "04", title: "Entrega", desc: "Curadoria, tratamento e entrega das imagens para usar no feed, perfil ou memória pessoal." },
+      {
+        n: "01",
+        title: "Conversa",
+        desc: "Entendemos seu momento, referências, inseguranças e onde as fotos serão usadas.",
+      },
+      {
+        n: "02",
+        title: "Direção",
+        desc: "Definimos clima, locação, roupa e caminho visual da sessão.",
+      },
+      {
+        n: "03",
+        title: "Sessão",
+        desc: "Condução leve de pose e movimento para você relaxar e se reconhecer.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Curadoria, tratamento e entrega das imagens para usar no feed, perfil ou memória pessoal.",
+      },
     ],
     ctaEyebrow: "Seu ensaio",
     ctaTitle: "Você merece se ver bem na própria imagem.",
-    ctaText: "Conte o que você quer sentir quando olhar para as fotos. A gente desenha uma sessão que combine com você.",
+    ctaText:
+      "Conte o que você quer sentir quando olhar para as fotos. A gente desenha uma sessão que combine com você.",
     faqTitle: "FAQ — Imagem Pessoal & Lifestyle.",
     faqs: [
-      { q: "Eu nunca fiz ensaio. Vocês dirigem tudo?", a: "Sim. A sessão é totalmente dirigida: pose, expressão, movimento e ritmo. Você não precisa chegar sabendo o que fazer." },
-      { q: "Serve para fotos de Instagram?", a: "Sim. Pensamos a entrega para perfil, feed, stories e presença digital, sem deixar a imagem artificial." },
-      { q: "Pode ser um ensaio sem objetivo profissional?", a: "Pode. O ensaio pode ser por autoestima, aniversário, fase nova, dating profile ou simplesmente para se ver bem." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Eu nunca fiz ensaio. Vocês dirigem tudo?",
+        a: "Sim. A sessão é totalmente dirigida: pose, expressão, movimento e ritmo. Você não precisa chegar sabendo o que fazer.",
+      },
+      {
+        q: "Serve para fotos de Instagram?",
+        a: "Sim. Pensamos a entrega para perfil, feed, stories e presença digital, sem deixar a imagem artificial.",
+      },
+      {
+        q: "Pode ser um ensaio sem objetivo profissional?",
+        a: "Pode. O ensaio pode ser por autoestima, aniversário, fase nova, dating profile ou simplesmente para se ver bem.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.personal,
     regions: ["Rio de Janeiro", "Operação sob consulta"],
@@ -395,28 +707,81 @@ export const SEGMENTS: Segment[] = [
       "Acompanhamos o dia com leitura de momento e direção leve nos retratos. O resultado é um conjunto coeso: espontâneo quando a cena pede, editorial quando a memória merece.",
     servicesTitle: "Do making of à última dança.",
     services: [
-      { n: "01", title: "Making of", desc: "Preparação, detalhes, vestido, encontro com família e clima antes da cerimônia." },
-      { n: "02", title: "Cerimônia", desc: "Registro atento aos votos, entradas, emoção, gestos pequenos e momentos-chave." },
-      { n: "03", title: "Retratos do casal", desc: "Direção leve para fotos naturais, elegantes e sem rigidez." },
-      { n: "04", title: "Festa", desc: "Energia da pista, convidados, brindes, abraços e acontecimentos reais." },
-      { n: "05", title: "Filme", desc: "Vídeo de casamento com narrativa, ritmo e sensibilidade para reviver o dia." },
-      { n: "06", title: "Curadoria", desc: "Entrega organizada, tratamento coeso e seleção pensada para álbum e redes." },
+      {
+        n: "01",
+        title: "Making of",
+        desc: "Preparação, detalhes, vestido, encontro com família e clima antes da cerimônia.",
+      },
+      {
+        n: "02",
+        title: "Cerimônia",
+        desc: "Registro atento aos votos, entradas, emoção, gestos pequenos e momentos-chave.",
+      },
+      {
+        n: "03",
+        title: "Retratos do casal",
+        desc: "Direção leve para fotos naturais, elegantes e sem rigidez.",
+      },
+      {
+        n: "04",
+        title: "Festa",
+        desc: "Energia da pista, convidados, brindes, abraços e acontecimentos reais.",
+      },
+      {
+        n: "05",
+        title: "Filme",
+        desc: "Vídeo de casamento com narrativa, ritmo e sensibilidade para reviver o dia.",
+      },
+      {
+        n: "06",
+        title: "Curadoria",
+        desc: "Entrega organizada, tratamento coeso e seleção pensada para álbum e redes.",
+      },
     ],
     process: [
-      { n: "01", title: "Conversa", desc: "Entendemos o estilo do casal, roteiro do dia e prioridades emocionais." },
-      { n: "02", title: "Plano", desc: "Mapeamos horários, locações, família, entradas e momentos que não podem faltar." },
-      { n: "03", title: "Cobertura", desc: "Registro do dia com direção leve, presença atenta e cuidado com os detalhes." },
-      { n: "04", title: "Entrega", desc: "Curadoria, tratamento e organização das imagens e filmes para guardar e compartilhar." },
+      {
+        n: "01",
+        title: "Conversa",
+        desc: "Entendemos o estilo do casal, roteiro do dia e prioridades emocionais.",
+      },
+      {
+        n: "02",
+        title: "Plano",
+        desc: "Mapeamos horários, locações, família, entradas e momentos que não podem faltar.",
+      },
+      {
+        n: "03",
+        title: "Cobertura",
+        desc: "Registro do dia com direção leve, presença atenta e cuidado com os detalhes.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Curadoria, tratamento e organização das imagens e filmes para guardar e compartilhar.",
+      },
     ],
     ctaEyebrow: "Seu casamento",
     ctaTitle: "O dia passa. A imagem fica.",
-    ctaText: "Conte como será a celebração. A gente desenha uma cobertura com o tamanho, a sensibilidade e o ritmo do seu casamento.",
+    ctaText:
+      "Conte como será a celebração. A gente desenha uma cobertura com o tamanho, a sensibilidade e o ritmo do seu casamento.",
     faqTitle: "FAQ — Casamentos.",
     faqs: [
-      { q: "Vocês dirigem os retratos do casal?", a: "Sim. A direção é leve e natural, para o casal se sentir confortável sem perder espontaneidade." },
-      { q: "Fazem foto e vídeo no mesmo pacote?", a: "Sim. Montamos cobertura integrada de fotografia e vídeo conforme o tamanho do casamento e os momentos prioritários." },
-      { q: "Atendem mini wedding e casamento ao ar livre?", a: "Sim. A linguagem funciona muito bem para celebrações íntimas, externas e destination weddings." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico entendemos data, local, duração, número de convidados e entregáveis, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Vocês dirigem os retratos do casal?",
+        a: "Sim. A direção é leve e natural, para o casal se sentir confortável sem perder espontaneidade.",
+      },
+      {
+        q: "Fazem foto e vídeo no mesmo pacote?",
+        a: "Sim. Montamos cobertura integrada de fotografia e vídeo conforme o tamanho do casamento e os momentos prioritários.",
+      },
+      {
+        q: "Atendem mini wedding e casamento ao ar livre?",
+        a: "Sim. A linguagem funciona muito bem para celebrações íntimas, externas e destination weddings.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico entendemos data, local, duração, número de convidados e entregáveis, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.weddings,
     regions: ["Rio de Janeiro", "Macaé", "Destination weddings"],
@@ -450,28 +815,81 @@ export const SEGMENTS: Segment[] = [
       "Criamos uma sessão em torno do corpo, do ritmo e da personalidade da gestante. Dirigimos postura, mãos, olhar e movimento para a imagem ficar bonita sem perder verdade.",
     servicesTitle: "Do cuidado à memória.",
     services: [
-      { n: "01", title: "Conceito", desc: "Definição de clima, locação, referências e intenção do ensaio." },
-      { n: "02", title: "Direção de pose", desc: "Condução sensível de corpo, mãos, olhar e movimento para trazer conforto." },
-      { n: "03", title: "Luz natural", desc: "Uso de praia, natureza ou ambientes claros para valorizar pele e atmosfera." },
-      { n: "04", title: "Família", desc: "Possibilidade de incluir parceiro, filhos e vínculos importantes no registro." },
-      { n: "05", title: "Beauty natural", desc: "Retratos com estética leve, respeitando pele, corpo e momento." },
-      { n: "06", title: "Entrega", desc: "Curadoria e tratamento de imagens para álbum, impressão, redes e lembrança." },
+      {
+        n: "01",
+        title: "Conceito",
+        desc: "Definição de clima, locação, referências e intenção do ensaio.",
+      },
+      {
+        n: "02",
+        title: "Direção de pose",
+        desc: "Condução sensível de corpo, mãos, olhar e movimento para trazer conforto.",
+      },
+      {
+        n: "03",
+        title: "Luz natural",
+        desc: "Uso de praia, natureza ou ambientes claros para valorizar pele e atmosfera.",
+      },
+      {
+        n: "04",
+        title: "Família",
+        desc: "Possibilidade de incluir parceiro, filhos e vínculos importantes no registro.",
+      },
+      {
+        n: "05",
+        title: "Beauty natural",
+        desc: "Retratos com estética leve, respeitando pele, corpo e momento.",
+      },
+      {
+        n: "06",
+        title: "Entrega",
+        desc: "Curadoria e tratamento de imagens para álbum, impressão, redes e lembrança.",
+      },
     ],
     process: [
-      { n: "01", title: "Conversa", desc: "Entendemos fase da gestação, referências, conforto e pessoas que participam." },
-      { n: "02", title: "Preparação", desc: "Definimos locação, horário de luz, roupa e caminho visual da sessão." },
-      { n: "03", title: "Sessão", desc: "Direção tranquila para pose, movimento e expressão sem pressa." },
-      { n: "04", title: "Entrega", desc: "Curadoria, tratamento natural e imagens prontas para guardar, imprimir e compartilhar." },
+      {
+        n: "01",
+        title: "Conversa",
+        desc: "Entendemos fase da gestação, referências, conforto e pessoas que participam.",
+      },
+      {
+        n: "02",
+        title: "Preparação",
+        desc: "Definimos locação, horário de luz, roupa e caminho visual da sessão.",
+      },
+      {
+        n: "03",
+        title: "Sessão",
+        desc: "Direção tranquila para pose, movimento e expressão sem pressa.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Curadoria, tratamento natural e imagens prontas para guardar, imprimir e compartilhar.",
+      },
     ],
     ctaEyebrow: "Seu ensaio gestante",
     ctaTitle: "Você merece lembrar dessa fase com carinho.",
-    ctaText: "Conte em que momento da gestação você está. A gente desenha uma sessão confortável, bonita e possível para você.",
+    ctaText:
+      "Conte em que momento da gestação você está. A gente desenha uma sessão confortável, bonita e possível para você.",
     faqTitle: "FAQ — Gestantes.",
     faqs: [
-      { q: "Qual o melhor período para fazer o ensaio?", a: "Geralmente entre 28 e 34 semanas, mas ajustamos conforme conforto, saúde e intenção visual da gestante." },
-      { q: "Eu não sei posar. Vocês dirigem?", a: "Sim. A sessão é totalmente dirigida com cuidado para corpo, mãos, olhar e movimento." },
-      { q: "Pode incluir família?", a: "Pode. Parceiro, filhos e vínculos importantes podem entrar no ensaio de forma natural." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Qual o melhor período para fazer o ensaio?",
+        a: "Geralmente entre 28 e 34 semanas, mas ajustamos conforme conforto, saúde e intenção visual da gestante.",
+      },
+      {
+        q: "Eu não sei posar. Vocês dirigem?",
+        a: "Sim. A sessão é totalmente dirigida com cuidado para corpo, mãos, olhar e movimento.",
+      },
+      {
+        q: "Pode incluir família?",
+        a: "Pode. Parceiro, filhos e vínculos importantes podem entrar no ensaio de forma natural.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.maternity,
     regions: ["Rio de Janeiro", "Macaé", "Praia e natureza"],
@@ -505,71 +923,127 @@ export const SEGMENTS: Segment[] = [
       "Produzimos imagem de lifestyle: luz natural, momento real, gastronomia, detalhe e experiência. Conteúdo que faz o hóspede se imaginar no lugar — e converter em reserva.",
     servicesTitle: "Da diária ao desejo.",
     services: [
-      { n: "01", title: "Fotografia lifestyle", desc: "Imagens de hospedagem, áreas e experiências com atmosfera e luz natural." },
-      { n: "02", title: "Vídeo institucional", desc: "Vídeo de apresentação do hotel ou resort para site, OTAs e mídia." },
-      { n: "03", title: "Gastronomia", desc: "Fotografia e vídeo de gastronomia e bar com foco em desejo e detalhe." },
-      { n: "04", title: "Conteúdo p/ redes", desc: "Reels e posts para alimentar redes e sustentar a marca o ano todo." },
-      { n: "05", title: "Direção visual", desc: "Linguagem coesa para site, reservas, mídia paga e materiais." },
-      { n: "06", title: "Tratamento", desc: "Gradação de cor que valoriza atmosfera sem perder a verdade do espaço." },
+      {
+        n: "01",
+        title: "Fotografia lifestyle",
+        desc: "Imagens de hospedagem, áreas e experiências com atmosfera e luz natural.",
+      },
+      {
+        n: "02",
+        title: "Vídeo institucional",
+        desc: "Vídeo de apresentação do hotel ou resort para site, OTAs e mídia.",
+      },
+      {
+        n: "03",
+        title: "Gastronomia",
+        desc: "Fotografia e vídeo de gastronomia e bar com foco em desejo e detalhe.",
+      },
+      {
+        n: "04",
+        title: "Conteúdo p/ redes",
+        desc: "Reels e posts para alimentar redes e sustentar a marca o ano todo.",
+      },
+      {
+        n: "05",
+        title: "Direção visual",
+        desc: "Linguagem coesa para site, reservas, mídia paga e materiais.",
+      },
+      {
+        n: "06",
+        title: "Tratamento",
+        desc: "Gradação de cor que valoriza atmosfera sem perder a verdade do espaço.",
+      },
     ],
     process: [
-      { n: "01", title: "Briefing", desc: "Entendemos o público, a atmosfera desejada e os canais de venda." },
-      { n: "02", title: "Reconhecimento", desc: "Mapeamos luz, áreas e melhores horários de captação." },
-      { n: "03", title: "Produção", desc: "Captação com momento real, gente e experiência em cena." },
-      { n: "04", title: "Entrega", desc: "Tratamento e entrega por formato para site, OTAs e redes." },
+      {
+        n: "01",
+        title: "Briefing",
+        desc: "Entendemos o público, a atmosfera desejada e os canais de venda.",
+      },
+      {
+        n: "02",
+        title: "Reconhecimento",
+        desc: "Mapeamos luz, áreas e melhores horários de captação.",
+      },
+      {
+        n: "03",
+        title: "Produção",
+        desc: "Captação com momento real, gente e experiência em cena.",
+      },
+      {
+        n: "04",
+        title: "Entrega",
+        desc: "Tratamento e entrega por formato para site, OTAs e redes.",
+      },
     ],
     ctaEyebrow: "Sua próxima temporada",
     ctaTitle: "Faça o hóspede desejar antes de chegar.",
-    ctaText: "Conte sobre o seu espaço e a experiência. Produzimos as imagens que convertem em reserva.",
+    ctaText:
+      "Conte sobre o seu espaço e a experiência. Produzimos as imagens que convertem em reserva.",
     faqTitle: "FAQ — Hotelaria & Lifestyle.",
     faqs: [
-      { q: "Vocês produzem para site e OTAs (Booking, Airbnb)?", a: "Sim. Entregamos imagens nos formatos certos para site próprio, OTAs e mídia, com tratamento coeso." },
-      { q: "Fotografam gastronomia além do espaço?", a: "Sim. Gastronomia, bar e experiências fazem parte do pacote, com foco em desejo e detalhe." },
-      { q: "Conseguem captar com hóspedes no local?", a: "Sim. Trabalhamos com momento real e direção discreta, respeitando a operação e a privacidade." },
-      { q: "Como funciona o orçamento?", a: "Pelo diagnóstico visual entendemos escopo, diárias de captação e entregáveis, e montamos uma proposta por faixa de investimento." },
+      {
+        q: "Vocês produzem para site e OTAs (Booking, Airbnb)?",
+        a: "Sim. Entregamos imagens nos formatos certos para site próprio, OTAs e mídia, com tratamento coeso.",
+      },
+      {
+        q: "Fotografam gastronomia além do espaço?",
+        a: "Sim. Gastronomia, bar e experiências fazem parte do pacote, com foco em desejo e detalhe.",
+      },
+      {
+        q: "Conseguem captar com hóspedes no local?",
+        a: "Sim. Trabalhamos com momento real e direção discreta, respeitando a operação e a privacidade.",
+      },
+      {
+        q: "Como funciona o orçamento?",
+        a: "Pelo diagnóstico visual entendemos escopo, diárias de captação e entregáveis, e montamos uma proposta por faixa de investimento.",
+      },
     ],
     photos: PHOTOS.hotel,
     regions: ["Rio de Janeiro", "Litoral e resorts", "Operação nacional"],
   },
-];
+]
 
 const SEGMENT_ALIASES: Record<string, string> = {
   "ativacoes-e-eventos": "ativacoes-eventos",
-  "eventos": "ativacoes-eventos",
-  "ativacoes": "ativacoes-eventos",
-  "moda": "moda-campanhas",
-  "campanhas": "moda-campanhas",
-  "artistas": "artistas-videoclipes",
-  "videoclipes": "artistas-videoclipes",
-  "posicionamento": "posicionamento-profissional",
-  "profissional": "posicionamento-profissional",
-  "lifestyle": "imagem-pessoal-lifestyle",
+  eventos: "ativacoes-eventos",
+  ativacoes: "ativacoes-eventos",
+  moda: "moda-campanhas",
+  campanhas: "moda-campanhas",
+  artistas: "artistas-videoclipes",
+  videoclipes: "artistas-videoclipes",
+  posicionamento: "posicionamento-profissional",
+  profissional: "posicionamento-profissional",
+  lifestyle: "imagem-pessoal-lifestyle",
   "imagem-pessoal": "imagem-pessoal-lifestyle",
-  "casamento": "casamentos",
-  "gestante": "gestantes",
-  "hotelaria": "hotelaria-lifestyle",
-};
+  casamento: "casamentos",
+  gestante: "gestantes",
+  hotelaria: "hotelaria-lifestyle",
+}
 
 export function getSegment(slug?: string): Segment | undefined {
-  if (!slug) return undefined;
-  const clean = slug.toLowerCase().replace(/^\/+|\/+$/g, "").replace(/^segmentos\//, "");
-  const target = SEGMENT_ALIASES[clean] || clean;
-  return SEGMENTS.find((s) => s.slug === target);
+  if (!slug) return undefined
+  const clean = slug
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/^segmentos\//, "")
+  const target = SEGMENT_ALIASES[clean] || clean
+  return SEGMENTS.find((s) => s.slug === target)
 }
 
 // ---- Portfolio ----
 export type PortfolioItem = {
-  category: string;
-  title: string;
-  city: string;
-  photo: string;
-  caseSlug?: string;
-  segmentSlug: string;
-  gallery?: readonly string[];
-  video?: string;
-};
+  category: string
+  title: string
+  city: string
+  photo: string
+  caseSlug?: string
+  segmentSlug: string
+  gallery?: readonly string[]
+  video?: string
+}
 
-const P = PHOTOS;
+const P = PHOTOS
 export const PORTFOLIO: PortfolioItem[] = [
   {
     category: "Ativações & Eventos",
@@ -767,7 +1241,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     segmentSlug: "hotelaria-lifestyle",
     gallery: HOTELARIA_LIFESTYLE_PHOTOS,
   },
-];
+]
 
 export const PORTFOLIO_FILTERS = [
   "Todos",
@@ -779,16 +1253,18 @@ export const PORTFOLIO_FILTERS = [
   "Casamentos",
   "Gestantes",
   "Hotelaria & Lifestyle",
-];
+]
 
 // Map filter labels (short) to category names (full) used on items.
 export function matchesFilter(item: PortfolioItem, filter: string): boolean {
-  if (filter === "Todos") return true;
-  if (filter === "Posicionamento") return item.category === "Posicionamento Profissional";
-  if (filter === "Imagem Pessoal") return item.category === "Imagem Pessoal & Lifestyle";
-  return item.category === filter;
+  if (filter === "Todos") return true
+  if (filter === "Posicionamento")
+    return item.category === "Posicionamento Profissional"
+  if (filter === "Imagem Pessoal")
+    return item.category === "Imagem Pessoal & Lifestyle"
+  return item.category === filter
 }
 
 export function getCase(slug: string): PortfolioItem | undefined {
-  return PORTFOLIO.find((p) => p.caseSlug === slug);
+  return PORTFOLIO.find((p) => p.caseSlug === slug)
 }

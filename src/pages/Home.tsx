@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import { useSeo, SITE_URL } from "../lib/seo";
-import { img, HERO_PHOTO, PHOTOS } from "../lib/images";
+import { Link } from "react-router-dom"
+import { useSeo, SITE_URL } from "../lib/seo"
+import { img, HERO_PHOTO, PHOTOS } from "../lib/images"
 import {
   HOME_SERVICES,
   HOME_PROCESS,
   HOME_STATS,
   SEGMENTS,
   WHATSAPP,
-} from "../data/site";
-import ServiceGrid from "../components/ServiceGrid";
-import CTASection from "../components/CTASection";
-import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
+} from "../data/site"
+import ServiceGrid from "../components/ServiceGrid"
+import CTASection from "../components/CTASection"
+import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack"
 
 export default function Home() {
   useSeo({
@@ -35,7 +35,7 @@ export default function Home() {
         url: SITE_URL,
       },
     ],
-  });
+  })
 
   return (
     <>
@@ -53,15 +53,18 @@ export default function Home() {
         </video>
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
-          <p className="u-eyebrow u-fade-in">Hub audiovisual autoral · Rio de Janeiro · Operação nacional</p>
+          <p className="u-eyebrow u-fade-in">
+            Hub audiovisual autoral · Rio de Janeiro · Operação nacional
+          </p>
           <h1 className="u-fade-in mt-5 max-w-4xl text-balance text-4xl leading-[0.98] text-off sm:text-6xl lg:text-[5.2rem]">
             Imagem não é registro.
             <br />
             <span className="text-teal-400">É posicionamento.</span>
           </h1>
           <p className="u-fade-in mt-6 max-w-xl text-pretty text-lg text-mist">
-            Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas que
-            tratam a própria imagem como decisão estratégica.
+            Fotografia, vídeo, storymaking e direção visual para marcas,
+            artistas e pessoas que tratam a própria imagem como decisão
+            estratégica.
           </p>
           <div className="u-fade-in mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -86,9 +89,16 @@ export default function Home() {
       <section className="border-b border-line bg-surface">
         <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-px bg-line px-0 lg:grid-cols-4">
           {HOME_STATS.map((s) => (
-            <div key={s.label} className="bg-surface px-5 py-8 text-center lg:py-10">
-              <p className="u-display text-3xl text-ink lg:text-4xl">{s.value}</p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-navy">{s.label}</p>
+            <div
+              key={s.label}
+              className="bg-surface px-5 py-8 text-center lg:py-10"
+            >
+              <p className="u-display text-3xl text-ink lg:text-4xl">
+                {s.value}
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-widest text-navy">
+                {s.label}
+              </p>
             </div>
           ))}
         </div>
@@ -102,8 +112,8 @@ export default function Home() {
             Uma estrutura audiovisual completa, do briefing à entrega.
           </h2>
           <p className="mt-4 text-navy">
-            Reunimos direção, captação e pós-produção em uma operação só — para que a imagem
-            comunique com coerência em cada ponto de contato.
+            Reunimos direção, captação e pós-produção em uma operação só — para
+            que a imagem comunique com coerência em cada ponto de contato.
           </p>
         </div>
         <ServiceGrid items={HOME_SERVICES} />
@@ -119,7 +129,11 @@ export default function Home() {
                 Escolha o seu contexto. A linguagem muda com ele.
               </h2>
             </div>
-            <Link to="/portfolio" viewTransition className="text-sm text-teal transition-colors hover:text-ink">
+            <Link
+              to="/portfolio"
+              viewTransition
+              className="text-sm text-teal transition-colors hover:text-ink"
+            >
               Ver portfólio completo →
             </Link>
           </div>
@@ -143,8 +157,12 @@ export default function Home() {
                 />
                 <span className="u-grade absolute inset-0" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <span className="u-display text-xs text-teal-400/80">{s.index}</span>
-                  <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">{s.nav}</h3>
+                  <span className="u-display text-xs text-teal-400/80">
+                    {s.index}
+                  </span>
+                  <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">
+                    {s.nav}
+                  </h3>
                   <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity group-hover:opacity-100">
                     Ver mais →
                   </span>
@@ -164,8 +182,8 @@ export default function Home() {
               A produção falha antes da câmera ligar.
             </h2>
             <p className="mt-4 max-w-sm text-navy">
-              Por isso o planejamento é parte do produto. Cada etapa existe para que a captação
-              chegue ao set já resolvida.
+              Por isso o planejamento é parte do produto. Cada etapa existe para
+              que a captação chegue ao set já resolvida.
             </p>
             <div className="mt-8 hidden overflow-hidden rounded-xl border border-line md:block">
               <img
@@ -186,12 +204,18 @@ export default function Home() {
                 className="flex min-h-[300px] flex-col justify-between rounded-xl border border-line bg-off/95 p-8 shadow-[0_24px_60px_-20px_rgba(37,53,64,0.12)] backdrop-blur-md lg:min-h-[340px] lg:p-10"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="u-display text-4xl text-teal/30 lg:text-5xl">{p.n}</span>
+                  <span className="u-display text-4xl text-teal/30 lg:text-5xl">
+                    {p.n}
+                  </span>
                   <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-ink lg:text-3xl">{p.title}</h3>
-                  <p className="mt-4 max-w-md leading-relaxed text-navy">{p.desc}</p>
+                  <h3 className="text-2xl font-semibold text-ink lg:text-3xl">
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 max-w-md leading-relaxed text-navy">
+                    {p.desc}
+                  </p>
                 </div>
               </CardSticky>
             ))}
@@ -204,5 +228,5 @@ export default function Home() {
         text="Conte o seu contexto e o seu objetivo. Devolvemos um caminho visual claro e uma proposta sob medida — sem compromisso."
       />
     </>
-  );
+  )
 }

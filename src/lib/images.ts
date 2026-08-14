@@ -2,12 +2,12 @@
 // Sourced from project productions, categorized by album & segment.
 
 export function img(id: string, w = 1200, h?: number): string {
-  if (!id) return '';
-  if (id.startsWith('/') || id.startsWith('http') || id.startsWith('data:')) {
-    return id;
+  if (!id) return ""
+  if (id.startsWith("/") || id.startsWith("http") || id.startsWith("data:")) {
+    return id
   }
-  const base = `https://images.unsplash.com/${id}?auto=format&fit=crop&q=72&w=${w}`;
-  return h ? `${base}&h=${h}` : base;
+  const base = `https://images.unsplash.com/${id}?auto=format&fit=crop&q=72&w=${w}`
+  return h ? `${base}&h=${h}` : base
 }
 
 // ── ALBUMS COMPLETOS POR PRODUÇÃO ───────────────────────────
@@ -45,7 +45,7 @@ export const BACKSTAGE_CLIPE_SURURU_PHOTOS: readonly string[] = [
   "/images/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo31.jpg",
   "/images/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo32.jpg",
   "/images/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo33.jpg",
-];
+]
 
 export const BONFIM_HOUSE_PHOTOS: readonly string[] = [
   "/images/bonfim-house/Bonfim-house-salvador-bahia-corporativo1.jpg",
@@ -66,7 +66,7 @@ export const BONFIM_HOUSE_PHOTOS: readonly string[] = [
   "/images/bonfim-house/Bonfim-house-salvador-bahia-corporativo16.jpg",
   "/images/bonfim-house/Bonfim-house-salvador-bahia-corporativo28.jpg",
   "/images/bonfim-house/Bonfim-house-salvador-bahia-corporativo29.jpg",
-];
+]
 
 export const CAMAROTE_ONDINA_PHOTOS: readonly string[] = [
   "/images/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval1.jpg",
@@ -86,7 +86,7 @@ export const CAMAROTE_ONDINA_PHOTOS: readonly string[] = [
   "/images/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval15.jpg",
   "/images/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval16.jpg",
   "/images/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval17.jpg",
-];
+]
 
 export const ENSAIO_AUTORAL_PHOTOS: readonly string[] = [
   "/images/ensaio-autoral/Ensaio-Autoral1.jpg",
@@ -188,7 +188,7 @@ export const ENSAIO_AUTORAL_PHOTOS: readonly string[] = [
   "/images/ensaio-autoral/Ensaio-autoral97.jpg",
   "/images/ensaio-autoral/Ensaio-autoral98.jpg",
   "/images/ensaio-autoral/Ensaio-autoral99.jpg",
-];
+]
 
 export const ENSAIO_STREET_PHOTOS: readonly string[] = [
   "/images/ensaio-street/Ensaio-street1.jpg",
@@ -207,7 +207,7 @@ export const ENSAIO_STREET_PHOTOS: readonly string[] = [
   "/images/ensaio-street/Ensaio-street14.jpg",
   "/images/ensaio-street/Ensaio-street15.jpg",
   "/images/ensaio-street/Ensaio-street16.jpg",
-];
+]
 
 export const FASHION_MANNERS_PHOTOS: readonly string[] = [
   "/images/fashion-manners/Fashion-Manners1.jpg",
@@ -230,7 +230,7 @@ export const FASHION_MANNERS_PHOTOS: readonly string[] = [
   "/images/fashion-manners/Fashion-Manners18.jpg",
   "/images/fashion-manners/Fashion-Manners19.jpg",
   "/images/fashion-manners/Fashion-Manners20.jpg",
-];
+]
 
 export const FESTIVAL_JEANS_TORITAMA_PHOTOS: readonly string[] = [
   "/images/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT1.jpg",
@@ -340,12 +340,12 @@ export const FESTIVAL_JEANS_TORITAMA_PHOTOS: readonly string[] = [
   "/images/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT105.jpg",
   "/images/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT106.jpg",
   "/images/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT107.jpg",
-];
+]
 
 export const HOTELARIA_LIFESTYLE_PHOTOS: readonly string[] = [
   "/images/hotelaria-lifestyle/Hotelaria-life-style1.jpg",
   "/images/hotelaria-lifestyle/Hotelaria-life-style2.jpg",
-];
+]
 
 export const LANCAMENTO_DRINKBALL_PHOTOS: readonly string[] = [
   "/images/lancamento-drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay1.jpg",
@@ -391,7 +391,7 @@ export const LANCAMENTO_DRINKBALL_PHOTOS: readonly string[] = [
   "/images/lancamento-drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay41.jpg",
   "/images/lancamento-drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay42.jpg",
   "/images/lancamento-drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay43.jpg",
-];
+]
 
 export const LOJA_FRIDA_PHOTOS: readonly string[] = [
   "/images/loja-frida/Loja-Frida1.jpg",
@@ -402,7 +402,7 @@ export const LOJA_FRIDA_PHOTOS: readonly string[] = [
   "/images/loja-frida/Loja-Frida6.jpg",
   "/images/loja-frida/Loja-Frida7.jpg",
   "/images/loja-frida/Loja-Frida8.jpg",
-];
+]
 
 export const MEGABLOCO_CHA_DA_ALICE_PHOTOS: readonly string[] = [
   "/images/megabloco-cha-da-alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval.jpg",
@@ -495,7 +495,7 @@ export const MEGABLOCO_CHA_DA_ALICE_PHOTOS: readonly string[] = [
   "/images/megabloco-cha-da-alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval87.jpg",
   "/images/megabloco-cha-da-alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval88.jpg",
   "/images/megabloco-cha-da-alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval89.jpg",
-];
+]
 
 export const MODA_SANTALOLA_PHOTOS: readonly string[] = [
   "/images/moda-santalola/Moda-Santalola1.jpg",
@@ -517,7 +517,7 @@ export const MODA_SANTALOLA_PHOTOS: readonly string[] = [
   "/images/moda-santalola/Moda-Santalola17.jpg",
   "/images/moda-santalola/Moda-Santalola18.jpg",
   "/images/moda-santalola/Moda-Santalola19.jpg",
-];
+]
 
 export const SYN_ICE_PHOTOS: readonly string[] = [
   "/images/syn-ice/Syn-ice-Feira-super-minas-super-bahia1.jpg",
@@ -532,7 +532,7 @@ export const SYN_ICE_PHOTOS: readonly string[] = [
   "/images/syn-ice/Syn-ice-Feira-super-minas-super-bahia10.jpg",
   "/images/syn-ice/Syn-ice-Feira-super-minas-super-bahia11.jpg",
   "/images/syn-ice/Syn-ice-Feira-super-minas-super-bahia12.jpg",
-];
+]
 
 // ── COLEÇÕES CURADAS POR SEGMENTO ─────────────────────────────
 export const PHOTOS = {
@@ -604,6 +604,7 @@ export const PHOTOS = {
     ...FASHION_MANNERS_PHOTOS.slice(0, 8),
     ...MEGABLOCO_CHA_DA_ALICE_PHOTOS.slice(35, 45),
   ],
-} as const;
+} as const
 
-export const HERO_PHOTO = MEGABLOCO_CHA_DA_ALICE_PHOTOS[0] || BACKSTAGE_CLIPE_SURURU_PHOTOS[0];
+export const HERO_PHOTO =
+  MEGABLOCO_CHA_DA_ALICE_PHOTOS[0] || BACKSTAGE_CLIPE_SURURU_PHOTOS[0]

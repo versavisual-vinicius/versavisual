@@ -1,19 +1,19 @@
-"use client";
+"use client" /* HERO */ /* PARA QUEM */ /* eslint-disable-next-line @next/next/no-img-element */ /* PROBLEMA / SOLUÇÃO */ /* SERVIÇOS INCLUSOS */ /* PORTFÓLIO RELACIONADO */ /* eslint-disable-next-line @next/next/no-img-element */ /* PROCESSO */ /* CTA BAND */ /* FAQ */
 
-import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 import type {
   NicheData,
   NichePortfolioPhoto,
   NicheService,
-} from "@/data/niches";
-import { resolvePhotoSrc } from "@/data/photoLibrary";
-import Reveal from "./Reveal";
-import FaqAccordion from "./FaqAccordion";
+} from "@/data/niches"
+import { resolvePhotoSrc } from "@/data/photoLibrary"
+import Reveal from "./Reveal"
+import FaqAccordion from "./FaqAccordion"
 
 interface NichePageProps {
-  niche: NicheData;
+  niche: NicheData
 }
 
 export default function NichePage({ niche }: NichePageProps) {
@@ -27,9 +27,9 @@ export default function NichePage({ niche }: NichePageProps) {
     cta,
     faq,
     breadcrumb,
-  } = niche;
-  const [openPhoto, setOpenPhoto] = useState<NichePortfolioPhoto | null>(null);
-  const [openService, setOpenService] = useState<NicheService | null>(null);
+  } = niche
+  const [openPhoto, setOpenPhoto] = useState<NichePortfolioPhoto | null>(null)
+  const [openService, setOpenService] = useState<NicheService | null>(null)
 
   const paraQuemPhotos = useMemo(
     () =>
@@ -37,29 +37,29 @@ export default function NichePage({ niche }: NichePageProps) {
         ? paraQuem.photos
         : [paraQuem.photo],
     [paraQuem.photo, paraQuem.photos],
-  );
+  )
 
   useEffect(() => {
-    if (!openPhoto && !openService) return;
+    if (!openPhoto && !openService) return
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpenPhoto(null);
-        setOpenService(null);
+        setOpenPhoto(null)
+        setOpenService(null)
       }
-    };
+    }
 
-    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("keydown", closeOnEscape)
     return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [openPhoto, openService]);
+      document.body.style.overflow = ""
+      document.removeEventListener("keydown", closeOnEscape)
+    }
+  }, [openPhoto, openService])
 
   return (
     <>
-      {/* HERO */}
+      {}
       <section className="hero">
         <div className="hero-glow" />
         <div className="hero-grid-lines">
@@ -90,7 +90,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* PARA QUEM */}
+      {}
       <section className="section">
         <div className="container">
           <div className="split">
@@ -101,11 +101,13 @@ export default function NichePage({ niche }: NichePageProps) {
                 <button
                   key={photo.src}
                   type="button"
-                  className={`image-trigger split-gallery-item${index === 0 ? " is-primary" : ""}`}
+                  className={`image-trigger split-gallery-item${
+                    index === 0 ? " is-primary" : ""
+                  }`}
                   onClick={() => setOpenPhoto(photo)}
                   aria-label={`Abrir imagem: ${photo.alt}`}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {}
                   <img
                     src={resolvePhotoSrc(photo.src)}
                     alt={photo.alt}
@@ -138,7 +140,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* PROBLEMA / SOLUÇÃO */}
+      {}
       <section className="section on-light">
         <div className="container">
           <Reveal className="grid-cells grid-cells-2">
@@ -182,7 +184,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* SERVIÇOS INCLUSOS */}
+      {}
       <section className="section on-light">
         <div className="container">
           <Reveal className="section-head">
@@ -208,7 +210,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* PORTFÓLIO RELACIONADO */}
+      {}
       <section className="section on-off">
         <div className="container">
           <Reveal className="section-head">
@@ -225,7 +227,7 @@ export default function NichePage({ niche }: NichePageProps) {
                 onClick={() => setOpenPhoto(ph)}
                 aria-label={`Abrir imagem: ${ph.alt}`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {}
                 <img
                   src={resolvePhotoSrc(ph.src)}
                   alt={ph.alt}
@@ -237,7 +239,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* PROCESSO */}
+      {}
       <section id="processo" className="section on-light">
         <div className="container">
           <Reveal className="section-head">
@@ -256,7 +258,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       </section>
 
-      {/* CTA BAND */}
+      {}
       <section className="section cta-band">
         <div className="glow" />
         <Reveal className="container cta-band-inner">
@@ -277,7 +279,7 @@ export default function NichePage({ niche }: NichePageProps) {
         </Reveal>
       </section>
 
-      {/* FAQ */}
+      {}
       <section className="section on-off">
         <div className="container" style={{ maxWidth: 880 }}>
           <Reveal className="section-head">
@@ -362,5 +364,5 @@ export default function NichePage({ niche }: NichePageProps) {
         </div>
       )}
     </>
-  );
+  )
 }
