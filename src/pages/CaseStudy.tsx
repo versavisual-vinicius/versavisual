@@ -1,14 +1,15 @@
-import { Navigate, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getCase, getSegment, PORTFOLIO, WHATSAPP } from "../data/site";
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo";
 import { img } from "../lib/images";
 import Gallery from "../components/Gallery";
 import CTASection from "../components/CTASection";
+import NotFound from "./NotFound";
 
 export default function CaseStudy() {
   const { caseSlug = "" } = useParams();
   const item = getCase(caseSlug);
-  if (!item) return <Navigate to="/404" replace />;
+  if (!item) return <NotFound />;
 
   const seg = getSegment(item.segmentSlug);
   const gallery = item.gallery && item.gallery.length > 0 ? item.gallery : (seg ? seg.photos : [item.photo]);

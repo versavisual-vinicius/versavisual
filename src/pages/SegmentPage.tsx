@@ -1,19 +1,32 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams, Link } from "react-router-dom";
-import { getSegment, SEGMENTS, WHATSAPP } from "../data/site";
+import { useParams, useLocation, Link } from "react-router-dom";
+import { getSegment, SEGMENTS, WHATSAPP, PORTFOLIO, type Segment } from "../data/site";
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo";
 import { img } from "../lib/images";
 import Reveal from "../components/Reveal";
 import HeroGridLines from "../components/HeroGridLines";
 import FAQAccordion from "../components/FAQAccordion";
 import CTASection from "../components/CTASection";
+import NotFound from "./NotFound";
 
-export default function SegmentPage() {
+interface SegmentPageProps {
+  segment?: Segment;
+}
+
+export default function SegmentPage({ segment: propSegment }: SegmentPageProps) {
   const { slug = "" } = useParams();
-  const seg = getSegment(slug);
-  if (!seg) return <Navigate to="/404" replace />;
+  const location = useLocation();
+  const pathSlug = location.pathname.replace(/^\/+|\/+$/g, "");
+  const seg = propSegment ?? getSegment(slug) ?? getSegment(pathSlug);
+
+  if (!seg) {
+    return <NotFound />;
+  }
 
   const others = SEGMENTS.filter((s) => s.slug !== seg.slug).slice(0, 3);
+  const relatedCases = PORTFOLIO.filter(
+    (p) => p.segmentSlug === seg.slug || p.category === seg.category
+  );
 
   useSeo({
     title: `${seg.seoTitle} | VERSAVISUAL`,
@@ -246,11 +259,88 @@ export default function SegmentPage() {
         </div>
       </section>
 
-      {/* ── PORTFÓLIO RELACIONADO ─────────────────────────── */}
-      <section className="border-b border-line bg-surface py-20 lg:py-28">
+      {/* ── CASES EM DESTAQUE DO SEGMENTO ─────────────────── */}
+      {relatedCases.length > 0 && (
+        <section className="border-b border-line bg-surface py-20 lg:py-28">
+          <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
+            <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
+              <div className="max-w-2xl">
+                <p className="u-eyebrow">Cases em destaque</p>
+                <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl">
+                  Projetos reais de {seg.nav}.
+                </h2>
+                <p className="mt-3 text-navy">
+                  Conheça como traduzimos a identidade e os objetivos de cada cliente em resultados visuais de alto impacto.
+                </p>
+              </div>
+              <Link
+                to="/portfolio"
+                viewTransition
+                className="text-sm font-medium text-teal transition-colors hover:text-ink"
+              >
+                Ver todos os cases →
+              </Link>
+            </Reveal>
+
+            <Reveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedCases.map((c) => {
+                const cardInner = (
+                  <>
+                    <div className="relative aspect-[16/10] overflow-hidden bg-navy">
+                      <img
+                        src={img(c.photo, 800, 500)}
+                        alt={c.title}
+                        width={800}
+                        height={500}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <span className="u-grade absolute inset-0" />
+                      <span className="u-eyebrow absolute left-4 top-4 text-teal-400">{c.city}</span>
+                      {c.caseSlug && (
+                        <span className="absolute bottom-4 right-4 rounded-full border border-off/40 bg-ink/40 px-3 py-1 text-xs text-off opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                          Ver case →
+                        </span>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold leading-snug text-ink">{c.title}</h3>
+                      <p className="mt-2 text-xs uppercase tracking-wider text-teal">
+                        {c.category} · {c.city}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                return c.caseSlug ? (
+                  <Link
+                    key={c.title}
+                    to={`/portfolio/${c.caseSlug}`}
+                    viewTransition
+                    className="group flex flex-col overflow-hidden rounded-xl border border-line bg-off transition-shadow duration-300 ease-out hover:shadow-lg"
+                  >
+                    {cardInner}
+                  </Link>
+                ) : (
+                  <article
+                    key={c.title}
+                    className="group flex flex-col overflow-hidden rounded-xl border border-line bg-off"
+                  >
+                    {cardInner}
+                  </article>
+                );
+              })}
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* ── PORTFÓLIO RELACIONADO / GALERIA DE FOTOS ─────── */}
+      <section className="border-b border-line bg-off py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-10">
-            <p className="u-eyebrow">Portfólio relacionado</p>
+            <p className="u-eyebrow">Galeria visual</p>
             <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl">{seg.nav} em imagens.</h2>
             <p className="mt-3 max-w-xl text-navy">{seg.intro}</p>
           </Reveal>
@@ -293,7 +383,7 @@ export default function SegmentPage() {
       </section>
 
       {/* ── PROCESSO ──────────────────────────────────────── */}
-      <section id="processo" className="border-b border-line bg-off py-20 lg:py-28">
+      <section id="processo" className="border-b border-line bg-surface py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-12 max-w-2xl">
             <p className="u-eyebrow">Processo de trabalho</p>
@@ -303,7 +393,7 @@ export default function SegmentPage() {
           </Reveal>
           <Reveal className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {seg.process.map((p) => (
-              <div key={p.n} className="bg-off p-7 lg:p-8">
+              <div key={p.n} className="bg-surface p-7 lg:p-8">
                 <span className="u-display text-5xl text-teal/20">{p.n}</span>
                 <h4 className="mt-4 text-lg font-semibold text-ink">{p.title}</h4>
                 <p className="mt-2 text-sm leading-relaxed text-navy">{p.desc}</p>

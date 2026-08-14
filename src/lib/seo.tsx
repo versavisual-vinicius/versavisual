@@ -8,6 +8,7 @@ type Seo = {
   title: string;
   description: string;
   path: string; // e.g. "/portfolio"
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
@@ -34,7 +35,7 @@ function upsertLink(rel: string, href: string) {
 const JSON_LD_ID = "vv-jsonld-route";
 
 /** Per-route metadata, canonical, Open Graph and JSON-LD injection. */
-export function useSeo({ title, description, path, jsonLd }: Seo) {
+export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
   useEffect(() => {
     const canonical = `${SITE_URL}${path === "/" ? "/" : path}`;
     document.title = title;
@@ -42,6 +43,12 @@ export function useSeo({ title, description, path, jsonLd }: Seo) {
 
     upsertMeta('meta[name="description"]', "name", "description", description);
     upsertLink("canonical", canonical);
+
+    if (noindex) {
+      upsertMeta('meta[name="robots"]', "name", "robots", "noindex, nofollow");
+    } else {
+      upsertMeta('meta[name="robots"]', "name", "robots", "index, follow, max-image-preview:large");
+    }
 
     upsertMeta('meta[property="og:title"]', "property", "og:title", title);
     upsertMeta('meta[property="og:description"]', "property", "og:description", description);
@@ -64,7 +71,7 @@ export function useSeo({ title, description, path, jsonLd }: Seo) {
       document.head.appendChild(script);
     }
     window.scrollTo({ top: 0, behavior: "auto" });
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, noindex, jsonLd]);
 }
 
 export function breadcrumb(items: { name: string; path: string }[]) {

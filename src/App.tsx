@@ -21,8 +21,11 @@ export default function App() {
           <Route path="/portfolio/:caseSlug" element={<CaseStudy />} />
           <Route path="/diagnostico-visual" element={<Diagnostico />} />
           {SEGMENTS.map((s) => (
-            <Route key={s.slug} path={`/${s.slug}`} element={<SegmentPage />} />
+            <Route key={s.slug} path={`/${s.slug}`} element={<SegmentPage segment={s} />} />
           ))}
+          <Route path="/segmentos/:slug" element={<SegmentPage />} />
+          <Route path="/:slug" element={<SegmentPage />} />
+          <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

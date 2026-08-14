@@ -7,6 +7,7 @@ export default function NotFound() {
     title: "Página não encontrada | VERSAVISUAL",
     description: "A página que você procura não existe. Volte para o início ou explore o portfólio.",
     path: "/404",
+    noindex: true,
   });
 
   return (

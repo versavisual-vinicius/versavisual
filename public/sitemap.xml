@@ -3,25 +3,32 @@
   <url><loc>https://www.versavisual.com.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.versavisual.com.br/diagnostico-visual</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.versavisual.com.br/ativacoes-eventos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/moda-campanhas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/artistas-videoclipes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/posicionamento-profissional</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/imagem-pessoal-lifestyle</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/casamentos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/gestantes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.versavisual.com.br/hotelaria-lifestyle</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  
+  <!-- Segmentos -->
+  <url><loc>https://www.versavisual.com.br/ativacoes-eventos</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/moda-campanhas</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/artistas-videoclipes</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/posicionamento-profissional</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/imagem-pessoal-lifestyle</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/casamentos</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/gestantes</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.versavisual.com.br/hotelaria-lifestyle</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  
+  <!-- Cases de Portfólio -->
   <url><loc>https://www.versavisual.com.br/portfolio/ativacao-drinkball</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/carnaval-de-rua-experiencia-publico</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.versavisual.com.br/portfolio/festival-bon-cobertura-corporativa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/evento-fjt-palco-camarote</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.versavisual.com.br/portfolio/festival-bon-cobertura-corporativa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.versavisual.com.br/portfolio/camarote-ondina-salvador</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/symbh-evento-corporativo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/fashion-week-passarela-bastidor</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/editorial-lifestyle-campanha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.versavisual.com.br/portfolio/e-o-tchan-jogadinha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.versavisual.com.br/portfolio/loja-frida-campanha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/babado-novo-sururu</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.versavisual.com.br/portfolio/babado-novo-christian-chavez</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/retratos-posicionamento-marca-pessoal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/ensaio-autoral-lifestyle-instagram</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.versavisual.com.br/portfolio/ensaio-feminino-frida</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/casamento-ao-ar-livre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/ensaio-gestante-praia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.versavisual.com.br/portfolio/hotelaria-espacos-cafe-spa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

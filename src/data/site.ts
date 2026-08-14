@@ -533,8 +533,28 @@ export const SEGMENTS: Segment[] = [
   },
 ];
 
-export function getSegment(slug: string): Segment | undefined {
-  return SEGMENTS.find((s) => s.slug === slug);
+const SEGMENT_ALIASES: Record<string, string> = {
+  "ativacoes-e-eventos": "ativacoes-eventos",
+  "eventos": "ativacoes-eventos",
+  "ativacoes": "ativacoes-eventos",
+  "moda": "moda-campanhas",
+  "campanhas": "moda-campanhas",
+  "artistas": "artistas-videoclipes",
+  "videoclipes": "artistas-videoclipes",
+  "posicionamento": "posicionamento-profissional",
+  "profissional": "posicionamento-profissional",
+  "lifestyle": "imagem-pessoal-lifestyle",
+  "imagem-pessoal": "imagem-pessoal-lifestyle",
+  "casamento": "casamentos",
+  "gestante": "gestantes",
+  "hotelaria": "hotelaria-lifestyle",
+};
+
+export function getSegment(slug?: string): Segment | undefined {
+  if (!slug) return undefined;
+  const clean = slug.toLowerCase().replace(/^\/+|\/+$/g, "").replace(/^segmentos\//, "");
+  const target = SEGMENT_ALIASES[clean] || clean;
+  return SEGMENTS.find((s) => s.slug === target);
 }
 
 // ---- Portfolio ----
