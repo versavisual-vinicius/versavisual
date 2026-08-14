@@ -96,7 +96,7 @@ export default function CaseStudy() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[900px] px-5 py-16 lg:px-10 lg:py-24">
+      <section className="mx-auto max-w-[900px] px-5 py-12 lg:px-10 lg:py-16">
         <p className="u-eyebrow">Sobre o projeto</p>
         <p className="mt-5 text-pretty text-xl leading-relaxed text-ink">
           {item.title} nasceu de um objetivo claro de comunicação. A VERSAVISUAL
@@ -114,7 +114,7 @@ export default function CaseStudy() {
           <Link
             to={`/${seg.slug}`}
             viewTransition
-            className="mt-8 inline-flex items-center gap-2 text-sm text-teal transition-colors hover:text-ink"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-ink"
           >
             Ver o segmento {seg.nav} →
           </Link>
@@ -122,7 +122,7 @@ export default function CaseStudy() {
       </section>
 
       {item.video && (
-        <section className="mx-auto max-w-[1100px] px-5 pb-16 lg:px-10 lg:pb-24">
+        <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
           <div className="relative overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
             <video
               controls
@@ -136,13 +136,13 @@ export default function CaseStudy() {
         </section>
       )}
 
-      <section className="mx-auto max-w-[1320px] px-5 pb-20 lg:px-10 lg:pb-28">
+      <section className="mx-auto max-w-[1320px] px-5 pb-14 lg:px-10 lg:pb-20">
         <Gallery photos={gallery} label={item.title} />
       </section>
 
       {related.length > 0 && (
         <section className="border-t border-line bg-surface">
-          <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-20">
+          <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
             <p className="u-eyebrow mb-8">Cases relacionados</p>
             <div className="grid gap-4 sm:grid-cols-3">
               {related.map((r) => (

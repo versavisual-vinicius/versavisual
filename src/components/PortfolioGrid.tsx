@@ -2,6 +2,7 @@ import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { PORTFOLIO, PORTFOLIO_FILTERS, matchesFilter } from "../data/site"
 import { img } from "../lib/images"
+import TiltCard from "./TiltCard"
 
 export default function PortfolioGrid({
   initial = "Todos",
@@ -17,7 +18,7 @@ export default function PortfolioGrid({
   return (
     <div>
       <div
-        className="mb-9 flex flex-wrap gap-2"
+        className="mb-9 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:flex-wrap sm:pb-0"
         role="tablist"
         aria-label="Filtrar portfólio"
       >
@@ -30,9 +31,9 @@ export default function PortfolioGrid({
               role="tab"
               aria-selected={on}
               onClick={() => setFilter(f)}
-              className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+              className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
                 on
-                  ? "border-teal bg-teal text-ink"
+                  ? "border-teal bg-teal font-medium text-ink shadow-xs"
                   : "border-line-strong text-navy hover:border-teal hover:text-ink"
               }`}
             >
@@ -42,7 +43,10 @@ export default function PortfolioGrid({
         })}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        key={filter}
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 transition-opacity duration-300 u-fade-in"
+      >
         {items.map((it, idx) => {
           const isAboveFold = idx < 3
           const inner = (
@@ -77,20 +81,21 @@ export default function PortfolioGrid({
             </>
           )
           const cls =
-            "group relative flex flex-col overflow-hidden rounded-sm border border-line"
-          return it.caseSlug ? (
-            <Link
-              key={it.title}
-              to={`/portfolio/${it.caseSlug}`}
-              viewTransition
-              className={cls}
-            >
-              {inner}
-            </Link>
-          ) : (
-            <article key={it.title} className={cls}>
-              {inner}
-            </article>
+            "group relative flex h-full w-full flex-col overflow-hidden rounded-sm border border-line"
+          return (
+            <TiltCard key={it.title} className="rounded-sm">
+              {it.caseSlug ? (
+                <Link
+                  to={`/portfolio/${it.caseSlug}`}
+                  viewTransition
+                  className={cls}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <article className={cls}>{inner}</article>
+              )}
+            </TiltCard>
           )
         })}
       </div>

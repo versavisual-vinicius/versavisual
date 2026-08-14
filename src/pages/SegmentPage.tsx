@@ -33,8 +33,12 @@ export default function SegmentPage({
 
   const others = SEGMENTS.filter((s) => s.slug !== seg.slug).slice(0, 3)
   const relatedCases = PORTFOLIO.filter(
-    (p) => p.segmentSlug === seg.slug || p.category === seg.category,
-  )
+    (p) =>
+      p.segmentSlug === seg.slug ||
+      p.category === seg.category ||
+      p.category.toLowerCase().includes(seg.category.toLowerCase()) ||
+      seg.category.toLowerCase().includes(p.category.toLowerCase()),
+  ).slice(0, 6)
 
   useSeo({
     title: `${seg.seoTitle} | VERSAVISUAL`,
@@ -72,7 +76,12 @@ export default function SegmentPage({
 
   // photo lightbox
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
-  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
+  const [touchStartY, setTouchStartY] = useState<number | null>(null)
+  const [dragY, setDragY] = useState(0)
+  const [dragX, setDragX] = useState(0)
+  const [isSwiping, setIsSwiping] = useState(false)
+
   // service modal
   const [openService, setOpenService] = useState<typeof seg.services[0] | null>(
     null,
@@ -101,14 +110,43 @@ export default function SegmentPage({
   }, [lightboxIdx, openService, seg.photos.length])
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX)
+    setTouchStartX(e.touches[0].clientX)
+    setTouchStartY(e.touches[0].clientY)
+    setIsSwiping(true)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null || touchStartY === null) return
+    const currentX = e.touches[0].clientX
+    const currentY = e.touches[0].clientY
+    const diffX = currentX - touchStartX
+    const diffY = currentY - touchStartY
+
+    if (diffY > 0 && Math.abs(diffY) > Math.abs(diffX) * 0.8) {
+      setDragY(diffY)
+    } else if (Math.abs(diffX) > Math.abs(diffY)) {
+      setDragX(diffX * 0.4)
+    }
   }
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null || lightboxIdx === null) return
-    const diff = touchStart - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 45) {
-      if (diff > 0) {
+    setIsSwiping(false)
+    if (touchStartX === null || touchStartY === null || lightboxIdx === null)
+      return
+    const endX = e.changedTouches[0].clientX
+    const endY = e.changedTouches[0].clientY
+    const diffX = touchStartX - endX
+    const diffY = endY - touchStartY
+
+    if (diffY > 110) {
+      setLightboxIdx(null)
+      setDragY(0)
+      setDragX(0)
+      return
+    }
+
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
         setLightboxIdx((i) => ((i ?? 0) + 1) % seg.photos.length)
       } else {
         setLightboxIdx(
@@ -116,7 +154,10 @@ export default function SegmentPage({
         )
       }
     }
-    setTouchStart(null)
+    setDragY(0)
+    setDragX(0)
+    setTouchStartX(null)
+    setTouchStartY(null)
   }
 
   const galleryPhotos = [...seg.photos].slice(0, 4)
@@ -173,19 +214,15 @@ export default function SegmentPage({
       </section>
 
       {/* ── PARA QUEM ─────────────────────────────────────── */}
-      <section className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
-        <div className="grid gap-14 lg:grid-cols-2">
+      <section className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-24">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <Reveal
-            className={`grid gap-2 ${
-              galleryPhotos.length === 1
-                ? "grid-cols-1"
-                : galleryPhotos.length === 2
-                  ? "grid-cols-2"
-                  : "grid-cols-2"
+            className={`grid gap-3 ${
+              galleryPhotos.length >= 2 ? "grid-cols-2" : "grid-cols-1"
             }`}
           >
-            {galleryPhotos.map((photoId, index) => (
+            {galleryPhotos.slice(0, 3).map((photoId, index) => (
               <button
                 key={photoId}
                 type="button"
@@ -208,8 +245,8 @@ export default function SegmentPage({
             ))}
           </Reveal>
 
-          {/* Text */}
-          <Reveal className="flex flex-col justify-center">
+          {/* Text & Deliverables summary */}
+          <Reveal className="flex flex-col lg:sticky lg:top-28">
             <p className="u-eyebrow">Para quem é</p>
             <h2
               className="mt-4 text-balance text-ink"
@@ -236,6 +273,17 @@ export default function SegmentPage({
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8 rounded-xl border border-line bg-surface/80 p-5">
+              <p className="text-xs font-semibold uppercase tracking-wider text-teal-700">
+                Diretriz de Produção
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-navy">
+                Cada ensaio e produção de {seg.nav} conta com planejamento
+                estético prévio, curadoria de locações e entrega organizada nos
+                padrões de uso.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -544,19 +592,25 @@ export default function SegmentPage({
       {/* ── PHOTO LIGHTBOX ───────────────────────────────── */}
       {lightboxIdx !== null && (
         <div
-          className="fixed inset-0 z-[60] flex select-none items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex select-none items-center justify-center p-4 backdrop-blur-md transition-colors duration-200"
+          style={{
+            backgroundColor: `rgba(5, 10, 13, ${
+              dragY > 0 ? Math.max(0.3, 0.95 - dragY / 300) : 0.95
+            })`,
+          }}
           role="dialog"
           aria-modal="true"
           aria-label={`${seg.nav} — visualização ampliada`}
           onClick={() => setLightboxIdx(null)}
           onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           <button
             type="button"
             onClick={() => setLightboxIdx(null)}
             aria-label="Fechar"
-            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-off transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/10 hover:text-teal-400"
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400"
           >
             <svg
               viewBox="0 0 24 24"
@@ -580,11 +634,11 @@ export default function SegmentPage({
               )
             }}
             aria-label="Imagem anterior"
-            className="absolute left-3 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-off transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/10 hover:text-teal-400 sm:left-6"
+            className="absolute left-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:left-6"
           >
             <svg
               viewBox="0 0 24 24"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -596,16 +650,26 @@ export default function SegmentPage({
           </button>
           <figure
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[86vh] max-w-5xl"
+            style={{
+              transform: `translate3d(${dragX}px, ${dragY}px, 0) scale(${
+                dragY > 0 ? Math.max(0.85, 1 - dragY / 800) : 1
+              })`,
+              transition: isSwiping
+                ? "none"
+                : "transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
+            }}
+            className="max-h-[86vh] max-w-5xl will-change-transform"
           >
             <img
               src={img(portfolioPhotos[lightboxIdx], 1600)}
               alt={`${seg.nav} — imagem ${lightboxIdx + 1}`}
               decoding="async"
-              className="max-h-[80vh] w-auto rounded-xl object-contain"
+              className="max-h-[80vh] w-auto rounded-lg shadow-2xl object-contain"
             />
-            <figcaption className="mt-3 text-center text-xs text-mist">
-              {seg.nav} · {lightboxIdx + 1} / {portfolioPhotos.length}
+            <figcaption className="mt-4 text-center text-xs tracking-wider text-mist">
+              {seg.nav} ·{" "}
+              <span className="font-semibold text-off">{lightboxIdx + 1}</span>{" "}
+              / {portfolioPhotos.length}
             </figcaption>
           </figure>
           <button
@@ -615,11 +679,11 @@ export default function SegmentPage({
               setLightboxIdx((i) => ((i ?? 0) + 1) % portfolioPhotos.length)
             }}
             aria-label="Próxima imagem"
-            className="absolute right-3 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-off transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/10 hover:text-teal-400 sm:right-6"
+            className="absolute right-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:right-6"
           >
             <svg
               viewBox="0 0 24 24"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { WHATSAPP } from "../data/site"
 import { img, HERO_PHOTO } from "../lib/images"
+import { useParallax } from "../lib/useParallax"
 
 type Props = {
   eyebrow?: string
@@ -15,18 +16,26 @@ export default function CTASection({
   text,
   photo,
 }: Props) {
+  const { ref: parallaxRef, style: parallaxStyle } = useParallax({ speed: 0.1 })
+
   return (
     <section className="relative overflow-hidden border-y border-line">
-      <img
-        src={img(photo ?? HERO_PHOTO, 1800, 900)}
-        alt=""
-        aria-hidden
-        width={1800}
-        height={900}
-        className="absolute inset-0 h-full w-full object-cover opacity-30"
-        loading="lazy"
-        decoding="async"
-      />
+      <div
+        ref={parallaxRef}
+        style={parallaxStyle}
+        className="absolute -inset-10"
+      >
+        <img
+          src={img(photo ?? HERO_PHOTO, 1800, 900)}
+          alt=""
+          aria-hidden
+          width={1800}
+          height={900}
+          className="h-full w-full object-cover opacity-30 scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div className="u-grade absolute inset-0" />
       <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
         <p className="u-eyebrow">{eyebrow}</p>

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import WhatsAppFloat from "./components/WhatsAppFloat"
+import ScrollToTop from "./components/ScrollToTop"
 import Home from "./pages/Home"
 import Portfolio from "./pages/Portfolio"
 import SegmentPage from "./pages/SegmentPage"
@@ -13,6 +14,7 @@ import { SEGMENTS } from "./data/site"
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>

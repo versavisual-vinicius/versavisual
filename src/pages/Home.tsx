@@ -10,7 +10,8 @@ import {
 } from "../data/site"
 import ServiceGrid from "../components/ServiceGrid"
 import CTASection from "../components/CTASection"
-import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack"
+import TiltCard from "../components/TiltCard"
+import { useParallax } from "../lib/useParallax"
 
 export default function Home() {
   useSeo({
@@ -35,6 +36,10 @@ export default function Home() {
         url: SITE_URL,
       },
     ],
+  })
+
+  const { ref: btsParallaxRef, style: btsParallaxStyle } = useParallax({
+    speed: 0.08,
   })
 
   return (
@@ -139,34 +144,35 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SEGMENTS.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/${s.slug}`}
-                viewTransition
-                className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
-              >
-                <img
-                  src={img(s.photos[0], 700, 900)}
-                  alt=""
-                  width={700}
-                  height={900}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <span className="u-grade absolute inset-0" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <span className="u-display text-xs text-teal-400/80">
-                    {s.index}
-                  </span>
-                  <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">
-                    {s.nav}
-                  </h3>
-                  <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity group-hover:opacity-100">
-                    Ver mais →
-                  </span>
-                </div>
-              </Link>
+              <TiltCard key={s.slug} className="aspect-[3/4] rounded-xl">
+                <Link
+                  to={`/${s.slug}`}
+                  viewTransition
+                  className="group relative flex h-full w-full overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-2xl"
+                >
+                  <img
+                    src={img(s.photos[0], 700, 900)}
+                    alt=""
+                    width={700}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <span className="u-grade absolute inset-0" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <span className="u-display text-xs text-teal-400/80">
+                      {s.index}
+                    </span>
+                    <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">
+                      {s.nav}
+                    </h3>
+                    <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity group-hover:opacity-100">
+                      Ver mais →
+                    </span>
+                  </div>
+                </Link>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -184,41 +190,43 @@ export default function Home() {
               Por isso o planejamento é parte do produto. Cada etapa existe para
               que a captação chegue ao set já resolvida.
             </p>
-            <div className="mt-8 hidden overflow-hidden rounded-xl border border-line md:block">
+            <div
+              ref={btsParallaxRef}
+              style={btsParallaxStyle}
+              className="mt-8 hidden overflow-hidden rounded-xl border border-line md:block"
+            >
               <img
                 src={img(PHOTOS.bts[0], 900, 700)}
                 alt="Bastidores de produção audiovisual da VERSAVISUAL"
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover"
+                className="aspect-[4/3] w-full object-cover scale-105"
               />
             </div>
           </div>
 
-          <ContainerScroll className="mt-10 space-y-8 md:mt-0 md:min-h-[300vh]">
-            {HOME_PROCESS.map((p, index) => (
-              <CardSticky
+          <div className="mt-10 space-y-5 md:mt-0">
+            {HOME_PROCESS.map((p) => (
+              <div
                 key={p.n}
-                index={index}
-                incrementY={72}
-                className="flex min-h-[300px] flex-col justify-between rounded-xl border border-line bg-off/95 p-8 shadow-[0_24px_60px_-20px_rgba(37,53,64,0.12)] backdrop-blur-md lg:min-h-[340px] lg:p-10"
+                className="flex min-h-[200px] flex-col justify-between rounded-xl border border-line bg-off/95 p-7 shadow-xs backdrop-blur-md transition-shadow duration-300 hover:shadow-md lg:p-8"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="u-display text-4xl font-semibold text-teal-700 lg:text-5xl">
+                  <span className="u-display text-3xl font-semibold text-teal-700 lg:text-4xl">
                     {p.n}
                   </span>
                   <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-ink lg:text-3xl">
+                <div className="mt-4">
+                  <h3 className="text-xl font-semibold text-ink lg:text-2xl">
                     {p.title}
                   </h3>
-                  <p className="mt-4 max-w-md leading-relaxed text-navy">
+                  <p className="mt-2.5 max-w-md text-sm leading-relaxed text-navy">
                     {p.desc}
                   </p>
                 </div>
-              </CardSticky>
+              </div>
             ))}
-          </ContainerScroll>
+          </div>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, ReactNode, ElementType } from "react"
+import { useEffect, useRef, type ReactNode, type ElementType } from "react"
 
 interface RevealProps {
   children: ReactNode
@@ -27,6 +27,13 @@ export default function Reveal({
       return
     }
 
+    // Immediate check if element is already in or near viewport
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight + 150) {
+      el.classList.add("in")
+      return
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -36,11 +43,20 @@ export default function Reveal({
           }
         })
       },
-      { threshold: 0.12 },
+      { threshold: 0, rootMargin: "0px 0px 80px 0px" },
     )
 
     observer.observe(el)
-    return () => observer.disconnect()
+
+    // Safety timeout to guarantee content becomes visible
+    const timer = setTimeout(() => {
+      if (el) el.classList.add("in")
+    }, 400)
+
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
   }, [])
 
   return (

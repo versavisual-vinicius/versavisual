@@ -42,13 +42,47 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKey)
   }, [open])
 
-  const noHeroRoutes = ["/portfolio", "/diagnostico-visual", "/404"]
-  const isHeroPage = !noHeroRoutes.some((r) => pathname.startsWith(r))
+  const [activeSection, setActiveSection] = useState<string>("")
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("")
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.25, rootMargin: "-72px 0px -40% 0px" },
+    )
+
+    const elNichos = document.getElementById("nichos")
+    const elProcesso = document.getElementById("processo")
+    if (elNichos) observer.observe(elNichos)
+    if (elProcesso) observer.observe(elProcesso)
+
+    return () => observer.disconnect()
+  }, [pathname])
+
+  const isNoHero =
+    pathname === "/portfolio" ||
+    pathname.startsWith("/diagnostico-visual") ||
+    pathname.startsWith("/404")
+  const isHeroPage = !isNoHero
   const transparent = !scrolled && !open && isHeroPage
 
   const isActive = (href: string, hash?: boolean) => {
-    if (hash) return false
-    if (href === "/") return pathname === "/"
+    if (hash) {
+      if (pathname !== "/") return false
+      const targetId = href.replace("/#", "")
+      return activeSection === targetId
+    }
+    if (href === "/") return pathname === "/" && !activeSection
     return pathname.startsWith(href)
   }
 

@@ -261,9 +261,9 @@ export default function Diagnostico() {
 
   return (
     <section className="pt-[72px]">
-      <div className="mx-auto grid max-w-[1320px] gap-0 px-0 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto grid max-w-[1320px] items-start gap-0 px-0 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Aside */}
-        <aside className="relative hidden overflow-hidden border-r border-line lg:block">
+        <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] overflow-hidden border-r border-line lg:block">
           <img
             src={img(PHOTOS.professional[0], 1000, 1400)}
             alt="Direção visual VERSAVISUAL"
@@ -274,7 +274,7 @@ export default function Diagnostico() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="u-grade absolute inset-0" />
-          <div className="relative flex h-full flex-col justify-end p-10">
+          <div className="relative flex h-full flex-col justify-end p-10 pb-14">
             <p className="u-eyebrow">Diagnóstico Visual</p>
             <p className="mt-4 text-balance text-4xl font-semibold leading-[1.02] text-off">
               Antes da câmera, uma conversa que vale a produção inteira.
@@ -302,7 +302,7 @@ export default function Diagnostico() {
         </aside>
 
         {/* Form */}
-        <div className="px-5 py-14 lg:px-12 lg:py-20">
+        <div className="px-5 py-10 lg:px-12 lg:py-14">
           <div>
             <p className="u-eyebrow">Diagnóstico Visual Gratuito</p>
             <h1 className="mb-8 mt-3 text-3xl leading-tight sm:text-4xl text-ink">
