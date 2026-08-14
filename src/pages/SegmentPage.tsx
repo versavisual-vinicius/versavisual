@@ -468,6 +468,7 @@ export default function SegmentPage({
                 poster={img(seg.photos[0], 1400, 800)}
                 className="aspect-video w-full object-cover"
               >
+                <source src="/videos/hero.webm" type="video/webm" />
                 <source src="/videos/hero.mp4" type="video/mp4" />
               </video>
             </Reveal>

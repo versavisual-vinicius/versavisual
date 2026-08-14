@@ -60,8 +60,10 @@ export default function Home() {
           muted
           playsInline
           poster={img(HERO_PHOTO, 2000, 1200)}
+          {...{ fetchpriority: "high" }}
           className="absolute inset-0 h-full w-full object-cover"
         >
+          <source src="/videos/hero.webm" type="video/webm" />
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         <div className="u-grade absolute inset-0" />

@@ -1,17 +1,17 @@
 import { Analytics } from "@vercel/analytics/react"
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
-import Footer from "./components/Footer"
-import WhatsAppFloat from "./components/WhatsAppFloat"
 import ScrollToTop from "./components/ScrollToTop"
 import Home from "./pages/Home"
-import Portfolio from "./pages/Portfolio"
-import SegmentPage from "./pages/SegmentPage"
-import CaseStudy from "./pages/CaseStudy"
-import Diagnostico from "./pages/Diagnostico"
-import NotFound from "./pages/NotFound"
-import { SEGMENTS } from "./data/site"
+
+const Portfolio = lazy(() => import("./pages/Portfolio"))
+const SegmentPage = lazy(() => import("./pages/SegmentPage"))
+const CaseStudy = lazy(() => import("./pages/CaseStudy"))
+const Diagnostico = lazy(() => import("./pages/Diagnostico"))
+const NotFound = lazy(() => import("./pages/NotFound"))
+const Footer = lazy(() => import("./components/Footer"))
+const WhatsAppFloat = lazy(() => import("./components/WhatsAppFloat"))
 
 const BeamsBackground = lazy(async () => {
   const module = await import("./components/ui/beams-background")
@@ -19,40 +19,49 @@ const BeamsBackground = lazy(async () => {
 })
 
 export default function App() {
+  const [showAmbient, setShowAmbient] = useState(false)
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setShowAmbient(true), 700)
+    return () => window.clearTimeout(id)
+  }, [])
+
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="fixed inset-0 z-0 bg-ink" />}>
-        <BeamsBackground
-          intensity="medium"
-          className="pointer-events-none fixed inset-0 z-0 min-h-0 opacity-90"
-        />
-      </Suspense>
+      <div className="fixed inset-0 z-0 bg-ink" aria-hidden="true" />
+      {showAmbient && (
+        <Suspense fallback={null}>
+          <BeamsBackground
+            intensity="medium"
+            className="pointer-events-none fixed inset-0 z-0 min-h-0 opacity-90"
+          />
+        </Suspense>
+      )}
       <ScrollToTop />
       <Header />
       <main className="relative z-10">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/portfolio/:caseSlug" element={<CaseStudy />} />
-          <Route path="/diagnostico-visual" element={<Diagnostico />} />
-          {SEGMENTS.map((s) => (
-            <Route
-              key={s.slug}
-              path={`/${s.slug}`}
-              element={<SegmentPage segment={s} />}
-            />
-          ))}
-          <Route path="/segmentos/:slug" element={<SegmentPage />} />
-          <Route path="/:slug" element={<SegmentPage />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:caseSlug" element={<CaseStudy />} />
+            <Route path="/diagnostico-visual" element={<Diagnostico />} />
+            <Route path="/segmentos/:slug" element={<SegmentPage />} />
+            <Route path="/:slug" element={<SegmentPage />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
-      <WhatsAppFloat />
-      <Analytics />
+      {showAmbient && (
+        <Suspense fallback={null}>
+          <div className="relative z-10">
+            <Footer />
+          </div>
+          <WhatsAppFloat />
+          <Analytics />
+        </Suspense>
+      )}
     </BrowserRouter>
   )
 }
