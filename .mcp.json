@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "Asana__009fd94b": {
+      "type": "http",
+      "url": "${MCP_PROXY_BASE_URL}/proxy/009fd94b-3b35-46df-9fa3-afe5db22413d",
+      "headers": {
+        "Authorization": "Bearer ${MCP_PROXY_AUTH_TOKEN}"
+      }
+    }
+  }
+}

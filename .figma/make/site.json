@@ -1,0 +1,10 @@
+{
+  "description": "A premium audiovisual hub showcasing diverse creative portfolios with seamless navigation, interactive diagnostics, and direct client engagement via WhatsApp.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

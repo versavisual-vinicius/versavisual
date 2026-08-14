@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import 'tailwindcss';
+
+/* ====== VERSAVISUAL design tokens (from brand system) ======
+   Brand Black #050A0D · Deep Navy #253540 · Accent Teal #5E7F8C
+   Mist #A4B8BF · Off-White #F2F2F2 */
+@theme {
+  --color-ink: #050a0d;
+  --color-ink-800: #0a1114;
+  --color-navy: #253540;
+  --color-navy-600: #2f434f;
+  --color-teal: #5e7f8c;
+  --color-teal-400: #78a0af;
+  --color-mist: #a4b8bf;
+  --color-off: #f2f2f2;
+  --color-surface: #e9eef0;
+  --color-line: rgba(37, 53, 64, 0.10);
+  --color-line-strong: rgba(37, 53, 64, 0.20);
+
+  --font-display: 'Righteous', system-ui, sans-serif;
+  --font-head: 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --radius-xs: 8px;
+  --radius-sm: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-off);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-teal);
+    color: #04080a;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+  :focus-visible {
+    outline: 2px solid var(--color-teal-400);
+    outline-offset: 3px;
+  }
+  * { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-thumb { background: transparent; border-radius: 8px; }
+  *:hover::-webkit-scrollbar-thumb { background: rgba(37,53,64,0.18); }
+}
+
+@layer components {
+  .u-wordmark { font-family: var(--font-display); letter-spacing: 0.06em; }
+  .u-eyebrow {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-teal-400);
+  }
+  .u-display { font-family: var(--font-display); letter-spacing: 0.01em; line-height: 0.98; }
+
+  .u-grade::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,10,13,0.15) 0%, rgba(5,10,13,0.55) 60%, rgba(5,10,13,0.92) 100%),
+      radial-gradient(120% 90% at 70% 20%, rgba(94,127,140,0.22), transparent 60%);
+    pointer-events: none;
+  }
+  .u-grade-soft::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5,10,13,0.05), rgba(5,10,13,0.7));
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Reveal component — IntersectionObserver adds .in */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.72s ease, transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  [data-reveal].in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .u-fade-in { animation: vv-fade 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+  @keyframes vv-fade {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .u-fade-in { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+}
