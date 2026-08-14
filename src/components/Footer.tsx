@@ -44,6 +44,7 @@ export default function Footer() {
                 <li key={s.to}>
                   <Link
                     to={s.to}
+                    viewTransition
                     className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
                   >
                     {s.label}
@@ -78,6 +79,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/portfolio"
+                  viewTransition
                   className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
                 >
                   Portfólio
@@ -86,6 +88,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/diagnostico-visual"
+                  viewTransition
                   className="text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
                 >
                   Diagnóstico gratuito

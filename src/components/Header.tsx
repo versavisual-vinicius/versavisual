@@ -31,6 +31,15 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const noHeroRoutes = ["/portfolio", "/diagnostico-visual", "/404"];
   const isHeroPage = !noHeroRoutes.some((r) => pathname.startsWith(r));
   const transparent = !scrolled && !open && isHeroPage;
@@ -51,7 +60,7 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-10">
         {/* Logo */}
-        <Link to="/" aria-label="VERSAVISUAL — página inicial">
+        <Link to="/" viewTransition aria-label="VERSAVISUAL — página inicial">
           <img
             src={logo}
             alt="VERSAVISUAL"
@@ -67,6 +76,7 @@ export default function Header() {
             <Link
               key={l.href}
               to={l.href}
+              viewTransition={!l.hash}
               className={`text-sm tracking-wide transition-colors duration-200 ease-out ${
                 isActive(l.href, l.hash)
                   ? transparent ? "text-off" : "text-ink"
@@ -78,6 +88,7 @@ export default function Header() {
           ))}
           <Link
             to="/diagnostico-visual"
+            viewTransition
             className={`rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ease-out ${
               transparent
                 ? "border border-teal-400/50 bg-teal/10 text-off hover:bg-teal hover:text-ink"
@@ -108,27 +119,36 @@ export default function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-line bg-off lg:hidden">
-          <nav aria-label="Navegação principal" className="px-5 py-6">
-            {navLinks.map((l) => (
+        <>
+          <div
+            className="fixed inset-0 top-[72px] z-40 bg-ink/50 backdrop-blur-xs lg:hidden"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-line bg-off shadow-2xl lg:hidden">
+            <nav aria-label="Navegação móvel" className="px-5 py-6">
+              {navLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  viewTransition={!l.hash}
+                  onClick={() => setOpen(false)}
+                  className="block border-b border-line py-3.5 text-lg text-ink transition-colors hover:text-teal"
+                >
+                  {l.label}
+                </Link>
+              ))}
               <Link
-                key={l.href}
-                to={l.href}
+                to="/diagnostico-visual"
+                viewTransition
                 onClick={() => setOpen(false)}
-                className="block border-b border-line py-3.5 text-lg text-ink"
+                className="mt-6 block rounded-xl bg-teal px-4 py-3.5 text-center font-medium text-ink transition-colors hover:bg-teal-400"
               >
-                {l.label}
+                Iniciar projeto
               </Link>
-            ))}
-            <Link
-              to="/diagnostico-visual"
-              onClick={() => setOpen(false)}
-              className="mt-6 block rounded-xl bg-teal px-4 py-3.5 text-center font-medium text-ink"
-            >
-              Iniciar projeto
-            </Link>
-          </nav>
-        </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );

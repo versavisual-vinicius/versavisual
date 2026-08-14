@@ -45,17 +45,20 @@ export default function CaseStudy() {
         <img
           src={img(item.photo, 2000, 1200)}
           alt={item.title}
+          width={2000}
+          height={1200}
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
+          decoding="async"
         />
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-16 pt-32 lg:px-10 lg:pb-24">
           <nav aria-label="Trilha" className="u-eyebrow mb-5 flex flex-wrap items-center gap-2">
-            <Link to="/" className="hover:text-off">
+            <Link to="/" viewTransition className="hover:text-off">
               Início
             </Link>
             <span aria-hidden>/</span>
-            <Link to="/portfolio" className="hover:text-off">
+            <Link to="/portfolio" viewTransition className="hover:text-off">
               Portfólio
             </Link>
             <span aria-hidden>/</span>
@@ -94,6 +97,7 @@ export default function CaseStudy() {
         {seg && (
           <Link
             to={`/${seg.slug}`}
+            viewTransition
             className="mt-8 inline-flex items-center gap-2 text-sm text-teal transition-colors hover:text-ink"
           >
             Ver o segmento {seg.nav} →
@@ -129,12 +133,16 @@ export default function CaseStudy() {
                 <Link
                   key={r.caseSlug}
                   to={`/portfolio/${r.caseSlug}`}
+                  viewTransition
                   className="group relative aspect-[16/10] overflow-hidden rounded-sm border border-line"
                 >
                   <img
                     src={img(r.photo, 700, 440)}
                     alt={r.title}
+                    width={700}
+                    height={440}
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="u-grade absolute inset-0" />

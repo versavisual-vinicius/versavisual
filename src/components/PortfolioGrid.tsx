@@ -32,14 +32,19 @@ export default function PortfolioGrid({ initial = "Todos" }: { initial?: string 
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((it) => {
+        {items.map((it, idx) => {
+          const isAboveFold = idx < 3;
           const inner = (
             <>
               <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                 <img
                   src={img(it.photo, 800, 1000)}
                   alt={it.title}
-                  loading="lazy"
+                  width={800}
+                  height={1000}
+                  loading={isAboveFold ? "eager" : "lazy"}
+                  decoding="async"
+                  {...(idx === 0 ? { fetchPriority: "high" as const } : {})}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <span className="u-grade absolute inset-0" />
@@ -59,7 +64,7 @@ export default function PortfolioGrid({ initial = "Todos" }: { initial?: string 
           const cls =
             "group relative flex flex-col overflow-hidden rounded-sm border border-line";
           return it.caseSlug ? (
-            <Link key={it.title} to={`/portfolio/${it.caseSlug}`} className={cls}>
+            <Link key={it.title} to={`/portfolio/${it.caseSlug}`} viewTransition className={cls}>
               {inner}
             </Link>
           ) : (

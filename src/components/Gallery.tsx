@@ -8,6 +8,7 @@ type Props = {
 
 export default function Gallery({ photos, label }: Props) {
   const [active, setActive] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const close = useCallback(() => setActive(null), []);
   const go = useCallback(
@@ -34,6 +35,19 @@ export default function Gallery({ photos, label }: Props) {
     };
   }, [active, close, go]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      go(diff > 0 ? 1 : -1);
+    }
+    setTouchStart(null);
+  };
+
   return (
     <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
@@ -50,7 +64,8 @@ export default function Gallery({ photos, label }: Props) {
             <img
               src={img(p, 900)}
               alt={`${label} — imagem ${i + 1}`}
-              loading="lazy"
+              loading={i < 3 ? "eager" : "lazy"}
+              decoding="async"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <span className="u-grade-soft absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -60,8 +75,10 @@ export default function Gallery({ photos, label }: Props) {
 
       {active !== null && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex select-none items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
           onClick={close}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           role="dialog"
           aria-modal="true"
           aria-label={`${label} — visualização ampliada`}
@@ -90,6 +107,7 @@ export default function Gallery({ photos, label }: Props) {
             <img
               src={img(photos[active], 1600)}
               alt={`${label} — imagem ${active + 1}`}
+              decoding="async"
               className="max-h-[80vh] w-auto rounded-sm object-contain"
             />
             <figcaption className="mt-3 text-center text-xs text-mist">

@@ -16,8 +16,11 @@ export default function CTASection({ eyebrow = "Diagnóstico Visual", title, tex
         src={img(photo ?? HERO_PHOTO, 1800, 900)}
         alt=""
         aria-hidden
+        width={1800}
+        height={900}
         className="absolute inset-0 h-full w-full object-cover opacity-30"
         loading="lazy"
+        decoding="async"
       />
       <div className="u-grade absolute inset-0" />
       <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
@@ -27,6 +30,7 @@ export default function CTASection({ eyebrow = "Diagnóstico Visual", title, tex
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             to="/diagnostico-visual"
+            viewTransition
             className="w-full rounded-xs bg-teal px-7 py-3.5 font-medium text-ink transition-colors hover:bg-teal-400 sm:w-auto"
           >
             Fazer diagnóstico visual

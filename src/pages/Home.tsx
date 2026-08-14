@@ -66,12 +66,14 @@ export default function Home() {
           <div className="u-fade-in mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
               to="/diagnostico-visual"
+              viewTransition
               className="rounded-xs bg-teal px-7 py-3.5 text-center font-medium text-ink transition-all duration-200 ease-out hover:bg-teal-400 hover:shadow-lg"
             >
               Fazer diagnóstico visual
             </Link>
             <Link
               to="/portfolio"
+              viewTransition
               className="rounded-xs border border-off/30 px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:border-teal-400 hover:text-teal-400"
             >
               Ver portfólio
@@ -108,7 +110,7 @@ export default function Home() {
       </section>
 
       {/* SEGMENTS */}
-      <section className="border-y border-line bg-surface">
+      <section id="nichos" className="border-y border-line bg-surface">
         <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
@@ -117,7 +119,7 @@ export default function Home() {
                 Escolha o seu contexto. A linguagem muda com ele.
               </h2>
             </div>
-            <Link to="/portfolio" className="text-sm text-teal transition-colors hover:text-ink">
+            <Link to="/portfolio" viewTransition className="text-sm text-teal transition-colors hover:text-ink">
               Ver portfólio completo →
             </Link>
           </div>
@@ -126,13 +128,17 @@ export default function Home() {
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
+                viewTransition
                 className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
                 aria-label={s.discoverAnchor}
               >
                 <img
                   src={img(s.photos[0], 700, 900)}
                   alt={s.nav}
+                  width={700}
+                  height={900}
                   loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <span className="u-grade absolute inset-0" />

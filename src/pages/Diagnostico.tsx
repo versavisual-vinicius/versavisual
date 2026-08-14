@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo";
 import { SEGMENT_NAV, WHATSAPP, WHATSAPP_LABEL } from "../data/site";
 import { img, PHOTOS } from "../lib/images";
@@ -78,12 +79,13 @@ export default function Diagnostico() {
           >
             Falar no WhatsApp · {WHATSAPP_LABEL}
           </a>
-          <a
-            href="/portfolio"
+          <Link
+            to="/portfolio"
+            viewTransition
             className="rounded-xs border border-line-strong px-7 py-3.5 font-medium text-ink transition-colors hover:border-teal"
           >
             Ver portfólio
-          </a>
+          </Link>
         </div>
       </section>
     );
@@ -97,6 +99,10 @@ export default function Diagnostico() {
           <img
             src={img(PHOTOS.professional[0], 1000, 1400)}
             alt="Direção visual VERSAVISUAL"
+            width={1000}
+            height={1400}
+            fetchPriority="high"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="u-grade absolute inset-0" />

@@ -47,6 +47,7 @@ export default function SegmentPage() {
 
   // photo lightbox
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
   // service modal
   const [openService, setOpenService] = useState<typeof seg.services[0] | null>(null);
 
@@ -67,6 +68,23 @@ export default function SegmentPage() {
     };
   }, [lightboxIdx, openService, seg.photos.length]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null || lightboxIdx === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        setLightboxIdx((i) => ((i ?? 0) + 1) % seg.photos.length);
+      } else {
+        setLightboxIdx((i) => ((i ?? 0) - 1 + seg.photos.length) % seg.photos.length);
+      }
+    }
+    setTouchStart(null);
+  };
+
   const galleryPhotos = [...seg.photos].slice(0, 4);
   const portfolioPhotos = [...seg.photos];
 
@@ -85,7 +103,7 @@ export default function SegmentPage() {
         <HeroGridLines />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
           <nav aria-label="Trilha" className="u-eyebrow mb-5 flex items-center gap-2">
-            <Link to="/" className="hover:text-off">Início</Link>
+            <Link to="/" viewTransition className="hover:text-off">Início</Link>
             <span aria-hidden>/</span>
             <span className="text-mist">{seg.nav}</span>
           </nav>
@@ -96,6 +114,7 @@ export default function SegmentPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               to="/diagnostico-visual"
+              viewTransition
               className="rounded-xl bg-teal px-7 py-3.5 text-center font-medium text-ink transition-all duration-200 ease-out hover:bg-teal-400"
             >
               Falar sobre o projeto
@@ -329,13 +348,17 @@ export default function SegmentPage() {
               <Link
                 key={o.slug}
                 to={`/${o.slug}`}
+                viewTransition
                 className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
                 aria-label={o.discoverAnchor}
               >
                 <img
                   src={img(o.photos[0], 700, 440)}
                   alt={o.nav}
+                  width={700}
+                  height={440}
                   loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <span className="u-grade absolute inset-0" />
@@ -349,11 +372,13 @@ export default function SegmentPage() {
       {/* ── PHOTO LIGHTBOX ───────────────────────────────── */}
       {lightboxIdx !== null && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex select-none items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={`${seg.nav} — visualização ampliada`}
           onClick={() => setLightboxIdx(null)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <button
             type="button"
@@ -379,6 +404,7 @@ export default function SegmentPage() {
             <img
               src={img(portfolioPhotos[lightboxIdx], 1600)}
               alt={`${seg.nav} — imagem ${lightboxIdx + 1}`}
+              decoding="async"
               className="max-h-[80vh] w-auto rounded-xl object-contain"
             />
             <figcaption className="mt-3 text-center text-xs text-mist">
