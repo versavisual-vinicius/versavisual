@@ -1,5 +1,4 @@
 "use client" /* HERO */ /* PARA QUEM */ /* eslint-disable-next-line @next/next/no-img-element */ /* PROBLEMA / SOLUÇÃO */ /* SERVIÇOS INCLUSOS */ /* PORTFÓLIO RELACIONADO */ /* eslint-disable-next-line @next/next/no-img-element */ /* PROCESSO */ /* CTA BAND */ /* FAQ */
-
 import { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"

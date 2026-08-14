@@ -300,7 +300,7 @@ export default function SegmentPage({
                 aria-label={`Entender serviço: ${s.title}`}
                 className="group relative bg-off p-7 text-left transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
               >
-                <span className="u-display text-sm text-teal-400/70">
+                <span className="u-display text-sm font-semibold text-teal-700">
                   {s.n}
                 </span>
                 <h3 className="mt-4 text-xl font-semibold text-ink">
@@ -521,7 +521,6 @@ export default function SegmentPage({
                 to={`/${o.slug}`}
                 viewTransition
                 className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
-                aria-label={o.discoverAnchor}
               >
                 <img
                   src={img(o.photos[0], 700, 440)}

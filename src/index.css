@@ -11,6 +11,7 @@
   --color-navy-600: #2f434f;
   --color-teal: #5e7f8c;
   --color-teal-400: #78a0af;
+  --color-teal-700: #47626d;
   --color-mist: #a4b8bf;
   --color-off: #f2f2f2;
   --color-surface: #e9eef0;
@@ -69,11 +70,11 @@
   .u-wordmark { font-family: var(--font-display); letter-spacing: 0.06em; }
   .u-eyebrow {
     font-family: var(--font-head);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.72rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-teal-400);
+    color: var(--color-teal-700);
   }
   .u-display { font-family: var(--font-display); letter-spacing: 0.01em; line-height: 0.98; }
 

@@ -53,7 +53,7 @@ export default function Home() {
         </video>
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-20 pt-32 lg:px-10 lg:pb-28">
-          <p className="u-eyebrow u-fade-in">
+          <p className="u-eyebrow u-fade-in text-mist">
             Hub audiovisual autoral · Rio de Janeiro · Operação nacional
           </p>
           <h1 className="u-fade-in mt-5 max-w-4xl text-balance text-4xl leading-[0.98] text-off sm:text-6xl lg:text-[5.2rem]">
@@ -144,7 +144,6 @@ export default function Home() {
                 to={`/${s.slug}`}
                 viewTransition
                 className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
-                aria-label={s.discoverAnchor}
               >
                 <img
                   src={img(s.photos[0], 700, 900)}
@@ -204,7 +203,7 @@ export default function Home() {
                 className="flex min-h-[300px] flex-col justify-between rounded-xl border border-line bg-off/95 p-8 shadow-[0_24px_60px_-20px_rgba(37,53,64,0.12)] backdrop-blur-md lg:min-h-[340px] lg:p-10"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <span className="u-display text-4xl text-teal/30 lg:text-5xl">
+                  <span className="u-display text-4xl font-semibold text-teal-700 lg:text-5xl">
                     {p.n}
                   </span>
                   <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />

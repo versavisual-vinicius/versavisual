@@ -607,4 +607,5 @@ export const PHOTOS = {
 } as const
 
 export const HERO_PHOTO =
-  MEGABLOCO_CHA_DA_ALICE_PHOTOS[0] || BACKSTAGE_CLIPE_SURURU_PHOTOS[0]
+  "/images/megabloco-cha-da-alice/hero-poster.jpg" ||
+  MEGABLOCO_CHA_DA_ALICE_PHOTOS[0]
