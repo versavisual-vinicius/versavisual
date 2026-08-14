@@ -41,6 +41,8 @@ const JSON_LD_ID = "vv-jsonld-route"
 
 /** Per-route metadata, canonical, Open Graph and JSON-LD injection. */
 export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
+  const jsonLdContent = jsonLd ? JSON.stringify(jsonLd) : ""
+
   useEffect(() => {
     const canonical = `${SITE_URL}${path === "/" ? "/" : path}`
     document.title = title
@@ -93,15 +95,14 @@ export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
 
     const prev = document.getElementById(JSON_LD_ID)
     if (prev) prev.remove()
-    if (jsonLd) {
+    if (jsonLdContent) {
       const script = document.createElement("script")
       script.type = "application/ld+json"
       script.id = JSON_LD_ID
-      script.textContent = JSON.stringify(jsonLd)
+      script.textContent = jsonLdContent
       document.head.appendChild(script)
     }
-    window.scrollTo({ top: 0, behavior: "auto" })
-  }, [title, description, path, noindex, jsonLd])
+  }, [title, description, path, noindex, jsonLdContent])
 }
 
 export function breadcrumb(items: { name: string path: string }[]) {

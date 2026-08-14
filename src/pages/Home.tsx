@@ -179,7 +179,10 @@ export default function Home() {
       </section>
 
       {/* PROCESS — sticky stacked cards */}
-      <section className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
+      <section
+        id="processo"
+        className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28"
+      >
         <div className="grid items-start md:grid-cols-2 md:gap-12">
           <div className="top-24 md:sticky md:py-6">
             <p className="u-eyebrow">Método</p>

@@ -473,17 +473,21 @@ export default function SegmentPage({
             </Reveal>
           )}
 
-          <Reveal className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
+          <Reveal className="grid grid-flow-dense auto-rows-[145px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[190px] md:grid-cols-4 lg:auto-rows-[220px] lg:gap-4">
             {portfolioPhotos.map((photoId, i) => (
               <button
                 key={photoId}
                 type="button"
                 onClick={() => setLightboxIdx(i)}
                 aria-label={`Ampliar imagem ${i + 1} de ${seg.nav}`}
-                className={`group relative overflow-hidden rounded-xl bg-navy focus-visible:outline-teal-400 ${
-                  i % 5 === 0
-                    ? "col-span-2 aspect-[16/10] md:col-span-2 md:row-span-2 md:aspect-square"
-                    : "aspect-[4/5]"
+                className={`group relative h-full w-full overflow-hidden rounded-xl bg-navy focus-visible:outline-teal-400 ${
+                  i % 7 === 0
+                    ? "col-span-2 row-span-2"
+                    : i % 7 === 3
+                      ? "row-span-2"
+                      : i % 7 === 5
+                        ? "col-span-2 row-span-1"
+                        : "row-span-1"
                 }`}
               >
                 <img
