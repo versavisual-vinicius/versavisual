@@ -50,7 +50,7 @@ export default function PortfolioGrid({
               <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                 <img
                   src={img(it.photo, 800, 1000)}
-                  alt={it.title}
+                  alt=""
                   width={800}
                   height={1000}
                   loading={isAboveFold ? "eager" : "lazy"}

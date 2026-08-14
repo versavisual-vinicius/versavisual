@@ -297,7 +297,7 @@ export default function SegmentPage({
                 key={s.n}
                 type="button"
                 onClick={() => setOpenService(s)}
-                aria-label={`Entender serviço: ${s.title}`}
+                aria-label={`${s.title} — entender serviço`}
                 className="group relative bg-off p-7 text-left transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
               >
                 <span className="u-display text-sm font-semibold text-teal-700">
@@ -350,7 +350,7 @@ export default function SegmentPage({
                     <div className="relative aspect-[16/10] overflow-hidden bg-navy">
                       <img
                         src={img(c.photo, 800, 500)}
-                        alt={c.title}
+                        alt=""
                         width={800}
                         height={500}
                         loading="lazy"
@@ -467,9 +467,9 @@ export default function SegmentPage({
             {seg.process.map((p) => (
               <div key={p.n} className="bg-surface p-7 lg:p-8">
                 <span className="u-display text-5xl text-teal/20">{p.n}</span>
-                <h4 className="mt-4 text-lg font-semibold text-ink">
+                <h3 className="mt-4 text-lg font-semibold text-ink">
                   {p.title}
-                </h4>
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-navy">
                   {p.desc}
                 </p>
@@ -524,7 +524,7 @@ export default function SegmentPage({
               >
                 <img
                   src={img(o.photos[0], 700, 440)}
-                  alt={o.nav}
+                  alt=""
                   width={700}
                   height={440}
                   loading="lazy"

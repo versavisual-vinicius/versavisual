@@ -9,10 +9,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <Logo
-              variant="color"
-              className="block h-10 w-auto"
-            />
+            <Logo variant="color" className="block h-10 w-auto" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-navy">
               Hub Criativo · Vídeo · Fotografia · Storymaking. Da cena ao frame,
               em todo o Brasil.
@@ -21,7 +18,7 @@ export default function Footer() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block text-sm text-teal transition-colors duration-200 ease-out hover:text-ink"
+              className="mt-5 block text-sm text-navy transition-colors duration-200 ease-out hover:text-ink"
             >
               WhatsApp · 11 95074-7192
             </a>
@@ -97,7 +94,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-navy sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 VERSAVISUAL — Hub Criativo Audiovisual</span>
-          <span className="u-wordmark tracking-widest text-navy/50">
+          <span className="u-wordmark tracking-widest text-navy/80">
             Rio de Janeiro · Brasil
           </span>
         </div>

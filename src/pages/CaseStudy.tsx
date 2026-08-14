@@ -154,7 +154,7 @@ export default function CaseStudy() {
                 >
                   <img
                     src={img(r.photo, 700, 440)}
-                    alt={r.title}
+                    alt=""
                     width={700}
                     height={440}
                     loading="lazy"

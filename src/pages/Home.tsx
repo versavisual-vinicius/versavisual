@@ -147,7 +147,7 @@ export default function Home() {
               >
                 <img
                   src={img(s.photos[0], 700, 900)}
-                  alt={s.nav}
+                  alt=""
                   width={700}
                   height={900}
                   loading="lazy"
