@@ -31,7 +31,7 @@ function fieldErrorId(name: string) {
 }
 
 const field =
-  "w-full rounded-xs border border-line-strong bg-white px-4 py-3 text-ink placeholder:text-navy/40 transition-colors focus:border-teal focus:outline-none"
+  "w-full rounded-xs border border-line-strong bg-white px-4 py-3 text-ink placeholder:text-navy/40 transition-colors focus:border-teal focus:ring-2 focus:ring-teal/30 focus:outline-none"
 const labelCls = "mb-2 block text-sm text-ink font-medium"
 
 interface LeadData {

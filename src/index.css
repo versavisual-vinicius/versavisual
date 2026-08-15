@@ -156,8 +156,11 @@
   img { display: block; }
   main:focus { outline: none; }
   :focus-visible {
-    outline: 2px solid var(--color-teal-400);
+    outline: 2px solid var(--color-teal-400) !important;
     outline-offset: 3px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
   }
   * { scrollbar-width: thin; scrollbar-color: transparent transparent; }
   *::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -193,8 +196,11 @@
     font-weight: 700;
     transition: transform 160ms ease-out;
   }
-  .skip-link:focus {
+  .skip-link:focus,
+  .skip-link:focus-visible {
     transform: translateY(0);
+    outline: 2px solid var(--color-teal-400) !important;
+    outline-offset: 3px;
   }
 
   .u-grade::after {

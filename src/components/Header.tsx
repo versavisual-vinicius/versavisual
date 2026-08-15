@@ -147,13 +147,13 @@ export default function Header() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className={`flex h-10 w-10 items-center justify-center lg:hidden ${
-            transparent ? "text-off" : "text-off"
-          }`}
+          className="flex h-10 w-10 items-center justify-center text-off lg:hidden focus-visible:ring-2 focus-visible:ring-teal"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
+          aria-controls="mobile-navigation-drawer"
           onClick={() => setOpen((v) => !v)}
         >
+          <span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
           <svg
             width="26"
             height="26"
@@ -161,6 +161,7 @@ export default function Header() {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.6"
+            aria-hidden="true"
           >
             {open ? (
               <path d="M18 6L6 18M6 6l12 12" />
@@ -179,7 +180,10 @@ export default function Header() {
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink lg:hidden">
+          <div
+            id="mobile-navigation-drawer"
+            className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink lg:hidden"
+          >
             <nav aria-label="Navegação móvel" className="px-5 py-6">
               {navLinks.map((l) => (
                 <Link
