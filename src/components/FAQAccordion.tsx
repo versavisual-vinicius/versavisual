@@ -1,4 +1,3 @@
-import { useState } from "react"
 import type { Faq } from "../data/site"
 
 export default function FAQAccordion({
@@ -8,7 +7,6 @@ export default function FAQAccordion({
   items: Faq[]
   tone?: "light" | "dark"
 }) {
-  const [open, setOpen] = useState<number | null>(null)
   const isDark = tone === "dark"
   return (
     <div
@@ -16,59 +14,43 @@ export default function FAQAccordion({
         isDark ? "divide-off/15 border-off/15" : "divide-line border-line"
       }`}
     >
-      {items.map((it, i) => {
-        const isOpen = open === i
-        return (
-          <div key={i}>
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ease-out hover:text-teal"
+      {items.map((it, i) => (
+        <details key={i} name="versavisual-faq" className="group">
+          <summary
+            className={`flex w-full cursor-pointer list-none items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ease-out hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal [&::-webkit-details-marker]:hidden ${
+              isDark ? "text-off" : "text-ink"
+            }`}
+          >
+            <span className="text-lg font-medium">{it.q}</span>
+            <span
+              aria-hidden="true"
+              className={`shrink-0 rounded-full border p-1 text-teal transition-all duration-300 ease-out ${
+                isDark ? "border-off/15" : "border-line"
+              } group-open:rotate-45 group-open:border-teal group-open:bg-teal/10`}
             >
-              <span
-                className={`text-lg font-medium ${
-                  isDark ? "text-off" : "text-ink"
-                }`}
+              <svg
+                viewBox="0 0 16 16"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
               >
-                {it.q}
-              </span>
-              <span
-                aria-hidden
-                className={`shrink-0 rounded-full border p-1 text-teal transition-all duration-300 ease-out ${
-                  isDark ? "border-off/15" : "border-line"
-                } ${isOpen ? "rotate-45 border-teal bg-teal/10" : ""}`}
-              >
-                <svg
-                  viewBox="0 0 16 16"
-                  className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                >
-                  <path d="M8 3v10M3 8h10" />
-                </svg>
-              </span>
-            </button>
-            <div
-              className="overflow-hidden transition-all duration-500 ease-out"
-              style={{
-                maxHeight: isOpen ? "600px" : "0px",
-                opacity: isOpen ? 1 : 0,
-              }}
+                <path d="M8 3v10M3 8h10" />
+              </svg>
+            </span>
+          </summary>
+          <div className="pb-6 pt-1">
+            <p
+              className={`max-w-2xl text-pretty ${
+                isDark ? "text-mist" : "text-navy"
+              }`}
             >
-              <p
-                className={`max-w-2xl text-pretty pb-6 ${
-                  isDark ? "text-mist" : "text-navy"
-                }`}
-              >
-                {it.a}
-              </p>
-            </div>
+              {it.a}
+            </p>
           </div>
-        )
-      })}
+        </details>
+      ))}
     </div>
   )
 }

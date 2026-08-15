@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useState, type TouchEvent } from "react"
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type TouchEvent,
+} from "react"
 import { img } from "../lib/images"
 
 type Props = {
@@ -8,6 +14,7 @@ type Props = {
 
 export default function Gallery({ photos, label }: Props) {
   const [active, setActive] = useState<number | null>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
   const [touchStartY, setTouchStartY] = useState<number | null>(null)
   const [dragY, setDragY] = useState(0)
@@ -33,19 +40,34 @@ export default function Gallery({ photos, label }: Props) {
   )
 
   useEffect(() => {
+    const dialog = dialogRef.current
+    if (active !== null) {
+      if (dialog && !dialog.open) {
+        dialog.showModal()
+      }
+      document.body.style.overflow = "hidden"
+    } else {
+      if (dialog?.open) {
+        dialog.close()
+      }
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [active])
+
+  useEffect(() => {
     if (active === null) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close()
       if (e.key === "ArrowRight") go(1)
       if (e.key === "ArrowLeft") go(-1)
     }
-    document.addEventListener("keydown", onKey)
-    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKey)
     return () => {
-      document.removeEventListener("keydown", onKey)
-      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKey)
     }
-  }, [active, close, go])
+  }, [active, go])
 
   const handleTouchStart = (e: TouchEvent) => {
     setTouchStartX(e.touches[0].clientX)
@@ -118,110 +140,128 @@ export default function Gallery({ photos, label }: Props) {
         ))}
       </div>
 
-      {active !== null && (
-        <div
-          className="fixed inset-0 z-[60] flex select-none items-center justify-center p-4 backdrop-blur-md transition-colors duration-200"
-          style={{ backgroundColor: `rgba(5, 10, 13, ${bgOpacity})` }}
-          onClick={close}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${label} — visualização ampliada`}
-        >
-          {/* Close button */}
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Fechar"
-            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Previous button */}
-          <button
-            type="button"
+      <dialog
+        ref={dialogRef}
+        {...{ closedby: "any" } as Record<string, unknown>}
+        onClose={close}
+        onCancel={(e) => {
+          e.preventDefault()
+          close()
+        }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            close()
+          }
+        }}
+        aria-label={`${label} — visualização ampliada`}
+        className="fixed inset-0 m-0 h-screen w-screen max-h-none max-w-none border-none bg-transparent p-0 overflow-hidden backdrop:bg-ink/85 backdrop:backdrop-blur-md focus:outline-none"
+      >
+        {active !== null && (
+          <div
+            className="relative flex h-full w-full select-none items-center justify-center p-4 transition-colors duration-200"
+            style={{ backgroundColor: `rgba(5, 10, 13, ${bgOpacity})` }}
             onClick={(e) => {
-              e.stopPropagation()
-              go(-1)
+              if (e.target === e.currentTarget) {
+                close()
+              }
             }}
-            aria-label="Imagem anterior"
-            className="absolute left-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:left-6"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Fechar"
+              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 focus-visible:ring-2 focus-visible:ring-teal"
             >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </button>
 
-          {/* Image Figure */}
-          <figure
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              transform: `translate3d(${dragX}px, ${dragY}px, 0) scale(${
-                dragY > 0 ? Math.max(0.85, 1 - dragY / 800) : 1
-              })`,
-              transition: isSwiping
-                ? "none"
-                : "transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
-            }}
-            className="max-h-[86vh] max-w-5xl will-change-transform"
-          >
-            <img
-              src={img(photos[active], 1600)}
-              alt={`${label} — imagem ${active + 1}`}
-              decoding="async"
-              className="max-h-[80vh] w-auto rounded-lg shadow-2xl object-contain"
-            />
-            <figcaption className="mt-4 text-center text-xs tracking-wider text-mist">
-              {label} ·{" "}
-              <span className="font-semibold text-off">{active + 1}</span> /{" "}
-              {photos.length}
-            </figcaption>
-          </figure>
-
-          {/* Next button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              go(1)
-            }}
-            aria-label="Próxima imagem"
-            className="absolute right-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:right-6"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            {/* Previous button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                go(-1)
+              }}
+              aria-label="Imagem anterior"
+              className="absolute left-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 focus-visible:ring-2 focus-visible:ring-teal sm:flex sm:left-6"
             >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      )}
+              <svg
+                viewBox="0 0 24 24"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            {/* Image Figure */}
+            <figure
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                transform: `translate3d(${dragX}px, ${dragY}px, 0) scale(${
+                  dragY > 0 ? Math.max(0.85, 1 - dragY / 800) : 1
+                })`,
+                transition: isSwiping
+                  ? "none"
+                  : "transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
+              }}
+              className="max-h-[86vh] max-w-5xl will-change-transform"
+            >
+              <img
+                src={img(photos[active], 1600)}
+                alt={`${label} — imagem ${active + 1}`}
+                decoding="async"
+                className="max-h-[80vh] w-auto rounded-lg shadow-2xl object-contain"
+              />
+              <figcaption className="mt-4 text-center text-xs tracking-wider text-mist">
+                {label} ·{" "}
+                <span className="font-semibold text-off">{active + 1}</span> /{" "}
+                {photos.length}
+              </figcaption>
+            </figure>
+
+            {/* Next button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                go(1)
+              }}
+              aria-label="Próxima imagem"
+              className="absolute right-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 focus-visible:ring-2 focus-visible:ring-teal sm:flex sm:right-6"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
+      </dialog>
     </>
   )
 }
