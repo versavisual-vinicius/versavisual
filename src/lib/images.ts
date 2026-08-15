@@ -535,6 +535,30 @@ export const SYN_ICE_PHOTOS: readonly string[] = [
   "/images/syn-ice/Syn-ice-Feira-super-minas-super-bahia12.jpg",
 ]
 
+export const WEDDING_PHOTOS: readonly string[] = [
+  "/images/Casamentos/CASAMENTO1.jpg",
+  "/images/Casamentos/CASAMENTO2.jpg",
+  "/images/Casamentos/CASAMENTO3.jpg",
+  "/images/Casamentos/CASAMENTO4.jpg",
+  "/images/Casamentos/CASAMENTO5.jpg",
+  "/images/Casamentos/CASAMENTO6.jpg",
+  "/images/Casamentos/CASAMENTO7.jpg",
+  "/images/Casamentos/CASAMENTO8.jpg",
+  "/images/Casamentos/CASAMENTO9.jpg",
+  "/images/Casamentos/CASAMENTO10.jpg",
+  "/images/Casamentos/CASAMENTO11.jpg",
+  "/images/Casamentos/CASAMENTO12.jpg",
+  "/images/Casamentos/CASAMENTO13.jpg",
+  "/images/Casamentos/CASAMENTO14.jpg",
+  "/images/Casamentos/CASAMENTO15.jpg",
+  "/images/Casamentos/CASAMENTO16.jpg",
+]
+
+export const MATERNITY_PHOTOS: readonly string[] = Array.from(
+  { length: 39 },
+  (_, index) => `/images/Gestante/Gestante${index + 1}.jpg`,
+)
+
 // ── COLEÇÕES CURADAS POR SEGMENTO ─────────────────────────────
 export const PHOTOS = {
   // Ativações & Eventos
@@ -576,21 +600,10 @@ export const PHOTOS = {
   ],
 
   // Casamentos
-  weddings: [
-    "photo-1532712938310-34cb3982ef74",
-    "photo-1606216794079-73f85bbd57d5",
-    "photo-1550713450-94c9b4fc9f25",
-    "photo-1665339437169-2fbf4b66f6c3",
-    "photo-1600270237614-d20aef1c8b14",
-  ],
+  weddings: WEDDING_PHOTOS,
 
   // Gestantes
-  maternity: [
-    "photo-1779323539476-ccd2e4864390",
-    "photo-1772306096776-94ccc94d8a89",
-    "photo-1759559584015-4600f0a0ec72",
-    "photo-1611306743426-f8877e6ad67f",
-  ],
+  maternity: MATERNITY_PHOTOS,
 
   // Hotelaria & Lifestyle
   hotel: [

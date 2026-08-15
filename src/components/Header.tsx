@@ -90,8 +90,8 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
         transparent
-          ? "border-b border-transparent bg-gradient-to-b from-ink/60 to-transparent"
-          : "border-b border-off/10 bg-ink/75 backdrop-blur-md"
+          ? "border-b border-transparent bg-ink/20"
+          : "border-b border-off/10 bg-ink/95"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-10">
@@ -111,14 +111,14 @@ export default function Header() {
         {/* Desktop nav */}
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-6 lg:flex"
         >
           {navLinks.map((l) => (
             <Link
               key={l.href}
               to={l.href}
               viewTransition={!l.hash}
-              className={`text-sm tracking-wide transition-colors duration-200 ease-out ${
+              className={`text-sm transition-colors duration-200 ease-out ${
                 isActive(l.href, l.hash)
                   ? transparent
                     ? "text-off"
@@ -134,10 +134,10 @@ export default function Header() {
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className={`rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ease-out ${
+            className={`border px-4 py-2 text-sm font-medium transition-colors duration-200 ease-out ${
               transparent
-                ? "border border-teal-400/50 bg-teal/10 text-off hover:bg-teal hover:text-off"
-                : "bg-teal text-off hover:bg-teal-400"
+                ? "border-off/35 text-off hover:border-teal hover:text-teal-400"
+                : "border-off/25 text-off hover:border-teal hover:text-teal-400"
             }`}
           >
             Iniciar projeto
@@ -175,11 +175,11 @@ export default function Header() {
       {open && (
         <>
           <div
-            className="fixed inset-0 top-[72px] z-40 bg-ink/50 backdrop-blur-xs lg:hidden"
+            className="fixed inset-0 top-[72px] z-40 bg-ink/60 lg:hidden"
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink/95 shadow-2xl backdrop-blur-md lg:hidden">
+          <div className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink lg:hidden">
             <nav aria-label="Navegação móvel" className="px-5 py-6">
               {navLinks.map((l) => (
                 <Link
@@ -196,7 +196,7 @@ export default function Header() {
                 to="/diagnostico-visual"
                 viewTransition
                 onClick={() => setOpen(false)}
-                className="mt-6 block rounded-xl bg-teal px-4 py-3.5 text-center font-medium text-off transition-colors hover:bg-teal-400"
+                className="mt-6 block border border-off/30 px-4 py-3 text-center font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
               >
                 Iniciar projeto
               </Link>

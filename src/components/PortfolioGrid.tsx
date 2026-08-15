@@ -7,7 +7,6 @@ import {
   portfolioImageAlt,
 } from "../data/site"
 import { img } from "../lib/images"
-import TiltCard from "./TiltCard"
 
 export default function PortfolioGrid({
   initial = "Todos",
@@ -24,7 +23,7 @@ export default function PortfolioGrid({
   return (
     <div>
       <div
-        className="mb-9 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none sm:flex-wrap sm:pb-0"
+        className="mb-10 flex items-center gap-5 overflow-x-auto border-b border-off/15 pb-3 scrollbar-none sm:flex-wrap"
         role="tablist"
         aria-label="Filtrar portfólio"
       >
@@ -37,10 +36,10 @@ export default function PortfolioGrid({
               role="tab"
               aria-selected={on}
               onClick={() => setFilter(f)}
-              className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
+              className={`shrink-0 whitespace-nowrap border-b pb-1 text-sm transition-colors duration-200 ${
                 on
-                  ? "border-teal bg-teal font-medium text-off shadow-xs"
-                  : "border-off/20 bg-ink/30 text-mist hover:border-teal hover:text-off"
+                  ? "border-teal font-medium text-off"
+                  : "border-transparent text-mist hover:border-teal hover:text-off"
               }`}
             >
               {f}
@@ -50,7 +49,7 @@ export default function PortfolioGrid({
       </div>
 
       {filter === "Artistas & Videoclipes" && featuredVideo?.video && (
-        <div className="mb-8 overflow-hidden rounded-xl border border-off/10 bg-navy shadow-2xl">
+        <div className="mb-10 overflow-hidden border-y border-off/10 bg-navy">
           <video
             autoPlay
             loop
@@ -66,7 +65,7 @@ export default function PortfolioGrid({
 
       <div
         key={filter}
-        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 transition-opacity duration-300 u-fade-in"
+        className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 transition-opacity duration-300 u-fade-in"
       >
         {items.map((it, idx) => {
           const isAboveFold = idx < 3
@@ -81,42 +80,34 @@ export default function PortfolioGrid({
                   loading={isAboveFold ? "eager" : "lazy"}
                   decoding="async"
                   {...(idx === 0 ? { fetchPriority: "high" as const } : {})}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                 />
-                <span className="u-grade absolute inset-0" />
-                <span className="u-eyebrow absolute left-4 top-4 text-teal-400">
-                  {it.category}
-                </span>
-                {it.caseSlug && (
-                  <span className="absolute bottom-4 right-4 rounded-full border border-off/40 bg-ink/40 px-3 py-1 text-xs text-off opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-                    Ver case →
-                  </span>
-                )}
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="text-lg font-semibold leading-tight text-off">
+              <div className="pt-3">
+                <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-teal-400">
+                  {it.category}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold leading-tight text-off">
                   {it.title}
                 </h3>
                 <p className="mt-1 text-sm text-mist">{it.city}</p>
               </div>
             </>
           )
-          const cls =
-            "group relative flex h-full w-full flex-col overflow-hidden rounded-sm border border-off/10"
-          return (
-            <TiltCard key={it.title} className="rounded-sm">
-              {it.caseSlug ? (
-                <Link
-                  to={`/portfolio/${it.caseSlug}`}
-                  viewTransition
-                  className={cls}
-                >
-                  {inner}
-                </Link>
-              ) : (
-                <article className={cls}>{inner}</article>
-              )}
-            </TiltCard>
+          const cls = "group block h-full w-full"
+          return it.caseSlug ? (
+            <Link
+              key={it.title}
+              to={`/portfolio/${it.caseSlug}`}
+              viewTransition
+              className={cls}
+            >
+              {inner}
+            </Link>
+          ) : (
+            <article key={it.title} className={cls}>
+              {inner}
+            </article>
           )
         })}
       </div>

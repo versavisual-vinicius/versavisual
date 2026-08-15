@@ -12,7 +12,6 @@ import {
 } from "../data/site"
 import ServiceGrid from "../components/ServiceGrid"
 import CTASection from "../components/CTASection"
-import TiltCard from "../components/TiltCard"
 import { useParallax } from "../lib/useParallax"
 
 const METHOD_PHOTO = "/images/foto-a-producao-nao-falha.webp"
@@ -61,7 +60,6 @@ export default function Home() {
           muted
           playsInline
           poster={img(HERO_PHOTO, 2000, 1200)}
-          {...{ fetchpriority: "high" }}
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero.webm" type="video/webm" />
@@ -69,54 +67,33 @@ export default function Home() {
         </video>
         <div className="u-grade absolute inset-0" />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
-          <p className="u-eyebrow u-fade-in text-mist">
+          <p className="u-eyebrow u-fade-in text-mist/90">
             Hub audiovisual autoral · Rio de Janeiro · Operação nacional
           </p>
-          <h1 className="u-fade-in mt-5 max-w-4xl text-balance text-4xl leading-[0.98] text-off sm:text-6xl lg:text-[5.2rem]">
-            Imagem não é registro.
-            <br />
-            <span className="text-teal-400">É posicionamento.</span>
+          <h1 className="u-fade-in mt-5 max-w-3xl text-balance text-4xl leading-[1.02] text-off sm:text-5xl lg:text-[4.2rem]">
+            Imagem não é registro. É posicionamento.
           </h1>
           <p className="u-fade-in mt-6 max-w-xl text-pretty text-lg text-mist">
             Fotografia, vídeo, storymaking e direção visual para marcas,
             artistas e pessoas que tratam a própria imagem como decisão
             estratégica.
           </p>
-          <div className="u-fade-in mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="u-fade-in mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="rounded-xs bg-teal px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400 hover:shadow-lg"
+              className="border border-off bg-off px-6 py-3 text-center text-sm font-medium text-ink transition-colors duration-200 hover:border-teal hover:bg-teal hover:text-off"
             >
               Fazer diagnóstico visual
             </Link>
             <Link
               to="/portfolio"
               viewTransition
-              className="rounded-xs border border-off/30 px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:border-teal-400 hover:text-teal-400"
+              className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
             >
-              Ver portfólio
+              Ver portfólio <span aria-hidden>→</span>
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="border-b border-off/10 bg-ink/35 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-px bg-off/10 px-0 lg:grid-cols-4">
-          {HOME_STATS.map((s) => (
-            <div
-              key={s.label}
-              className="bg-ink/35 px-5 py-8 text-center lg:py-10"
-            >
-              <p className="u-display text-3xl text-off lg:text-4xl">
-                {s.value}
-              </p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-mist">
-                {s.label}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -135,11 +112,24 @@ export default function Home() {
         <ServiceGrid items={HOME_SERVICES} />
       </section>
 
+      {/* STATS */}
+      <section className="border-y border-off/10">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-2 divide-x divide-y divide-off/10 px-5 lg:grid-cols-4 lg:px-10">
+          {HOME_STATS.map((s) => (
+            <div key={s.label} className="py-7 lg:py-8">
+              <p className="u-display text-2xl text-off lg:text-3xl">
+                {s.value}
+              </p>
+              <p className="mt-2 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-mist">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* SEGMENTS */}
-      <section
-        id="nichos"
-        className="border-y border-off/10 bg-ink/35 backdrop-blur-sm"
-      >
+      <section id="nichos" className="border-y border-off/10 bg-ink">
         <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
@@ -156,40 +146,33 @@ export default function Home() {
               Ver portfólio completo →
             </Link>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px border-y border-off/10 sm:grid-cols-2 lg:grid-cols-4">
             {SEGMENTS.map((s) => (
-              <TiltCard
+              <Link
                 key={s.slug}
-                className="aspect-[16/11] rounded-xs sm:aspect-[3/4] sm:rounded-xl"
+                to={`/${s.slug}`}
+                viewTransition
+                className="group relative flex aspect-[16/11] overflow-hidden bg-navy sm:aspect-[3/4]"
               >
-                <Link
-                  to={`/${s.slug}`}
-                  viewTransition
-                  className="group relative flex h-full w-full overflow-hidden rounded-xs border border-off/10 bg-navy transition-shadow duration-250 ease-out hover:shadow-2xl sm:rounded-xl"
-                >
-                  <img
-                    src={img(s.photos[0], 700, 900)}
-                    alt={segmentImageAlt(s)}
-                    width={700}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                  <span className="u-grade absolute inset-0" />
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <span className="u-display text-xs text-teal-400/80">
-                      {s.index}
-                    </span>
-                    <h3 className="mt-1.5 text-base font-semibold leading-tight text-off sm:text-lg">
-                      {s.nav}
-                    </h3>
-                    <span className="mt-2 inline-block text-sm font-medium text-teal-400 sm:opacity-0 sm:transition-opacity sm:duration-150 sm:group-hover:opacity-100">
-                      Ver mais →
-                    </span>
-                  </div>
-                </Link>
-              </TiltCard>
+                <img
+                  src={img(s.photos[0], 700, 900)}
+                  alt={segmentImageAlt(s)}
+                  width={700}
+                  height={900}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+                />
+                <span className="u-grade absolute inset-0" />
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                  <span className="text-xs font-medium text-teal-400/90">
+                    {s.index}
+                  </span>
+                  <h3 className="mt-1 text-base font-semibold leading-tight text-off sm:text-lg">
+                    {s.nav}
+                  </h3>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -210,7 +193,7 @@ export default function Home() {
               <div
                 ref={btsParallaxRef}
                 style={btsParallaxStyle}
-                className="overflow-hidden rounded-xl border border-line"
+                className="overflow-hidden rounded-xs border border-line"
               >
                 <img
                   src={img(METHOD_PHOTO, 900, 700)}

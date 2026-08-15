@@ -4,7 +4,7 @@ import Logo from "./Logo"
 
 export default function Footer() {
   return (
-    <footer className="border-t border-off/10 bg-ink/75 backdrop-blur-md">
+    <footer className="border-t border-off/10 bg-ink">
       <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
           {/* Brand */}

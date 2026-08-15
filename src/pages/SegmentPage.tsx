@@ -12,7 +12,6 @@ import {
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
 import { img } from "../lib/images"
 import Reveal from "../components/Reveal"
-import HeroGridLines from "../components/HeroGridLines"
 import FAQAccordion from "../components/FAQAccordion"
 import CTASection from "../components/CTASection"
 import NotFound from "./NotFound"
@@ -169,7 +168,17 @@ export default function SegmentPage({
     <div className="relative overflow-hidden">
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative flex min-h-[74svh] items-end overflow-hidden">
-        <div className="absolute inset-0 bg-ink/10" />
+        <img
+          src={img(seg.photos[0], 2000, 1200)}
+          alt=""
+          aria-hidden="true"
+          width={2000}
+          height={1200}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-ink/25" />
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -177,7 +186,6 @@ export default function SegmentPage({
               "linear-gradient(180deg, rgba(5,10,13,0.34) 0%, rgba(5,10,13,0.18) 46%, rgba(5,10,13,0.78) 100%)",
           }}
         />
-        <HeroGridLines />
         <div className="relative z-10 mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
           <nav
             aria-label="Trilha"
@@ -195,11 +203,11 @@ export default function SegmentPage({
           <p className="mt-6 max-w-2xl text-pretty text-lg text-mist/90">
             {seg.intro}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="rounded-xl bg-teal px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400"
+              className="border border-off bg-off px-6 py-3 text-center text-sm font-medium text-ink transition-colors hover:border-teal hover:bg-teal hover:text-off"
             >
               Falar sobre o projeto
             </Link>
@@ -207,9 +215,9 @@ export default function SegmentPage({
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-off/30 px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:border-teal-400 hover:text-teal-400"
+              className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
             >
-              Falar no WhatsApp
+              Falar no WhatsApp <span aria-hidden>→</span>
             </a>
           </div>
         </div>
@@ -230,7 +238,7 @@ export default function SegmentPage({
                 type="button"
                 onClick={() => setLightboxIdx(index)}
                 aria-label={`Ampliar imagem ${index + 1}`}
-                className={`group relative overflow-hidden rounded-xl bg-navy focus-visible:outline-teal-400 ${
+                className={`group relative overflow-hidden bg-navy focus-visible:outline-teal-400 ${
                   index === 0 && galleryPhotos.length >= 3
                     ? "col-span-2 aspect-[16/10]"
                     : "aspect-[4/5]"
@@ -276,7 +284,7 @@ export default function SegmentPage({
               ))}
             </ul>
 
-            <div className="mt-8 rounded-xl border border-line bg-surface/80 p-5">
+            <div className="mt-8 border-l border-teal bg-surface/80 p-5">
               <p className="text-xs font-semibold uppercase tracking-wider text-navy">
                 Diretriz de Produção
               </p>
@@ -291,9 +299,9 @@ export default function SegmentPage({
       </section>
 
       {/* ── PROBLEMA / SOLUÇÃO ────────────────────────────── */}
-      <section className="relative z-10 border-y border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28">
+      <section className="relative z-10 border-y border-off/10 bg-ink py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
-          <Reveal className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
+          <Reveal className="grid gap-px border-y border-line bg-line sm:grid-cols-2">
             <div className="bg-surface p-8 lg:p-10">
               <p className="u-eyebrow">O problema</p>
               <h3
@@ -341,7 +349,7 @@ export default function SegmentPage({
               {seg.servicesTitle}
             </h2>
           </Reveal>
-          <Reveal className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal className="grid gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {seg.services.map((s) => (
               <button
                 key={s.n}
@@ -371,7 +379,7 @@ export default function SegmentPage({
 
       {/* ── CASES EM DESTAQUE DO SEGMENTO ─────────────────── */}
       {relatedCases.length > 0 && (
-        <section className="relative z-10 border-b border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28">
+        <section className="relative z-10 border-b border-off/10 bg-ink py-20 lg:py-28">
           <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
             <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
               <div className="max-w-2xl">
@@ -393,7 +401,7 @@ export default function SegmentPage({
               </Link>
             </Reveal>
 
-            <Reveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {relatedCases.map((c) => {
                 const cardInner = (
                   <>
@@ -407,17 +415,11 @@ export default function SegmentPage({
                         decoding="async"
                         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <span className="u-grade absolute inset-0" />
-                      <span className="u-eyebrow absolute left-4 top-4 text-teal-400">
-                        {c.city}
-                      </span>
-                      {c.caseSlug && (
-                        <span className="absolute bottom-4 right-4 rounded-full border border-off/40 bg-ink/40 px-3 py-1 text-xs text-off opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-                          Ver case →
-                        </span>
-                      )}
                     </div>
-                    <div className="p-6">
+                    <div className="pt-4">
+                      <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-teal">
+                        {c.city}
+                      </p>
                       <h3 className="text-xl font-semibold leading-snug text-ink">
                         {c.title}
                       </h3>
@@ -433,15 +435,12 @@ export default function SegmentPage({
                     key={c.title}
                     to={`/portfolio/${c.caseSlug}`}
                     viewTransition
-                    className="group flex flex-col overflow-hidden rounded-xl border border-line bg-off transition-shadow duration-300 ease-out hover:shadow-lg"
+                    className="group flex flex-col"
                   >
                     {cardInner}
                   </Link>
                 ) : (
-                  <article
-                    key={c.title}
-                    className="group flex flex-col overflow-hidden rounded-xl border border-line bg-off"
-                  >
+                  <article key={c.title} className="group flex flex-col">
                     {cardInner}
                   </article>
                 )
@@ -463,7 +462,7 @@ export default function SegmentPage({
           </Reveal>
 
           {seg.slug === "artistas-videoclipes" && (
-            <Reveal className="mb-12 overflow-hidden rounded-xl border border-line bg-navy shadow-2xl">
+            <Reveal className="mb-12 overflow-hidden border-y border-line bg-navy">
               <video
                 controls
                 playsInline
@@ -483,7 +482,7 @@ export default function SegmentPage({
                 type="button"
                 onClick={() => setLightboxIdx(i)}
                 aria-label={`Ampliar imagem ${i + 1} de ${seg.nav}`}
-                className={`group relative h-full w-full overflow-hidden rounded-xl bg-navy focus-visible:outline-teal-400 ${
+                className={`group relative h-full w-full overflow-hidden bg-navy focus-visible:outline-teal-400 ${
                   i % 7 === 0
                     ? "col-span-2 row-span-2"
                     : i % 7 === 3
@@ -509,7 +508,7 @@ export default function SegmentPage({
       {/* ── PROCESSO ──────────────────────────────────────── */}
       <section
         id="processo"
-        className="relative z-10 border-b border-off/10 bg-ink/35 py-20 backdrop-blur-sm lg:py-28"
+        className="relative z-10 border-b border-off/10 bg-ink py-20 lg:py-28"
       >
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-12 max-w-2xl">
@@ -518,7 +517,7 @@ export default function SegmentPage({
               Do briefing à entrega, com método.
             </h2>
           </Reveal>
-          <Reveal className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="grid gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {seg.process.map((p) => (
               <div key={p.n} className="bg-surface p-7 lg:p-8">
                 <span className="u-display text-5xl text-teal/20">{p.n}</span>
@@ -535,7 +534,7 @@ export default function SegmentPage({
             {seg.regions.map((r) => (
               <span
                 key={r}
-                className="rounded-full border border-off/20 px-4 py-1.5 text-xs text-mist"
+                className="border-l border-off/20 pl-3 text-xs text-mist"
               >
                 {r}
               </span>
@@ -575,7 +574,7 @@ export default function SegmentPage({
                 key={o.slug}
                 to={`/${o.slug}`}
                 viewTransition
-                className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-line transition-shadow duration-300 ease-out hover:shadow-lg"
+                className="group relative aspect-[16/10] overflow-hidden border-y border-line"
               >
                 <img
                   src={img(o.photos[0], 700, 440)}

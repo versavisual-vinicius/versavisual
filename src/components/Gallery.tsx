@@ -97,13 +97,13 @@ export default function Gallery({ photos, label }: Props) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:gap-4">
+      <div className="grid grid-cols-2 gap-px border-y border-off/10 sm:grid-cols-2 md:grid-cols-3">
         {photos.map((p, i) => (
           <button
             key={p}
             type="button"
             onClick={() => setActive(i)}
-            className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-navy focus-visible:outline-teal-400"
+            className="group relative aspect-[4/5] overflow-hidden bg-navy focus-visible:outline-teal-400"
             aria-label={`Ampliar imagem ${i + 1} de ${label}`}
           >
             <img
@@ -111,9 +111,9 @@ export default function Gallery({ photos, label }: Props) {
               alt={`${label} — imagem ${i + 1}`}
               loading={i < 3 ? "eager" : "lazy"}
               decoding="async"
-              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
             />
-            <span className="u-grade-soft absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/10" />
           </button>
         ))}
       </div>

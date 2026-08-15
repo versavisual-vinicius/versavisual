@@ -16,10 +16,10 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="border-b border-off/10 bg-ink/35 pt-[72px] backdrop-blur-sm">
+      <section className="border-b border-off/10 bg-ink pt-[72px]">
         <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
           <p className="u-eyebrow text-mist">Portfólio</p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl leading-[1.0] text-off sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl leading-[1.04] text-off sm:text-5xl lg:text-5xl">
             O trabalho fala. Cada segmento tem a sua linguagem.
           </h1>
           <p className="mt-5 max-w-xl text-mist">

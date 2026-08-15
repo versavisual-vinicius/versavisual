@@ -89,7 +89,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 </div>
 
                 <div className="w-full pl-16 md:pl-4">
-                  <div className="rounded-xl border border-line bg-off/95 p-6 shadow-xs backdrop-blur-sm transition-shadow duration-300 hover:shadow-md lg:p-8">
+                  <div className="border-l border-line bg-off p-6 lg:p-8">
                     <div className="mb-5 flex items-baseline justify-between gap-4">
                       <div>
                         {item.eyebrow && (

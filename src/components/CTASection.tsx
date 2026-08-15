@@ -37,21 +37,17 @@ export default function CTASection({
         />
       </div>
       <div className="absolute inset-0 bg-ink/80" aria-hidden="true" />
-      <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(94,127,140,0.28),transparent_58%)]"
-        aria-hidden="true"
-      />
       <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
         <p className="u-eyebrow text-mist">{eyebrow}</p>
         <h2 className="mt-5 text-balance text-3xl leading-[1.05] text-off sm:text-4xl lg:text-5xl">
           {title}
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-pretty text-mist">{text}</p>
-        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className="w-full rounded-xs bg-teal px-7 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 sm:w-auto"
+            className="w-full border border-off bg-off px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-teal hover:bg-teal hover:text-off sm:w-auto"
           >
             Fazer diagnóstico visual
           </Link>
@@ -59,9 +55,9 @@ export default function CTASection({
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full rounded-xs border border-line-strong px-7 py-3.5 font-medium text-off transition-colors hover:border-teal-400 hover:text-teal-400 sm:w-auto"
+            className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
           >
-            Falar no WhatsApp
+            Falar no WhatsApp <span aria-hidden>→</span>
           </a>
         </div>
       </div>

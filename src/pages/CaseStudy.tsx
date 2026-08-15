@@ -129,7 +129,7 @@ export default function CaseStudy() {
 
       {item.video && (
         <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
-          <div className="relative overflow-hidden rounded-xl border border-off/10 bg-navy shadow-2xl">
+          <div className="relative overflow-hidden rounded-xs border border-off/10 bg-navy">
             <video
               controls
               playsInline
@@ -147,7 +147,7 @@ export default function CaseStudy() {
       </section>
 
       {related.length > 0 && (
-        <section className="border-t border-off/10 bg-ink/35 backdrop-blur-sm">
+        <section className="border-t border-off/10 bg-ink">
           <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
             <p className="u-eyebrow mb-8 text-mist">Cases relacionados</p>
             <div className="grid gap-4 sm:grid-cols-3">

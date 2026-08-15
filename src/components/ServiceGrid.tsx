@@ -3,7 +3,7 @@ import TiltCard from "./TiltCard"
 
 export default function ServiceGrid({ items }: { items: Service[] }) {
   return (
-    <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
       {items.map((s) => (
         <TiltCard
           key={s.n}
@@ -11,9 +11,7 @@ export default function ServiceGrid({ items }: { items: Service[] }) {
           className="group relative flex h-full flex-col justify-between bg-off p-7 transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
         >
           <div>
-            <span className="u-display text-sm font-semibold text-navy">
-              {s.n}
-            </span>
+            <span className="text-sm font-medium text-navy">{s.n}</span>
             <h3 className="mt-4 text-xl font-semibold text-ink">{s.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-navy">{s.desc}</p>
           </div>
