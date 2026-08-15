@@ -1,5 +1,11 @@
 import { useParams, Link } from "react-router-dom"
-import { getCase, getSegment, PORTFOLIO, WHATSAPP } from "../data/site"
+import {
+  getCase,
+  getSegment,
+  PORTFOLIO,
+  WHATSAPP,
+  portfolioImageAlt,
+} from "../data/site"
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
 import { img } from "../lib/images"
 import Gallery from "../components/Gallery"
@@ -154,7 +160,7 @@ export default function CaseStudy() {
                 >
                   <img
                     src={img(r.photo, 700, 440)}
-                    alt=""
+                    alt={portfolioImageAlt(r)}
                     width={700}
                     height={440}
                     loading="lazy"

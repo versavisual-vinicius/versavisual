@@ -8,6 +8,7 @@ import {
   HOME_STATS,
   SEGMENTS,
   WHATSAPP,
+  segmentImageAlt,
 } from "../data/site"
 import ServiceGrid from "../components/ServiceGrid"
 import CTASection from "../components/CTASection"
@@ -23,7 +24,7 @@ const Timeline = lazy(async () => {
 
 export default function Home() {
   useSeo({
-    title: "VERSAVISUAL — Hub Audiovisual: Fotografia, Vídeo e Direção Visual",
+    title: "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas",
     description:
       "Hub audiovisual autoral. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas. Diagnóstico visual gratuito e portfólio por segmento.",
     path: "/",
@@ -157,15 +158,18 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SEGMENTS.map((s) => (
-              <TiltCard key={s.slug} className="aspect-[3/4] rounded-xl">
+              <TiltCard
+                key={s.slug}
+                className="aspect-[16/11] rounded-xs sm:aspect-[3/4] sm:rounded-xl"
+              >
                 <Link
                   to={`/${s.slug}`}
                   viewTransition
-                  className="group relative flex h-full w-full overflow-hidden rounded-xl border border-line transition-shadow duration-250 ease-out hover:shadow-2xl"
+                  className="group relative flex h-full w-full overflow-hidden rounded-xs border border-off/10 bg-navy transition-shadow duration-250 ease-out hover:shadow-2xl sm:rounded-xl"
                 >
                   <img
                     src={img(s.photos[0], 700, 900)}
-                    alt=""
+                    alt={segmentImageAlt(s)}
                     width={700}
                     height={900}
                     loading="lazy"
@@ -173,14 +177,14 @@ export default function Home() {
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <span className="u-grade absolute inset-0" />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
                     <span className="u-display text-xs text-teal-400/80">
                       {s.index}
                     </span>
-                    <h3 className="mt-1.5 text-lg font-semibold leading-tight text-off">
+                    <h3 className="mt-1.5 text-base font-semibold leading-tight text-off sm:text-lg">
                       {s.nav}
                     </h3>
-                    <span className="mt-2 inline-block text-sm text-teal-400 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+                    <span className="mt-2 inline-block text-sm font-medium text-teal-400 sm:opacity-0 sm:transition-opacity sm:duration-150 sm:group-hover:opacity-100">
                       Ver mais →
                     </span>
                   </div>

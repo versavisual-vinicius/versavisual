@@ -31,15 +31,19 @@ export default function CTASection({
           aria-hidden
           width={1800}
           height={900}
-          className="h-full w-full object-cover opacity-30 scale-105"
+          className="h-full w-full object-cover opacity-[0.22] scale-105"
           loading="lazy"
           decoding="async"
         />
       </div>
-      <div className="u-grade absolute inset-0" />
+      <div className="absolute inset-0 bg-ink/80" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(94,127,140,0.28),transparent_58%)]"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
-        <p className="u-eyebrow">{eyebrow}</p>
-        <h2 className="mt-5 text-balance text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">
+        <p className="u-eyebrow text-mist">{eyebrow}</p>
+        <h2 className="mt-5 text-balance text-3xl leading-[1.05] text-off sm:text-4xl lg:text-5xl">
           {title}
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-pretty text-mist">{text}</p>

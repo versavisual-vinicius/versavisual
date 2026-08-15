@@ -5,6 +5,8 @@ import {
   SEGMENTS,
   WHATSAPP,
   PORTFOLIO,
+  portfolioImageAlt,
+  segmentImageAlt,
   type Segment,
 } from "../data/site"
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
@@ -398,7 +400,7 @@ export default function SegmentPage({
                     <div className="relative aspect-[16/10] overflow-hidden bg-navy">
                       <img
                         src={img(c.photo, 800, 500)}
-                        alt=""
+                        alt={portfolioImageAlt(c)}
                         width={800}
                         height={500}
                         loading="lazy"
@@ -577,7 +579,7 @@ export default function SegmentPage({
               >
                 <img
                   src={img(o.photos[0], 700, 440)}
-                  alt=""
+                  alt={segmentImageAlt(o)}
                   width={700}
                   height={440}
                   loading="lazy"

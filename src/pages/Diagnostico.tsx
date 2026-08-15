@@ -26,6 +26,10 @@ const BUDGETS = [
   "Ainda não sei",
 ]
 
+function fieldErrorId(name: string) {
+  return `${name}-error`
+}
+
 const field =
   "w-full rounded-xs border border-line-strong bg-white px-4 py-3 text-ink placeholder:text-navy/40 transition-colors focus:border-teal focus:outline-none"
 const labelCls = "mb-2 block text-sm text-ink font-medium"
@@ -311,11 +315,25 @@ export default function Diagnostico() {
           </div>
 
           {submitError && (
-            <div className="mb-6 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-800">
+            <div
+              className="mb-6 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-800"
+              role="status"
+              aria-live="polite"
+            >
               <p className="font-medium">Falha no envio</p>
               <p className="mt-1">{submitError}</p>
             </div>
           )}
+
+          <div className="sr-only" role="status" aria-live="polite">
+            {isSubmitting
+              ? "Enviando diagnóstico."
+              : submitError
+                ? "Falha no envio do diagnóstico."
+                : Object.keys(errors).length > 0
+                  ? "Revise os campos obrigatórios destacados."
+                  : ""}
+          </div>
 
           <form onSubmit={onSubmit} noValidate className="grid gap-6">
             {/* Honeypot field for anti-spam */}
@@ -338,9 +356,18 @@ export default function Diagnostico() {
                   required
                   className={field}
                   placeholder="Seu nome"
+                  aria-invalid={errors.nome || undefined}
+                  aria-describedby={
+                    errors.nome ? fieldErrorId("nome") : undefined
+                  }
                 />
                 {errors.nome && (
-                  <p className="mt-1.5 text-xs text-navy">Informe seu nome.</p>
+                  <p
+                    id={fieldErrorId("nome")}
+                    className="mt-1.5 text-xs text-navy"
+                  >
+                    Informe seu nome.
+                  </p>
                 )}
               </div>
               <div>
@@ -369,9 +396,16 @@ export default function Diagnostico() {
                   inputMode="tel"
                   className={field}
                   placeholder="(00) 00000-0000"
+                  aria-invalid={errors.whatsapp || undefined}
+                  aria-describedby={
+                    errors.whatsapp ? fieldErrorId("whatsapp") : undefined
+                  }
                 />
                 {errors.whatsapp && (
-                  <p className="mt-1.5 text-xs text-navy">
+                  <p
+                    id={fieldErrorId("whatsapp")}
+                    className="mt-1.5 text-xs text-navy"
+                  >
                     Informe um WhatsApp para contato.
                   </p>
                 )}
@@ -387,9 +421,16 @@ export default function Diagnostico() {
                   required
                   className={field}
                   placeholder="voce@email.com"
+                  aria-invalid={errors.email || undefined}
+                  aria-describedby={
+                    errors.email ? fieldErrorId("email") : undefined
+                  }
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-xs text-navy">
+                  <p
+                    id={fieldErrorId("email")}
+                    className="mt-1.5 text-xs text-navy"
+                  >
                     Informe um e-mail válido.
                   </p>
                 )}
@@ -484,12 +525,14 @@ export default function Diagnostico() {
                 Faixa de investimento estimada
               </legend>
               <div className="grid gap-2.5 sm:grid-cols-2">
-                {BUDGETS.map((b) => (
+                {BUDGETS.map((b, index) => (
                   <label
                     key={b}
+                    htmlFor={`investimento-${index}`}
                     className="flex cursor-pointer items-center gap-3 rounded-xs border border-line-strong bg-white px-4 py-3 text-sm text-navy transition-colors hover:border-teal/60 has-[:checked]:border-teal has-[:checked]:text-ink"
                   >
                     <input
+                      id={`investimento-${index}`}
                       type="radio"
                       name="investimento"
                       value={b}

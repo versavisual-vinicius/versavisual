@@ -1031,6 +1031,10 @@ export function getSegment(slug?: string): Segment | undefined {
   return SEGMENTS.find((s) => s.slug === target)
 }
 
+export function segmentImageAlt(segment: Segment): string {
+  return `${segment.nav}: fotografia de referência para ${segment.category.toLowerCase()} pela VERSAVISUAL`
+}
+
 // ---- Portfolio ----
 export type PortfolioItem = {
   category: string
@@ -1241,6 +1245,10 @@ export const PORTFOLIO: PortfolioItem[] = [
     gallery: HOTELARIA_LIFESTYLE_PHOTOS,
   },
 ]
+
+export function portfolioImageAlt(item: PortfolioItem): string {
+  return `${item.title} em ${item.city}, case de ${item.category.toLowerCase()} da VERSAVISUAL`
+}
 
 export const PORTFOLIO_FILTERS = [
   "Todos",

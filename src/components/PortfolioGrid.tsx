@@ -1,6 +1,11 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { PORTFOLIO, PORTFOLIO_FILTERS, matchesFilter } from "../data/site"
+import {
+  PORTFOLIO,
+  PORTFOLIO_FILTERS,
+  matchesFilter,
+  portfolioImageAlt,
+} from "../data/site"
 import { img } from "../lib/images"
 import TiltCard from "./TiltCard"
 
@@ -70,7 +75,7 @@ export default function PortfolioGrid({
               <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                 <img
                   src={img(it.photo, 800, 1000)}
-                  alt=""
+                  alt={portfolioImageAlt(it)}
                   width={800}
                   height={1000}
                   loading={isAboveFold ? "eager" : "lazy"}

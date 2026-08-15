@@ -29,6 +29,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="fixed inset-0 z-0 bg-ink" aria-hidden="true" />
+      <a href="#main" className="skip-link">
+        Pular para o conteúdo
+      </a>
       {showAmbient && (
         <Suspense fallback={null}>
           <BeamsBackground
@@ -39,7 +42,7 @@ export default function App() {
       )}
       <ScrollToTop />
       <Header />
-      <main className="relative z-10">
+      <main id="main" className="relative z-10" tabIndex={-1}>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />

@@ -90,7 +90,8 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     return html.replace(`<!-- ${slotName} -->`, content)
   }
 
-  const title = config.title ?? "Figma Make App"
+  const title =
+    config.title ?? "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas"
   const description = config.description ?? ""
   const favicon = config.icons?.icon ?? ""
   const socialImage = config.openGraph?.image ?? ""
@@ -245,8 +246,8 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
             },
             {
               tag: "a",
-              attrs: { class: "figma-bypass-link", href: "#root" },
-              children: "Skip to content",
+              attrs: { class: "figma-bypass-link", href: "#main" },
+              children: "Pular para o conteúdo",
               injectTo: "body-prepend",
             },
           )
