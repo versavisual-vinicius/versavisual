@@ -169,7 +169,7 @@ export default function SegmentPage({
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative flex min-h-[74svh] items-end overflow-hidden">
         <img
-          src={img(seg.photos[0], 2000, 1200)}
+          src={img(seg.heroPhoto, 2000, 1200)}
           alt=""
           aria-hidden="true"
           width={2000}

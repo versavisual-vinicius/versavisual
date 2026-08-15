@@ -126,6 +126,7 @@ export type Segment = {
   ctaText: string
   faqTitle: string
   faqs: Faq[]
+  heroPhoto: string
   photos: readonly string[]
   regions: string[]
 }
@@ -237,6 +238,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.events[18],
     photos: PHOTOS.events,
     regions: [
       "Rio de Janeiro",
@@ -351,6 +353,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.fashion[24],
     photos: PHOTOS.fashion,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
   },
@@ -459,6 +462,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.artists[12],
     photos: PHOTOS.artists,
     regions: ["Rio de Janeiro", "Salvador", "São Paulo", "Operação nacional"],
   },
@@ -567,6 +571,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.professional[18],
     photos: PHOTOS.professional,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
   },
@@ -675,6 +680,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.personal[16],
     photos: PHOTOS.personal,
     regions: ["Rio de Janeiro", "Operação sob consulta"],
   },
@@ -783,6 +789,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico entendemos data, local, duração, número de convidados e entregáveis, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.weddings[7],
     photos: PHOTOS.weddings,
     regions: ["Rio de Janeiro", "Macaé", "Destination weddings"],
   },
@@ -891,6 +898,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.maternity[7],
     photos: PHOTOS.maternity,
     regions: ["Rio de Janeiro", "Macaé", "Praia e natureza"],
   },
@@ -999,6 +1007,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, diárias de captação e entregáveis, e montamos uma proposta por faixa de investimento.",
       },
     ],
+    heroPhoto: PHOTOS.hotel[1],
     photos: PHOTOS.hotel,
     regions: ["Rio de Janeiro", "Litoral e resorts", "Operação nacional"],
   },
