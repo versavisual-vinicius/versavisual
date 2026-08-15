@@ -136,8 +136,8 @@ export default function Header() {
             viewTransition
             className={`rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ease-out ${
               transparent
-                ? "border border-teal-400/50 bg-teal/10 text-off hover:bg-teal hover:text-ink"
-                : "bg-teal text-ink hover:bg-teal-400"
+                ? "border border-teal-400/50 bg-teal/10 text-off hover:bg-teal hover:text-off"
+                : "bg-teal text-off hover:bg-teal-400"
             }`}
           >
             Iniciar projeto
@@ -196,7 +196,7 @@ export default function Header() {
                 to="/diagnostico-visual"
                 viewTransition
                 onClick={() => setOpen(false)}
-                className="mt-6 block rounded-xl bg-teal px-4 py-3.5 text-center font-medium text-ink transition-colors hover:bg-teal-400"
+                className="mt-6 block rounded-xl bg-teal px-4 py-3.5 text-center font-medium text-off transition-colors hover:bg-teal-400"
               >
                 Iniciar projeto
               </Link>

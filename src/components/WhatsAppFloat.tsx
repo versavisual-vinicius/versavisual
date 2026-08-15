@@ -9,7 +9,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
     >
-      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-teal text-ink transition-colors duration-300 group-hover:bg-ink group-hover:text-teal">
+      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-teal text-off transition-colors duration-300 group-hover:bg-ink group-hover:text-teal">
         <svg
           viewBox="0 0 24 24"
           className="h-5 w-5"

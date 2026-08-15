@@ -199,7 +199,7 @@ export default function SegmentPage({
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="rounded-xl bg-teal px-7 py-3.5 text-center font-medium text-ink transition-all duration-200 ease-out hover:bg-teal-400"
+              className="rounded-xl bg-teal px-7 py-3.5 text-center font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400"
             >
               Falar sobre o projeto
             </Link>
@@ -747,7 +747,7 @@ export default function SegmentPage({
               <Link
                 to="/diagnostico-visual"
                 onClick={() => setOpenService(null)}
-                className="inline-block rounded-xl bg-teal px-6 py-3 font-medium text-ink transition-all duration-200 ease-out hover:bg-teal-400"
+                className="inline-block rounded-xl bg-teal px-6 py-3 font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400"
               >
                 Solicitar diagnóstico →
               </Link>

@@ -39,7 +39,7 @@ export default function PortfolioGrid({
               onClick={() => setFilter(f)}
               className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
                 on
-                  ? "border-teal bg-teal font-medium text-ink shadow-xs"
+                  ? "border-teal bg-teal font-medium text-off shadow-xs"
                   : "border-off/20 bg-ink/30 text-mist hover:border-teal hover:text-off"
               }`}
             >

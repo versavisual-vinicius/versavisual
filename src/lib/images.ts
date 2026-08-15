@@ -1,13 +1,14 @@
 // VERSAVISUAL Image System
 // Sourced from project productions, categorized by album & segment.
 
+const LOCAL_IMAGE_FALLBACK = "/images/megabloco-cha-da-alice/hero-poster.webp"
+
 export function img(id: string, w = 1200, h?: number): string {
   if (!id) return ""
   if (id.startsWith("/") || id.startsWith("http") || id.startsWith("data:")) {
     return id
   }
-  const base = `https://images.unsplash.com/${id}?auto=format&fit=crop&q=72&w=${w}`
-  return h ? `${base}&h=${h}` : base
+  return LOCAL_IMAGE_FALLBACK
 }
 
 // ── ALBUMS COMPLETOS POR PRODUÇÃO ───────────────────────────

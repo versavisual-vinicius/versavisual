@@ -238,7 +238,7 @@ export default function Diagnostico() {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xs bg-teal px-8 py-3.5 font-medium text-ink transition-colors hover:bg-teal-400 flex items-center justify-center gap-2 shadow-md"
+            className="rounded-xs bg-teal px-8 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 flex items-center justify-center gap-2 shadow-md"
           >
             <span>Continuar no WhatsApp com Briefing</span>
             <span aria-hidden>→</span>
@@ -561,7 +561,7 @@ export default function Diagnostico() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-xs bg-teal px-8 py-3.5 font-medium text-ink transition-colors hover:bg-teal-400 disabled:opacity-60 flex items-center justify-center gap-2"
+                className="rounded-xs bg-teal px-8 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 disabled:opacity-60 flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>

@@ -51,7 +51,7 @@ export default function CTASection({
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className="w-full rounded-xs bg-teal px-7 py-3.5 font-medium text-ink transition-colors hover:bg-teal-400 sm:w-auto"
+            className="w-full rounded-xs bg-teal px-7 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 sm:w-auto"
           >
             Fazer diagnóstico visual
           </Link>
