@@ -90,7 +90,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
         transparent
-          ? "border-b border-transparent bg-ink/20"
+          ? "border-b border-off/10 bg-ink/60 backdrop-blur-md"
           : "border-b border-off/10 bg-ink/95"
       }`}
     >
@@ -136,7 +136,7 @@ export default function Header() {
             viewTransition
             className={`border px-4 py-2 text-sm font-medium transition-colors duration-200 ease-out ${
               transparent
-                ? "border-off/35 text-off hover:border-teal hover:text-teal-400"
+                ? "border-off/35 bg-off/10 text-off hover:border-teal hover:bg-off/15 hover:text-teal-400"
                 : "border-off/25 text-off hover:border-teal hover:text-teal-400"
             }`}
           >
