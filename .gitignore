@@ -3,6 +3,7 @@ dist/
 build/
 .cache/
 .env*
+!.env.example
 .vite/
 vite.config.*.timestamp-*
 *.tsbuildinfo
@@ -20,4 +21,4 @@ logs/
 /.opencode-skills/
 .DS_Store
 .vercel/
-
+.vercel

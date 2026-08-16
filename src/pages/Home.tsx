@@ -155,7 +155,7 @@ export default function Home() {
                 className="group relative flex aspect-[16/11] overflow-hidden bg-navy sm:aspect-[3/4]"
               >
                 <img
-                  src={img(s.photos[0], 700, 900)}
+                  src={img(s.heroPhoto || s.photos[0], 700, 900)}
                   alt={segmentImageAlt(s)}
                   width={700}
                   height={900}

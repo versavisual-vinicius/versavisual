@@ -137,36 +137,24 @@ export default function Diagnostico() {
     setIsSubmitting(true)
 
     try {
-      // 1. Persist locally in backup storage
-      try {
-        const stored = JSON.parse(
-          localStorage.getItem("versavisual_leads") || "[]",
-        )
-        stored.push(lead)
-        localStorage.setItem("versavisual_leads", JSON.stringify(stored))
-      } catch {
-        // Safe fallback if localStorage is disabled
+      const res = await fetch("/api/diagnostico", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(lead),
+      })
+      const responseType = res.headers.get("content-type") || ""
+      if (!res.ok || !responseType.includes("application/json")) {
+        throw new Error("Erro ao enviar dados para o servidor")
       }
 
-      // 2. Dispatch to endpoint / webhook if configured
-      const webhookUrl = (import.meta as unknown as {
-        env: Record<string, string>
-      }).env?.VITE_LEAD_WEBHOOK_URL
-      if (webhookUrl) {
-        const res = await fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(lead),
-        })
-        if (!res.ok) {
-          throw new Error("Erro ao enviar dados para o servidor")
-        }
+      const result = (await res.json()) as { ok?: boolean }
+      if (!result.ok) {
+        throw new Error("Erro ao enviar dados para o servidor")
       }
 
-      // Successful submission
       setSubmittedLead(lead)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } catch (err) {

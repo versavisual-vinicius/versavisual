@@ -580,21 +580,17 @@ export const PHOTOS = {
   ],
 
   // Artistas & Videoclipes
-  artists: [
-    ...BACKSTAGE_CLIPE_SURURU_PHOTOS,
-    ...MEGABLOCO_CHA_DA_ALICE_PHOTOS.slice(15, 35),
-  ],
+  artists: [...BACKSTAGE_CLIPE_SURURU_PHOTOS, ...MEGABLOCO_CHA_DA_ALICE_PHOTOS],
 
   // Posicionamento Profissional
   professional: [
+    ...ENSAIO_AUTORAL_PHOTOS.slice(69),
     ...ENSAIO_STREET_PHOTOS,
-    ...BONFIM_HOUSE_PHOTOS,
-    ...ENSAIO_AUTORAL_PHOTOS.slice(0, 15),
   ],
 
   // Imagem Pessoal & Lifestyle
   personal: [
-    ...ENSAIO_AUTORAL_PHOTOS,
+    ...ENSAIO_AUTORAL_PHOTOS.slice(41),
     ...ENSAIO_STREET_PHOTOS,
     ...LOJA_FRIDA_PHOTOS,
   ],

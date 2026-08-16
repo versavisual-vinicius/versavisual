@@ -19,7 +19,7 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["api", "src", "vite.config.ts"],
   "exclude": [
     "src/imports/Nav.tsx",
     "src/imports/Footer.tsx",

@@ -34,11 +34,7 @@ export default function SegmentPage({
 
   const others = SEGMENTS.filter((s) => s.slug !== seg.slug).slice(0, 3)
   const relatedCases = PORTFOLIO.filter(
-    (p) =>
-      p.segmentSlug === seg.slug ||
-      p.category === seg.category ||
-      p.category.toLowerCase().includes(seg.category.toLowerCase()) ||
-      seg.category.toLowerCase().includes(p.category.toLowerCase()),
+    (p) => p.segmentSlug === seg.slug || p.category === seg.category,
   ).slice(0, 6)
 
   useSeo({
@@ -577,7 +573,7 @@ export default function SegmentPage({
                 className="group relative aspect-[16/10] overflow-hidden border-y border-line"
               >
                 <img
-                  src={img(o.photos[0], 700, 440)}
+                  src={img(o.heroPhoto || o.photos[0], 700, 440)}
                   alt={segmentImageAlt(o)}
                   width={700}
                   height={440}
