@@ -572,28 +572,16 @@ export const PHOTOS = {
   ],
 
   // Moda & Campanhas
-  fashion: [
-    ...FASHION_MANNERS_PHOTOS,
-    ...MODA_SANTALOLA_PHOTOS,
-    ...LOJA_FRIDA_PHOTOS,
-    ...FESTIVAL_JEANS_TORITAMA_PHOTOS.slice(15, 35),
-  ],
+  fashion: [...FASHION_MANNERS_PHOTOS, ...MODA_SANTALOLA_PHOTOS],
 
   // Artistas & Videoclipes
   artists: [...BACKSTAGE_CLIPE_SURURU_PHOTOS, ...MEGABLOCO_CHA_DA_ALICE_PHOTOS],
 
   // Posicionamento Profissional
-  professional: [
-    ...ENSAIO_AUTORAL_PHOTOS.slice(69),
-    ...ENSAIO_STREET_PHOTOS,
-  ],
+  professional: BONFIM_HOUSE_PHOTOS,
 
   // Imagem Pessoal & Lifestyle
-  personal: [
-    ...ENSAIO_AUTORAL_PHOTOS.slice(41),
-    ...ENSAIO_STREET_PHOTOS,
-    ...LOJA_FRIDA_PHOTOS,
-  ],
+  personal: [...ENSAIO_AUTORAL_PHOTOS.slice(41), ...ENSAIO_STREET_PHOTOS],
 
   // Casamentos
   weddings: WEDDING_PHOTOS,
@@ -602,11 +590,7 @@ export const PHOTOS = {
   maternity: MATERNITY_PHOTOS,
 
   // Hotelaria & Lifestyle
-  hotel: [
-    ...HOTELARIA_LIFESTYLE_PHOTOS,
-    ...BONFIM_HOUSE_PHOTOS.slice(0, 4),
-    ...ENSAIO_AUTORAL_PHOTOS.slice(10, 14),
-  ],
+  hotel: HOTELARIA_LIFESTYLE_PHOTOS,
 
   // Bastidores / BTS
   bts: [
