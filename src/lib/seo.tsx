@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 export const SITE_URL = "https://www.versavisual.com.br"
-export const OG_IMAGE = `${SITE_URL}/images/megabloco-cha-da-alice/hero-poster.webp`
+export const OG_IMAGE = `${SITE_URL}/images/foto-a-producao-nao-falha.webp`
 
 type Seo = {
   title: string

@@ -122,6 +122,8 @@ export type Segment = {
   servicesTitle: string
   services: Service[]
   process: SegProcess[]
+  mosaicPhotos?: readonly string[]
+  mosaicPhotoFits?: readonly ("cover" | "contain")[]
   ctaEyebrow: string
   ctaTitle: string
   ctaText: string
@@ -463,8 +465,13 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: MEGABLOCO_CHA_DA_ALICE_PHOTOS[0] || PHOTOS.artists[0],
+    heroPhoto: BACKSTAGE_CLIPE_SURURU_PHOTOS[7] || PHOTOS.artists[0],
     photos: PHOTOS.artists,
+    mosaicPhotos: [
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[7],
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[1],
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[2],
+    ],
     regions: ["Rio de Janeiro", "Salvador", "São Paulo", "Operação nacional"],
   },
   {
@@ -683,6 +690,12 @@ export const SEGMENTS: Segment[] = [
     ],
     heroPhoto: ENSAIO_AUTORAL_PHOTOS[69] || PHOTOS.personal[0],
     photos: PHOTOS.personal,
+    mosaicPhotos: [
+      ENSAIO_AUTORAL_PHOTOS[25],
+      ENSAIO_AUTORAL_PHOTOS[41],
+      ENSAIO_AUTORAL_PHOTOS[42],
+    ],
+    mosaicPhotoFits: ["contain", "cover", "cover"],
     regions: ["Rio de Janeiro", "Operação sob consulta"],
   },
   {
@@ -901,6 +914,12 @@ export const SEGMENTS: Segment[] = [
     ],
     heroPhoto: MATERNITY_PHOTOS[20] || PHOTOS.maternity[0],
     photos: PHOTOS.maternity,
+    mosaicPhotos: [
+      PHOTOS.maternity[0],
+      PHOTOS.maternity[1],
+      PHOTOS.maternity[3],
+    ],
+    mosaicPhotoFits: ["cover", "cover", "contain"],
     regions: ["Rio de Janeiro", "Praia e natureza", "Operação nacional"],
   },
   {

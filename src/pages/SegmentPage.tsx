@@ -157,8 +157,12 @@ export default function SegmentPage({
     setTouchStartY(null)
   }
 
-  const galleryPhotos = [...seg.photos].slice(0, 4)
+  const galleryPhotos = seg.mosaicPhotos ?? [...seg.photos].slice(0, 4)
   const portfolioPhotos = [...seg.photos]
+  const openMosaicPhoto = (photoId: string) => {
+    const photoIndex = seg.photos.indexOf(photoId)
+    setLightboxIdx(photoIndex >= 0 ? photoIndex : 0)
+  }
 
   return (
     <div className="relative overflow-hidden">
@@ -232,7 +236,7 @@ export default function SegmentPage({
               <button
                 key={photoId}
                 type="button"
-                onClick={() => setLightboxIdx(index)}
+                onClick={() => openMosaicPhoto(photoId)}
                 aria-label={`Ampliar imagem ${index + 1}`}
                 className={`group relative overflow-hidden bg-navy focus-visible:outline-teal-400 ${
                   index === 0 && galleryPhotos.length >= 3
@@ -244,7 +248,11 @@ export default function SegmentPage({
                   src={img(photoId, 900)}
                   alt={`${seg.nav} — imagem ${index + 1}`}
                   loading={index === 0 ? "eager" : "lazy"}
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className={`h-full w-full ${
+                    seg.mosaicPhotoFits?.[index] === "contain"
+                      ? "object-contain"
+                      : "object-cover"
+                  } transition-transform duration-700 ease-out group-hover:scale-105`}
                 />
                 <span className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/20" />
               </button>

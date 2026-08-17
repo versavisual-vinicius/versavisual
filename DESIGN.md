@@ -151,7 +151,7 @@ Regra de contraste da marca:
 
 - Usar acervo local em `public/images`.
 - `src/lib/images.ts` nao deve depender de Unsplash ou outros fornecedores externos.
-- Fallback local atual: `/images/megabloco-cha-da-alice/hero-poster.webp`.
+- Fallback local atual: `/images/foto-a-producao-nao-falha.webp`.
 - Preservar imagens reais de producao como principal sinal visual da marca.
 
 ## Validacao
