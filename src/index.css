@@ -146,8 +146,10 @@
     line-height: 1.06;
     text-wrap: balance;
   }
-  button, input, select, textarea {
+  button, input, select, textarea, a {
     font-family: var(--font-head);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   p, li {
     text-wrap: pretty;

@@ -25,8 +25,9 @@ const spring = {
 }
 
 export function Gallery({ children }: { children: React.ReactNode }) {
-  const [selectedImage, setSelectedImage] =
-    React.useState<ImageData | null>(null)
+  const [selectedImage, setSelectedImage] = React.useState<ImageData | null>(
+    null,
+  )
 
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -128,7 +129,6 @@ function GalleryModal() {
   const { selectedImage, setSelectedImage } = context
 
   return createPortal(
-    (
     <AnimatePresence>
       {selectedImage && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center">
@@ -187,8 +187,7 @@ function GalleryModal() {
           </motion.button>
         </div>
       )}
-    </AnimatePresence>
-    ),
+    </AnimatePresence>,
     document.body,
   )
 }

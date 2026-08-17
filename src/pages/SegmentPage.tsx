@@ -314,13 +314,13 @@ export default function SegmentPage({
                       />
                     </div>
                     <div className="pt-4">
-                      <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-teal">
+                      <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-teal-400">
                         {c.city}
                       </p>
-                      <h3 className="text-xl font-semibold leading-snug text-ink">
+                      <h3 className="text-xl font-semibold leading-snug text-off">
                         {c.title}
                       </h3>
-                      <p className="mt-2 text-xs uppercase tracking-wider text-navy">
+                      <p className="mt-2 text-xs uppercase tracking-wider text-mist">
                         {c.category} · {c.city}
                       </p>
                     </div>
@@ -501,7 +501,10 @@ export default function SegmentPage({
               </svg>
             </button>
             <p className="u-eyebrow">Serviço {openService.n}</p>
-            <h3 id="service-modal-title" className="mt-3 text-2xl font-bold text-ink">
+            <h3
+              id="service-modal-title"
+              className="mt-3 text-2xl font-bold text-ink"
+            >
               {openService.title}
             </h3>
             <p className="mt-3 leading-relaxed text-navy">{openService.desc}</p>

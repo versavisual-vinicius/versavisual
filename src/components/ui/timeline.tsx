@@ -18,8 +18,8 @@ interface TimelineProps {
 export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const progressLineRef = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     if (!contentRef.current) return
@@ -41,12 +41,17 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
     const updateProgress = () => {
       frame = 0
       const element = containerRef.current
-      if (!element) return
+      const line = progressLineRef.current
+      if (!element || !line) return
       const rect = element.getBoundingClientRect()
       const start = window.innerHeight * 0.55
       const end = window.innerHeight * 0.65
-      const value = (start - rect.top) / Math.max(1, rect.height - (end - start))
-      setProgress(Math.min(1, Math.max(0, value)))
+      const value =
+        (start - rect.top) / Math.max(1, rect.height - (end - start))
+      const progress = Math.min(1, Math.max(0, value))
+      line.style.opacity =
+        progress > 0 ? String(Math.min(1, progress * 12)) : "0"
+      line.style.transform = `scaleY(${progress})`
     }
     const onScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(updateProgress)
@@ -126,10 +131,11 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
               aria-hidden="true"
             >
               <div
+                ref={progressLineRef}
                 style={{
                   height: "100%",
-                  opacity: progress > 0 ? Math.min(1, progress * 12) : 0,
-                  transform: `scaleY(${progress})`,
+                  opacity: 0,
+                  transform: "scaleY(0)",
                   transformOrigin: "top",
                 }}
                 className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b from-teal via-mist to-transparent will-change-transform"

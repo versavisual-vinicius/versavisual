@@ -20,9 +20,9 @@ export const WHATSAPP = "https://wa.me/5511950747192"
 export const WHATSAPP_LABEL = "11 95074-7192"
 export const EMAIL = "hub@versavisual.com.br"
 
-export type NavItem = { label: string; to: string; hash?: boolean }
+export type NavItem = { label: string to: string hash?: boolean }
 
-export const SEGMENT_NAV: { label: string; to: string }[] = [
+export const SEGMENT_NAV: { label: string to: string }[] = [
   { label: "Ativações & Eventos", to: "/ativacoes-eventos" },
   { label: "Moda & Campanhas", to: "/moda-campanhas" },
   { label: "Artistas & Videoclipes", to: "/artistas-videoclipes" },
@@ -33,7 +33,7 @@ export const SEGMENT_NAV: { label: string; to: string }[] = [
   { label: "Hotelaria & Lifestyle", to: "/hotelaria-lifestyle" },
 ]
 
-export type Service = { n: string; title: string; desc: string }
+export type Service = { n: string title: string desc: string }
 
 export const HOME_SERVICES: Service[] = [
   {
@@ -98,8 +98,8 @@ export const HOME_STATS = [
   { value: "5+", label: "Anos de Operação" },
 ]
 
-export type Faq = { q: string; a: string }
-export type SegProcess = { n: string; title: string; desc: string }
+export type Faq = { q: string a: string }
+export type SegProcess = { n: string title: string desc: string }
 
 export type Segment = {
   slug: string

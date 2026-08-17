@@ -116,7 +116,13 @@ export default function Diagnostico() {
     }
 
     setErrors(next)
-    if (Object.keys(next).length > 0) return
+    if (Object.keys(next).length > 0) {
+      const firstKey = Object.keys(next)[0]
+      const el = document.getElementById(firstKey)
+      el?.focus()
+      el?.scrollIntoView({ behavior: "smooth", block: "center" })
+      return
+    }
 
     const lead: LeadData = {
       nome: String(data.get("nome") ?? "").trim(),
@@ -342,7 +348,12 @@ export default function Diagnostico() {
                   id="nome"
                   name="nome"
                   required
-                  className={field}
+                  autoComplete="name"
+                  className={`${field} ${
+                    errors.nome
+                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                      : ""
+                  }`}
                   placeholder="Seu nome"
                   aria-invalid={errors.nome || undefined}
                   aria-describedby={
@@ -352,7 +363,7 @@ export default function Diagnostico() {
                 {errors.nome && (
                   <p
                     id={fieldErrorId("nome")}
-                    className="mt-1.5 text-xs text-navy"
+                    className="mt-1.5 text-xs font-medium text-rose-600"
                   >
                     Informe seu nome.
                   </p>
@@ -365,6 +376,7 @@ export default function Diagnostico() {
                 <input
                   id="empresa"
                   name="empresa"
+                  autoComplete="organization"
                   className={field}
                   placeholder="Marca, projeto ou artista"
                 />
@@ -382,7 +394,12 @@ export default function Diagnostico() {
                   type="tel"
                   required
                   inputMode="tel"
-                  className={field}
+                  autoComplete="tel"
+                  className={`${field} ${
+                    errors.whatsapp
+                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                      : ""
+                  }`}
                   placeholder="(00) 00000-0000"
                   aria-invalid={errors.whatsapp || undefined}
                   aria-describedby={
@@ -392,7 +409,7 @@ export default function Diagnostico() {
                 {errors.whatsapp && (
                   <p
                     id={fieldErrorId("whatsapp")}
-                    className="mt-1.5 text-xs text-navy"
+                    className="mt-1.5 text-xs font-medium text-rose-600"
                   >
                     Informe um WhatsApp para contato.
                   </p>
@@ -407,7 +424,12 @@ export default function Diagnostico() {
                   name="email"
                   type="email"
                   required
-                  className={field}
+                  autoComplete="email"
+                  className={`${field} ${
+                    errors.email
+                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                      : ""
+                  }`}
                   placeholder="voce@email.com"
                   aria-invalid={errors.email || undefined}
                   aria-describedby={
@@ -417,7 +439,7 @@ export default function Diagnostico() {
                 {errors.email && (
                   <p
                     id={fieldErrorId("email")}
-                    className="mt-1.5 text-xs text-navy"
+                    className="mt-1.5 text-xs font-medium text-rose-600"
                   >
                     Informe um e-mail válido.
                   </p>
@@ -433,6 +455,7 @@ export default function Diagnostico() {
                 <input
                   id="cidade"
                   name="cidade"
+                  autoComplete="address-level2"
                   className={field}
                   placeholder="Cidade / Estado"
                 />
@@ -553,7 +576,7 @@ export default function Diagnostico() {
               >
                 {isSubmitting ? (
                   <>
-                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-ink border-t-transparent" />
+                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-off border-t-transparent" />
                     <span>Enviando...</span>
                   </>
                 ) : (

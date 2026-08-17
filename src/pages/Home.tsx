@@ -130,7 +130,10 @@ export default function Home() {
       </section>
 
       {/* SEGMENTS */}
-      <section id="nichos" className="u-defer-render border-y border-off/10 bg-ink">
+      <section
+        id="nichos"
+        className="u-defer-render border-y border-off/10 bg-ink"
+      >
         <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
