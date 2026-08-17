@@ -9,22 +9,25 @@ import { img } from "../lib/images"
 type Props = {
   photos: readonly string[]
   label: string
+  featured?: boolean
 }
 
-export default function Gallery({ photos, label }: Props) {
+export default function Gallery({ photos, label, featured = false }: Props) {
   const galleryId = React.useId()
 
   return (
     <SharedGallery>
-      <GalleryGrid>
+      <GalleryGrid featured={featured}>
         {photos.map((photo, index) => (
           <GalleryImage
             key={photo}
             id={`${galleryId}-${label}-${photo}`}
             src={img(photo, 1600)}
             alt={`${label} — imagem ${index + 1}`}
-            loading={index < 4 ? "eager" : "lazy"}
-            fetchPriority={index < 3 ? "high" : "auto"}
+            loading={featured && index < 3 ? "eager" : "lazy"}
+            fetchPriority={featured && index === 0 ? "high" : "auto"}
+            featured={featured}
+            index={index}
           />
         ))}
       </GalleryGrid>

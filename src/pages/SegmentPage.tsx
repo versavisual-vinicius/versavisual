@@ -77,7 +77,9 @@ export default function SegmentPage({
     null,
   )
 
-  const galleryPhotos = seg.mosaicPhotos ?? [...seg.photos].slice(0, 4)
+  const galleryPhotos = Array.from(
+    new Set([seg.heroPhoto, ...(seg.mosaicPhotos ?? seg.photos)]),
+  ).slice(0, 3)
   const portfolioPhotos = [...seg.photos]
   const serviceCloseRef = useRef<HTMLButtonElement>(null)
 
@@ -149,7 +151,7 @@ export default function SegmentPage({
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <Reveal>
-            <Gallery photos={galleryPhotos} label={seg.nav} />
+            <Gallery photos={galleryPhotos} label={seg.nav} featured />
           </Reveal>
 
           {/* Text & Deliverables summary */}

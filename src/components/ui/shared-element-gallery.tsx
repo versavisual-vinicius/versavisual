@@ -56,14 +56,18 @@ export function Gallery({ children }: { children: React.ReactNode }) {
 export function GalleryGrid({
   children,
   className,
+  featured = false,
 }: {
   children: React.ReactNode
   className?: string
+  featured?: boolean
 }) {
   return (
     <div
       className={cn(
-        "columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-3",
+        featured
+          ? "grid grid-cols-2 items-start gap-3 sm:gap-4"
+          : "grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4",
         className,
       )}
     >
@@ -79,6 +83,8 @@ export function GalleryImage({
   className,
   loading,
   fetchPriority,
+  featured,
+  index,
 }: {
   src: string
   alt?: string
@@ -86,6 +92,8 @@ export function GalleryImage({
   className?: string
   loading?: "eager" | "lazy"
   fetchPriority?: "high" | "low" | "auto"
+  featured?: boolean
+  index?: number
 }) {
   const context = React.useContext(GalleryContext)
   if (!context) throw new Error("GalleryImage must be used within a Gallery")
@@ -96,20 +104,24 @@ export function GalleryImage({
       whileHover="hover"
       whileTap="tap"
       className={cn(
-        "relative mb-4 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-xs bg-navy text-left",
+        "group relative block w-full cursor-zoom-in overflow-hidden rounded-sm bg-navy text-left",
+        featured
+          ? index === 0
+            ? "col-span-2 aspect-[16/10]"
+            : "aspect-[4/5]"
+          : "aspect-[4/5]",
         className,
       )}
       onClick={() => context.setSelectedImage({ id, src, alt })}
       aria-label={alt ? `Ampliar: ${alt}` : "Ampliar imagem"}
     >
       <motion.img
-        layoutId={`image-${id}`}
         src={src}
         alt={alt || "Imagem da galeria"}
         loading={loading ?? "lazy"}
         fetchPriority={fetchPriority}
         decoding="async"
-        className="h-auto w-full rounded-xs object-cover"
+        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
         variants={{
           hover: { scale: 0.98 },
           tap: { scale: 0.95 },
@@ -117,10 +129,7 @@ export function GalleryImage({
         transition={spring}
       />
       <motion.span
-        variants={{ hover: { opacity: 1 }, tap: { opacity: 1 } }}
-        initial={{ opacity: 0 }}
-        className="pointer-events-none absolute inset-0 rounded-xs bg-ink/10"
-        transition={{ duration: 0.2 }}
+        className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/10"
         aria-hidden="true"
       />
     </motion.button>
@@ -164,7 +173,6 @@ function GalleryModal() {
             onClick={() => setSelectedImage(null)}
           >
             <motion.img
-              layoutId={`image-${selectedImage.id}`}
               src={selectedImage.src}
               alt={selectedImage.alt || "Imagem ampliada da galeria"}
               className="max-h-[88vh] max-w-[95vw] rounded-xs object-contain shadow-2xl"
