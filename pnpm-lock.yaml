@@ -11,6 +11,12 @@ importers:
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(react@19.2.4)
+      framer-motion:
+        specifier: ^13.1.0
+        version: 13.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      lucide-react:
+        specifier: ^1.31.0
+        version: 1.31.0(react@19.2.4)
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -401,6 +407,17 @@ packages:
       picomatch:
         optional: true
 
+  framer-motion@13.1.0:
+    resolution: {integrity: sha512-QSZrF0Id3QGuHJ+OL+9PSY9pk86C8ERFalwAGSchzTm65+ZoGH/RM26lmEARLljcHj2lqhv0jZOOks+EI3COOw==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -487,6 +504,11 @@ packages:
     resolution: {integrity: sha512-NXYBzinNrblfraPGyrbPoD19C1h9lfI/1mzgWYvXUTe414Gz/X1FD2XBZSZM7rRTrMA8JL3OtAaGifrIKhQ5yQ==}
     engines: {node: '>= 12.0.0'}
 
+  lucide-react@1.31.0:
+    resolution: {integrity: sha512-G8u2eEtoHUnUa9f8lbvqDhCiORMnYLdUEo06EEG9MQvHQrInKcX3Pa2TH39MM5qyzRcWETxB0+aOwAPI1g1kEg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
@@ -495,17 +517,6 @@ packages:
 
   motion-utils@13.0.0:
     resolution: {integrity: sha512-7DnN7TmbLcYXcG4RVadXIihWlyuM9afoUww8Y5Agg431kGKiuL2/OMyP4mJ5wLz+pvN3t5ySClLOaVXJ+wekRQ==}
-
-  motion@13.1.0:
-    resolution: {integrity: sha512-qtvscq59uCPdWnNW4SdSkrxR+BS/QYsa923bx7ocA+4p+ZGNbbVQwkSnG4aukB81QWjtl3AxX36plxNyZLmHCA==}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
@@ -864,6 +875,15 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.4
 
+  framer-motion@13.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      motion-dom: 13.0.0
+      motion-utils: 13.0.0
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+
   fsevents@2.3.3:
     optional: true
 
@@ -920,9 +940,19 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.32.0
       lightningcss-win32-x64-msvc: 1.32.0
 
+  lucide-react@1.31.0(react@19.2.4):
+    dependencies:
+      react: 19.2.4
+
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  motion-dom@13.0.0:
+    dependencies:
+      motion-utils: 13.0.0
+
+  motion-utils@13.0.0: {}
 
   nanoid@3.3.11: {}
 
