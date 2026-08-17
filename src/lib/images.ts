@@ -607,5 +607,4 @@ export const PHOTOS = {
   ],
 } as const
 
-export const HERO_PHOTO =
-  "/images/foto-a-producao-nao-falha.webp" || MEGABLOCO_CHA_DA_ALICE_PHOTOS[0]
+export const HERO_PHOTO = "/images/foto-a-producao-nao-falha.webp"

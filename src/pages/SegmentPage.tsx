@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams, useLocation, Link } from "react-router-dom"
 import {
   getSegment,
@@ -12,6 +12,7 @@ import {
 import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
 import { img } from "../lib/images"
 import Reveal from "../components/Reveal"
+import Gallery from "../components/Gallery"
 import FAQAccordion from "../components/FAQAccordion"
 import CTASection from "../components/CTASection"
 import NotFound from "./NotFound"
@@ -71,98 +72,18 @@ export default function SegmentPage({
     ],
   })
 
-  // photo lightbox
-  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
-  const [touchStartX, setTouchStartX] = useState<number | null>(null)
-  const [touchStartY, setTouchStartY] = useState<number | null>(null)
-  const [dragY, setDragY] = useState(0)
-  const [dragX, setDragX] = useState(0)
-  const [isSwiping, setIsSwiping] = useState(false)
-
   // service modal
   const [openService, setOpenService] = useState<typeof seg.services[0] | null>(
     null,
   )
 
-  useEffect(() => {
-    if (lightboxIdx === null && !openService) return
-    document.body.style.overflow = "hidden"
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLightboxIdx(null)
-        setOpenService(null)
-      }
-      if (e.key === "ArrowRight" && lightboxIdx !== null)
-        setLightboxIdx((i) => ((i ?? 0) + 1) % seg.photos.length)
-      if (e.key === "ArrowLeft" && lightboxIdx !== null)
-        setLightboxIdx(
-          (i) => ((i ?? 0) - 1 + seg.photos.length) % seg.photos.length,
-        )
-    }
-    document.addEventListener("keydown", onKey)
-    return () => {
-      document.body.style.overflow = ""
-      document.removeEventListener("keydown", onKey)
-    }
-  }, [lightboxIdx, openService, seg.photos.length])
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX)
-    setTouchStartY(e.touches[0].clientY)
-    setIsSwiping(true)
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStartX === null || touchStartY === null) return
-    const currentX = e.touches[0].clientX
-    const currentY = e.touches[0].clientY
-    const diffX = currentX - touchStartX
-    const diffY = currentY - touchStartY
-
-    if (diffY > 0 && Math.abs(diffY) > Math.abs(diffX) * 0.8) {
-      setDragY(diffY)
-    } else if (Math.abs(diffX) > Math.abs(diffY)) {
-      setDragX(diffX * 0.4)
-    }
-  }
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    setIsSwiping(false)
-    if (touchStartX === null || touchStartY === null || lightboxIdx === null)
-      return
-    const endX = e.changedTouches[0].clientX
-    const endY = e.changedTouches[0].clientY
-    const diffX = touchStartX - endX
-    const diffY = endY - touchStartY
-
-    if (diffY > 110) {
-      setLightboxIdx(null)
-      setDragY(0)
-      setDragX(0)
-      return
-    }
-
-    if (Math.abs(diffX) > 50) {
-      if (diffX > 0) {
-        setLightboxIdx((i) => ((i ?? 0) + 1) % seg.photos.length)
-      } else {
-        setLightboxIdx(
-          (i) => ((i ?? 0) - 1 + seg.photos.length) % seg.photos.length,
-        )
-      }
-    }
-    setDragY(0)
-    setDragX(0)
-    setTouchStartX(null)
-    setTouchStartY(null)
-  }
-
   const galleryPhotos = seg.mosaicPhotos ?? [...seg.photos].slice(0, 4)
   const portfolioPhotos = [...seg.photos]
-  const openMosaicPhoto = (photoId: string) => {
-    const photoIndex = seg.photos.indexOf(photoId)
-    setLightboxIdx(photoIndex >= 0 ? photoIndex : 0)
-  }
+  const serviceCloseRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    serviceCloseRef.current?.focus()
+  }, [openService])
 
   return (
     <div className="relative overflow-hidden">
@@ -227,36 +148,8 @@ export default function SegmentPage({
       <section className="relative z-10 mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-24">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
-          <Reveal
-            className={`grid gap-3 ${
-              galleryPhotos.length >= 2 ? "grid-cols-2" : "grid-cols-1"
-            }`}
-          >
-            {galleryPhotos.slice(0, 3).map((photoId, index) => (
-              <button
-                key={photoId}
-                type="button"
-                onClick={() => openMosaicPhoto(photoId)}
-                aria-label={`Ampliar imagem ${index + 1}`}
-                className={`group relative overflow-hidden bg-navy focus-visible:outline-teal-400 ${
-                  index === 0 && galleryPhotos.length >= 3
-                    ? "col-span-2 aspect-[16/10]"
-                    : "aspect-[4/5]"
-                }`}
-              >
-                <img
-                  src={img(photoId, 900)}
-                  alt={`${seg.nav} — imagem ${index + 1}`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  className={`h-full w-full ${
-                    seg.mosaicPhotoFits?.[index] === "contain"
-                      ? "object-contain"
-                      : "object-cover"
-                  } transition-transform duration-700 ease-out group-hover:scale-105`}
-                />
-                <span className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/20" />
-              </button>
-            ))}
+          <Reveal>
+            <Gallery photos={galleryPhotos} label={seg.nav} />
           </Reveal>
 
           {/* Text & Deliverables summary */}
@@ -383,7 +276,7 @@ export default function SegmentPage({
 
       {/* ── CASES EM DESTAQUE DO SEGMENTO ─────────────────── */}
       {relatedCases.length > 0 && (
-        <section className="relative z-10 border-b border-off/10 bg-ink py-20 lg:py-28">
+        <section className="u-defer-render relative z-10 border-b border-off/10 bg-ink py-20 lg:py-28">
           <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
             <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
               <div className="max-w-2xl">
@@ -455,7 +348,7 @@ export default function SegmentPage({
       )}
 
       {/* ── PORTFÓLIO RELACIONADO / GALERIA DE FOTOS ─────── */}
-      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
+      <section className="u-defer-render relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <Reveal className="mb-10">
             <p className="u-eyebrow text-mist">Galeria visual</p>
@@ -470,6 +363,7 @@ export default function SegmentPage({
               <video
                 controls
                 playsInline
+                preload="metadata"
                 poster={img(seg.photos[0], 1400, 800)}
                 className="aspect-video w-full object-cover"
               >
@@ -479,32 +373,8 @@ export default function SegmentPage({
             </Reveal>
           )}
 
-          <Reveal className="grid grid-flow-dense auto-rows-[145px] grid-cols-2 gap-3 sm:auto-rows-[170px] md:auto-rows-[190px] md:grid-cols-4 lg:auto-rows-[220px] lg:gap-4">
-            {portfolioPhotos.map((photoId, i) => (
-              <button
-                key={photoId}
-                type="button"
-                onClick={() => setLightboxIdx(i)}
-                aria-label={`Ampliar imagem ${i + 1} de ${seg.nav}`}
-                className={`group relative h-full w-full overflow-hidden bg-navy focus-visible:outline-teal-400 ${
-                  i % 7 === 0
-                    ? "col-span-2 row-span-2"
-                    : i % 7 === 3
-                      ? "row-span-2"
-                      : i % 7 === 5
-                        ? "col-span-2 row-span-1"
-                        : "row-span-1"
-                }`}
-              >
-                <img
-                  src={img(photoId, 900)}
-                  alt={`${seg.nav} — imagem ${i + 1}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <span className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/20" />
-              </button>
-            ))}
+          <Reveal>
+            <Gallery photos={portfolioPhotos} label={seg.nav} />
           </Reveal>
         </div>
       </section>
@@ -599,120 +469,13 @@ export default function SegmentPage({
         </Reveal>
       </section>
 
-      {/* ── PHOTO LIGHTBOX ───────────────────────────────── */}
-      {lightboxIdx !== null && (
-        <div
-          className="fixed inset-0 z-[60] flex select-none items-center justify-center p-4 backdrop-blur-md transition-colors duration-200"
-          style={{
-            backgroundColor: `rgba(5, 10, 13, ${
-              dragY > 0 ? Math.max(0.3, 0.95 - dragY / 300) : 0.95
-            })`,
-          }}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${seg.nav} — visualização ampliada`}
-          onClick={() => setLightboxIdx(null)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <button
-            type="button"
-            onClick={() => setLightboxIdx(null)}
-            aria-label="Fechar"
-            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              setLightboxIdx(
-                (i) =>
-                  ((i ?? 0) - 1 + portfolioPhotos.length) %
-                  portfolioPhotos.length,
-              )
-            }}
-            aria-label="Imagem anterior"
-            className="absolute left-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:left-6"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <figure
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              transform: `translate3d(${dragX}px, ${dragY}px, 0) scale(${
-                dragY > 0 ? Math.max(0.85, 1 - dragY / 800) : 1
-              })`,
-              transition: isSwiping
-                ? "none"
-                : "transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
-            }}
-            className="max-h-[86vh] max-w-5xl will-change-transform"
-          >
-            <img
-              src={img(portfolioPhotos[lightboxIdx], 1600)}
-              alt={`${seg.nav} — imagem ${lightboxIdx + 1}`}
-              decoding="async"
-              className="max-h-[80vh] w-auto rounded-lg shadow-2xl object-contain"
-            />
-            <figcaption className="mt-4 text-center text-xs tracking-wider text-mist">
-              {seg.nav} ·{" "}
-              <span className="font-semibold text-off">{lightboxIdx + 1}</span>{" "}
-              / {portfolioPhotos.length}
-            </figcaption>
-          </figure>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              setLightboxIdx((i) => ((i ?? 0) + 1) % portfolioPhotos.length)
-            }}
-            aria-label="Próxima imagem"
-            className="absolute right-3 z-10 hidden h-12 w-12 items-center justify-center rounded-full border border-line-strong bg-ink/40 text-off backdrop-blur-sm transition-all duration-200 ease-out hover:border-teal-400 hover:bg-teal/20 hover:text-teal-400 sm:flex sm:right-6"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      )}
-
       {/* ── SERVICE MODAL ─────────────────────────────────── */}
       {openService && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
-          aria-label={openService.title}
+          aria-labelledby="service-modal-title"
           onClick={() => setOpenService(null)}
         >
           <div
@@ -720,6 +483,7 @@ export default function SegmentPage({
             onClick={(e) => e.stopPropagation()}
           >
             <button
+              ref={serviceCloseRef}
               type="button"
               onClick={() => setOpenService(null)}
               aria-label="Fechar"
@@ -737,7 +501,7 @@ export default function SegmentPage({
               </svg>
             </button>
             <p className="u-eyebrow">Serviço {openService.n}</p>
-            <h3 className="mt-3 text-2xl font-bold text-ink">
+            <h3 id="service-modal-title" className="mt-3 text-2xl font-bold text-ink">
               {openService.title}
             </h3>
             <p className="mt-3 leading-relaxed text-navy">{openService.desc}</p>

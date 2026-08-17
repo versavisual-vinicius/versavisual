@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react"
 import { Link } from "react-router-dom"
 import { useSeo, SITE_URL } from "../lib/seo"
-import { img, HERO_PHOTO } from "../lib/images"
+import { img } from "../lib/images"
 import {
   HOME_SERVICES,
   HOME_PROCESS,
@@ -59,7 +59,8 @@ export default function Home() {
           loop
           muted
           playsInline
-          poster={img(HERO_PHOTO, 2000, 1200)}
+          preload="metadata"
+          poster="/images/foto-a-producao-nao-falha.webp"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero.webm" type="video/webm" />
@@ -129,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* SEGMENTS */}
-      <section id="nichos" className="border-y border-off/10 bg-ink">
+      <section id="nichos" className="u-defer-render border-y border-off/10 bg-ink">
         <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
@@ -179,7 +180,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS */}
-      <section id="processo">
+      <section id="processo" className="u-defer-render">
         <Suspense
           fallback={
             <div className="mx-auto min-h-[640px] max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28" />

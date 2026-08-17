@@ -1,9 +1,3 @@
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion"
 import type { ReactNode } from "react"
 import { useEffect, useRef, useState } from "react"
 
@@ -25,7 +19,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
-  const shouldReduceMotion = useReducedMotion()
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     if (!contentRef.current) return
@@ -42,13 +36,30 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
     return () => observer.disconnect()
   }, [data.length])
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 55%", "end 65%"],
-  })
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height])
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.08], [0, 1])
+  useEffect(() => {
+    let frame = 0
+    const updateProgress = () => {
+      frame = 0
+      const element = containerRef.current
+      if (!element) return
+      const rect = element.getBoundingClientRect()
+      const start = window.innerHeight * 0.55
+      const end = window.innerHeight * 0.65
+      const value = (start - rect.top) / Math.max(1, rect.height - (end - start))
+      setProgress(Math.min(1, Math.max(0, value)))
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress)
+    }
+    updateProgress()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [height])
 
   return (
     <div ref={containerRef} className="relative w-full">
@@ -114,17 +125,15 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
               className="absolute left-8 top-0 w-[2px] overflow-hidden bg-gradient-to-b from-transparent via-off/25 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_92%,transparent_100%)]"
               aria-hidden="true"
             >
-              {shouldReduceMotion ? (
-                <div className="absolute inset-x-0 top-0 h-full w-[2px] rounded-full bg-teal/70" />
-              ) : (
-                <motion.div
-                  style={{
-                    height: heightTransform,
-                    opacity: opacityTransform,
-                  }}
-                  className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b from-teal via-mist to-transparent"
-                />
-              )}
+              <div
+                style={{
+                  height: "100%",
+                  opacity: progress > 0 ? Math.min(1, progress * 12) : 0,
+                  transform: `scaleY(${progress})`,
+                  transformOrigin: "top",
+                }}
+                className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b from-teal via-mist to-transparent will-change-transform"
+              />
             </div>
           </div>
         </div>

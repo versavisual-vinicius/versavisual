@@ -218,6 +218,11 @@
     background: linear-gradient(180deg, rgba(5,10,13,0.05), rgba(5,10,13,0.7));
     pointer-events: none;
   }
+
+  .u-defer-render {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
 }
 
 @layer utilities {

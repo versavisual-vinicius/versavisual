@@ -104,7 +104,7 @@ export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
   }, [title, description, path, noindex, jsonLdContent])
 }
 
-export function breadcrumb(items: { name: string path: string }[]) {
+export function breadcrumb(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

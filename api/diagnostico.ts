@@ -42,20 +42,22 @@ function escapeHtml(input: string) {
 }
 
 function emailHtml(lead: Lead) {
-  const fields: [string, string][] = [
-    ["Nome", lead.nome],
-    ["Empresa", lead.empresa],
-    ["WhatsApp", lead.whatsapp],
-    ["E-mail", lead.email],
-    ["Cidade", lead.cidade],
-    ["Segmento", lead.segmento],
-    ["Tipo de projeto", lead.tipo],
-    ["Data desejada", lead.data],
-    ["Onde será usado", lead.uso],
-    ["Objetivo", lead.objetivo],
-    ["Faixa de investimento", lead.investimento],
-    ["Mensagem", lead.mensagem],
-  ].filter(([, fieldValue]) => fieldValue)
+  const fields: [string, string][] = (
+    [
+      ["Nome", lead.nome],
+      ["Empresa", lead.empresa],
+      ["WhatsApp", lead.whatsapp],
+      ["E-mail", lead.email],
+      ["Cidade", lead.cidade],
+      ["Segmento", lead.segmento],
+      ["Tipo de projeto", lead.tipo],
+      ["Data desejada", lead.data],
+      ["Onde será usado", lead.uso],
+      ["Objetivo", lead.objetivo],
+      ["Faixa de investimento", lead.investimento],
+      ["Mensagem", lead.mensagem],
+    ] as [string, string][]
+  ).filter(([, fieldValue]) => Boolean(fieldValue))
 
   const rows = fields
     .map(

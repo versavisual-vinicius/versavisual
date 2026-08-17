@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "motion/react"
 import type { ReactNode } from "react"
 import { useEffect, useRef } from "react"
 
@@ -58,8 +57,6 @@ export function BeamsBackground({
   const lastFrameRef = useRef(0)
   const interactionPauseRef = useRef(false)
   const interactionTimeoutRef = useRef<number>(0)
-  const shouldReduceMotion = useReducedMotion()
-
   useEffect(() => {
     const root = rootRef.current
     const canvas = canvasRef.current
@@ -183,6 +180,10 @@ export function BeamsBackground({
       passive: true,
     })
 
+    const shouldReduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches
+
     if (shouldReduceMotion) {
       paintStatic()
     } else {
@@ -199,7 +200,7 @@ export function BeamsBackground({
         cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [intensity, shouldReduceMotion])
+  }, [intensity])
 
   return (
     <div
@@ -215,18 +216,8 @@ export function BeamsBackground({
         aria-hidden="true"
       />
 
-      <motion.div
-        className="absolute inset-0 bg-ink/0"
-        animate={
-          shouldReduceMotion
-            ? { opacity: 0.08 }
-            : { opacity: [0.06, 0.14, 0.06] }
-        }
-        transition={{
-          duration: 10,
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-        }}
+      <div
+        className="absolute inset-0 bg-ink/10"
         style={{
           backdropFilter: "blur(28px)",
         }}

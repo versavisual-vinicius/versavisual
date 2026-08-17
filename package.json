@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
-    "framer-motion": "^13.1.0",
-    "motion": "^13.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.18.2"
