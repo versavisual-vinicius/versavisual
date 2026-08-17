@@ -63,7 +63,7 @@ export function GalleryGrid({
   return (
     <div
       className={cn(
-        "columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-4",
+        "columns-1 gap-4 sm:columns-2 md:columns-3 lg:columns-3",
         className,
       )}
     >
@@ -77,11 +77,15 @@ export function GalleryImage({
   alt,
   id,
   className,
+  loading,
+  fetchPriority,
 }: {
   src: string
   alt?: string
   id: string
   className?: string
+  loading?: "eager" | "lazy"
+  fetchPriority?: "high" | "low" | "auto"
 }) {
   const context = React.useContext(GalleryContext)
   if (!context) throw new Error("GalleryImage must be used within a Gallery")
@@ -102,7 +106,8 @@ export function GalleryImage({
         layoutId={`image-${id}`}
         src={src}
         alt={alt || "Imagem da galeria"}
-        loading="lazy"
+        loading={loading ?? "lazy"}
+        fetchPriority={fetchPriority}
         decoding="async"
         className="h-auto w-full rounded-xs object-cover"
         variants={{
