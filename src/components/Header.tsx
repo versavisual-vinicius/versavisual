@@ -134,11 +134,7 @@ export default function Header() {
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className={`border px-4 py-2 text-sm font-medium transition-colors duration-200 ease-out ${
-              transparent
-                ? "border-off/35 bg-off/10 text-off hover:border-teal hover:bg-off/15 hover:text-teal-400"
-                : "border-off/25 text-off hover:border-teal hover:text-teal-400"
-            }`}
+            className="inline-flex min-h-[44px] items-center justify-center border border-teal bg-teal px-5 py-2.5 text-sm font-head font-medium text-off transition-colors duration-200 ease-out hover:border-teal-400 hover:bg-teal-400"
           >
             Iniciar projeto
           </Link>
@@ -147,7 +143,7 @@ export default function Header() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center text-off lg:hidden focus-visible:ring-2 focus-visible:ring-teal"
+          className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center text-off lg:hidden focus-visible:ring-2 focus-visible:ring-teal"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="mobile-navigation-drawer"
@@ -200,7 +196,7 @@ export default function Header() {
                 to="/diagnostico-visual"
                 viewTransition
                 onClick={() => setOpen(false)}
-                className="mt-6 block border border-off/30 px-4 py-3 text-center font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
+                className="mt-6 flex min-h-[44px] items-center justify-center border border-teal bg-teal px-4 py-3 text-center font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
               >
                 Iniciar projeto
               </Link>

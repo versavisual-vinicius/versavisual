@@ -18,13 +18,13 @@ export default function Footer() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+              className="mt-5 inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
             >
               WhatsApp · 11 95074-7192
             </a>
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-2 block text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+              className="mt-1 inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
             >
               {EMAIL}
             </a>
@@ -33,13 +33,13 @@ export default function Footer() {
           {/* Segments */}
           <nav aria-label="Segmentos">
             <p className="u-eyebrow mb-4 text-mist">Segmentos</p>
-            <ul className="grid gap-2.5">
+            <ul className="grid gap-1">
               {SEGMENT_NAV.map((s) => (
                 <li key={s.to}>
                   <Link
                     to={s.to}
                     viewTransition
-                    className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                    className="inline-flex min-h-[44px] items-center py-1 text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                   >
                     {s.label}
                   </Link>
@@ -51,13 +51,13 @@ export default function Footer() {
           {/* Contact */}
           <nav aria-label="Contato e navegação">
             <p className="u-eyebrow mb-4 text-mist">Contato</p>
-            <ul className="grid gap-2.5">
+            <ul className="grid gap-1">
               <li>
                 <a
                   href={WHATSAPP}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                  className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   WhatsApp · 11 95074-7192
                 </a>
@@ -65,7 +65,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                  className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   {EMAIL}
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 <Link
                   to="/portfolio"
                   viewTransition
-                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                  className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   Portfólio
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <Link
                   to="/diagnostico-visual"
                   viewTransition
-                  className="text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                  className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                 >
                   Diagnóstico gratuito
                 </Link>

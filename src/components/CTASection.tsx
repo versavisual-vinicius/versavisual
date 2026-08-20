@@ -47,7 +47,7 @@ export default function CTASection({
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className="w-full border border-off bg-off px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-teal hover:bg-teal hover:text-off sm:w-auto"
+            className="inline-flex min-h-[44px] w-full items-center justify-center border border-teal bg-teal px-8 py-3 text-sm font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400 sm:w-auto"
           >
             Fazer diagnóstico visual
           </Link>
@@ -55,7 +55,7 @@ export default function CTASection({
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
+            className="inline-flex min-h-[44px] items-center gap-2 border-b border-transparent px-3 py-2 text-sm font-head font-medium text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
           >
             Falar no WhatsApp <span aria-hidden>→</span>
           </a>

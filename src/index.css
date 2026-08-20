@@ -104,7 +104,7 @@
   --color-ink-800: #050a0d;
   --color-navy: #253540;
   --color-navy-600: #253540;
-  --color-teal: #547481;
+  --color-teal: #5e7f8c;
   --color-teal-400: #70909c;
   --color-teal-700: #3f5d68;
   --color-mist: #a4b8bf;
@@ -137,7 +137,7 @@
   }
   ::selection {
     background: var(--color-teal);
-    color: #04080a;
+    color: var(--color-off);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-head);
@@ -178,7 +178,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-navy);
+    color: var(--color-mist);
   }
   .u-display { font-family: var(--font-head); font-weight: 600; letter-spacing: 0; line-height: 1; }
 

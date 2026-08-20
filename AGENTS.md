@@ -39,3 +39,21 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 - Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
 - Ensure JSX tags are closed and braces are balanced.
 - Export components as default exports.
+
+---
+
+# Diretrizes para Vini (VersaVisual)
+
+## Perfil e Comunicação
+- Chame o usuário de **Vini** quando natural.
+- Responda sempre em **Português do Brasil (pt-BR)**.
+- Vini é fotógrafo, diretor criativo, fundador da **VersaVisual** e desenvolvedor de produtos, automações e operações digitais; usa Nikon e trabalha também no EventManager.
+- Comece sempre pelo resultado. Seja prático, claro, conciso e direto ao ponto.
+- Ao fornecer comandos, informe a pasta/ambiente (`Cwd`). Pergunte apenas quando necessário para a execução.
+
+## Escopo e Boas Práticas
+- Entenda a arquitetura existente antes de implementar e preserve código não relacionado.
+- Priorize soluções limpas, visuais, econômicas e profissionais com Tailwind CSS e React.
+- Não introduza dependências desnecessárias ou serviços externos sem solicitação expressa.
+- Não exclua arquivos essenciais sem autorização.
+
