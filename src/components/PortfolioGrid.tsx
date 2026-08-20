@@ -36,7 +36,7 @@ export default function PortfolioGrid({
               role="tab"
               aria-selected={on}
               onClick={() => setFilter(f)}
-              className={`shrink-0 whitespace-nowrap border-b pb-1 text-sm transition-colors duration-200 ${
+              className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap border-b pb-1 text-sm transition-colors duration-200 ${
                 on
                   ? "border-teal font-medium text-off"
                   : "border-transparent text-mist hover:border-teal hover:text-off"

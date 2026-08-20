@@ -24,19 +24,19 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           to="/"
-          className="rounded-xs bg-teal px-6 py-3 font-medium text-off transition-colors hover:bg-teal-400"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xs bg-teal px-6 py-3 font-head font-medium text-off transition-colors hover:bg-teal-400"
         >
           Ir para o início
         </Link>
         <Link
           to="/portfolio"
-          className="rounded-xs border border-off/20 px-6 py-3 font-medium text-off transition-colors hover:border-teal"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xs border border-off/20 px-6 py-3 font-head font-medium text-off transition-colors hover:border-teal"
         >
           Ver portfólio
         </Link>
         <Link
           to="/diagnostico-visual"
-          className="rounded-xs border border-off/20 px-6 py-3 font-medium text-off transition-colors hover:border-teal"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xs border border-off/20 px-6 py-3 font-head font-medium text-off transition-colors hover:border-teal"
         >
           Diagnóstico visual
         </Link>
@@ -48,7 +48,7 @@ export default function NotFound() {
           <Link
             key={s.to}
             to={s.to}
-            className="text-mist transition-colors hover:text-off"
+            className="inline-flex min-h-[44px] items-center text-mist transition-colors hover:text-off"
           >
             {s.label}
           </Link>

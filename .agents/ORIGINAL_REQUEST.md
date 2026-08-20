@@ -45,3 +45,7 @@ Assegurar código TypeScript 100% tipado sem erros, ausência de console warning
 ## Follow-up — 2026-08-20T01:49:23Z
 
 O usuário (Vini) autorizou aprovação total e autônoma para todas as etapas, decisões técnicas, modificações de arquivos e verificações necessárias para cumprir 100% dos requisitos e critérios de aceitação. Prossiga sem interrupções até a conclusão completa.
+
+## Follow-up — 2026-08-20T02:35:24Z
+
+Diretriz de aceleração do usuário (Modo Fast): Otimize o tempo de execução ao máximo — acelere os ciclos de validação, priorize paralelização direta dos workers nos Marcos 3 e 4 simultaneamente se possível, e reduza deliberações redundantes, focando na aprovação rápida dos gates e entrega final.

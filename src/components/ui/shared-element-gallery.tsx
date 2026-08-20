@@ -138,14 +138,19 @@ export function GalleryImage({
 
 function GalleryModal() {
   const context = React.useContext(GalleryContext)
-  if (!context) return null
+  if (!context || typeof document === "undefined") return null
 
   const { selectedImage, setSelectedImage } = context
 
   return createPortal(
     <AnimatePresence>
       {selectedImage && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visualização ampliada da imagem"
+        >
           <motion.button
             type="button"
             initial={{ opacity: 0 }}
@@ -188,7 +193,7 @@ function GalleryModal() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ delay: 0.1, duration: 0.2 }}
-            className="absolute right-4 top-4 z-50 rounded-full border border-off/20 bg-off/10 p-2.5 text-off backdrop-blur-md transition-colors hover:bg-off/20 sm:right-6 sm:top-6"
+            className="absolute right-4 top-4 z-50 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-off/20 bg-off/10 text-off backdrop-blur-md transition-colors hover:bg-off/20 sm:right-6 sm:top-6"
             onPointerDown={(event) => event.stopPropagation()}
             onClick={(event) => {
               event.stopPropagation()

@@ -1,4 +1,4 @@
-# BRIEFING — 2026-08-20T02:27:12Z
+# BRIEFING — 2026-08-20T02:30:15Z
 
 ## Mission
 Revisar os fixes da Iteração 2 do Marco 2 (alinhamento de SITE_URL, build de 41 rotas estáticas, verificação tsc).
@@ -19,7 +19,7 @@ Revisar os fixes da Iteração 2 do Marco 2 (alinhamento de SITE_URL, build de 4
 
 ## Current Parent
 - Conversation ID: f3bed6c9-c13e-4a92-abec-0b50cf2bde39
-- Updated: not yet
+- Updated: 2026-08-20T02:30:15Z
 
 ## Review Scope
 - **Files to review**: `src/lib/seo.tsx`, `scripts/emit-route-html.mjs`, `public/sitemap.xml`
@@ -27,17 +27,27 @@ Revisar os fixes da Iteração 2 do Marco 2 (alinhamento de SITE_URL, build de 4
 - **Review criteria**: correctness, style, conformance, build output (41 static HTML files), tsc 0 errors
 
 ## Review Checklist
-- **Items reviewed**: pending
-- **Verdict**: pending
-- **Unverified claims**: pending
+- **Items reviewed**:
+  - `src/lib/seo.tsx` (SITE_URL = "https://versavisual.com.br") -> VERIFIED
+  - `scripts/emit-route-html.mjs` (siteUrl & hostname regex normalization) -> VERIFIED
+  - `public/sitemap.xml` (all 42 canonical URLs including `fjt-fashion-desfile-colecoes`) -> VERIFIED
+  - `npx tsc --noEmit` -> 0 errors (VERIFIED)
+  - `npm run build` -> emits 41 route HTML files (VERIFIED, 42 index.html in dist/)
+  - Test suites: adversarial-m2 (114/114), challenger_m2_adversarial (541/541), run-all (196/196) -> VERIFIED
+- **Verdict**: APPROVE
+- **Unverified claims**: None
 
 ## Attack Surface
-- **Hypotheses tested**: pending
-- **Vulnerabilities found**: pending
-- **Untested angles**: pending
+- **Hypotheses tested**:
+  - Domain mismatch failure modes (Apex vs www) -> Robust regex normalization passes both
+  - Static file emission in nested subdirectories -> All 41 directories created with recursive mkdir
+  - Integrity violation checks -> No mocks, facades or hardcoded shortcuts found
+- **Vulnerabilities found**: None
+- **Untested angles**: None within M2 scope
 
 ## Key Decisions Made
-- Initialized review process
+- Confirmed full alignment of domain canonicalization and SSG route generation.
+- Issued APPROVE verdict for Marco 2 Iteração 2.
 
 ## Artifact Index
 - handoff.md — Final review report and verdict

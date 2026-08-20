@@ -1,4 +1,4 @@
-# BRIEFING — 2026-08-20T02:25:00Z
+# BRIEFING — 2026-08-20T02:31:00Z
 
 ## Mission
 Orquestrar o redesign e consolidação em nível de produção do website institucional e portfólio da VersaVisual com 100% de conformidade ao DESIGN.md, responsividade 360px-4k, TypeScript estrito e build sem erros.
@@ -24,12 +24,12 @@ Orquestrar o redesign e consolidação em nível de produção do website instit
   1. Survey & Architecture Mapping [done]
   2. E2E Test Infrastructure & Test Suite Creation [done - 196 tests passing]
   3. Milestone 1: Design System, Tokens, Typography & Global Shell [done - GATE PASS]
-  4. Milestone 2: TypeScript Syntax, Site Data & Dynamic Routing Engine [in-progress - Iteration 2 fix]
-  5. Milestone 3: Interactive Pages, Components & Conversion Flow [pending]
+  4. Milestone 2: TypeScript Syntax, Site Data & Dynamic Routing Engine [done - GATE PASS]
+  5. Milestone 3: Interactive Pages, Components & Conversion Flow [in-progress]
   6. Milestone 4: Performance, Assets, Contrast & Accessibility [pending]
   7. Final Milestone: 100% E2E Test Suite Pass + Adversarial Hardening [pending]
-- **Current phase**: 2 (M2 Iteration 2 Fix)
-- **Current focus**: Domain alignment, SSG static route emission, and sitemap synchronization
+- **Current phase**: 2 (Milestone 3 Execution)
+- **Current focus**: Interactive pages, modals, lightbox, diagnostic form & WhatsApp lead generator
 
 ## 🔒 Key Constraints
 - Delegar todo o código e testes a subagentes (DISPATCH-ONLY).
@@ -43,12 +43,14 @@ Orquestrar o redesign e consolidação em nível de produção do website instit
 - Updated: 2026-08-20T01:50:00Z
 
 ## Key Decisions Made
-- Disparado `worker_m2_iter2` para aplicar a harmonização do domínio canônico e emissão estática SSG.
+- Milestone 1 e Milestone 2 aprovados com GATE PASS.
+- E2E Test Suite operacional com 196 testes e 41 rotas estáticas emitidas.
+- Disparado `worker_m3` para consolidar páginas interativas, modais, lightbox e formulário de diagnóstico.
 
 ## Team Roster (Current Active Cycle)
 | Agent | Type | Work Item | Status | Conv ID |
 |-------|------|-----------|--------|---------|
-| worker_m2_iter2 | teamwork_preview_worker | SSG & Canonical Domain Worker | in-progress | 8770a808-d668-4b5c-a47f-1baa129c9dcc |
+| worker_m3 | teamwork_preview_worker | Interactive Pages & Components Worker | in-progress | 08d13e10-3b8e-4e52-aea7-05578648db1f |
 
 ## Active Timers
 - Heartbeat cron: task-146

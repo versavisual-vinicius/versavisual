@@ -17,3 +17,12 @@ Principais diretrizes:
 4. Assegure TypeScript 100% tipado (npx tsc --noEmit com 0 erros), sem erros no console, e build de produção bem-sucedido (pnpm/npm run build gerando dist).
 5. Mantenha seu BRIEFING.md e progress.md sempre atualizados em seu diretório de trabalho.
 6. Ao concluir todas as implementações e validações, envie seu relatório final com a declaração de vitória para que seja auditada.
+
+## 2026-08-20T02:35:37Z
+
+[DIRETRIZ DE ACELERAÇÃO - MODO FAST]
+O usuário (Vini) solicitou aceleração máxima na execução:
+- Otimize o tempo de execução ao máximo.
+- Priorize paralelização direta de workers nos Marcos 3 e 4 simultaneamente, se aplicável.
+- Reduza deliberações redundantes, focando na aprovação rápida dos gates com validações assertivas e entrega final robusta.
+- Prossiga em ritmo acelerado até a conclusão completa.

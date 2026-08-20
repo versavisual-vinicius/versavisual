@@ -1,4 +1,4 @@
-# BRIEFING — 2026-08-20T02:27:13Z
+# BRIEFING — 2026-08-20T02:30:00Z
 
 ## Mission
 Auditoria forense de integridade da Iteração 2 do Marco 2 (SEO dinâmico, meta tags e sitemap/scripts).
@@ -17,29 +17,39 @@ Auditoria forense de integridade da Iteração 2 do Marco 2 (SEO dinâmico, meta
 
 ## Current Parent
 - Conversation ID: f3bed6c9-c13e-4a92-abec-0b50cf2bde39
-- Updated: 2026-08-20T02:27:13Z
+- Updated: 2026-08-20T02:30:00Z
 
 ## Audit Scope
-- **Work product**: src/lib/seo.tsx, scripts/emit-route-html.mjs, public/sitemap.xml, worker_m2_iter2 changes
+- **Work product**: src/lib/seo.tsx, scripts/emit-route-html.mjs, public/sitemap.xml, src/data/site.ts
 - **Profile loaded**: General Project (Web application)
 - **Audit type**: forensic integrity check
 
 ## Audit Progress
-- **Phase**: investigating
-- **Checks completed**: []
-- **Checks remaining**: [Read mandatory files, Phase 1 code analysis, Phase 2 behavioral verification, Build & test check, Edge case/adversarial review]
-- **Findings so far**: Investigating
+- **Phase**: reporting
+- **Checks completed**:
+  - Verification of ORIGINAL_REQUEST.md and PROJECT.md constraints
+  - Code inspection of src/lib/seo.tsx, scripts/emit-route-html.mjs, public/sitemap.xml
+  - Phase 1 source code analysis (Hardcode detection, facade detection, artifact fabrication checks)
+  - Phase 2 behavioral verification (npx tsc --noEmit, npm run build, static HTML emission)
+  - Independent execution of test suites (adversarial-m2.ts: 114/114, challenger_m2_adversarial.ts: 541/541, run-all.ts: 196/196)
+  - Static distribution verification (41 subroute index.html files + root dist/index.html)
+- **Checks remaining**: []
+- **Findings so far**: CLEAN — No integrity violations detected.
 
 ## Attack Surface
-- **Hypotheses tested**: [TBD]
-- **Vulnerabilities found**: [TBD]
-- **Untested angles**: [TBD]
+- **Hypotheses tested**:
+  - Hostname variation in sitemap URLs (www vs non-www): Handled by hostname regex normalizer.
+  - Trailing slash handling in prerenderer: Handled by pathname normalizer.
+  - Case insensitive and slash-prefixed slug resolution: Handled by getCase sanitizer in site.ts.
+  - SSG route HTML emission: Verified all 41 routes emitted in dist/.
+- **Vulnerabilities found**: None.
+- **Untested angles**: None within M2 scope.
 
 ## Loaded Skills
 - None explicitly required
 
 ## Key Decisions Made
-- Executing thorough forensic audit following Integrity Forensics guidelines.
+- Confirmed verdict as CLEAN based on 100% empirical test pass and genuine code implementations.
 
 ## Artifact Index
 - DISPATCH.md — Dispatch instructions

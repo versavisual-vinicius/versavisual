@@ -17,7 +17,7 @@ export default function FAQAccordion({
       {items.map((it, i) => (
         <details key={i} name="versavisual-faq" className="group">
           <summary
-            className={`flex w-full cursor-pointer list-none items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ease-out hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal [&::-webkit-details-marker]:hidden ${
+            className={`flex min-h-[44px] w-full cursor-pointer list-none items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ease-out hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal [&::-webkit-details-marker]:hidden ${
               isDark ? "text-off" : "text-ink"
             }`}
           >

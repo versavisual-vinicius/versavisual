@@ -232,7 +232,7 @@ export default function Diagnostico() {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xs bg-teal px-8 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 flex items-center justify-center gap-2 shadow-md"
+            className="flex min-h-[44px] items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off shadow-md transition-colors hover:bg-teal-400"
           >
             <span>Continuar no WhatsApp com Briefing</span>
             <span aria-hidden>→</span>
@@ -240,7 +240,7 @@ export default function Diagnostico() {
           <Link
             to="/portfolio"
             viewTransition
-            className="flex items-center justify-center rounded-xs border border-off/20 px-7 py-3.5 font-medium text-off transition-colors hover:border-teal"
+            className="flex min-h-[44px] items-center justify-center rounded-xs border border-off/20 px-7 py-3.5 font-head font-medium text-off transition-colors hover:border-teal"
           >
             Ver portfólio
           </Link>
@@ -249,7 +249,7 @@ export default function Diagnostico() {
         <button
           type="button"
           onClick={() => setSubmittedLead(null)}
-          className="mt-6 text-xs text-mist underline transition-colors hover:text-off"
+          className="mt-6 inline-flex min-h-[44px] items-center justify-center text-xs text-mist underline transition-colors hover:text-off"
         >
           Enviar outro diagnóstico
         </button>
@@ -572,7 +572,7 @@ export default function Diagnostico() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-xs bg-teal px-8 py-3.5 font-medium text-off transition-colors hover:bg-teal-400 disabled:opacity-60 flex items-center justify-center gap-2"
+                className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off transition-colors hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? (
                   <>
@@ -587,7 +587,7 @@ export default function Diagnostico() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-navy transition-colors hover:text-teal"
+                className="inline-flex min-h-[44px] items-center text-sm font-medium text-navy transition-colors hover:text-teal"
               >
                 Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
               </a>

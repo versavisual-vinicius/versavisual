@@ -60,6 +60,7 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
+          poster="/images/foto-a-producao-nao-falha.webp"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero.webm" type="video/webm" />
@@ -82,14 +83,14 @@ export default function Home() {
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="border border-off bg-off px-6 py-3 text-center text-sm font-medium text-ink transition-colors duration-200 hover:border-teal hover:bg-teal hover:text-off"
+              className="inline-flex min-h-[44px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
             >
               Fazer diagnóstico visual
             </Link>
             <Link
               to="/portfolio"
               viewTransition
-              className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
+              className="inline-flex min-h-[44px] items-center gap-2 border-b border-transparent pb-1 text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
             >
               Ver portfólio <span aria-hidden>→</span>
             </Link>
@@ -144,7 +145,7 @@ export default function Home() {
             <Link
               to="/portfolio"
               viewTransition
-              className="text-sm font-medium text-mist transition-colors hover:text-off"
+              className="inline-flex min-h-[44px] items-center text-sm font-medium text-mist transition-colors hover:text-off"
             >
               Ver portfólio completo →
             </Link>

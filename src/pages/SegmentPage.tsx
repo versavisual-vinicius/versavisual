@@ -84,7 +84,18 @@ export default function SegmentPage({
   const serviceCloseRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    if (!openService) return
     serviceCloseRef.current?.focus()
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenService(null)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      document.body.style.overflow = prevOverflow
+    }
   }, [openService])
 
   return (
@@ -130,7 +141,7 @@ export default function SegmentPage({
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="border border-off bg-off px-6 py-3 text-center text-sm font-medium text-ink transition-colors hover:border-teal hover:bg-teal hover:text-off"
+              className="inline-flex min-h-[44px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors hover:border-teal-400 hover:bg-teal-400"
             >
               Falar sobre o projeto
             </Link>
@@ -138,7 +149,7 @@ export default function SegmentPage({
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-b border-transparent pb-1 text-sm font-medium text-off transition-colors hover:border-teal hover:text-teal-400"
+              className="inline-flex min-h-[44px] items-center gap-2 border-b border-transparent pb-1 text-sm font-medium font-head text-off transition-colors hover:border-teal hover:text-teal-400"
             >
               Falar no WhatsApp <span aria-hidden>→</span>
             </a>
@@ -489,7 +500,7 @@ export default function SegmentPage({
               type="button"
               onClick={() => setOpenService(null)}
               aria-label="Fechar"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-line text-navy transition-all duration-200 ease-out hover:border-teal hover:text-teal"
+              className="absolute right-4 top-4 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line text-navy transition-all duration-200 ease-out hover:border-teal hover:text-teal"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -519,7 +530,7 @@ export default function SegmentPage({
               <Link
                 to="/diagnostico-visual"
                 onClick={() => setOpenService(null)}
-                className="inline-block rounded-xl bg-teal px-6 py-3 font-medium text-off transition-all duration-200 ease-out hover:bg-teal-400"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal px-6 py-3 font-medium font-head text-off transition-all duration-200 ease-out hover:bg-teal-400"
               >
                 Solicitar diagnóstico →
               </Link>
