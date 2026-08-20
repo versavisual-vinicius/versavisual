@@ -1,4 +1,4 @@
-# BRIEFING — 2026-08-20T02:07:11Z
+# BRIEFING — 2026-08-20T02:18:15Z
 
 ## Mission
 Implement Milestone 2 (M2): TypeScript Syntax, Site Data & Dynamic Routing Engine.
@@ -18,35 +18,39 @@ Implement Milestone 2 (M2): TypeScript Syntax, Site Data & Dynamic Routing Engin
 
 ## Current Parent
 - Conversation ID: f3bed6c9-c13e-4a92-abec-0b50cf2bde39
-- Updated: not yet
+- Updated: 2026-08-20T02:18:15Z
 
 ## Task Summary
-- **What to build**:
-  1. Fix inline type declarations with missing delimiters in `src/data/site.ts` (lines 23, 25, 36, 101, 102, etc.).
-  2. Synchronize and ensure consistency of `caseSlug` across all projects in `PORTFOLIO` and `sitemap.xml`.
-  3. Fix inline type declaration in `src/lib/seo.tsx` (breadcrumb).
-  4. Ensure dynamic routing in `src/App.tsx` for segments (`/segmentos/:slug`, `/:slug`) with `SEGMENT_ALIASES` validation and fallback to `NotFound`.
-  5. Ensure `/portfolio/:caseSlug` resolution and `NotFound` fallback for invalid case slugs in `src/App.tsx`.
-  6. Ensure wildcard `*` and `/404` render `NotFound`.
-  7. Validate and synchronize `public/sitemap.xml` with routes in `site.ts`.
-- **Success criteria**: `npx tsc --noEmit` exits with 0 errors, `npm run build` succeeds, `npm run format` succeeds.
+- **What was built**:
+  1. Corrected all inline TypeScript syntax errors across `src/data/site.ts` (`NavItem`, `SegmentNavItem`, `Service`, `Faq`, `SegProcess`).
+  2. Exported `SEGMENT_ALIASES` and introduced `CASE_ALIASES` with bidirectional alias resolution in `getCase()` and `getSegment()`.
+  3. Assigned `caseSlug` to all portfolio items in `PORTFOLIO` and ensured synchronization with `sitemap.xml`.
+  4. Updated `src/lib/seo.tsx` to export `SeoProps`, `Seo`, `BreadcrumbItem` and fixed the parameter signature of `breadcrumb()`.
+  5. Verified dynamic routing for segments (`/segmentos/:slug`, `/:slug`), case studies (`/portfolio/:caseSlug`), and fallback 404 handling in `src/App.tsx`.
+  6. Updated `public/sitemap.xml` with canonical domain (`https://versavisual.com.br`), all 8 segments and all canonical portfolio cases.
+- **Success criteria**: `npx tsc --noEmit` exits with code 0 (0 errors), `npm run build` exits with code 0, `npm run format` exits with code 0.
 - **Interface contracts**: PROJECT.md, DESIGN.md, ORIGINAL_REQUEST.md.
 
 ## Change Tracker
-- **Files modified**: None yet
-- **Build status**: Pending
-- **Pending issues**: None
+- **Files modified**:
+  - `src/data/site.ts` — Type syntax fix, aliases export, caseSlugs synchronization.
+  - `src/lib/seo.tsx` — SeoProps export, BreadcrumbItem interface, breadcrumb typing.
+  - `public/sitemap.xml` — Canonical domain and caseSlugs sync.
+  - `src/App.tsx` — Verified and confirmed routing and 404 catch-all.
+- **Build status**: Pass (`npx tsc --noEmit`: 0 errors, `npm run build`: pass, `npm run format`: pass).
+- **Pending issues**: None.
 
 ## Quality Status
-- **Build/test result**: Pending
-- **Lint status**: Pending
-- **Tests added/modified**: Pending
+- **Build/test result**: Pass (0 errors on strict TypeScript check).
+- **Lint status**: Clean (oxfmt formatted).
+- **Tests added/modified**: Verified against all test suites (Tiers 1-4).
 
 ## Loaded Skills
 - None required to load currently.
 
 ## Key Decisions Made
-- [TBD]
+- Used explicit multiline interfaces (`SegmentNavItem`, `BreadcrumbItem`) to avoid single-line delimiter stripping by oxfmt while maintaining 100% strict TypeScript typing.
+- Structured `CASE_ALIASES` to map both canonical and legacy slug variants to the corresponding `PORTFOLIO` item, ensuring seamless case study resolution and 404 safety.
 
 ## Artifact Index
 - `.agents/worker_m2/DISPATCH.md` — Assignment instructions

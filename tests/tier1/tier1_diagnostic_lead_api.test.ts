@@ -2,10 +2,9 @@ import { describe, it, expect, runner } from "../utils/test-framework.ts"
 import { readProjectFile, parseWhatsAppUrl } from "../utils/domain-helpers.ts"
 import apiHandler from "../../api/diagnostico.ts"
 
-runner.setTier("Tier 1 - Feature Coverage")
-
 export async function runTier1DiagnosticLeadApiTests() {
-  describe("Feature 24: Formulário de Diagnóstico", () => {
+  runner.setTier("Tier 1 - Feature Coverage")
+  await describe("Feature 24: Formulário de Diagnóstico", () => {
     const diagCode = readProjectFile("src/pages/Diagnostico.tsx")
 
     it("F24.1: Diagnostic form requires name, whatsapp and email fields", () => {
@@ -39,7 +38,7 @@ export async function runTier1DiagnosticLeadApiTests() {
     })
   })
 
-  describe("Feature 25: Gerador de Lead WhatsApp", () => {
+  await describe("Feature 25: Gerador de Lead WhatsApp", () => {
     const diagCode = readProjectFile("src/pages/Diagnostico.tsx")
 
     function simulateBuildWhatsAppUrl(lead: Record<string, string>): string {
@@ -133,7 +132,7 @@ export async function runTier1DiagnosticLeadApiTests() {
     })
   })
 
-  describe("Feature 26: Transmissão de Lead API (/api/diagnostico)", () => {
+  await describe("Feature 26: Transmissão de Lead API (/api/diagnostico)", () => {
     it("F26.1: API rejects non-POST HTTP methods with 405 Method Not Allowed", async () => {
       const req = new Request("http://localhost:3000/api/diagnostico", {
         method: "GET",

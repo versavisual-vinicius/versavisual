@@ -17,7 +17,7 @@ export class TestRunner {
   private results: TestResult[] = []
   private currentTier = "Tier 1 - Feature Coverage"
   private currentSuite = "General"
-  private startTime = 0
+  private queue: Promise<void> = Promise.resolve()
 
   setTier(tier: string) {
     this.currentTier = tier
@@ -27,44 +27,53 @@ export class TestRunner {
     this.currentSuite = suite
   }
 
-  async test(name: string, fn: () => void | Promise<void>) {
-    const start = performance.now()
-    try {
-      await fn()
-      const durationMs = performance.now() - start
-      this.results.push({
-        tier: this.currentTier,
-        suite: this.currentSuite,
-        name,
-        passed: true,
-        durationMs,
-      })
-      process.stdout.write(
-        `  \x1b[32m✓\x1b[0m \x1b[90m[${this.currentTier.split(" - ")[0]}]\x1b[0m ${name} \x1b[90m(${durationMs.toFixed(1)}ms)\x1b[0m\n`,
-      )
-    } catch (err) {
-      const durationMs = performance.now() - start
-      this.results.push({
-        tier: this.currentTier,
-        suite: this.currentSuite,
-        name,
-        passed: false,
-        durationMs,
-        error: err,
-      })
-      process.stdout.write(
-        `  \x1b[31m✗\x1b[0m \x1b[90m[${this.currentTier.split(" - ")[0]}]\x1b[0m \x1b[31m${name}\x1b[0m\n`,
-      )
-      if (err instanceof Error) {
-        console.error(`    \x1b[31m${err.message}\x1b[0m`)
-        if (err.stack) {
-          const stackLines = err.stack.split("\n").slice(1, 4).join("\n")
-          console.error(`    \x1b[90m${stackLines}\x1b[0m`)
+  test(name: string, fn: () => void | Promise<void>) {
+    const tierAtCall = this.currentTier
+    const suiteAtCall = this.currentSuite
+    this.queue = this.queue.then(async () => {
+      const start = performance.now()
+      try {
+        await fn()
+        const durationMs = performance.now() - start
+        this.results.push({
+          tier: tierAtCall,
+          suite: suiteAtCall,
+          name,
+          passed: true,
+          durationMs,
+        })
+        process.stdout.write(
+          `  \x1b[32m✓\x1b[0m \x1b[90m[${tierAtCall.split(" - ")[0]}]\x1b[0m ${name} \x1b[90m(${durationMs.toFixed(1)}ms)\x1b[0m\n`,
+        )
+      } catch (err) {
+        const durationMs = performance.now() - start
+        this.results.push({
+          tier: tierAtCall,
+          suite: suiteAtCall,
+          name,
+          passed: false,
+          durationMs,
+          error: err,
+        })
+        process.stdout.write(
+          `  \x1b[31m✗\x1b[0m \x1b[90m[${tierAtCall.split(" - ")[0]}]\x1b[0m \x1b[31m${name}\x1b[0m\n`,
+        )
+        if (err instanceof Error) {
+          console.error(`    \x1b[31m${err.message}\x1b[0m`)
+          if (err.stack) {
+            const stackLines = err.stack.split("\n").slice(1, 4).join("\n")
+            console.error(`    \x1b[90m${stackLines}\x1b[0m`)
+          }
+        } else {
+          console.error(`    \x1b[31m${String(err)}\x1b[0m`)
         }
-      } else {
-        console.error(`    \x1b[31m${String(err)}\x1b[0m`)
       }
-    }
+    })
+    return this.queue
+  }
+
+  async wait() {
+    await this.queue
   }
 
   getResults() {
@@ -110,10 +119,14 @@ export class TestRunner {
 
 export const runner = new TestRunner()
 
-export function describe(suiteName: string, fn: () => void | Promise<void>) {
+export async function describe(
+  suiteName: string,
+  fn: () => void | Promise<void>,
+) {
   runner.setSuite(suiteName)
   console.log(`\n\x1b[1m\x1b[34m▶ ${suiteName}\x1b[0m`)
-  return fn()
+  await fn()
+  await runner.wait()
 }
 
 export function test(testName: string, fn: () => void | Promise<void>) {
@@ -278,6 +291,93 @@ export function expect<T>(actual: T) {
             `Expected error message to match ${expectedMsg}, but got "${msg}"`,
           )
         }
+      }
+    },
+    get not() {
+      return {
+        toBe(expected: T) {
+          if (actual === expected) {
+            throw new Error(
+              `Expected value NOT to be ${JSON.stringify(expected)}`,
+            )
+          }
+        },
+        toEqual(expected: unknown) {
+          if (JSON.stringify(actual) === JSON.stringify(expected)) {
+            throw new Error(
+              `Expected value NOT to equal ${JSON.stringify(expected)}`,
+            )
+          }
+        },
+        toContain(substrOrItem: string | unknown) {
+          if (typeof actual === "string" && typeof substrOrItem === "string") {
+            if (actual.includes(substrOrItem)) {
+              throw new Error(
+                `Expected string NOT to contain "${substrOrItem}"`,
+              )
+            }
+          } else if (Array.isArray(actual)) {
+            if (
+              actual.some(
+                (x) =>
+                  x === substrOrItem ||
+                  JSON.stringify(x) === JSON.stringify(substrOrItem),
+              )
+            ) {
+              throw new Error(
+                `Expected array NOT to contain ${JSON.stringify(substrOrItem)}`,
+              )
+            }
+          }
+        },
+        toMatch(regex: RegExp) {
+          if (typeof actual === "string" && regex.test(actual)) {
+            throw new Error(
+              `Expected "${actual}" NOT to match pattern ${regex}`,
+            )
+          }
+        },
+        toBeTruthy() {
+          if (actual) {
+            throw new Error(`Expected value NOT to be truthy`)
+          }
+        },
+        toBeFalsy() {
+          if (!actual) {
+            throw new Error(`Expected value NOT to be falsy`)
+          }
+        },
+        toBeNull() {
+          if (actual === null) {
+            throw new Error(`Expected value NOT to be null`)
+          }
+        },
+        toBeUndefined() {
+          if (actual === undefined) {
+            throw new Error(`Expected value NOT to be undefined`)
+          }
+        },
+        toBeDefined() {
+          if (actual !== undefined) {
+            throw new Error(`Expected value NOT to be defined`)
+          }
+        },
+        toThrow() {
+          if (typeof actual !== "function") {
+            throw new Error(`toThrow requires a function`)
+          }
+          let threw = false
+          try {
+            actual()
+          } catch {
+            threw = true
+          }
+          if (threw) {
+            throw new Error(
+              `Expected function NOT to throw, but it threw an error`,
+            )
+          }
+        },
       }
     },
     toSatisfy(

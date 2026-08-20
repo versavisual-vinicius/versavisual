@@ -5,10 +5,9 @@ import {
   CANONICAL_CASES,
 } from "../utils/site-data.ts"
 
-runner.setTier("Tier 1 - Feature Coverage")
-
 export async function runTier1PortfolioFeaturesTests() {
-  describe("Feature 17: Filtros de Portfólio por Aba", () => {
+  runner.setTier("Tier 1 - Feature Coverage")
+  await describe("Feature 17: Filtros de Portfólio por Aba", () => {
     const portfolioGridCode = readProjectFile(
       "src/components/PortfolioGrid.tsx",
     )
@@ -46,7 +45,7 @@ export async function runTier1PortfolioFeaturesTests() {
     })
   })
 
-  describe("Feature 18: Vídeo Destaque Artistas & Videoclipes", () => {
+  await describe("Feature 18: Vídeo Destaque Artistas & Videoclipes", () => {
     const portfolioGridCode = readProjectFile(
       "src/components/PortfolioGrid.tsx",
     )
@@ -79,7 +78,7 @@ export async function runTier1PortfolioFeaturesTests() {
     })
   })
 
-  describe("Feature 23: Estudo de Caso Individual (CaseStudy)", () => {
+  await describe("Feature 23: Estudo de Caso Individual (CaseStudy)", () => {
     const caseCode = readProjectFile("src/pages/CaseStudy.tsx")
 
     it("F23.1: CaseStudy loads project data dynamically from URL param caseSlug", () => {

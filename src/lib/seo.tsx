@@ -1,15 +1,17 @@
 import { useEffect } from "react"
 
-export const SITE_URL = "https://www.versavisual.com.br"
+export const SITE_URL = "https://versavisual.com.br"
 export const OG_IMAGE = `${SITE_URL}/images/foto-a-producao-nao-falha.webp`
 
-type Seo = {
+export interface SeoProps {
   title: string
   description: string
   path: string // e.g. "/portfolio"
   noindex?: boolean
   jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
+
+export type Seo = SeoProps
 
 function upsertMeta(
   selector: string,
@@ -39,7 +41,13 @@ function upsertLink(rel: string, href: string) {
 const JSON_LD_ID = "vv-jsonld-route"
 
 /** Per-route metadata, canonical, Open Graph and JSON-LD injection. */
-export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
+export function useSeo({
+  title,
+  description,
+  path,
+  noindex,
+  jsonLd,
+}: SeoProps) {
   const jsonLdContent = jsonLd ? JSON.stringify(jsonLd) : ""
 
   useEffect(() => {
@@ -104,7 +112,12 @@ export function useSeo({ title, description, path, noindex, jsonLd }: Seo) {
   }, [title, description, path, noindex, jsonLdContent])
 }
 
-export function breadcrumb(items: { name: string path: string }[]) {
+export interface BreadcrumbItem {
+  name: string
+  path: string
+}
+
+export function breadcrumb(items: BreadcrumbItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

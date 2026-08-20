@@ -5,10 +5,9 @@ import {
   getContrastRatio,
 } from "../utils/domain-helpers.ts"
 
-runner.setTier("Tier 1 - Feature Coverage")
-
 export async function runTier1DesignTokensTypographyTests() {
-  describe("Feature 6: Tokens & Tema Tailwind v4", () => {
+  runner.setTier("Tier 1 - Feature Coverage")
+  await describe("Feature 6: Tokens & Tema Tailwind v4", () => {
     const cssCode = readProjectFile("src/index.css")
 
     it("F6.1: @theme defines official brand color tokens (ink, navy, teal, mist, off)", () => {
@@ -42,7 +41,7 @@ export async function runTier1DesignTokensTypographyTests() {
     })
   })
 
-  describe("Feature 7: Tipografia Self-Hosted", () => {
+  await describe("Feature 7: Tipografia Self-Hosted", () => {
     const cssCode = readProjectFile("src/index.css")
     const indexHtml = readProjectFile("index.html")
 
@@ -92,7 +91,7 @@ export async function runTier1DesignTokensTypographyTests() {
     })
   })
 
-  describe("Feature 28: Auditoria Estrita de Contraste (WCAG AA)", () => {
+  await describe("Feature 28: Auditoria Estrita de Contraste (WCAG AA)", () => {
     it("F28.1: Contrast ratio between white/off-white (#F2F2F2) and brand ink (#050A0D) exceeds 15:1", () => {
       const ratio = getContrastRatio("#F2F2F2", "#050A0D")
       expect(ratio).toBeGreaterThan(15.0)

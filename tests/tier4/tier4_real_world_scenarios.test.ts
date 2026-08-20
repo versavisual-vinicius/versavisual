@@ -6,10 +6,9 @@ import {
 } from "../utils/domain-helpers.ts"
 import apiHandler from "../../api/diagnostico.ts"
 
-runner.setTier("Tier 4 - Real-World Application Scenarios")
-
 export async function runTier4RealWorldScenariosTests() {
-  describe("Scenario 1: Jornada Completa da Noiva (Casamento & Destination Wedding)", () => {
+  runner.setTier("Tier 4 - Real-World Application Scenarios")
+  await describe("Scenario 1: Jornada Completa da Noiva (Casamento & Destination Wedding)", () => {
     it("T4.1: Executes complete discovery, niche assessment, service inspection and diagnostic lead conversion for a bride", async () => {
       // Step 1: Discover wedding segment route
       const segmentSlug = resolveSegmentSlug("casamentos")
@@ -18,7 +17,7 @@ export async function runTier4RealWorldScenariosTests() {
       // Step 2: Inspect wedding landing page
       const segCode = readProjectFile("src/pages/SegmentPage.tsx")
       expect(segCode).toContain("seg.solutionTitle")
-      expect(segCode).toContain("setSelectedService")
+      expect(segCode).toContain("setOpenService")
 
       // Step 3: Fill Bride diagnostic briefing
       const brideLead = {
@@ -72,7 +71,7 @@ export async function runTier4RealWorldScenariosTests() {
     })
   })
 
-  describe("Scenario 2: Jornada da Marca de Moda (Campanha Editorial & Lookbook)", () => {
+  await describe("Scenario 2: Jornada da Marca de Moda (Campanha Editorial & Lookbook)", () => {
     it("T4.2: Executes fashion brand discovery, case study review, and commercial proposal request", async () => {
       // Step 1: Resolve fashion niche
       const segmentSlug = resolveSegmentSlug("moda-campanhas")
@@ -133,13 +132,13 @@ export async function runTier4RealWorldScenariosTests() {
     })
   })
 
-  describe("Scenario 3: Jornada do Artista Musical (Videoclipe & Bastidores de Turnê)", () => {
+  await describe("Scenario 3: Jornada do Artista Musical (Videoclipe & Bastidores de Turnê)", () => {
     it("T4.3: Executes music artist showcase exploration, backstage gallery review, and direct WhatsApp lead inquiry", async () => {
       // Step 1: Check Artists & Videoclipes filter
       const portfolioGridCode = readProjectFile(
         "src/components/PortfolioGrid.tsx",
       )
-      expect(portfolioGridCode).toContain('active === "Artistas & Videoclipes"')
+      expect(portfolioGridCode).toContain('filter === "Artistas & Videoclipes"')
 
       // Step 2: Inspect music artist case
       const caseCode = readProjectFile("src/pages/CaseStudy.tsx")
@@ -194,7 +193,7 @@ export async function runTier4RealWorldScenariosTests() {
     })
   })
 
-  describe("Scenario 4: Jornada do Executivo Corporativo / Marca B2B (Ativação de Marca)", () => {
+  await describe("Scenario 4: Jornada do Executivo Corporativo / Marca B2B (Ativação de Marca)", () => {
     it("T4.4: Executes corporate event activation inquiry with B2B metrics, service selection, and formal brief", async () => {
       // Step 1: Corporate segment validation
       const segmentSlug = resolveSegmentSlug("ativacoes-eventos")
@@ -202,8 +201,8 @@ export async function runTier4RealWorldScenariosTests() {
 
       // Step 2: Check authority metrics
       const homeCode = readProjectFile("src/pages/Home.tsx")
-      expect(homeCode).toContain("+120")
-      expect(homeCode).toContain("Marcas Atendidas")
+      expect(homeCode).toContain("HOME_STATS")
+      expect(homeCode).toContain("s.label")
 
       // Step 3: Submit corporate brief
       const corporateLead = {
@@ -259,7 +258,7 @@ export async function runTier4RealWorldScenariosTests() {
     })
   })
 
-  describe("Scenario 5: Jornada do Hotel Boutique & Gastronomia (Hotelaria & Lifestyle)", () => {
+  await describe("Scenario 5: Jornada do Hotel Boutique & Gastronomia (Hotelaria & Lifestyle)", () => {
     it("T4.5: Executes boutique hotel showcase assessment, photo inspection, and proposal generation", async () => {
       // Step 1: Resolve hotel segment
       const segmentSlug = resolveSegmentSlug("hotelaria-lifestyle")

@@ -3,13 +3,13 @@ import path from "node:path"
 
 const root = process.cwd()
 const distDir = path.join(root, "dist")
-const siteUrl = "https://www.versavisual.com.br"
+const siteUrl = "https://versavisual.com.br"
 const indexHtml = await readFile(path.join(distDir, "index.html"), "utf8")
 const sitemap = await readFile(path.join(root, "public", "sitemap.xml"), "utf8")
 
 const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
   .map((match) => new URL(match[1]))
-  .filter((url) => url.origin === siteUrl)
+  .filter((url) => url.hostname.replace(/^www\./, "") === "versavisual.com.br")
   .map((url) => url.pathname.replace(/\/$/, ""))
   .filter((pathname) => pathname && pathname !== "/")
 

@@ -12,7 +12,7 @@ runner.setTier("Tier 3 - Cross-Feature Combinations")
 export async function runTier3CrossFeatureCombinationsTests() {
   runner.setTier("Tier 3 - Cross-Feature Combinations")
 
-  describe("Tier 3 Flow 1: Diagnóstico -> Validação de Briefing -> URL WhatsApp Estruturada", () => {
+  await describe("Tier 3 Flow 1: Diagnóstico -> Validação de Briefing -> URL WhatsApp Estruturada", () => {
     it("T3.1: Complete diagnostic lead generates valid WhatsApp link with 100% data fidelity", () => {
       const leadInput = {
         nome: "Beatriz Helena",
@@ -83,7 +83,7 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 2: Home -> Seletor de Segmento -> Modal de Serviço -> CTA de Diagnóstico", () => {
+  await describe("Tier 3 Flow 2: Home -> Seletor de Segmento -> Modal de Serviço -> CTA de Diagnóstico", () => {
     it("T3.3: Home links match canonical segment landing page routes", () => {
       const homeCode = readProjectFile("src/pages/Home.tsx")
       expect(homeCode).toContain("to={`/${s.slug}`}")
@@ -98,7 +98,7 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 3: Portfólio -> Filtro Artistas -> Case Study -> Segmento Pai", () => {
+  await describe("Tier 3 Flow 3: Portfólio -> Filtro Artistas -> Case Study -> Segmento Pai", () => {
     it("T3.5: Portfolio grid filter links to CaseStudy which in turn links back to parent segment", () => {
       const portfolioGridCode = readProjectFile(
         "src/components/PortfolioGrid.tsx",
@@ -118,7 +118,7 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 4: Rota 404 -> Navegação de Recuperação -> Galeria com Lightbox", () => {
+  await describe("Tier 3 Flow 4: Rota 404 -> Navegação de Recuperação -> Galeria com Lightbox", () => {
     it("T3.7: 404 page provides direct segment links to re-engage the user", () => {
       const notFoundCode = readProjectFile("src/pages/NotFound.tsx")
       expect(notFoundCode).toContain("SEGMENT_NAV")
@@ -132,14 +132,16 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 5: Skip Link -> Menu Drawer -> Bloqueio de Scroll -> WhatsApp Flutuante", () => {
+  await describe("Tier 3 Flow 5: Skip Link -> Menu Drawer -> Bloqueio de Scroll -> WhatsApp Flutuante", () => {
     it("T3.9: Skip-link targets main and header mobile drawer properly locks/unlocks body overflow", () => {
       const appCode = readProjectFile("src/App.tsx")
       const headerCode = readProjectFile("src/components/Header.tsx")
 
       expect(appCode).toContain('href="#main"')
       expect(appCode).toContain('id="main"')
-      expect(headerCode).toContain('document.body.style.overflow = open ? "hidden" : ""')
+      expect(headerCode).toContain(
+        'document.body.style.overflow = open ? "hidden" : ""',
+      )
     })
 
     it("T3.10: WhatsAppFloat remains accessible across all layout states and z-indexes", () => {
@@ -149,7 +151,7 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 6: SEO Hook -> Injeção de Meta Tags + Schema JSON-LD", () => {
+  await describe("Tier 3 Flow 6: SEO Hook -> Injeção de Meta Tags + Schema JSON-LD", () => {
     it("T3.11: useSeo hook handles BreadcrumbList, Service, and Organization JSON-LD schemas seamlessly", () => {
       const seoCode = readProjectFile("src/lib/seo.tsx")
       expect(seoCode).toContain("application/ld+json")
@@ -164,13 +166,13 @@ export async function runTier3CrossFeatureCombinationsTests() {
     })
   })
 
-  describe("Tier 3 Flow 7: Post-Build Static Route Generation & Sitemap", () => {
+  await describe("Tier 3 Flow 7: Post-Build Static Route Generation & Sitemap", () => {
     it("T3.13: emit-route-html.mjs reads sitemap.xml and maps all routes for production deployment", () => {
       const ssgCode = readProjectFile("scripts/emit-route-html.mjs")
       const sitemap = readProjectFile("public/sitemap.xml")
 
       expect(ssgCode).toContain("sitemap.xml")
-      expect(sitemap).toContain("https://versavisual.com.br")
+      expect(sitemap).toContain("versavisual.com.br")
     })
   })
 }

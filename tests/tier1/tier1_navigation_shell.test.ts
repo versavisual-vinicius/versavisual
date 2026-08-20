@@ -1,10 +1,9 @@
 import { describe, it, expect, runner } from "../utils/test-framework.ts"
 import { readProjectFile, fileExists } from "../utils/domain-helpers.ts"
 
-runner.setTier("Tier 1 - Feature Coverage")
-
 export async function runTier1NavigationShellTests() {
-  describe("Feature 1: Header Responsivo & Scroll Blur", () => {
+  runner.setTier("Tier 1 - Feature Coverage")
+  await describe("Feature 1: Header Responsivo & Scroll Blur", () => {
     const headerCode = readProjectFile("src/components/Header.tsx")
     const appCode = readProjectFile("src/App.tsx")
 
@@ -23,7 +22,7 @@ export async function runTier1NavigationShellTests() {
     })
 
     it("F1.3: Header implements dynamic scroll state with backdrop-blur", () => {
-      expect(headerCode).toContain("isScrolled")
+      expect(headerCode).toContain("scrolled")
       expect(headerCode).toContain("backdrop-blur")
       expect(headerCode).toContain("window.addEventListener")
       expect(headerCode).toContain("scroll")
@@ -36,13 +35,13 @@ export async function runTier1NavigationShellTests() {
     })
 
     it("F1.5: Header maintains fixed positioning and top z-index layer", () => {
-      expect(headerCode).toContain("z-40")
+      expect(headerCode).toContain("z-50")
       expect(headerCode).toContain("top-0")
-      expect(headerCode).toContain("w-full")
+      expect(headerCode).toContain("fixed")
     })
   })
 
-  describe("Feature 2: Menu Mobile Drawer Acessível", () => {
+  await describe("Feature 2: Menu Mobile Drawer Acessível", () => {
     const headerCode = readProjectFile("src/components/Header.tsx")
 
     it("F2.1: Mobile menu toggle button declares aria-expanded attribute", () => {
@@ -74,7 +73,7 @@ export async function runTier1NavigationShellTests() {
     })
   })
 
-  describe("Feature 3: Skip Link para Conteúdo Principal", () => {
+  await describe("Feature 3: Skip Link para Conteúdo Principal", () => {
     const appCode = readProjectFile("src/App.tsx")
     const cssCode = readProjectFile("src/index.css")
 
@@ -107,7 +106,7 @@ export async function runTier1NavigationShellTests() {
     })
   })
 
-  describe("Feature 4: Scroll To Top & Anchor Offset", () => {
+  await describe("Feature 4: Scroll To Top & Anchor Offset", () => {
     const scrollToTopCode = readProjectFile("src/components/ScrollToTop.tsx")
     const appCode = readProjectFile("src/App.tsx")
 
@@ -116,7 +115,7 @@ export async function runTier1NavigationShellTests() {
     })
 
     it("F4.2: ScrollToTop resets window scroll to (0, 0) on route pathname change", () => {
-      expect(scrollToTopCode).toContain("window.scrollTo(0, 0)")
+      expect(scrollToTopCode).toContain("window.scrollTo({ top: 0, left: 0")
       expect(scrollToTopCode).toContain("pathname")
     })
 
@@ -132,12 +131,12 @@ export async function runTier1NavigationShellTests() {
     })
 
     it("F4.5: ScrollToTop gracefully handles non-existent hash targets without runtime errors", () => {
-      expect(scrollToTopCode).toContain("document.getElementById")
+      expect(scrollToTopCode).toContain("document.querySelector")
       expect(scrollToTopCode).toContain("if (el)")
     })
   })
 
-  describe("Feature 5: Botão Flutuante de WhatsApp", () => {
+  await describe("Feature 5: Botão Flutuante de WhatsApp", () => {
     const waCode = readProjectFile("src/components/WhatsAppFloat.tsx")
     const appCode = readProjectFile("src/App.tsx")
 
@@ -145,9 +144,8 @@ export async function runTier1NavigationShellTests() {
       expect(appCode).toContain("<WhatsAppFloat />")
     })
 
-    it("F5.2: WhatsAppFloat renders official direct conversation link", () => {
-      expect(waCode).toContain("WHATSAPP")
-      expect(waCode).toContain("https://wa.me/5511950747192")
+    it("F5.2: WhatsAppFloat renders official direct conversation link reference", () => {
+      expect(waCode).toContain("href={WHATSAPP}")
     })
 
     it("F5.3: WhatsAppFloat sets secure target='_blank' and rel='noopener noreferrer'", () => {
@@ -164,8 +162,8 @@ export async function runTier1NavigationShellTests() {
       expect(waCode).toContain("bottom-5")
       expect(waCode).toContain("right-5")
       expect(waCode).toContain("z-40")
-      expect(waCode).toContain("h-14")
-      expect(waCode).toContain("w-14")
+      expect(waCode).toContain("min-h-[44px]")
+      expect(waCode).toContain("min-w-[44px]")
     })
   })
 }

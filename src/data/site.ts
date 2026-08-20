@@ -20,9 +20,18 @@ export const WHATSAPP = "https://wa.me/5511950747192"
 export const WHATSAPP_LABEL = "11 95074-7192"
 export const EMAIL = "hub@versavisual.com.br"
 
-export type NavItem = { label: string to: string hash?: boolean }
+export type NavItem = {
+  label: string
+  to: string
+  hash?: boolean
+}
 
-export const SEGMENT_NAV: { label: string to: string }[] = [
+export interface SegmentNavItem {
+  label: string
+  to: string
+}
+
+export const SEGMENT_NAV: SegmentNavItem[] = [
   { label: "Ativações & Eventos", to: "/ativacoes-eventos" },
   { label: "Moda & Campanhas", to: "/moda-campanhas" },
   { label: "Artistas & Videoclipes", to: "/artistas-videoclipes" },
@@ -33,7 +42,11 @@ export const SEGMENT_NAV: { label: string to: string }[] = [
   { label: "Hotelaria & Lifestyle", to: "/hotelaria-lifestyle" },
 ]
 
-export type Service = { n: string title: string desc: string }
+export type Service = {
+  n: string
+  title: string
+  desc: string
+}
 
 export const HOME_SERVICES: Service[] = [
   {
@@ -98,8 +111,15 @@ export const HOME_STATS = [
   { value: "5+", label: "Anos de Operação" },
 ]
 
-export type Faq = { q: string a: string }
-export type SegProcess = { n: string title: string desc: string }
+export type Faq = {
+  q: string
+  a: string
+}
+export type SegProcess = {
+  n: string
+  title: string
+  desc: string
+}
 
 export type Segment = {
   slug: string
@@ -1033,7 +1053,7 @@ export const SEGMENTS: Segment[] = [
   },
 ]
 
-const SEGMENT_ALIASES: Record<string, string> = {
+export const SEGMENT_ALIASES: Record<string, string> = {
   "ativacoes-e-eventos": "ativacoes-eventos",
   eventos: "ativacoes-eventos",
   ativacoes: "ativacoes-eventos",
@@ -1041,12 +1061,16 @@ const SEGMENT_ALIASES: Record<string, string> = {
   campanhas: "moda-campanhas",
   artistas: "artistas-videoclipes",
   videoclipes: "artistas-videoclipes",
+  musica: "artistas-videoclipes",
   posicionamento: "posicionamento-profissional",
   profissional: "posicionamento-profissional",
+  corporativo: "posicionamento-profissional",
   lifestyle: "imagem-pessoal-lifestyle",
   "imagem-pessoal": "imagem-pessoal-lifestyle",
+  pessoal: "imagem-pessoal-lifestyle",
   casamento: "casamentos",
   gestante: "gestantes",
+  maternidade: "gestantes",
   hotelaria: "hotelaria-lifestyle",
 }
 
@@ -1074,6 +1098,25 @@ export type PortfolioItem = {
   segmentSlug: string
   gallery?: readonly string[]
   video?: string
+}
+
+export const CASE_ALIASES: Record<string, string> = {
+  "lancamento-drinkball": "ativacao-drinkball",
+  "megabloco-cha-da-alice": "carnaval-de-rua-experiencia-publico",
+  "festival-jeans-toritama": "evento-fjt-palco-camarote",
+  "syn-ice-camarote": "symbh-evento-corporativo",
+  "moda-santalola-verao": "editorial-lifestyle-campanha",
+  "fashion-manners-editorial": "fashion-week-passarela-bastidor",
+  "loja-frida-campanha": "loja-frida-sao-joao",
+  "ensaio-street-sp": "ensaio-street-sp",
+  "ensaio-autoral-estudio": "ensaio-autoral-lifestyle-instagram",
+  "casamento-destination-wedding": "casamento-ao-ar-livre",
+  "casamento-urbano-contemporaneo": "casamento-urbano-contemporaneo",
+  "maternidade-ensaio-intimo": "ensaio-gestante-praia",
+  "bonfim-house-boutique": "hotelaria-espacos-cafe-spa",
+  "retratos-posicionamento-marca-pessoal":
+    "retratos-posicionamento-marca-pessoal",
+  "ensaio-feminino-frida": "loja-frida-sao-joao",
 }
 
 const P = PHOTOS
@@ -1164,6 +1207,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: "FJT Fashion — Desfile & Coleções",
     city: "Toritama · PE",
     photo: FESTIVAL_JEANS_TORITAMA_PHOTOS[15] || P.fashion[3],
+    caseSlug: "fjt-fashion-desfile-colecoes",
     segmentSlug: "moda-campanhas",
     gallery: FESTIVAL_JEANS_TORITAMA_PHOTOS.slice(15, 45),
   },
@@ -1192,6 +1236,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: "Bonfim House — Liderança e Ambiente Corporativo",
     city: "Salvador · BA",
     photo: BONFIM_HOUSE_PHOTOS[1] || P.professional[1],
+    caseSlug: "retratos-posicionamento-marca-pessoal",
     segmentSlug: "posicionamento-profissional",
     gallery: BONFIM_HOUSE_PHOTOS,
   },
@@ -1209,6 +1254,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: "Retratos Urbanos — Street & Presença",
     city: "Rio de Janeiro · RJ",
     photo: ENSAIO_STREET_PHOTOS[2] || P.personal[2],
+    caseSlug: "ensaio-street-sp",
     segmentSlug: "imagem-pessoal-lifestyle",
     gallery: ENSAIO_STREET_PHOTOS,
   },
@@ -1226,6 +1272,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: "Casamento na Praia — Luz e Emoção",
     city: "Macaé · RJ",
     photo: P.weddings[1],
+    caseSlug: "casamento-urbano-contemporaneo",
     segmentSlug: "casamentos",
     gallery: P.weddings,
   },
@@ -1275,6 +1322,15 @@ export function matchesFilter(item: PortfolioItem, filter: string): boolean {
   return item.category === filter
 }
 
-export function getCase(slug: string): PortfolioItem | undefined {
-  return PORTFOLIO.find((p) => p.caseSlug === slug)
+export function getCase(slug?: string): PortfolioItem | undefined {
+  if (!slug) return undefined
+  const clean = slug
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/^portfolio\//, "")
+  const target = CASE_ALIASES[clean] || clean
+  return (
+    PORTFOLIO.find((p) => p.caseSlug === target) ||
+    PORTFOLIO.find((p) => p.caseSlug === clean)
+  )
 }
