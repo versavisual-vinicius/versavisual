@@ -31,6 +31,28 @@ export async function runTier1SegmentPagesInteractiveTests() {
       expect(segCode).toContain("<Gallery")
       expect(segCode).toContain("<FAQAccordion")
     })
+
+    it("F19.6: SegmentPage supports portfolioGroups declared by segment data without slug-specific branching", async () => {
+      const { SEGMENTS, PORTFOLIO } = await import("../../src/data/site.ts")
+      const events = SEGMENTS.find((seg) => seg.slug === "ativacoes-eventos")
+
+      expect(events).toBeDefined()
+      expect(events?.portfolioGroups?.length).toBeGreaterThan(0)
+      expect(segCode).toContain("seg.portfolioGroups")
+      expect(segCode.includes('seg.slug === "ativacoes-eventos"')).toBe(false)
+
+      const allCaseSlugs = new Set(
+        PORTFOLIO.map((item) => item.caseSlug).filter(Boolean),
+      )
+
+      for (const group of events?.portfolioGroups ?? []) {
+        expect(group.title).toBeTruthy()
+        expect(group.caseSlugs.length).toBeGreaterThan(0)
+        for (const caseSlug of group.caseSlugs) {
+          expect(allCaseSlugs.has(caseSlug)).toBe(true)
+        }
+      }
+    })
   })
 
   await describe("Feature 20: Modal de Detalhes do Serviço", () => {

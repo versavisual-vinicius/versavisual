@@ -121,6 +121,13 @@ export type SegProcess = {
   desc: string
 }
 
+export type SegmentPortfolioGroup = {
+  title: string
+  description: string
+  caseSlugs: readonly string[]
+  previewCount?: number
+}
+
 export type Segment = {
   slug: string
   index: string // 01..08
@@ -144,6 +151,9 @@ export type Segment = {
   process: SegProcess[]
   mosaicPhotos?: readonly string[]
   mosaicPhotoFits?: readonly ("cover" | "contain")[]
+  galleryIntro?: string
+  galleryPreviewLimit?: number
+  portfolioGroups?: readonly SegmentPortfolioGroup[]
   ctaEyebrow: string
   ctaTitle: string
   ctaText: string
@@ -236,6 +246,39 @@ export const SEGMENTS: Segment[] = [
         n: "04",
         title: "Entrega",
         desc: "Edição por formato, curadoria de imagens e material organizado para o time.",
+      },
+    ],
+    galleryIntro:
+      "Uma seleção de coberturas para marcas, eventos e experiências presenciais. Organizamos os registros por tipo de entrega: presença de marca, público, produto, bastidores, palco e conteúdo em tempo real.",
+    galleryPreviewLimit: 12,
+    portfolioGroups: [
+      {
+        title: "Feiras & lançamentos",
+        description:
+          "Projetos com presença de marca, produto em evidência, interação com público e conteúdo de apoio para equipes comerciais.",
+        caseSlugs: [
+          "ativacao-drinkball",
+          "symbh-evento-corporativo",
+          "evento-fjt-palco-camarote",
+        ],
+        previewCount: 4,
+      },
+      {
+        title: "Experiências de marca / carnaval",
+        description:
+          "Coberturas de grande fluxo, palco, público e experiência presencial com narrativa visual de escala.",
+        caseSlugs: [
+          "carnaval-de-rua-experiencia-publico",
+          "camarote-ondina-salvador",
+        ],
+        previewCount: 4,
+      },
+      {
+        title: "Corporativo / relacionamento",
+        description:
+          "Registros de ambiente, convidados, equipe e momentos de relacionamento para marcas e operações presenciais.",
+        caseSlugs: ["festival-bon-cobertura-corporativa"],
+        previewCount: 4,
       },
     ],
     ctaEyebrow: "Próxima ativação",

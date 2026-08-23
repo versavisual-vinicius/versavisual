@@ -37,6 +37,14 @@ export default function SegmentPage({
   const relatedCases = PORTFOLIO.filter(
     (p) => p.segmentSlug === seg.slug || p.category === seg.category,
   ).slice(0, 6)
+  const portfolioGroups = (seg.portfolioGroups ?? [])
+    .map((group) => ({
+      ...group,
+      cases: group.caseSlugs
+        .map((caseSlug) => PORTFOLIO.find((p) => p.caseSlug === caseSlug))
+        .filter((item): item is (typeof PORTFOLIO)[number] => Boolean(item)),
+    }))
+    .filter((group) => group.cases.length > 0)
 
   useSeo({
     title: `${seg.seoTitle} | VERSAVISUAL`,
@@ -80,7 +88,9 @@ export default function SegmentPage({
   const galleryPhotos = Array.from(
     new Set([seg.heroPhoto, ...(seg.mosaicPhotos ?? seg.photos)]),
   ).slice(0, 3)
-  const portfolioPhotos = [...seg.photos]
+  const portfolioPhotos = seg.galleryPreviewLimit
+    ? seg.photos.slice(0, seg.galleryPreviewLimit)
+    : [...seg.photos]
   const serviceCloseRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -368,7 +378,9 @@ export default function SegmentPage({
             <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl">
               {seg.nav} em imagens.
             </h2>
-            <p className="mt-3 max-w-xl text-mist">{seg.intro}</p>
+            <p className="mt-3 max-w-xl text-mist">
+              {seg.galleryIntro ?? seg.intro}
+            </p>
           </Reveal>
 
           {seg.slug === "artistas-videoclipes" && (
@@ -389,6 +401,117 @@ export default function SegmentPage({
           <Reveal>
             <Gallery photos={portfolioPhotos} label={seg.nav} />
           </Reveal>
+
+          {portfolioGroups.length > 0 && (
+            <Reveal className="mt-16 space-y-12">
+              <div className="max-w-3xl border-t border-off/10 pt-8">
+                <h3 className="text-2xl font-semibold leading-tight text-off sm:text-3xl">
+                  Projetos por tipo de entrega.
+                </h3>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist">
+                  Cada grupo abre uma leitura mais completa dos cases, com
+                  capa, contexto e prévias do material entregue.
+                </p>
+              </div>
+
+              {portfolioGroups.map((group) => (
+                <section
+                  key={group.title}
+                  className="border-t border-off/10 pt-8"
+                  aria-labelledby={`portfolio-group-${group.title
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")}`}
+                >
+                  <div className="mb-6 max-w-3xl">
+                    <h4
+                      id={`portfolio-group-${group.title
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")}`}
+                      className="text-xl font-semibold text-off"
+                    >
+                      {group.title}
+                    </h4>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-mist">
+                      {group.description}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-6 lg:grid-cols-3">
+                    {group.cases.map((project) => {
+                      const previewPhotos = (
+                        project.gallery ?? [project.photo]
+                      ).slice(0, group.previewCount ?? 6)
+                      const imageCount = project.gallery?.length ?? 1
+                      const imageCountLabel =
+                        imageCount === 1
+                          ? "1 imagem"
+                          : `${imageCount} imagens`
+
+                      return (
+                        <article
+                          key={project.title}
+                          className="group border-t border-off/10 pt-4"
+                        >
+                          <Link
+                            to={`/portfolio/${project.caseSlug}`}
+                            viewTransition
+                            className="block"
+                          >
+                            <div className="relative aspect-[16/10] overflow-hidden bg-navy">
+                              <img
+                                src={img(project.photo, 900, 560)}
+                                alt={portfolioImageAlt(project)}
+                                width={900}
+                                height={560}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                              />
+                            </div>
+                          </Link>
+
+                          <div className="pt-4">
+                            <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-teal-400">
+                              {project.city}
+                            </p>
+                            <h5 className="mt-1 text-lg font-semibold leading-snug text-off">
+                              {project.title}
+                            </h5>
+                            <p className="mt-2 text-sm text-mist">
+                              {imageCountLabel} no case
+                            </p>
+                          </div>
+
+                          <div className="mt-4 grid grid-cols-4 gap-1">
+                            {previewPhotos.map((photo, index) => (
+                              <img
+                                key={photo}
+                                src={img(photo, 420, 300)}
+                                alt={`${project.title} - prévia ${index + 1}`}
+                                width={420}
+                                height={300}
+                                loading="lazy"
+                                decoding="async"
+                                className="aspect-square w-full object-cover"
+                              />
+                            ))}
+                          </div>
+
+                          <Link
+                            to={`/portfolio/${project.caseSlug}`}
+                            viewTransition
+                            className="mt-4 inline-flex min-h-[44px] items-center gap-2 border-b border-transparent pb-1 text-sm font-medium font-head text-mist transition-colors hover:border-teal hover:text-off"
+                          >
+                            Ver case completo <span aria-hidden>→</span>
+                          </Link>
+                        </article>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+            </Reveal>
+          )}
         </div>
       </section>
 
