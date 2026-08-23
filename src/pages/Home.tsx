@@ -1,9 +1,11 @@
 import { lazy, Suspense } from "react"
+import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useSeo, SITE_URL } from "../lib/seo"
 import { img } from "../lib/images"
 import {
   HOME_SERVICES,
+  HOME_SERVICE_GROUPS,
   HOME_PROCESS,
   HOME_STATS,
   SEGMENTS,
@@ -53,20 +55,22 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[88svh] items-end overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/hero.webm" type="video/webm" />
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
-        <div className="u-grade absolute inset-0" />
-        <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-28 lg:px-10 lg:pb-16">
+      <section className="relative overflow-hidden sm:flex sm:min-h-[88svh] sm:items-end">
+        <div className="relative h-[62svh] min-h-[440px] max-h-[620px] sm:absolute sm:inset-0 sm:h-full sm:max-h-none sm:min-h-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="h-full w-full object-cover"
+          >
+            <source src="/videos/hero.webm" type="video/webm" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="u-grade absolute inset-0 hidden sm:block" />
+        </div>
+        <div className="relative mx-auto w-full max-w-[1320px] bg-ink px-5 py-10 sm:bg-transparent sm:pb-12 sm:pt-28 lg:px-10 lg:pb-16">
           <p className="u-eyebrow u-fade-in text-mist/90">
             Hub audiovisual autoral · Rio de Janeiro · Operação nacional
           </p>
@@ -109,22 +113,38 @@ export default function Home() {
             que a imagem comunique com coerência em cada ponto de contato.
           </p>
         </div>
-        <ServiceGrid items={HOME_SERVICES} />
+        <ServiceGrid items={HOME_SERVICES} mobileGroups={HOME_SERVICE_GROUPS} />
       </section>
 
       {/* STATS */}
-      <section className="border-y border-off/10">
-        <div className="mx-auto grid max-w-[1320px] grid-cols-2 divide-x divide-y divide-off/10 px-5 lg:grid-cols-4 lg:px-10">
+      <section className="overflow-hidden border-y border-off/10">
+        <ul className="sr-only">
           {HOME_STATS.map((s) => (
-            <div key={s.label} className="py-7 lg:py-8">
-              <p className="u-display text-2xl text-off lg:text-3xl">
-                {s.value}
-              </p>
-              <p className="mt-2 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-mist">
-                {s.label}
-              </p>
-            </div>
+            <li key={s.label}>
+              {s.value} {s.label}
+            </li>
           ))}
+        </ul>
+        <div aria-hidden="true" className="overflow-hidden">
+          <div className="u-marquee-track">
+            {[0, 1].map((group) => (
+              <div key={group} className="flex w-max shrink-0">
+                {HOME_STATS.map((s) => (
+                  <div
+                    key={s.label}
+                    className="flex min-w-[190px] shrink-0 items-center gap-3 border-r border-off/10 px-5 py-6 sm:min-w-[240px] sm:px-8 lg:py-8"
+                  >
+                    <p className="u-display text-2xl text-off lg:text-3xl">
+                      {s.value}
+                    </p>
+                    <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-mist">
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -149,7 +169,33 @@ export default function Home() {
               Ver portfólio completo →
             </Link>
           </div>
-          <div className="grid gap-px border-y border-off/10 sm:grid-cols-2 lg:grid-cols-4">
+          <nav
+            aria-label="Escolha seu contexto"
+            className="grid grid-cols-2 gap-px border-y border-off/10 bg-off/10 sm:hidden"
+          >
+            {SEGMENTS.map((s) => (
+              <Link
+                key={s.slug}
+                to={`/${s.slug}`}
+                viewTransition
+                className="group flex min-h-[64px] items-center justify-between gap-3 bg-ink px-3 py-3 text-off transition-colors hover:bg-navy"
+              >
+                <span className="flex min-w-0 items-center gap-2">
+                  <span className="shrink-0 text-xs font-medium text-teal-400/90">
+                    {s.index}
+                  </span>
+                  <span className="text-sm font-semibold leading-tight">
+                    {s.nav}
+                  </span>
+                </span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="size-4 shrink-0 text-mist transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </Link>
+            ))}
+          </nav>
+          <div className="hidden sm:grid gap-px border-y border-off/10 sm:grid-cols-2 lg:grid-cols-4">
             {SEGMENTS.map((s) => (
               <Link
                 key={s.slug}

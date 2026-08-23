@@ -244,9 +244,21 @@
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  .u-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: vv-marquee 24s linear infinite;
+    will-change: transform;
+  }
+  @keyframes vv-marquee {
+    to { transform: translateX(-50%); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] { opacity: 1; transform: none; transition: none; }
     .u-fade-in { animation: none; }
+    .u-marquee-track { animation: none; transform: none; }
     html { scroll-behavior: auto; }
   }
 }

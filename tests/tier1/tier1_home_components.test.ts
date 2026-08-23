@@ -43,6 +43,12 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain("/diagnostico-visual")
       expect(homeCode).toContain("/portfolio")
     })
+
+    it("F13.7: Hero separates the mobile video and copy while preserving the desktop overlay", () => {
+      expect(homeCode).toContain("sm:min-h-[88svh]")
+      expect(homeCode).toContain("sm:absolute sm:inset-0")
+      expect(homeCode).toContain("sm:bg-transparent")
+    })
   })
 
   await describe("Feature 14: Grid de Serviços & TiltCard", () => {
@@ -108,6 +114,21 @@ export async function runTier1HomeComponentsTests() {
     it("F14.9: Mobile disclosure summaries meet touch target requirements", () => {
       expect(serviceGridCode).toContain("min-h-[44px]")
     })
+
+    it("F14.10: Home passes the approved mobile groups to ServiceGrid", () => {
+      expect(homeCode).toContain("HOME_SERVICE_GROUPS")
+      expect(homeCode).toContain("mobileGroups={HOME_SERVICE_GROUPS}")
+    })
+
+    it("F14.11: Authority stats use an accessible continuous marquee", () => {
+      const cssCode = readProjectFile("src/index.css")
+
+      expect(homeCode).toContain("u-marquee-track")
+      expect(homeCode).toContain('aria-hidden="true"')
+      expect(cssCode).toContain("@keyframes vv-marquee")
+      expect(cssCode).toContain("prefers-reduced-motion: reduce")
+      expect(cssCode).toContain(".u-marquee-track")
+    })
   })
 
   await describe("Feature 15: Seletor de Segmentos Home", () => {
@@ -118,9 +139,9 @@ export async function runTier1HomeComponentsTests() {
       expect(OFFICIAL_SEGMENTS).toHaveLength(8)
     })
 
-    it("F15.2: Segment cards use mobile aspect ratio aspect-[16/11] and desktop aspect-[3/4]", () => {
-      expect(homeCode).toContain("aspect-[16/11]")
-      expect(homeCode).toContain("sm:aspect-[3/4]")
+    it("F15.2: Mobile uses a compact selector and preserves photographic cards from sm onward", () => {
+      expect(homeCode).toContain("sm:hidden")
+      expect(homeCode).toContain("hidden sm:grid")
     })
 
     it("F15.3: Segment cards link to their respective niche landing pages (/:slug)", () => {
