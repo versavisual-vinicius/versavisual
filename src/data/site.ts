@@ -81,6 +81,28 @@ export const HOME_SERVICES: Service[] = [
   },
 ]
 
+export type ServiceGroup = {
+  title: string
+  items: readonly string[]
+}
+
+export const HOME_SERVICE_GROUPS: readonly ServiceGroup[] = [
+  {
+    title: "Fotografia",
+    items: ["Cobertura de eventos", "Direção"],
+  },
+  {
+    title: "Vídeo",
+    items: [
+      "Direção",
+      "Roteiro",
+      "Videomaking",
+      "Storymaking",
+      "Cobertura de eventos",
+    ],
+  },
+]
+
 export const HOME_PROCESS = [
   {
     n: "01",

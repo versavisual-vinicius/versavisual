@@ -5,6 +5,7 @@ import {
   CANONICAL_HOME_PROCESS,
   CANONICAL_HOME_STATS,
 } from "../utils/site-data.ts"
+import { HOME_SERVICE_GROUPS } from "../../src/data/site.ts"
 
 export async function runTier1HomeComponentsTests() {
   runner.setTier("Tier 1 - Feature Coverage")
@@ -73,6 +74,39 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain("HOME_STATS")
       expect(homeCode).toContain("s.value")
       expect(homeCode).toContain("s.label")
+    })
+
+    it("F14.6: Mobile service groups preserve the approved photography and video offers", () => {
+      expect(HOME_SERVICE_GROUPS).toEqual([
+        {
+          title: "Fotografia",
+          items: ["Cobertura de eventos", "Direção"],
+        },
+        {
+          title: "Vídeo",
+          items: [
+            "Direção",
+            "Roteiro",
+            "Videomaking",
+            "Storymaking",
+            "Cobertura de eventos",
+          ],
+        },
+      ])
+    })
+
+    it("F14.7: Mobile service groups use native disclosures", () => {
+      expect(serviceGridCode).toContain("<details")
+      expect(serviceGridCode).toContain("<summary")
+    })
+
+    it("F14.8: Mobile disclosures replace cards only below the small breakpoint", () => {
+      expect(serviceGridCode).toContain("sm:hidden")
+      expect(serviceGridCode).toContain("hidden sm:grid")
+    })
+
+    it("F14.9: Mobile disclosure summaries meet touch target requirements", () => {
+      expect(serviceGridCode).toContain("min-h-[44px]")
     })
   })
 
