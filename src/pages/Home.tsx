@@ -128,11 +128,16 @@ export default function Home() {
         <div aria-hidden="true" className="overflow-hidden">
           <div className="u-marquee-track">
             {[0, 1].map((group) => (
-              <div key={group} className="flex w-max shrink-0">
+              <div
+                key={group}
+                className={`${
+                  group === 0 ? "u-marquee-primary" : "u-marquee-duplicate"
+                } flex w-max shrink-0`}
+              >
                 {HOME_STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="flex min-w-[190px] shrink-0 items-center gap-3 border-r border-off/10 px-5 py-6 sm:min-w-[240px] sm:px-8 lg:py-8"
+                    className="u-marquee-item flex min-w-[190px] shrink-0 items-center gap-3 border-r border-off/10 px-5 py-6 sm:min-w-[240px] sm:px-8 lg:py-8"
                   >
                     <p className="u-display text-2xl text-off lg:text-3xl">
                       {s.value}

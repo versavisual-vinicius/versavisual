@@ -11,7 +11,7 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
   return (
     <>
       {mobileGroups && (
-        <div className="border-y border-line sm:hidden">
+        <div className="border-y border-line bg-off sm:hidden">
           {mobileGroups.map((group) => (
             <details
               key={group.title}

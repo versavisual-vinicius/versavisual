@@ -129,6 +129,26 @@ export async function runTier1HomeComponentsTests() {
       expect(cssCode).toContain("prefers-reduced-motion: reduce")
       expect(cssCode).toContain(".u-marquee-track")
     })
+
+    it("F14.12: Reduced motion shows every visual metric in a static grid without the duplicate", () => {
+      const cssCode = readProjectFile("src/index.css")
+
+      expect(homeCode).toContain("u-marquee-primary")
+      expect(homeCode).toContain("u-marquee-duplicate")
+      expect(homeCode).toContain("u-marquee-item")
+      expect(cssCode).toContain(".u-marquee-primary")
+      expect(cssCode).toContain(
+        "grid-template-columns: repeat(2, minmax(0, 1fr))",
+      )
+      expect(cssCode).toContain(".u-marquee-item { min-width: 0; }")
+      expect(cssCode).toContain(".u-marquee-duplicate { display: none; }")
+    })
+
+    it("F14.13: Mobile service disclosures use a light brand surface behind dark text", () => {
+      expect(serviceGridCode).toContain(
+        'className="border-y border-line bg-off sm:hidden"',
+      )
+    })
   })
 
   await describe("Feature 15: Seletor de Segmentos Home", () => {

@@ -258,7 +258,15 @@
   @media (prefers-reduced-motion: reduce) {
     [data-reveal] { opacity: 1; transform: none; transition: none; }
     .u-fade-in { animation: none; }
-    .u-marquee-track { animation: none; transform: none; }
+    .u-marquee-track { width: 100%; animation: none; transform: none; }
+    .u-marquee-primary {
+      display: grid;
+      width: 100%;
+      flex: none;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .u-marquee-item { min-width: 0; }
+    .u-marquee-duplicate { display: none; }
     html { scroll-behavior: auto; }
   }
 }
