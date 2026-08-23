@@ -6,9 +6,9 @@
  * Comprehensive White-Box Adversarial Verification:
  * - 1. Malicious Input & Injection Stress in Form & API (SQLi, XSS, Unicode, Huge Payloads, Prototype Pollution, Malformed JSON)
  * - 2. Router & Slug Adversarial Fuzzing (Special characters, accents, uppercase, trailing slashes, unknown aliases, nulls)
- * - 3. Deep Contract & Accessibility Audit of all 8 Segments & 19 Portfolio Cases (Local assets existence, alt-text, schema completeness)
+ * - 3. Deep Contract & Accessibility Audit of all 8 Segments & 20 Portfolio Cases (Local assets existence, alt-text, schema completeness)
  * - 4. Image Aspect Ratio Math & Layout Stress Testing (16/11, 3/4, 4/5, 16/10, 16/9, 4/3, img helper fuzzing)
- * - 5. Production Build Output & 42 Dist HTML Files Exhaustive Integrity Verification (Doctype, root mount, assets, fonts, size)
+ * - 5. Production Build Output & 43 Dist HTML Files Exhaustive Integrity Verification (Doctype, root mount, assets, fonts, size)
  */
 
 import fs from "node:fs"
@@ -415,7 +415,7 @@ export async function runTier5AdversarialHardeningTests() {
       expect(getSegment("")).toBeUndefined()
     })
 
-    test("T5.2.4: getCase resolves all 19 canonical case slugs and all 15 legacy aliases", () => {
+    test("T5.2.4: getCase resolves all 20 canonical case slugs and all 15 legacy aliases", () => {
       const portfolioWithSlug = PORTFOLIO.filter((p) => p.caseSlug)
       expect(portfolioWithSlug.length).toBeGreaterThanOrEqual(18)
 
@@ -485,9 +485,9 @@ export async function runTier5AdversarialHardeningTests() {
   })
 
   // =========================================================================
-  // SUITE 3: 8 SEGMENTS & 19 CASES DEEP CONTRACT & ASSET AUDIT
+  // SUITE 3: 8 SEGMENTS & 20 CASES DEEP CONTRACT & ASSET AUDIT
   // =========================================================================
-  await describe("Tier 5.3: 8 Segments & 19 Cases Deep Contract & Asset Audit", () => {
+  await describe("Tier 5.3: 8 Segments & 20 Cases Deep Contract & Asset Audit", () => {
     test("T5.3.1: Exactly 8 canonical segments exist with strict contract compliance", () => {
       expect(SEGMENTS).toHaveLength(8)
 
@@ -580,8 +580,8 @@ export async function runTier5AdversarialHardeningTests() {
       }
     })
 
-    test("T5.3.3: All 19 Portfolio items have valid categories, parent segments, and existing local photos", () => {
-      expect(PORTFOLIO).toHaveLength(19)
+    test("T5.3.3: All 20 Portfolio items have valid categories, parent segments, and existing local photos", () => {
+      expect(PORTFOLIO).toHaveLength(20)
 
       const validSegmentSlugs = new Set(SEGMENTS.map((s) => s.slug))
 
@@ -704,10 +704,10 @@ export async function runTier5AdversarialHardeningTests() {
   })
 
   // =========================================================================
-  // SUITE 5: PRODUCTION BUILD OUTPUT & 42 DIST HTML FILES INTEGRITY
+  // SUITE 5: PRODUCTION BUILD OUTPUT & 43 DIST HTML FILES INTEGRITY
   // =========================================================================
-  await describe("Tier 5.5: Production Build Output & 42 Dist HTML Integrity", () => {
-    test("T5.5.1: Exactly 42 HTML files are emitted in dist/ corresponding to all site routes", () => {
+  await describe("Tier 5.5: Production Build Output & 43 Dist HTML Integrity", () => {
+    test("T5.5.1: Exactly 43 HTML files are emitted in dist/ corresponding to all site routes", () => {
       const distDir = path.join(PROJECT_ROOT, "dist")
       expect(fs.existsSync(distDir)).toBe(true)
 
@@ -727,10 +727,10 @@ export async function runTier5AdversarialHardeningTests() {
       }
 
       const allHtmlFiles = getHtmlFiles(distDir)
-      expect(allHtmlFiles.length).toBe(42)
+      expect(allHtmlFiles.length).toBe(43)
     })
 
-    test("T5.5.2: Every one of the 42 HTML files satisfies strict structural integrity", () => {
+    test("T5.5.2: Every one of the 43 HTML files satisfies strict structural integrity", () => {
       const distDir = path.join(PROJECT_ROOT, "dist")
 
       function checkDir(dir: string) {

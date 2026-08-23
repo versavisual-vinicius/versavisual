@@ -77,6 +77,12 @@ export const CANONICAL_PORTFOLIO_FILTERS = [
 
 export const CANONICAL_CASES = [
   {
+    caseSlug: "videoclipes-oficiais-e-o-tchan-babado-novo",
+    title: "Videoclipes Oficiais — É O Tchan & Babado Novo",
+    category: "Artistas & Videoclipes",
+    segmentSlug: "artistas-videoclipes",
+  },
+  {
     caseSlug: "babado-novo-sururu",
     title: "Babado Novo — Clipe Sururu",
     category: "Artistas & Videoclipes",

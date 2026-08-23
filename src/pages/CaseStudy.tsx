@@ -142,6 +142,29 @@ export default function CaseStudy() {
         </section>
       )}
 
+      {item.youtubeVideos && item.youtubeVideos.length > 0 && (
+        <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
+          <div className="grid gap-6">
+            {item.youtubeVideos.map((video) => (
+              <div
+                key={video.id}
+                className="relative overflow-hidden rounded-xs border border-off/10 bg-navy"
+              >
+                <iframe
+                  title={video.title}
+                  src={`https://www.youtube.com/embed/${video.id}${video.list ? `?list=${video.list}` : ""}`}
+                  className="aspect-video w-full"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="mx-auto max-w-[1320px] px-5 pb-14 lg:px-10 lg:pb-20">
         <Gallery photos={gallery} label={item.title} />
       </section>

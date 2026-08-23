@@ -24,15 +24,19 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain('type="video/mp4"')
     })
 
-    it("F13.3: Hero section includes gradient overlay (.u-grade) for high text contrast", () => {
+    it("F13.3: Hero video starts without a poster image before playback", () => {
+      expect(homeCode).not.toContain("poster=")
+    })
+
+    it("F13.4: Hero section includes gradient overlay (.u-grade) for high text contrast", () => {
       expect(homeCode).toContain("u-grade")
     })
 
-    it("F13.4: Hero section displays official institutional headline and value proposition", () => {
+    it("F13.5: Hero section displays official institutional headline and value proposition", () => {
       expect(homeCode).toContain("Imagem não é registro. É posicionamento.")
     })
 
-    it("F13.5: Hero section renders conversion CTAs ('Fazer diagnóstico visual' and 'Ver portfólio')", () => {
+    it("F13.6: Hero section renders conversion CTAs ('Fazer diagnóstico visual' and 'Ver portfólio')", () => {
       expect(homeCode).toContain("Fazer diagnóstico visual")
       expect(homeCode).toContain("Ver portfólio")
       expect(homeCode).toContain("/diagnostico-visual")

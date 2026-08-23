@@ -60,7 +60,6 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
-          poster="/images/foto-a-producao-nao-falha.webp"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero.webm" type="video/webm" />

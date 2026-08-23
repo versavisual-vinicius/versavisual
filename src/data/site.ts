@@ -1098,6 +1098,11 @@ export type PortfolioItem = {
   segmentSlug: string
   gallery?: readonly string[]
   video?: string
+  youtubeVideos?: readonly {
+    id: string
+    title: string
+    list?: string
+  }[]
 }
 
 export const CASE_ALIASES: Record<string, string> = {
@@ -1210,6 +1215,27 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "fjt-fashion-desfile-colecoes",
     segmentSlug: "moda-campanhas",
     gallery: FESTIVAL_JEANS_TORITAMA_PHOTOS.slice(15, 45),
+  },
+  {
+    category: "Artistas & Videoclipes",
+    title: "Videoclipes Oficiais — É O Tchan & Babado Novo",
+    city: "Brasil",
+    photo: BACKSTAGE_CLIPE_SURURU_PHOTOS[9] || P.artists[0],
+    caseSlug: "videoclipes-oficiais-e-o-tchan-babado-novo",
+    segmentSlug: "artistas-videoclipes",
+    gallery: BACKSTAGE_CLIPE_SURURU_PHOTOS,
+    youtubeVideos: [
+      {
+        id: "xaF6i9lGeSY",
+        title: "É O TCHAN - Jogadinha (Clipe Oficial)",
+        list: "RDxaF6i9lGeSY",
+      },
+      {
+        id: "RqMfhBvezjE",
+        title: "Babado Novo - Sururu [Clipe Oficial]",
+        list: "RDRqMfhBvezjE",
+      },
+    ],
   },
   {
     category: "Artistas & Videoclipes",

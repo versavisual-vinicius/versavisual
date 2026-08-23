@@ -49,6 +49,7 @@ export async function runTier1PortfolioFeaturesTests() {
     const portfolioGridCode = readProjectFile(
       "src/components/PortfolioGrid.tsx",
     )
+    const siteCode = readProjectFile("src/data/site.ts")
 
     it("F18.1: Video banner is conditionally rendered when active filter is 'Artistas & Videoclipes'", () => {
       expect(portfolioGridCode).toContain('filter === "Artistas & Videoclipes"')
@@ -75,6 +76,12 @@ export async function runTier1PortfolioFeaturesTests() {
       expect(portfolioGridCode).toContain(
         'filter === "Artistas & Videoclipes" && featuredVideo?.video && (',
       )
+    })
+
+    it("F18.6: Official music video case includes the two approved YouTube embeds", () => {
+      expect(siteCode).toContain("videoclipes-oficiais-e-o-tchan-babado-novo")
+      expect(siteCode).toContain("xaF6i9lGeSY")
+      expect(siteCode).toContain("RqMfhBvezjE")
     })
   })
 
@@ -106,6 +113,15 @@ export async function runTier1PortfolioFeaturesTests() {
     it("F23.5: CaseStudy displays related cases from the same category/segment", () => {
       expect(caseCode).toContain("related")
       expect(caseCode).toContain("Cases relacionados")
+    })
+
+    it("F23.6: CaseStudy renders approved YouTube embeds responsively", () => {
+      expect(caseCode).toContain("item.youtubeVideos")
+      expect(caseCode).toContain("<iframe")
+      expect(caseCode).toContain("youtube.com/embed")
+      expect(caseCode).toContain("allowFullScreen")
+      expect(caseCode).toContain("referrerPolicy")
+      expect(caseCode).toContain("aspect-video")
     })
   })
 }
