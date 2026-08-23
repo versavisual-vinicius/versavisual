@@ -114,7 +114,11 @@ export default {
 
     let input: Record<string, unknown>
     try {
-      input = ((await request.json()) as Record<string, unknown>)
+      const parsed = await request.json()
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return json({ error: "Dados inválidos." }, 400)
+      }
+      input = parsed as Record<string, unknown>
     } catch {
       return json({ error: "Dados inválidos." }, 400)
     }
@@ -142,7 +146,9 @@ export default {
       return json({ error: "Preencha os campos obrigatórios." }, 400)
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) {
+    const EMAIL_REGEX =
+      /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/
+    if (!EMAIL_REGEX.test(lead.email)) {
       return json({ error: "Informe um e-mail válido." }, 400)
     }
 

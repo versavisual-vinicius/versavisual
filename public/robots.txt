@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.versavisual.com.br/sitemap.xml
+Sitemap: https://versavisual.com.br/sitemap.xml
