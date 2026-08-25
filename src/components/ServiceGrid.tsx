@@ -1,6 +1,5 @@
 import { ChevronDown } from "lucide-react"
 import type { Service, ServiceGroup } from "../data/site"
-import TiltCard from "./TiltCard"
 
 type ServiceGridProps = {
   items: Service[]
@@ -43,9 +42,8 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
         } gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-3`}
       >
         {items.map((s) => (
-          <TiltCard
+          <div
             key={s.n}
-            maxTilt={5}
             className="group relative flex h-full flex-col justify-between bg-off p-7 transition-colors duration-300 ease-out hover:bg-surface lg:p-8"
           >
             <div>
@@ -54,7 +52,7 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
               <p className="mt-3 text-sm leading-relaxed text-navy">{s.desc}</p>
             </div>
             <span className="mt-4 block h-px w-full scale-x-0 bg-teal transition-transform duration-500 ease-out group-hover:scale-x-100" />
-          </TiltCard>
+          </div>
         ))}
       </div>
     </>
