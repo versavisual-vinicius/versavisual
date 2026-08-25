@@ -27,6 +27,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/canvas" element={<Portfolio initialView="canvas" />} />
             <Route path="/portfolio/:caseSlug" element={<CaseStudy />} />
             <Route path="/diagnostico-visual" element={<Diagnostico />} />
             <Route path="/segmentos/:slug" element={<SegmentPage />} />

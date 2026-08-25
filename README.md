@@ -1,140 +1,159 @@
-# VERSAVISUAL Website
+# VERSAVISUAL — Website Institucional & Portfólio de Luxo
 
-Site institucional e portfólio da VERSAVISUAL, construído em React + Vite para apresentar serviços, segmentos, cases, galerias e o fluxo de Diagnóstico Visual.
+Plataforma digital e portfólio autoral da **VERSAVISUAL**, estruturada em React 19, Vite 8, TypeScript e Tailwind CSS v4, com foco em estética minimalista de alto contraste, navegação espacial não-linear (**Infinite Canvas 360°**) e funil de conversão com **Diagnóstico Visual**.
 
-> Imagem não é registro. É posicionamento.
+> *Imagem não é registro. É posicionamento.*
 
-## Estado Do Projeto
+---
 
-- Stack: React 19, Vite 8, TypeScript, Tailwind CSS v4 e React Router 7.
-- Analytics: Vercel Analytics via `@vercel/analytics/react`.
-- Design: tokens alinhados ao `Brand System RFC v3` da VERSAVISUAL.
-- SEO: metadados dinâmicos, canonical, JSON-LD, `robots.txt` e `sitemap.xml`.
-- Mídia: acervo local em `public/images`, logos em `public/logos` e vídeo em `public/videos`.
-- Performance: fontes do brand system self-hosted em WOFF2 em `public/fonts`, sem stylesheet render-blocking do Google Fonts.
+## ⚡ Stack Tecnológica
 
-## Brand System
+- **Framework & Core**: React 19, Vite 8, TypeScript 5.7, Tailwind CSS v4 (`@tailwindcss/vite`).
+- **Roteamento**: React Router 7 (`react-router-dom`), resolução dinâmica de segmentos e estudos de caso.
+- **Interação & Física**: Infinite Canvas 360° com aceleração por GPU (`translate3d`), inércia física exponencial, zoom contínuo e minimap radar HUD.
+- **Mídia & Animação**: Vídeos em loop nativos com poster fallback, Framer Motion 13 lightbox fullscreen em Portal com drag-to-dismiss.
+- **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), pré-renderização SSG de 42 rotas estáticas (`scripts/emit-route-html.mjs`).
+- **Brand Typography**: Fontes self-hosted em WOFF2 sem dependências externas (`Righteous`, `Outfit`, `DM Sans`).
 
-A interface segue o brandbook VERSAVISUAL v3:
+---
 
-- `Brand Black`: `#050A0D`
-- `Deep Navy`: `#253540`
-- `Accent Teal`: `#5E7F8C`
-- `Mist`: `#A4B8BF`
-- `Off-White`: `#F2F2F2`
-- `White`: `#FFFFFF`
+## 🎨 Design System & Identidade Visual
 
-Tipografia:
+A interface segue estritamente as diretrizes do **Brand System v3 da VERSAVISUAL**:
 
-- Display e wordmark: `Righteous`
-- Headlines, UI, botões e eyebrows: `Outfit`
-- Corpo, legenda longa, e-mail e rodapé: `DM Sans`
+### Paleta de Cores
+- `Brand Black (ink)`: `#050A0D` (fundo principal e molduras)
+- `Deep Navy (navy)`: `#253540` (cards, elevações e modais)
+- `Accent Teal (teal)`: `#5E7F8C` (acento e botões primários com `text-off`)
+- `Teal Light (teal-400)`: `#70909C` (badges e subtítulos de destaque)
+- `Mist (mist)`: `#A4B8BF` (textos secundários e metadados)
+- `Off-White (off)`: `#F2F2F2` (textos de títulos e superfícies claras)
 
-Observação de acessibilidade: `Accent Teal` não deve ser usado em texto pequeno sobre fundo claro, porque não atinge contraste WCAG AA. Nesses casos, use `Deep Navy`.
+### Tipografia
+- **Display & Wordmark**: `Righteous` (identidade e logotipo)
+- **Headlines, UI, Botões e Eyebrows**: `Outfit` (títulos e elementos interativos)
+- **Corpo, Legendas e Rodapé**: `DM Sans` (parágrafos e leitura)
 
-## Rotas
+---
 
-- `/`
-- `/portfolio`
-- `/portfolio/:caseSlug`
-- `/diagnostico-visual`
-- `/ativacoes-eventos`
-- `/moda-campanhas`
-- `/artistas-videoclipes`
-- `/posicionamento-profissional`
-- `/imagem-pessoal-lifestyle`
-- `/casamentos`
-- `/gestantes`
-- `/hotelaria-lifestyle`
+## 🗺️ Mapa de Rotas
 
-Também há compatibilidade para aliases em `/segmentos/:slug` e `/:slug`.
+| Rota | Descrição |
+|---|---|
+| `/` | Home institucional com hero full-bleed, nichos, serviços, timeline e CTAs |
+| `/portfolio` | Portfólio com alternador de visualização (**Grid Tradicional** ↔ **Canvas 360°**) |
+| `/portfolio/canvas` | Acesso direto ao **Infinite Canvas 360°** em tela cheia |
+| `/portfolio/:caseSlug` | Estudo de caso autoral detalhado com galeria técnica e fichas |
+| `/diagnostico-visual` | Formulário interativo de onboarding e briefing guiado para WhatsApp |
+| `/:slug` ou `/segmentos/:slug` | Landing pages dedicadas para os 8 nichos de atuação |
+| `/404` | Página de erro 404 personalizada com atalhos de recuperação |
 
-## Segmentos
+---
 
-1. Ativações & Eventos
-2. Moda & Campanhas
-3. Artistas & Videoclipes
-4. Posicionamento Profissional
-5. Imagem Pessoal & Lifestyle
-6. Casamentos
-7. Gestantes
-8. Hotelaria & Lifestyle
-
-## Estrutura
+## 📁 Estrutura do Projeto
 
 ```text
+home-mobile-ajustes/
+├── api/
+│   └── diagnostico.ts         # Endpoint serverless para triagem de leads
+├── dist/                      # Bundle de produção e páginas estáticas (SSG)
 ├── public/
 │   ├── brand-assets/          # Logos e ícones exportados
-│   ├── images/                # Fotos organizadas por produção
-│   ├── logos/                 # Wordmarks em SVG/PNG
+│   ├── images/                # Fotografias de alta resolução catalogadas
+│   ├── logos/                 # Wordmarks vetoriais
 │   ├── fonts/                 # Righteous, Outfit e DM Sans em WOFF2
-│   ├── videos/                # Vídeos do site
-│   ├── robots.txt
-│   └── sitemap.xml
+│   ├── videos/                # Mídias em vídeo (Hero e videoclipes)
+│   ├── robots.txt             # Diretivas de indexação
+│   └── sitemap.xml            # Sitemap canônico com todas as rotas
+├── scripts/
+│   └── emit-route-html.mjs    # Gerador SSG de rotas estáticas pós-build
 ├── src/
-│   ├── components/            # Header, Footer, cards, galeria, CTA, FAQ
+│   ├── components/
+│   │   ├── InfiniteCanvas.tsx # Canvas 360° interativo com física e minimap
+│   │   ├── PortfolioGrid.tsx  # Grid de portfólio com filtros e spotlight
+│   │   ├── Header.tsx         # Header com blur no scroll e menu mobile acessível
+│   │   ├── Footer.tsx         # Rodapé com links e contatos
+│   │   ├── Gallery.tsx        # Galeria com Lightbox em portal
+│   │   ├── WhatsAppFloat.tsx  # Botão flutuante direto de WhatsApp
+│   │   └── ...
 │   ├── data/
-│   │   └── site.ts            # Conteúdo, segmentos, cases e contatos
+│   │   └── site.ts            # Dicionário único de segmentos, cases e dados
 │   ├── lib/
-│   │   ├── images.ts          # Catálogo e helper de imagens
-│   │   ├── seo.tsx            # SEO, canonical, OG e JSON-LD
-│   │   └── useParallax.ts     # Parallax leve
-│   ├── pages/                 # Home, Portfolio, SegmentPage, CaseStudy, Diagnostico
-│   ├── App.tsx                # Rotas e Analytics
-│   ├── index.css              # Tailwind v4 e tokens globais
-│   └── main.tsx
-├── index.html
-├── package.json
-└── vite.config.ts
+│   │   ├── images.ts          # Helper e fallback seguro de imagens
+│   │   ├── seo.tsx            # Injeção dinâmica de SEO, OpenGraph e JSON-LD
+│   │   └── utils.ts           # Utilitários globais
+│   ├── pages/                 # Home, Portfolio, SegmentPage, CaseStudy, Diagnostico, NotFound
+│   ├── App.tsx                # Roteador principal e shell da aplicação
+│   ├── index.css              # Tokens do Tailwind v4 (@theme) e utilitários
+│   └── main.tsx               # Ponto de entrada da aplicação
+├── tests/                     # Suíte de testes automatizados (Tiers 1 a 5)
+├── AGENTS.md                  # Diretrizes locais de código e desenvolvimento
+├── DESIGN.md                  # Especificação oficial do Design System
+├── PROJECT.md                 # Arquitetura detalhada e inventário de features
+├── package.json               # Dependências e scripts de execução
+├── pnpm-lock.yaml             # Lockfile de dependências
+├── tsconfig.json              # Configuração estrita do TypeScript
+├── vercel.json                # Configuração de deploy da Vercel
+└── vite.config.ts             # Configuração otimizada do Vite 8 + Tailwind v4
 ```
 
-## Desenvolvimento
+---
 
-Pré-requisitos:
+## 🛠️ Comandos de Desenvolvimento
 
-- Node.js compatível com o projeto.
-- npm.
-
-Instalar dependências:
-
+### Instalação
 ```bash
+pnpm install
+# ou
 npm install
 ```
 
-Rodar localmente:
-
+### Executar em Desenvolvimento
 ```bash
+pnpm run dev
+# ou
 npm run dev
 ```
 
-No Figma Make, o servidor costuma rodar na porta definida pelo ambiente. Fora dele, o Vite informa a URL no terminal.
-
-Build de produção:
-
+### Build de Produção & Geração SSG
 ```bash
+pnpm run build
+# ou
 npm run build
 ```
 
-Formatar:
-
+### Suíte de Testes Automatizados
 ```bash
-npm run format
+# Executar todos os testes E2E (Tiers 1 a 4 — 209 testes)
+npx tsx tests/run-all.ts
+
+# Executar testes adversariais de estresse (Tier 5 — 26 testes)
+npx tsx tests/tier5-adversarial-hardening.ts
+
+# Checagem estrita de tipos TypeScript
+npx tsc --noEmit
 ```
 
-## Checklist Antes De Publicar
+---
 
-- `npm run format`
-- `npm run build`
-- Conferir contraste WCAG AA em textos pequenos.
-- Conferir navegação por âncoras: `/#nichos` e `/#processo`.
-- Conferir vídeo do portfólio em loop no filtro `Artistas & Videoclipes`.
-- Conferir formulário `/diagnostico-visual`.
-- Conferir `robots.txt`, `sitemap.xml`, titles, descriptions e canonical.
+## 📋 Checklist de Publicação em Produção
 
-## Contato
+- [ ] `npx tsc --noEmit` executa com **0 erros de tipagem**.
+- [ ] `pnpm run build` conclui gerando todas as rotas estáticas em `dist/`.
+- [ ] Testes E2E `npx tsx tests/run-all.ts` aprovados com 100% de sucesso.
+- [ ] Contraste WCAG AA verificado em botões (`bg-teal text-off`).
+- [ ] Navegação mobile responsiva (360px a 4K) sem overflow horizontal.
+- [ ] Infinite Canvas 360° fluido com arraste, zoom e Lightbox responsivo.
+- [ ] Formulário `/diagnostico-visual` validado com honeypot anti-spam.
 
-- WhatsApp: [11 95074-7192](https://wa.me/5511950747192)
-- E-mail: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
-- Diagnóstico Visual: `/diagnostico-visual`
+---
 
-© 2026 VERSAVISUAL.
+## 📞 Atendimento & Contato
+
+- **WhatsApp**: [+55 (11) 95074-7192](https://wa.me/5511950747192)
+- **E-mail**: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
+- **Diagnóstico Visual**: [`/diagnostico-visual`](https://versavisual.com.br/diagnostico-visual)
+
+---
+
+© 2026 **VERSAVISUAL**. Todos os direitos reservados.
