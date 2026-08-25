@@ -75,7 +75,11 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
             <h2 className="mt-3 text-2xl leading-tight text-off sm:mt-4 sm:text-4xl lg:text-5xl">
               {title}
             </h2>
-            {text && <p className="mt-3 max-w-sm text-sm text-mist sm:mt-4 sm:text-base">{text}</p>}
+            {text && (
+              <p className="mt-3 max-w-sm text-sm text-mist sm:mt-4 sm:text-base">
+                {text}
+              </p>
+            )}
             {media && <div className="mt-6 block lg:mt-8">{media}</div>}
           </div>
 

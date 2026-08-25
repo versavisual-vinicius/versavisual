@@ -42,7 +42,9 @@ export default function CTASection({
         <h2 className="mt-4 text-balance text-2xl leading-[1.08] text-off sm:mt-5 sm:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-pretty text-sm text-mist sm:mt-5 sm:text-base">{text}</p>
+        <p className="mx-auto mt-4 max-w-xl text-pretty text-sm text-mist sm:mt-5 sm:text-base">
+          {text}
+        </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/diagnostico-visual"

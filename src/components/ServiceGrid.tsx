@@ -16,12 +16,14 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
               key={group.title}
               className="group border-b border-line last:border-b-0 transition-colors"
             >
-              <summary className="flex min-h-[52px] cursor-pointer list-none items-center justify-between gap-4 px-4 py-3.5 text-ink marker:content-none select-none active:bg-line/20">
+              <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-4 py-3.5 text-ink marker:content-none select-none active:bg-line/20">
                 <div className="flex items-center gap-3 min-w-0">
                   <span className="shrink-0 text-xs font-mono font-medium text-teal">
                     0{idx + 1}
                   </span>
-                  <span className="font-semibold text-sm leading-snug">{group.title}</span>
+                  <span className="font-semibold text-sm leading-snug">
+                    {group.title}
+                  </span>
                 </div>
                 <span className="flex shrink-0 items-center gap-1.5 text-xs text-navy/70">
                   <span>{group.items.length} itens</span>
@@ -33,7 +35,9 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
               </summary>
               <ol className="list-decimal space-y-2.5 px-9 pb-5 pt-1 text-sm leading-relaxed text-navy">
                 {group.items.map((item) => (
-                  <li key={item} className="pl-1">{item}</li>
+                  <li key={item} className="pl-1">
+                    {item}
+                  </li>
                 ))}
               </ol>
             </details>
