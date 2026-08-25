@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react"
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import {
   Maximize2,
@@ -56,7 +50,7 @@ export default function InfiniteCanvas() {
   const rafIdRef = useRef<number | null>(null)
 
   const touchDistanceRef = useRef<number | null>(null)
-  const touchCenterRef = useRef<{ x: number; y: number } | null>(null)
+  const touchCenterRef = useRef<{ x: number y: number } | null>(null)
 
   const [scaleDisplay, setScaleDisplay] = useState(85)
   const [viewportBounds, setViewportBounds] = useState({
@@ -398,11 +392,7 @@ export default function InfiniteCanvas() {
       const factor = newDist / touchDistanceRef.current
 
       if (touchCenterRef.current) {
-        zoomAtPoint(
-          factor,
-          touchCenterRef.current.x,
-          touchCenterRef.current.y,
-        )
+        zoomAtPoint(factor, touchCenterRef.current.x, touchCenterRef.current.y)
       }
 
       touchDistanceRef.current = newDist
@@ -465,7 +455,9 @@ export default function InfiniteCanvas() {
             type="button"
             onClick={toggleFullscreen}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-off/15 bg-ink/80 text-off backdrop-blur-md transition-colors hover:bg-off/20"
-            title={isFullscreen ? "Sair da Tela Cheia" : "Expandir em Tela Cheia"}
+            title={
+              isFullscreen ? "Sair da Tela Cheia" : "Expandir em Tela Cheia"
+            }
             aria-label={
               isFullscreen ? "Sair da Tela Cheia" : "Expandir em Tela Cheia"
             }
@@ -541,6 +533,8 @@ export default function InfiniteCanvas() {
                     <img
                       src={img(node.item.photo, 900)}
                       alt={portfolioImageAlt(node.item)}
+                      width={900}
+                      height={600}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -692,6 +686,9 @@ export default function InfiniteCanvas() {
                 <img
                   src={img(activeItem.photo, 1600)}
                   alt={portfolioImageAlt(activeItem)}
+                  width={1600}
+                  height={1200}
+                  decoding="async"
                   className="h-full w-full object-contain"
                 />
               )}

@@ -118,6 +118,8 @@ export function GalleryImage({
       <motion.img
         src={src}
         alt={alt || "Imagem da galeria"}
+        width={1600}
+        height={1200}
         loading={loading ?? "lazy"}
         fetchPriority={fetchPriority}
         decoding="async"

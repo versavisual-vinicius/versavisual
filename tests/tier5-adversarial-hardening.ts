@@ -2,7 +2,7 @@
 
 /**
  * VERSAVISUAL — Tier 5 Adversarial Coverage Hardening Suite
- * 
+ *
  * Comprehensive White-Box Adversarial Verification:
  * - 1. Malicious Input & Injection Stress in Form & API (SQLi, XSS, Unicode, Huge Payloads, Prototype Pollution, Malformed JSON)
  * - 2. Router & Slug Adversarial Fuzzing (Special characters, accents, uppercase, trailing slashes, unknown aliases, nulls)
@@ -57,7 +57,7 @@ export async function runTier5AdversarialHardeningTests() {
         "1' UNION SELECT * FROM information_schema.tables --",
         "admin'--",
         "1; WAITFOR DELAY '0:0:5'--",
-        "\" OR 1=1 /*",
+        '" OR 1=1 /*',
       ]
 
       for (const sqli of sqliPayloads) {
@@ -90,8 +90,8 @@ export async function runTier5AdversarialHardeningTests() {
     test("T5.1.2: XSS and HTML tag injection vectors are properly escaped in generated HTML", async () => {
       const xssVectors = [
         '<script>alert("XSS")</script>',
-        '<img src=x onerror=alert(document.cookie)>',
-        '<svg onload=alert(1)>',
+        "<img src=x onerror=alert(document.cookie)>",
+        "<svg onload=alert(1)>",
         '"><script>alert(1)</script>',
         "javascript:alert(1)",
         '<iframe src="https://evil.com"></iframe>',
@@ -491,16 +491,7 @@ export async function runTier5AdversarialHardeningTests() {
     test("T5.3.1: Exactly 8 canonical segments exist with strict contract compliance", () => {
       expect(SEGMENTS).toHaveLength(8)
 
-      const expectedIndices = [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-      ]
+      const expectedIndices = ["01", "02", "03", "04", "05", "06", "07", "08"]
       const seenSlugs = new Set<string>()
 
       SEGMENTS.forEach((seg, idx) => {

@@ -118,7 +118,7 @@ export default {
       if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
         return json({ error: "Dados inválidos." }, 400)
       }
-      input = parsed as Record<string, unknown>
+      input = (parsed as Record<string, unknown>)
     } catch {
       return json({ error: "Dados inválidos." }, 400)
     }

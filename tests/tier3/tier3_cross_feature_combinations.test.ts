@@ -161,8 +161,13 @@ export async function runTier3CrossFeatureCombinationsTests() {
 
     it("T3.12: Segment pages inject both BreadcrumbList and Service schema.org definitions", () => {
       const segCode = readProjectFile("src/pages/SegmentPage.tsx")
+      const seoCode = readProjectFile("src/lib/seo.tsx")
       expect(segCode).toContain("breadcrumb([")
-      expect(segCode).toContain('"@type": "Service"')
+      expect(
+        segCode.includes("serviceSchema") ||
+          segCode.includes('"@type": "Service"'),
+      ).toBe(true)
+      expect(seoCode).toContain('"@type": "Service"')
     })
   })
 

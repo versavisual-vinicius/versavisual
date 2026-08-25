@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useSeo, breadcrumb } from "../lib/seo"
+import { useSeo, breadcrumb, SITE_URL } from "../lib/seo"
 import { SEGMENT_NAV, WHATSAPP, WHATSAPP_LABEL } from "../data/site"
 import { img, PHOTOS } from "../lib/images"
 
@@ -61,10 +61,26 @@ export default function Diagnostico() {
     description:
       "Conte seu contexto e objetivo. Devolvemos um caminho visual claro e uma proposta sob medida em fotografia, vídeo e direção visual. Sem compromisso.",
     path: "/diagnostico-visual",
-    jsonLd: breadcrumb([
-      { name: "Início", path: "/" },
-      { name: "Diagnóstico Visual", path: "/diagnostico-visual" },
-    ]),
+    jsonLd: [
+      breadcrumb([
+        { name: "Início", path: "/" },
+        { name: "Diagnóstico Visual", path: "/diagnostico-visual" },
+      ]),
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "Diagnóstico Visual Gratuito — VERSAVISUAL",
+        description:
+          "Formulário de diagnóstico visual e consultoria audiovisual sob medida para marcas, artistas e eventos.",
+        url: `${SITE_URL}/diagnostico-visual`,
+        mainEntity: {
+          "@type": "ProfessionalService",
+          name: "VERSAVISUAL",
+          telephone: "+5511950747192",
+          email: "hub@versavisual.com.br",
+        },
+      },
+    ],
   })
 
   function buildWhatsAppUrl(lead: LeadData): string {
@@ -264,7 +280,7 @@ export default function Diagnostico() {
         <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] overflow-hidden border-r border-off/10 lg:block">
           <img
             src={img(PHOTOS.professional[0], 1000, 1400)}
-            alt="Direção visual VERSAVISUAL"
+            alt="Direção visual e consultoria audiovisual autoral — VERSAVISUAL"
             width={1000}
             height={1400}
             fetchPriority="high"

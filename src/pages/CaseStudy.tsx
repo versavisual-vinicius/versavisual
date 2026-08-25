@@ -1,12 +1,11 @@
 import { useParams, Link } from "react-router-dom"
+import { getCase, getSegment, PORTFOLIO, portfolioImageAlt } from "../data/site"
 import {
-  getCase,
-  getSegment,
-  PORTFOLIO,
-  WHATSAPP,
-  portfolioImageAlt,
-} from "../data/site"
-import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
+  useSeo,
+  breadcrumb,
+  creativeWorkSchema,
+  imageGallerySchema,
+} from "../lib/seo"
 import { img } from "../lib/images"
 import Gallery from "../components/Gallery"
 import CTASection from "../components/CTASection"
@@ -39,20 +38,14 @@ export default function CaseStudy() {
         { name: "Portfólio", path: "/portfolio" },
         { name: item.title, path: `/portfolio/${caseSlug}` },
       ]),
-      {
-        "@context": "https://schema.org",
-        "@type": "CreativeWork",
+      creativeWorkSchema({
         name: item.title,
-        about: item.category,
-        contentLocation: item.city,
-        image: img(item.photo, 1200, 800),
-        creator: {
-          "@type": "Organization",
-          name: "VERSAVISUAL",
-          url: SITE_URL,
-        },
-        url: `${SITE_URL}/portfolio/${caseSlug}`,
-      },
+        category: item.category,
+        city: item.city,
+        image: item.photo,
+        gallery,
+        url: `/portfolio/${caseSlug}`,
+      }),
     ],
   })
 
@@ -103,7 +96,10 @@ export default function CaseStudy() {
       </section>
 
       <section className="mx-auto max-w-[900px] px-5 py-12 lg:px-10 lg:py-16">
-        <p className="u-eyebrow text-mist">Sobre o projeto</p>
+        <p className="u-eyebrow text-mist">Contexto e Criação</p>
+        <h2 className="mt-3 text-2xl font-bold text-off sm:text-3xl">
+          Sobre o projeto {item.title}
+        </h2>
         <p className="mt-5 text-pretty text-xl leading-relaxed text-off">
           {item.title} nasceu de um objetivo claro de comunicação. A VERSAVISUAL
           conduziu briefing, direção visual, captação e pós-produção para
@@ -129,6 +125,7 @@ export default function CaseStudy() {
 
       {item.video && (
         <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
+          <h2 className="sr-only">Vídeo do projeto {item.title}</h2>
           <div className="relative overflow-hidden rounded-xs border border-off/10 bg-navy">
             <video
               controls
@@ -144,6 +141,7 @@ export default function CaseStudy() {
 
       {item.youtubeVideos && item.youtubeVideos.length > 0 && (
         <section className="mx-auto max-w-[1100px] px-5 pb-12 lg:px-10 lg:pb-16">
+          <h2 className="sr-only">Vídeos oficiais do case</h2>
           <div className="grid gap-6">
             {item.youtubeVideos.map((video) => (
               <div
@@ -152,7 +150,9 @@ export default function CaseStudy() {
               >
                 <iframe
                   title={video.title}
-                  src={`https://www.youtube.com/embed/${video.id}${video.list ? `?list=${video.list}` : ""}`}
+                  src={`https://www.youtube.com/embed/${video.id}${
+                    video.list ? `?list=${video.list}` : ""
+                  }`}
                   className="aspect-video w-full"
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -166,13 +166,17 @@ export default function CaseStudy() {
       )}
 
       <section className="mx-auto max-w-[1320px] px-5 pb-14 lg:px-10 lg:pb-20">
+        <h2 className="sr-only">Galeria de fotos do case {item.title}</h2>
         <Gallery photos={gallery} label={item.title} />
       </section>
 
       {related.length > 0 && (
         <section className="border-t border-off/10 bg-ink">
           <div className="mx-auto max-w-[1320px] px-5 py-12 lg:px-10 lg:py-16">
-            <p className="u-eyebrow mb-8 text-mist">Cases relacionados</p>
+            <p className="u-eyebrow text-mist">Portfólio relacionado</p>
+            <h2 className="mb-8 mt-2 text-2xl font-bold text-off sm:text-3xl">
+              Cases relacionados
+            </h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {related.map((r) => (
                 <Link

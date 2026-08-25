@@ -67,6 +67,34 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" id="vv-jsonld-route">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "VERSAVISUAL",
+        "image": "https://www.versavisual.com.br/brand-assets/logo-og.png",
+        "@id": "https://www.versavisual.com.br/#corporation",
+        "url": "https://www.versavisual.com.br",
+        "telephone": "+5511950747192",
+        "email": "hub@versavisual.com.br",
+        "priceRange": "$$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -23.55052,
+          "longitude": -46.633308
+        },
+        "sameAs": [
+          "https://wa.me/5511950747192"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

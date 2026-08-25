@@ -9,7 +9,13 @@ import {
   segmentImageAlt,
   type Segment,
 } from "../data/site"
-import { useSeo, SITE_URL, breadcrumb } from "../lib/seo"
+import {
+  useSeo,
+  breadcrumb,
+  serviceSchema,
+  imageGallerySchema,
+  faqPageSchema,
+} from "../lib/seo"
 import { img } from "../lib/images"
 import Reveal from "../components/Reveal"
 import Gallery from "../components/Gallery"
@@ -42,7 +48,7 @@ export default function SegmentPage({
       ...group,
       cases: group.caseSlugs
         .map((caseSlug) => PORTFOLIO.find((p) => p.caseSlug === caseSlug))
-        .filter((item): item is (typeof PORTFOLIO)[number] => Boolean(item)),
+        .filter((item): item is typeof PORTFOLIO[number] => Boolean(item)),
     }))
     .filter((group) => group.cases.length > 0)
 
@@ -55,28 +61,12 @@ export default function SegmentPage({
         { name: "Início", path: "/" },
         { name: seg.nav, path: `/${seg.slug}` },
       ]),
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
+      serviceSchema({
         name: seg.seoTitle,
         description: seg.seoDesc,
-        provider: {
-          "@type": "Organization",
-          name: "VERSAVISUAL",
-          url: SITE_URL,
-        },
-        areaServed: "BR",
-        url: `${SITE_URL}/${seg.slug}`,
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: seg.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      },
+        slug: seg.slug,
+      }),
+      faqPageSchema(seg.faqs),
     ],
   })
 
@@ -114,8 +104,7 @@ export default function SegmentPage({
       <section className="relative flex min-h-[74svh] items-end overflow-hidden">
         <img
           src={img(seg.heroPhoto, 2000, 1200)}
-          alt=""
-          aria-hidden="true"
+          alt={`${seg.h1} — Direção audiovisual VERSAVISUAL`}
           width={2000}
           height={1200}
           fetchPriority="high"
@@ -217,6 +206,88 @@ export default function SegmentPage({
           </Reveal>
         </div>
       </section>
+
+      {/* ── CLUSTER DE CONTEÚDO EDITORIAL & DIREÇÃO CRIATIVA ── */}
+      {(seg.creativeProposal || seg.artDirection || seg.creativeConcept) && (
+        <section className="relative z-10 border-b border-off/10 bg-ink py-20 lg:py-28">
+          <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
+            <Reveal className="mb-12 max-w-3xl">
+              <p className="u-eyebrow text-mist">
+                Direção Criativa & Conceito Visual
+              </p>
+              <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+                Como concebemos e estruturamos {seg.nav}.
+              </h2>
+              <p className="mt-4 text-mist text-pretty">
+                Cada projeto combina estratégia de posicionamento, rigor
+                estético e narrativa visual orientada ao uso final.
+              </p>
+            </Reveal>
+            <Reveal className="grid gap-px border-y border-line bg-line lg:grid-cols-3">
+              <div className="bg-surface p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-teal-400">
+                    Pilar 01
+                  </span>
+                  <h3 className="mt-3 text-xl font-bold text-ink">
+                    Proposta Criativa
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-navy">
+                    {seg.creativeProposal}
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-line/60">
+                  <span className="text-xs text-navy/70 font-medium">
+                    Foco: Posicionamento e autoridade
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-off p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                    Pilar 02
+                  </span>
+                  <h3 className="mt-3 text-xl font-bold text-ink">
+                    Direção de Arte & Estética
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-navy">
+                    {seg.artDirection}
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-line/60">
+                  <span className="text-xs text-navy/70 font-medium">
+                    Foco: Luz, composição, cor e textura
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-surface p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-teal-400">
+                    Pilar 03
+                  </span>
+                  <h3 className="mt-3 text-xl font-bold text-ink">
+                    Conceito do Projeto
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-navy">
+                    {seg.creativeConcept}
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-line/60">
+                  <Link
+                    to="/diagnostico-visual"
+                    viewTransition
+                    className="inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-wider text-teal hover:text-teal-400 transition-colors"
+                  >
+                    Fazer diagnóstico deste segmento <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* ── PROBLEMA / SOLUÇÃO ────────────────────────────── */}
       <section className="relative z-10 border-y border-off/10 bg-ink py-20 lg:py-28">
@@ -409,8 +480,8 @@ export default function SegmentPage({
                   Projetos por tipo de entrega.
                 </h3>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist">
-                  Cada grupo abre uma leitura mais completa dos cases, com
-                  capa, contexto e prévias do material entregue.
+                  Cada grupo abre uma leitura mais completa dos cases, com capa,
+                  contexto e prévias do material entregue.
                 </p>
               </div>
 
@@ -443,9 +514,7 @@ export default function SegmentPage({
                       ).slice(0, group.previewCount ?? 6)
                       const imageCount = project.gallery?.length ?? 1
                       const imageCountLabel =
-                        imageCount === 1
-                          ? "1 imagem"
-                          : `${imageCount} imagens`
+                        imageCount === 1 ? "1 imagem" : `${imageCount} imagens`
 
                       return (
                         <article

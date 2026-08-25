@@ -3,7 +3,7 @@ import path from "node:path"
 
 const root = process.cwd()
 const distDir = path.join(root, "dist")
-const siteUrl = "https://versavisual.com.br"
+const siteUrl = "https://www.versavisual.com.br"
 const indexHtml = await readFile(path.join(distDir, "index.html"), "utf8")
 const sitemap = await readFile(path.join(root, "public", "sitemap.xml"), "utf8")
 
