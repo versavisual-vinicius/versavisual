@@ -148,11 +148,11 @@ export default function BeforeAfterSlider() {
   return (
     <div className="w-full">
       {/* Category Pills Header */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
         <div
           role="tablist"
           aria-label="Categorias do comparador de pós-produção"
-          className="flex flex-wrap items-center gap-2"
+          className="-mx-5 flex items-center gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0 scrollbar-none"
         >
           {BEFORE_AFTER_CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.id
@@ -171,7 +171,7 @@ export default function BeforeAfterSlider() {
                         )
                   if (matching) setActiveItemId(matching.id)
                 }}
-                className={`min-h-[40px] px-4 py-1.5 text-xs font-medium uppercase tracking-wider font-head transition-all duration-200 ${
+                className={`inline-flex min-h-[44px] shrink-0 items-center justify-center px-4 py-2 text-xs font-medium uppercase tracking-wider font-head transition-all duration-200 active:scale-[0.97] ${
                   isActive
                     ? "border border-teal bg-teal text-off shadow-sm"
                     : "border border-mist/20 bg-ink/60 text-mist hover:border-teal/40 hover:text-off"
@@ -184,7 +184,7 @@ export default function BeforeAfterSlider() {
         </div>
 
         {/* Quick Position Presets */}
-        <div className="flex items-center gap-1.5 text-xs font-mono text-mist">
+        <div className="flex items-center gap-1.5 self-end sm:self-auto text-xs font-mono text-mist">
           <span className="hidden sm:inline text-mist/60 mr-1">
             Ajuste rápido:
           </span>
@@ -193,7 +193,7 @@ export default function BeforeAfterSlider() {
               isInteractedRef.current = true
               setSliderPosition(0)
             }}
-            className={`px-2.5 py-1 transition-colors ${
+            className={`inline-flex min-h-[44px] items-center justify-center px-3 py-2 text-xs font-mono transition-all duration-200 active:scale-[0.96] ${
               sliderPosition <= 5
                 ? "bg-teal/20 text-teal-400 font-bold border border-teal/40"
                 : "bg-navy/40 text-mist hover:text-off border border-transparent"
@@ -207,7 +207,7 @@ export default function BeforeAfterSlider() {
               isInteractedRef.current = true
               setSliderPosition(50)
             }}
-            className={`px-2.5 py-1 transition-colors ${
+            className={`inline-flex min-h-[44px] items-center justify-center px-3 py-2 text-xs font-mono transition-all duration-200 active:scale-[0.96] ${
               Math.abs(sliderPosition - 50) <= 5
                 ? "bg-teal/20 text-teal-400 font-bold border border-teal/40"
                 : "bg-navy/40 text-mist hover:text-off border border-transparent"
@@ -221,7 +221,7 @@ export default function BeforeAfterSlider() {
               isInteractedRef.current = true
               setSliderPosition(100)
             }}
-            className={`px-2.5 py-1 transition-colors ${
+            className={`inline-flex min-h-[44px] items-center justify-center px-3 py-2 text-xs font-mono transition-all duration-200 active:scale-[0.96] ${
               sliderPosition >= 95
                 ? "bg-teal/20 text-teal-400 font-bold border border-teal/40"
                 : "bg-navy/40 text-mist hover:text-off border border-transparent"
@@ -248,55 +248,53 @@ export default function BeforeAfterSlider() {
         <div className="absolute inset-0 h-full w-full">
           <img
             src={activeItem.afterImage}
-            alt={`${activeItem.title} - Master Final Graded`}
+            alt={`${activeItem.title} - Master Final`}
             className="h-full w-full object-cover"
             style={{
-              filter: activeItem.afterFilter || "none",
               objectPosition: activeItem.objectPosition || "center",
             }}
             loading="lazy"
-            draggable={false}
+            decoding="async"
           />
         </div>
 
-        {/* Layer 2: BEFORE / RAW (Clipped on top) */}
+        {/* Layer 2: BEFORE / FLAT RAW (Clipped overlay layer) */}
         <div
-          className="absolute inset-0 h-full w-full overflow-hidden will-change-[clip-path]"
+          className="absolute inset-0 h-full overflow-hidden will-change-[clip-path]"
           style={{
-            clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+            clipPath: `polygon(0% 0%, ${sliderPosition}% 0%, ${sliderPosition}% 100%, 0% 100%)`,
           }}
         >
           <img
             src={activeItem.beforeImage}
-            alt={`${activeItem.title} - RAW Original`}
-            className="h-full w-full object-cover"
+            alt={`${activeItem.title} - Flat RAW`}
+            className="absolute inset-0 h-full w-full max-w-none object-cover"
             style={{
-              filter: activeItem.beforeFilter || "none",
               objectPosition: activeItem.objectPosition || "center",
             }}
             loading="lazy"
-            draggable={false}
+            decoding="async"
           />
         </div>
 
-        {/* Badge: RAW (Left side) */}
+        {/* Badge: RAW (Top Left) */}
         <div
-          className="pointer-events-none absolute left-3 top-3 sm:left-5 sm:top-5 z-10 transition-opacity duration-200"
-          style={{ opacity: sliderPosition < 8 ? 0 : 1 }}
+          className="pointer-events-none absolute top-3 left-3 z-10 sm:top-4 sm:left-4 select-none transition-opacity duration-200"
+          style={{ opacity: sliderPosition > 8 ? 1 : 0 }}
         >
-          <div className="flex items-center gap-1.5 rounded-none border border-mist/30 bg-ink/80 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-mist backdrop-blur-md">
-            <span className="h-2 w-2 rounded-full bg-mist/60 animate-pulse" />
-            <span className="font-semibold text-off">RAW NEF</span>
+          <div className="flex items-center gap-1.5 rounded-none border border-mist/30 bg-ink/80 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-mist shadow-lg backdrop-blur-md">
+            <Film className="h-3 w-3 text-mist/70" />
+            <span className="font-bold">FLAT RAW</span>
             <span className="hidden sm:inline text-mist/60">
               · {activeItem.beforeLabel}
             </span>
           </div>
         </div>
 
-        {/* Badge: MASTER (Right side) */}
+        {/* Badge: AFTER (Top Right) */}
         <div
-          className="pointer-events-none absolute right-3 top-3 sm:right-5 sm:top-5 z-10 transition-opacity duration-200"
-          style={{ opacity: sliderPosition > 92 ? 0 : 1 }}
+          className="pointer-events-none absolute top-3 right-3 z-10 sm:top-4 sm:right-4 select-none transition-opacity duration-200"
+          style={{ opacity: sliderPosition < 92 ? 1 : 0 }}
         >
           <div className="flex items-center gap-1.5 rounded-none border border-teal/50 bg-teal/90 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-off shadow-lg backdrop-blur-md">
             <Sparkles className="h-3 w-3 text-off" />
@@ -324,7 +322,7 @@ export default function BeforeAfterSlider() {
 
           {/* Central Grabber Handle */}
           <div
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center border border-teal bg-ink/90 text-off shadow-2xl backdrop-blur-md transition-transform duration-150 ${
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center border border-teal bg-ink/90 text-off shadow-2xl backdrop-blur-md transition-transform duration-150 active:scale-110 ${
               isDragging
                 ? "scale-110 border-teal-400 bg-teal text-off ring-4 ring-teal/30"
                 : "group-hover:scale-105"
@@ -345,8 +343,8 @@ export default function BeforeAfterSlider() {
         </div>
       </div>
 
-      {/* Thumbnails Selector */}
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* Thumbnails Selector (Horizontal Scroll on Mobile, Grid on Desktop) */}
+      <div className="-mx-5 mt-4 flex gap-2.5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 scrollbar-none snap-x snap-mandatory">
         {filteredItems.map((item) => {
           const isCurrent = item.id === activeItem.id
           return (
@@ -356,7 +354,7 @@ export default function BeforeAfterSlider() {
                 setActiveItemId(item.id)
                 setSliderPosition(50)
               }}
-              className={`group relative flex items-center gap-2.5 overflow-hidden border p-2 text-left transition-all duration-200 ${
+              className={`group relative flex min-h-[58px] w-[210px] shrink-0 snap-start items-center gap-2.5 overflow-hidden border p-2 text-left transition-all duration-200 active:scale-[0.98] sm:w-auto ${
                 isCurrent
                   ? "border-teal bg-navy/60 text-off ring-1 ring-teal"
                   : "border-mist/20 bg-ink/40 text-mist hover:border-mist/50 hover:bg-navy/30"
@@ -391,7 +389,7 @@ export default function BeforeAfterSlider() {
       </div>
 
       {/* Technical Specs & Production Details Card */}
-      <div className="mt-6 border border-mist/15 bg-navy/30 p-5 sm:p-6">
+      <div className="mt-5 border border-mist/15 bg-navy/30 p-4 sm:mt-6 sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl">
             <div className="flex items-center gap-2">
@@ -399,17 +397,17 @@ export default function BeforeAfterSlider() {
                 <Layers className="h-3 w-3" /> Ficha Técnica de Tratamento
               </span>
             </div>
-            <h3 className="mt-1 text-xl font-medium font-head text-off">
+            <h3 className="mt-1 text-lg font-medium font-head text-off sm:text-xl">
               {activeItem.title}
             </h3>
-            <p className="mt-2 text-sm text-mist leading-relaxed">
+            <p className="mt-2 text-xs leading-relaxed text-mist sm:text-sm">
               {activeItem.description}
             </p>
           </div>
 
-          {/* Technical Specs Pill Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-mist/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:border-mist/10 lg:pl-6">
-            <div className="flex items-start gap-2.5">
+          {/* Technical Specs Pill Matrix (2 Columns on Mobile) */}
+          <div className="grid grid-cols-2 gap-3 border-t border-mist/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:border-mist/10 lg:pl-6">
+            <div className="flex items-start gap-2">
               <Camera className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">
@@ -424,7 +422,7 @@ export default function BeforeAfterSlider() {
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5">
+            <div className="flex items-start gap-2">
               <Sliders className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">
@@ -441,7 +439,7 @@ export default function BeforeAfterSlider() {
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5 sm:col-span-2">
+            <div className="col-span-2 flex items-start gap-2 border-t border-mist/10 pt-2.5">
               <Layers2 className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">

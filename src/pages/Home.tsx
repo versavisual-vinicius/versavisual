@@ -1,7 +1,12 @@
 import { lazy, Suspense } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useSeo, SITE_URL, professionalServiceSchema } from "../lib/seo"
+import {
+  useSeo,
+  SITE_URL,
+  professionalServiceSchema,
+  itemListSchema,
+} from "../lib/seo"
 import { img } from "../lib/images"
 import {
   HOME_SERVICES,
@@ -41,6 +46,14 @@ export default function Home() {
           "Hub audiovisual autoral: fotografia, vídeo, storymaking e direção visual.",
         inLanguage: "pt-BR",
       },
+      itemListSchema(
+        SEGMENTS.map((s) => ({
+          name: s.nav,
+          url: `/${s.slug}`,
+          description: s.intro,
+        })),
+        "Segmentos Audiovisuais VERSAVISUAL",
+      ),
     ],
   })
 
@@ -52,7 +65,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden sm:flex sm:min-h-[88svh] sm:items-end">
-        <div className="relative h-[62svh] min-h-[440px] max-h-[620px] sm:absolute sm:inset-0 sm:h-full sm:max-h-none sm:min-h-0">
+        <div className="relative h-[44svh] min-h-[290px] max-h-[380px] sm:absolute sm:inset-0 sm:h-full sm:max-h-none sm:min-h-0">
           <video
             autoPlay
             loop
@@ -66,30 +79,30 @@ export default function Home() {
           </video>
           <div className="u-grade absolute inset-0 hidden sm:block" />
         </div>
-        <div className="relative mx-auto w-full max-w-[1320px] bg-ink px-5 py-10 sm:bg-transparent sm:pb-12 sm:pt-28 lg:px-10 lg:pb-16">
+        <div className="relative mx-auto w-full max-w-[1320px] bg-ink px-5 py-7 sm:bg-transparent sm:pb-12 sm:pt-28 lg:px-10 lg:pb-16">
           <p className="u-eyebrow u-fade-in text-mist/90">
             Hub audiovisual autoral · Rio de Janeiro · Operação nacional
           </p>
-          <h1 className="u-fade-in mt-5 max-w-3xl text-balance text-4xl leading-[1.02] text-off sm:text-5xl lg:text-[4.2rem]">
+          <h1 className="u-fade-in mt-4 max-w-3xl text-balance text-3xl leading-[1.05] text-off sm:mt-5 sm:text-5xl lg:text-[4.2rem]">
             Imagem não é registro. É posicionamento.
           </h1>
-          <p className="u-fade-in mt-6 max-w-xl text-pretty text-lg text-mist">
+          <p className="u-fade-in mt-4 max-w-xl text-pretty text-base text-mist sm:mt-6 sm:text-lg">
             Fotografia, vídeo, storymaking e direção visual para marcas,
             artistas e pessoas que tratam a própria imagem como decisão
             estratégica.
           </p>
-          <div className="u-fade-in mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <div className="u-fade-in mt-6 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
             <Link
               to="/diagnostico-visual"
               viewTransition
-              className="inline-flex min-h-[44px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
+              className="inline-flex min-h-[46px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
             >
               Fazer diagnóstico visual
             </Link>
             <Link
               to="/portfolio"
               viewTransition
-              className="inline-flex min-h-[44px] items-center gap-2 border-b border-transparent pb-1 text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
+              className="inline-flex min-h-[46px] items-center justify-center gap-2 border border-off/15 bg-navy/30 px-5 py-3 text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal hover:text-teal-400 sm:border-transparent sm:bg-transparent sm:px-0 sm:py-1 sm:border-b"
             >
               Ver portfólio <span aria-hidden>→</span>
             </Link>
@@ -98,13 +111,13 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
-        <div className="mb-12 max-w-2xl">
+      <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
+        <div className="mb-10 max-w-2xl sm:mb-12">
           <p className="u-eyebrow text-mist">O que fazemos</p>
-          <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
             Uma estrutura audiovisual completa, do briefing à entrega.
           </h2>
-          <p className="mt-4 text-mist">
+          <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
             Reunimos direção, captação e pós-produção em uma operação só — para
             que a imagem comunique com coerência em cada ponto de contato.
           </p>
@@ -133,12 +146,12 @@ export default function Home() {
                 {HOME_STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="u-marquee-item flex min-w-[190px] shrink-0 items-center gap-3 border-r border-off/10 px-5 py-6 sm:min-w-[240px] sm:px-8 lg:py-8"
+                    className="u-marquee-item flex min-w-[170px] shrink-0 items-center gap-2.5 border-r border-off/10 px-4 py-5 sm:min-w-[240px] sm:gap-3 sm:px-8 lg:py-7"
                   >
-                    <p className="u-display text-2xl text-off lg:text-3xl">
+                    <p className="u-display text-xl text-off sm:text-2xl lg:text-3xl">
                       {s.value}
                     </p>
-                    <p className="text-[0.68rem] font-medium uppercase tracking-[0.16em] text-mist">
+                    <p className="text-[0.65rem] font-medium uppercase tracking-[0.14em] text-mist sm:text-[0.68rem] sm:tracking-[0.16em]">
                       {s.label}
                     </p>
                   </div>
@@ -154,55 +167,77 @@ export default function Home() {
         id="nichos"
         className="u-defer-render border-y border-off/10 bg-ink"
       >
-        <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
-          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
             <div className="max-w-2xl">
               <p className="u-eyebrow text-mist">Segmentos</p>
-              <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
                 Escolha o seu contexto. A linguagem muda com ele.
               </h2>
             </div>
             <Link
               to="/portfolio"
               viewTransition
-              className="inline-flex min-h-[44px] items-center text-sm font-medium text-mist transition-colors hover:text-off"
+              className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-mist transition-colors duration-200 hover:text-off active:scale-[0.98]"
             >
-              Ver portfólio completo →
+              <span>Ver portfólio completo</span>
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Link>
           </div>
-          <nav
+
+          {/* Mobile Visual Cards Carousel */}
+          <div
             aria-label="Escolha seu contexto"
-            className="grid grid-cols-2 gap-px border-y border-off/10 bg-off/10 sm:hidden"
+            className="-mx-5 flex gap-3.5 overflow-x-auto px-5 pb-4 pt-1 sm:hidden snap-x snap-mandatory scrollbar-none"
           >
             {SEGMENTS.map((s) => (
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
                 viewTransition
-                className="group flex min-h-[64px] items-center justify-between gap-3 bg-ink px-3 py-3 text-off transition-colors hover:bg-navy"
+                className="group relative flex aspect-[4/5] w-[240px] shrink-0 snap-start overflow-hidden border border-off/15 bg-navy shadow-md transition-all duration-200 active:scale-[0.97]"
               >
-                <span className="flex min-w-0 items-center gap-2">
-                  <span className="shrink-0 text-xs font-medium text-teal-400/90">
+                <img
+                  src={img(s.heroPhoto || s.photos[0], 500, 625)}
+                  alt={segmentImageAlt(s)}
+                  width={500}
+                  height={625}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4.5">
+                  <span className="text-xs font-mono font-medium text-teal-400">
                     {s.index}
                   </span>
-                  <span className="text-sm font-semibold leading-tight">
-                    {s.nav}
-                  </span>
-                </span>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-4 shrink-0 text-mist transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
+                  <div className="mt-1 flex items-center justify-between gap-2">
+                    <h3 className="text-base font-semibold leading-tight text-off">
+                      {s.nav}
+                    </h3>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="size-4 shrink-0 text-mist transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-400"
+                    />
+                  </div>
+                </div>
               </Link>
             ))}
-          </nav>
+          </div>
+
+          {/* Desktop Grid */}
           <div className="hidden sm:grid gap-px border-y border-off/10 sm:grid-cols-2 lg:grid-cols-4">
             {SEGMENTS.map((s) => (
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
                 viewTransition
-                className="group relative flex aspect-[16/11] overflow-hidden bg-navy sm:aspect-[3/4]"
+                className="group relative flex aspect-[16/11] overflow-hidden bg-navy transition-colors duration-200 sm:aspect-[3/4] active:scale-[0.99]"
               >
                 <img
                   src={img(s.heroPhoto || s.photos[0], 700, 900)}
@@ -211,7 +246,7 @@ export default function Home() {
                   height={900}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 />
                 <span className="u-grade absolute inset-0" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
@@ -230,13 +265,13 @@ export default function Home() {
 
       {/* BEFORE & AFTER / COLOR GRADING SHOWCASE */}
       <section id="pos-producao" className="border-b border-off/10 bg-ink">
-        <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
-          <div className="mb-12 max-w-2xl">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
+          <div className="mb-10 max-w-2xl sm:mb-12">
             <p className="u-eyebrow text-mist">Pós-Produção & Color Science</p>
-            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
               A imagem ganha peso e intenção na pós.
             </h2>
-            <p className="mt-4 text-mist">
+            <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
               Do sensor RAW ao master final calibrado. Arraste o divisor para
               comparar o sinal bruto da câmera com a direção de cor,
               texturização e retoque autoral da VERSAVISUAL.

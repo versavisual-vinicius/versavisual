@@ -50,7 +50,7 @@ export default function InfiniteCanvas() {
   const rafIdRef = useRef<number | null>(null)
 
   const touchDistanceRef = useRef<number | null>(null)
-  const touchCenterRef = useRef<{ x: number y: number } | null>(null)
+  const touchCenterRef = useRef<{ x: number; y: number } | null>(null)
 
   const [scaleDisplay, setScaleDisplay] = useState(85)
   const [viewportBounds, setViewportBounds] = useState({

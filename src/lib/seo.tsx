@@ -146,16 +146,100 @@ export function professionalServiceSchema() {
     priceRange: "$$$$",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "São Paulo",
-      addressRegion: "SP",
+      addressLocality: "Rio de Janeiro",
+      addressRegion: "RJ",
       addressCountry: "BR",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: -23.55052,
-      longitude: -46.633308,
+      latitude: -22.9068,
+      longitude: -43.1729,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Brasil",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Serviços Audiovisuais VERSAVISUAL",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Fotografia",
+            description:
+              "Direção de cena, leitura de luz e sensibilidade editorial.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Storymaking",
+            description:
+              "Narrativas visuais em tempo real para redes sociais.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Videomaking",
+            description:
+              "Captação dinâmica com olhar narrativo e cinematográfico.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Roteiro & Decupagem",
+            description:
+              "Roteiros para vídeos institucionais, conteúdo e coberturas temáticas.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Direção Visual",
+            description:
+              "Tradução de objetivos de comunicação em escolhas estéticas intencionais.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Cobertura de Eventos",
+            description:
+              "Presença e captação completa em eventos corporativos e ativações.",
+          },
+        },
+      ],
     },
     sameAs: ["https://wa.me/5511950747192"],
+  }
+}
+
+export function itemListSchema(
+  items: { name: string; url: string; description?: string }[],
+  name = "Segmentos de Atendimento",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((it, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: it.name,
+      url: it.url.startsWith("http")
+        ? it.url
+        : `${SITE_URL}${it.url.startsWith("/") ? it.url : `/${it.url}`}`,
+      ...(it.description ? { description: it.description } : {}),
+    })),
   }
 }
 
@@ -263,7 +347,7 @@ export function imageGallerySchema(options: {
   }
 }
 
-export function faqPageSchema(faqs: { q: string a: string }[]) {
+export function faqPageSchema(faqs: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

@@ -57,3 +57,11 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 - Não introduza dependências desnecessárias ou serviços externos sem solicitação expressa.
 - Não exclua arquivos essenciais sem autorização.
 
+## Padrões Técnicos e Identidade VersaVisual
+- **Equipamentos:** Câmera base **Nikon D780 Full Frame** e lentes **Nikkor** (85mm f/1.4G, 50mm f/1.4G, 24-70mm f/2.8).
+- **Color Science & Grading:** ACEScc / DaVinci Resolve, emulações de película (ex: Kodak 2383), Dodge & Burn manual e Separação de Frequências (microtexturas e tom de pele sem perda de textura natural).
+- **Estrutura de Cases (`beforeAfter.ts`):** Manter fidelidade ao schema `BeforeAfterItem` com especificações técnicas detalhadas (`specs`), categorias canônicas (`all`, `moda`, `retrato`, `videoclipe`, `lifestyle`) e filtros RAW calibrados.
+- **Mobile-first & Layout:** Cards compactos com `aspect-[16/11]` no mobile e `aspect-[3/4]` em `sm+`. Manter suporte a `objectPosition` em imagens com enquadramento específico.
+- **Assets e Imagens:** Armazenamento sob `public/images/`, centralizados via `src/lib/images.ts` e `src/data/site.ts`, sempre com textos alternativos semânticos.
+
+
