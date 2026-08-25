@@ -9,6 +9,7 @@ const Portfolio = lazy(() => import("./pages/Portfolio"))
 const SegmentPage = lazy(() => import("./pages/SegmentPage"))
 const CaseStudy = lazy(() => import("./pages/CaseStudy"))
 const Diagnostico = lazy(() => import("./pages/Diagnostico"))
+const About = lazy(() => import("./pages/About"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 const Footer = lazy(() => import("./components/Footer"))
 const WhatsAppFloat = lazy(() => import("./components/WhatsAppFloat"))
@@ -26,6 +27,7 @@ export default function App() {
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route
               path="/portfolio/canvas"

@@ -639,7 +639,7 @@ export default function Diagnostico() {
                   {isSubmitting ? (
                     <>
                       <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-off border-t-transparent" />
-                      <span>Enviando diagnóstico...</span>
+                      <span>Enviando...</span>
                     </>
                   ) : (
                     "Enviar diagnóstico gratuito"

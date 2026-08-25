@@ -28,6 +28,9 @@ export function getImageAlt(
   return `${contextTitle} — Direção audiovisual VERSAVISUAL`
 }
 
+// ── FUNDADOR & BASTIDORES ──────────────────────────────────
+export const FOUNDER_PHOTO = "/images/foto-a-producao-nao-falha.webp"
+
 // ── ALBUMS COMPLETOS POR PRODUÇÃO ───────────────────────────
 export const CLIPE_E_O_TCHAN_COVER =
   "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Capa-clipe-e-o-tchan-jogadinha.jpg"

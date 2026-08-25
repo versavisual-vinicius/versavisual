@@ -15,6 +15,7 @@ import {
   MEGABLOCO_CHA_DA_ALICE_PHOTOS,
   MODA_SANTALOLA_PHOTOS,
   SYN_ICE_PHOTOS,
+  FOUNDER_PHOTO,
 } from "../lib/images.ts"
 
 export const WHATSAPP = "https://wa.me/5522997624631"
@@ -1474,3 +1475,126 @@ export function getCase(slug?: string): PortfolioItem | undefined {
     PORTFOLIO.find((p) => p.caseSlug === clean)
   )
 }
+
+// ── FUNDADOR & DOSSIER AUTORAL ──────────────────────────────
+export interface FounderSpec {
+  category: string
+  label: string
+  value: string
+  description?: string
+}
+
+export interface FounderMilestone {
+  period: string
+  title: string
+  role: string
+  impact: string
+  tag: string
+}
+
+export interface FounderPillar {
+  number: string
+  title: string
+  subtitle: string
+  description: string
+  skills: string[]
+}
+
+export const FOUNDER_DATA = {
+  name: "Vinicius Cunha",
+  title: "Fundador & Diretor Criativo",
+  roleHeadline: "Direção Visual · Fotografia Autoral · Engenharia de Produto & Automações",
+  location: "Rio de Janeiro · RJ · Operação Nacional",
+  photo: FOUNDER_PHOTO,
+  manifestoQuote: "Imagem não é registro. É posicionamento estratégico construído com precisão visual e técnica.",
+  bioShort:
+    "Fundador da VERSAVISUAL, fotógrafo, diretor de cena e desenvolvedor de produtos digitais. Une a sensibilidade visual cinematográfica à disciplina de engenharia, garantindo que grandes produções operem com consistência estética, fluxo sem atrito e entrega impecável.",
+  bioFull: [
+    "Minha formação e prática profissional transitam entre dois mundos que raramente conversam: a direção estética/cinematográfica e a arquitetura de tecnologia, produto e automações.",
+    "No audiovisual, lidero a criação e execução de campanhas, videoclipes, grandes eventos e projetos de posicionamento de marca — operando com câmeras Nikon Full Frame, color grading em DaVinci Resolve (ACEScc) e pós-produção artesanal sem atalhos.",
+    "Na tecnologia, construo ecossistemas digitais, ferramentas de operação e automações inteligentes que garantem escala, precisão e eliminação de gargalos do briefing à entrega final.",
+    "Essa visão híbrida é o DNA da VERSAVISUAL: onde a arte não abre mão do rigor técnico e a produção nunca falha."
+  ],
+  pillars: [
+    {
+      number: "01",
+      title: "Direção Visual & Storymaking",
+      subtitle: "Construção de Narrativa & Atmosfera",
+      description:
+        "Concepção conceitual de projetos audiovisuais, direção de cena, decupagem e condução de equipe em sets de alta pressão.",
+      skills: ["Direção de Cena", "Roteiro & Decupagem", "Direção de Arte", "Storymaking Estratégico"],
+    },
+    {
+      number: "02",
+      title: "Fotografia Autoral & Color Science",
+      subtitle: "Sensibilidade Analógica & Precisão Digital",
+      description:
+        "Captura com sistema Nikon Full Frame e lentes nobres de grande abertura. Color science em ACEScc e tratamento artesanal com preservação de microtexturas e tom de pele natural.",
+      skills: ["Nikon D780 Full Frame", "Lentes Nikkor f/1.4", "DaVinci Resolve / ACEScc", "Dodge & Burn / Freq. Separation"],
+    },
+    {
+      number: "03",
+      title: "Creative Tech & Engenharia de Operação",
+      subtitle: "Escala, Automação & Arquitetura Digital",
+      description:
+        "Desenvolvimento de produtos, automações operacionais e interfaces que aceleram fluxos criativos e eliminam falhas logísticas.",
+      skills: ["Arquitetura de Software", "Automações & Pipelines", "UX/UI & Design Systems", "Operações Digitais"],
+    },
+  ] as FounderPillar[],
+  specs: [
+    {
+      category: "CÂMERAS & ÓTICAS",
+      label: "Corpo Principal",
+      value: "Nikon D780 Full Frame",
+      description: "Sensor BSI com alcance dinâmico estendido e colorimetria precisa.",
+    },
+    {
+      category: "CÂMERAS & ÓTICAS",
+      label: "Lentes Nobres",
+      value: "Nikkor 85mm f/1.4G · 50mm f/1.4G · 24-70mm f/2.8",
+      description: "Desfoque cinematográfico, nitidez cirúrgica e bokeh orgânico.",
+    },
+    {
+      category: "COLOR SCIENCE & PÓS",
+      label: "Color Grading",
+      value: "DaVinci Resolve Studio · ACEScc",
+      description: "Gerenciamento de cor de padrão hollywoodiano e emulações de película (Kodak 2383).",
+    },
+    {
+      category: "COLOR SCIENCE & PÓS",
+      label: "Retouching",
+      value: "Separação de Frequências & Dodge & Burn Manual",
+      description: "Tratamento de pele e microtexturas sem filtros destrutivos ou aspecto artificial.",
+    },
+    {
+      category: "TECH & PRODUTO",
+      label: "Stack & Operações",
+      value: "React · TypeScript · Vite · Tailwind · Automações",
+      description: "Engenharia de software aplicada à produtividade e experiência audiovisual.",
+    },
+  ] as FounderSpec[],
+  milestones: [
+    {
+      period: "Presente",
+      title: "Consolidação VERSAVISUAL",
+      role: "Fundador & Diretor Geral",
+      impact: "Hub audiovisual autoral atendendo marcas, artistas nacionais, hotelaria e grandes eventos no RJ e em todo o Brasil.",
+      tag: "Hub Criativo",
+    },
+    {
+      period: "Trajetória",
+      title: "Grandes Ativações & Videoclipes",
+      role: "Diretor Audiovisual & Fotógrafo",
+      impact: "Coberturas de grande escala (Camarote Ondina, Mega Bloco Chá da Alice, Bonfim House) e videoclipes de projeção nacional.",
+      tag: "Produção de Escala",
+    },
+    {
+      period: "Fundação",
+      title: "Fusão Audiovisual + Tecnologia",
+      role: "Creative Technologist & Fotógrafo",
+      impact: "Desenvolvimento de metodologias proprietárias de pós-produção ágil e plataformas para o setor de eventos e audiovisual.",
+      tag: "Inovação Híbrida",
+    },
+  ] as FounderMilestone[],
+}
+

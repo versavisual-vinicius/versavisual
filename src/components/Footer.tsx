@@ -63,6 +63,15 @@ export default function Footer() {
               <ul className="grid gap-1">
                 <li>
                   <Link
+                    to="/sobre"
+                    viewTransition
+                    className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                  >
+                    Sobre o Fundador
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/portfolio"
                     viewTransition
                     className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
