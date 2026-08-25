@@ -1219,6 +1219,11 @@ export type PortfolioItem = {
 }
 
 export const CASE_ALIASES: Record<string, string> = {
+  "videoclipes-oficiais-e-o-tchan-babado-novo": "e-o-tchan-jogadinha",
+  "e-o-tchan-jogadinha": "e-o-tchan-jogadinha",
+  "clipe-e-o-tchan-jogadinha": "e-o-tchan-jogadinha",
+  "babado-novo-sururu": "babado-novo-sururu",
+  "clipe-babado-novo-sururu": "babado-novo-sururu",
   "lancamento-drinkball": "ativacao-drinkball",
   "megabloco-cha-da-alice": "carnaval-de-rua-experiencia-publico",
   "festival-jeans-toritama": "evento-fjt-palco-camarote",
@@ -1330,22 +1335,16 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     category: "Artistas & Videoclipes",
-    title: "Videoclipes Oficiais — É O Tchan & Babado Novo",
-    city: "Brasil",
+    title: "É O Tchan — Clipe Jogadinha",
+    city: "Brasil / Salvador · BA",
     photo: CLIPE_E_O_TCHAN_COVER,
-    caseSlug: "videoclipes-oficiais-e-o-tchan-babado-novo",
+    caseSlug: "e-o-tchan-jogadinha",
     segmentSlug: "artistas-videoclipes",
-    gallery: [CLIPE_E_O_TCHAN_COVER, ...BACKSTAGE_CLIPE_SURURU_PHOTOS],
+    gallery: [CLIPE_E_O_TCHAN_COVER],
     youtubeVideos: [
       {
         id: "xaF6i9lGeSY",
         title: "É O TCHAN - Jogadinha (Clipe Oficial)",
-        list: "RDxaF6i9lGeSY",
-      },
-      {
-        id: "RqMfhBvezjE",
-        title: "Babado Novo - Sururu [Clipe Oficial]",
-        list: "RDRqMfhBvezjE",
       },
     ],
   },
@@ -1357,7 +1356,12 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "babado-novo-sururu",
     segmentSlug: "artistas-videoclipes",
     gallery: BACKSTAGE_CLIPE_SURURU_PHOTOS,
-    video: "/videos/hero.mp4",
+    youtubeVideos: [
+      {
+        id: "RqMfhBvezjE",
+        title: "Babado Novo - Sururu (Clipe Oficial)",
+      },
+    ],
   },
   {
     category: "Artistas & Videoclipes",
@@ -1367,7 +1371,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     caseSlug: "babado-novo-christian-chavez",
     segmentSlug: "artistas-videoclipes",
     gallery: MEGABLOCO_CHA_DA_ALICE_PHOTOS,
-    video: "/videos/hero.mp4",
   },
   {
     category: "Imagem Pessoal & Lifestyle",

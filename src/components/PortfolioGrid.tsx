@@ -18,7 +18,9 @@ export default function PortfolioGrid({
     () => PORTFOLIO.filter((p) => matchesFilter(p, filter)),
     [filter],
   )
-  const featuredVideo = items.find((it) => it.video)
+  const featuredVideo =
+    items.find((it) => it.video) ||
+    (filter === "Artistas & Videoclipes" ? { video: "/videos/hero.mp4" } : undefined)
 
   return (
     <div>
