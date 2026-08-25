@@ -39,17 +39,17 @@ export default function CTASection({
       <div className="absolute inset-0 bg-ink/80" aria-hidden="true" />
       <div className="relative mx-auto max-w-[900px] px-5 py-16 text-center sm:py-24 lg:px-10 lg:py-32">
         <p className="u-eyebrow text-mist">{eyebrow}</p>
-        <h2 className="mt-4 text-balance text-2xl leading-[1.08] text-off sm:mt-5 sm:text-4xl lg:text-5xl">
+        <h2 className="mt-4 text-balance text-2xl font-semibold tracking-tight text-off sm:mt-5 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-pretty text-sm text-mist sm:mt-5 sm:text-base">
+        <p className="mx-auto mt-4 max-w-xl text-pretty text-sm text-mist sm:mt-5 sm:text-base leading-relaxed">
           {text}
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className="inline-flex min-h-[44px] w-full items-center justify-center border border-teal bg-teal px-8 py-3 text-sm font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400 sm:w-auto"
+            className="inline-flex min-h-[46px] w-full items-center justify-center border border-teal bg-teal px-8 py-3 text-sm font-head font-medium text-off transition-all duration-200 hover:border-teal-400 hover:bg-teal-400 active:scale-[0.98] sm:w-auto"
           >
             Fazer diagnóstico visual
           </Link>
@@ -57,9 +57,15 @@ export default function CTASection({
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 border-b border-transparent px-3 py-2 text-sm font-head font-medium text-off transition-colors duration-200 hover:border-teal hover:text-teal-400"
+            className="group inline-flex min-h-[46px] items-center gap-1.5 border-b border-transparent px-3 py-2 text-sm font-head font-medium text-off transition-all duration-200 hover:border-teal hover:text-teal-400 active:scale-[0.98]"
           >
-            Falar no WhatsApp <span aria-hidden>→</span>
+            <span>Falar no WhatsApp</span>
+            <span
+              aria-hidden
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            >
+              →
+            </span>
           </a>
         </div>
       </div>

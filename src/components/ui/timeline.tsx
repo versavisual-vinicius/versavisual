@@ -68,15 +68,15 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <div className="mx-auto max-w-[1320px] px-5 py-14 sm:py-20 lg:px-10 lg:py-28">
+      <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
         <div className="grid items-start gap-8 sm:gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
           <div className="top-24 lg:sticky">
             {eyebrow && <p className="u-eyebrow text-mist">{eyebrow}</p>}
-            <h2 className="mt-3 text-2xl leading-tight text-off sm:mt-4 sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
               {title}
             </h2>
             {text && (
-              <p className="mt-3 max-w-sm text-sm text-mist sm:mt-4 sm:text-base">
+              <p className="mt-3 max-w-md text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
                 {text}
               </p>
             )}
@@ -100,7 +100,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 </div>
 
                 <div
-                  className={`absolute left-1.5 z-20 flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-off/20 bg-ink shadow-xs sm:left-4 md:left-4 ${
+                  className={`absolute left-1 z-20 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-off/20 bg-ink shadow-xs sm:left-4 md:left-4 ${
                     index === 0 ? "top-0 md:top-0" : "top-8 sm:top-10 md:top-20"
                   }`}
                   aria-hidden="true"
@@ -109,7 +109,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 </div>
 
                 <div className="w-full pl-11 sm:pl-16 md:pl-4">
-                  <div className="border-l-2 border-teal/30 bg-off p-4.5 sm:p-6 lg:p-8">
+                  <div className="border-l-2 border-teal/30 bg-off p-4.5 sm:p-6 lg:p-8 transition-colors duration-200 hover:border-teal/60">
                     <div className="mb-2.5 sm:mb-5 flex items-baseline justify-between gap-3">
                       <div>
                         {item.eyebrow && (
@@ -117,7 +117,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                             {item.eyebrow}
                           </span>
                         )}
-                        <h3 className="mt-1 sm:mt-2 text-lg font-semibold text-ink sm:text-2xl lg:text-3xl leading-snug">
+                        <h3 className="mt-1 sm:mt-2 text-lg font-semibold text-ink sm:text-2xl lg:text-3xl leading-snug font-head">
                           {item.title}
                         </h3>
                       </div>

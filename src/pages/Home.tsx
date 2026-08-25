@@ -111,13 +111,13 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="mx-auto max-w-[1320px] px-5 py-14 sm:py-20 lg:px-10 lg:py-28">
+      <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
         <div className="mb-10 max-w-2xl sm:mb-12">
           <p className="u-eyebrow text-mist">O que fazemos</p>
-          <h2 className="mt-3 text-2xl leading-tight text-off sm:mt-4 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
             Uma estrutura audiovisual completa, do briefing à entrega.
           </h2>
-          <p className="mt-3 text-sm text-mist sm:mt-4 sm:text-base">
+          <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
             Reunimos direção, captação e pós-produção em uma operação só — para
             que a imagem comunique com coerência em cada ponto de contato.
           </p>
@@ -146,7 +146,7 @@ export default function Home() {
                 {HOME_STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="u-marquee-item flex min-w-[170px] shrink-0 items-center gap-2.5 border-r border-off/10 px-4 py-5 sm:min-w-[240px] sm:gap-3 sm:px-8 lg:py-8"
+                    className="u-marquee-item flex min-w-[170px] shrink-0 items-center gap-2.5 border-r border-off/10 px-4 py-5 sm:min-w-[240px] sm:gap-3 sm:px-8 lg:py-7"
                   >
                     <p className="u-display text-xl text-off sm:text-2xl lg:text-3xl">
                       {s.value}
@@ -167,20 +167,26 @@ export default function Home() {
         id="nichos"
         className="u-defer-render border-y border-off/10 bg-ink"
       >
-        <div className="mx-auto max-w-[1320px] px-5 py-14 sm:py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
             <div className="max-w-2xl">
               <p className="u-eyebrow text-mist">Segmentos</p>
-              <h2 className="mt-3 text-2xl leading-tight text-off sm:mt-4 sm:text-4xl lg:text-5xl">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
                 Escolha o seu contexto. A linguagem muda com ele.
               </h2>
             </div>
             <Link
               to="/portfolio"
               viewTransition
-              className="inline-flex min-h-[44px] items-center text-sm font-medium text-mist transition-colors hover:text-off"
+              className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-mist transition-colors duration-200 hover:text-off active:scale-[0.98]"
             >
-              Ver portfólio completo →
+              <span>Ver portfólio completo</span>
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Link>
           </div>
 
@@ -194,7 +200,7 @@ export default function Home() {
                 key={s.slug}
                 to={`/${s.slug}`}
                 viewTransition
-                className="group relative flex aspect-[4/5] w-[240px] shrink-0 snap-start overflow-hidden border border-off/15 bg-navy shadow-md transition-all active:scale-[0.98]"
+                className="group relative flex aspect-[4/5] w-[240px] shrink-0 snap-start overflow-hidden border border-off/15 bg-navy shadow-md transition-all duration-200 active:scale-[0.97]"
               >
                 <img
                   src={img(s.heroPhoto || s.photos[0], 500, 625)}
@@ -216,7 +222,7 @@ export default function Home() {
                     </h3>
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="size-4 shrink-0 text-mist transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      className="size-4 shrink-0 text-mist transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-400"
                     />
                   </div>
                 </div>
@@ -231,7 +237,7 @@ export default function Home() {
                 key={s.slug}
                 to={`/${s.slug}`}
                 viewTransition
-                className="group relative flex aspect-[16/11] overflow-hidden bg-navy sm:aspect-[3/4]"
+                className="group relative flex aspect-[16/11] overflow-hidden bg-navy transition-colors duration-200 sm:aspect-[3/4] active:scale-[0.99]"
               >
                 <img
                   src={img(s.heroPhoto || s.photos[0], 700, 900)}
@@ -240,7 +246,7 @@ export default function Home() {
                   height={900}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 />
                 <span className="u-grade absolute inset-0" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
@@ -259,13 +265,13 @@ export default function Home() {
 
       {/* BEFORE & AFTER / COLOR GRADING SHOWCASE */}
       <section id="pos-producao" className="border-b border-off/10 bg-ink">
-        <div className="mx-auto max-w-[1320px] px-5 py-14 sm:py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
           <div className="mb-10 max-w-2xl sm:mb-12">
             <p className="u-eyebrow text-mist">Pós-Produção & Color Science</p>
-            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
               A imagem ganha peso e intenção na pós.
             </h2>
-            <p className="mt-4 text-mist">
+            <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
               Do sensor RAW ao master final calibrado. Arraste o divisor para
               comparar o sinal bruto da câmera com a direção de cor,
               texturização e retoque autoral da VERSAVISUAL.
