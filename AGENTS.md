@@ -63,5 +63,6 @@ This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin con
 - **Estrutura de Cases (`beforeAfter.ts`):** Manter fidelidade ao schema `BeforeAfterItem` com especificações técnicas detalhadas (`specs`), categorias canônicas (`all`, `moda`, `retrato`, `videoclipe`, `lifestyle`) e filtros RAW calibrados.
 - **Mobile-first & Layout:** Cards compactos com `aspect-[16/11]` no mobile e `aspect-[3/4]` em `sm+`. Manter suporte a `objectPosition` em imagens com enquadramento específico.
 - **Assets e Imagens:** Armazenamento sob `public/images/`, centralizados via `src/lib/images.ts` e `src/data/site.ts`, sempre com textos alternativos semânticos.
-
-
+- **Curadoria e Segmentação de Imagens (`images.ts`):** Manter constantes isoladas para cada ensaio/campanha específica (ex: separar gestantes de ensaios autorais). Nunca agrupar fotos com propósitos visuais distintos no mesmo array base sem desmembramento semântico.
+- **Mídia e Vídeos de Artistas / Videoclipes:** Cases com videoclipes oficiais devem utilizar a estrutura `youtubeVideos` (com IDs e títulos corretos) para embeds dedicados em `CaseStudy.tsx`. Reservar `/videos/hero.mp4` para destaques institucionais globais ou do segmento, sem misturar com clipes independentes.
+- **Consistência de Testes e Rotas:** Sempre que novos cases, slugs ou grupos forem criados ou reorganizados em `site.ts`, sincronizar os utilitários de teste (`tests/utils/site-data.ts`, `domain-helpers.ts`) e o `sitemap.xml`.
