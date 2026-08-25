@@ -209,4 +209,23 @@ export async function runTier1HomeComponentsTests() {
       expect(timelineCode).toContain("height")
     })
   })
+
+  await describe("Feature 16.5: Pós-produção & Color Science (BeforeAfterSlider)", () => {
+    const beforeAfterCode = readProjectFile("src/data/beforeAfter.ts")
+
+    it("F16.5.1: Babado Novo case displays Nikon emulation and contains no Kodak 2383 reference", () => {
+      expect(beforeAfterCode).toContain("Master Final · Emulação Nikon")
+      expect(beforeAfterCode).not.toContain("Kodak 2383")
+    })
+
+    it("F16.5.2: Preserves Babado Novo RAW simulation and backstage photo assets", () => {
+      expect(beforeAfterCode).toContain("Sensor RAW Nikon D780 · NEF Direto")
+      expect(beforeAfterCode).toContain(
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
+      )
+      expect(beforeAfterCode).toContain(
+        "saturate(0.48) contrast(0.68) brightness(1.12)",
+      )
+    })
+  })
 }

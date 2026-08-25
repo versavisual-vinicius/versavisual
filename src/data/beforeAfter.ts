@@ -64,7 +64,7 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     title: "Clipe Babado Novo — Direção de Cor",
     subtitle: "Color Grading cinematográfico para palco e iluminação cênica",
     description:
-      "Extração do alcance dinâmico do sensor RAW em curva tonal densa, com preservação dos tons de pele sob luzes saturadas de LED e emulação de filme Kodak 2383.",
+      "Extração do alcance dinâmico do sensor RAW em curva tonal densa, com preservação dos tons de pele sob luzes saturadas de LED e emulação Nikon.",
     beforeImage:
       "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     afterImage:
@@ -73,7 +73,7 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     afterFilter: "none",
     objectPosition: "center center",
     beforeLabel: "Sensor RAW Nikon D780 · NEF Direto",
-    afterLabel: "Master Final · Emulação Kodak 2383",
+    afterLabel: "Master Final · Emulação Nikon",
     specs: {
       camera: "Nikon D780 Full Frame",
       lens: "Nikkor 50mm f/1.4G",
