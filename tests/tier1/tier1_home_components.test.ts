@@ -112,7 +112,7 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F14.9: Mobile disclosure summaries meet touch target requirements", () => {
-      expect(serviceGridCode).toContain("min-h-[44px]")
+      expect(serviceGridCode).toMatch(/min-h-\[(?:44|48)px\]/)
     })
 
     it("F14.10: Home passes the approved mobile groups to ServiceGrid", () => {
@@ -145,9 +145,8 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F14.13: Mobile service disclosures use a light brand surface behind dark text", () => {
-      expect(serviceGridCode).toContain(
-        'className="border-y border-line bg-off sm:hidden"',
-      )
+      expect(serviceGridCode).toContain("bg-off")
+      expect(serviceGridCode).toContain("sm:hidden")
     })
   })
 

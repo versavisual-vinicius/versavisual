@@ -180,10 +180,10 @@ export default function Diagnostico() {
       setSubmittedLead(lead)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } catch (err) {
-      console.error("Erro no envio do formulário:", err)
-      setSubmitError(
-        "Houve uma instabilidade temporária na transmissão. Você pode tentar novamente ou falar diretamente conosco pelo WhatsApp.",
-      )
+      console.error("Erro no envio do formulário (fallback para WhatsApp direto):", err)
+      // Fallback gracioso: direciona para o resumo com o link do WhatsApp pronto
+      setSubmittedLead(lead)
+      window.scrollTo({ top: 0, behavior: "smooth" })
     } finally {
       setIsSubmitting(false)
     }
