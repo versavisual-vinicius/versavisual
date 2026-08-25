@@ -3,33 +3,18 @@ import { readProjectFile } from "./domain-helpers.ts"
 export const CANONICAL_HOME_SERVICES = [
   {
     n: "01",
-    title: "Fotografia",
-    desc: "Direção de cena, leitura de luz e sensibilidade editorial. Imagens com peso, presença e intenção.",
+    title: "Estratégia & Direção",
+    desc: "Diagnóstico de posicionamento, estrutura narrativa, roteiro e direção de cena. A intenção visual é definida antes da câmera ligar.",
   },
   {
     n: "02",
-    title: "Storymaking",
-    desc: "Narrativas visuais para redes sociais. Posts, carrosséis e reels que comunicam com coerência.",
+    title: "Produção & Captação",
+    desc: "Fotografia editorial e institucional, produção em vídeo e cobertura de presença. Execução disciplinada com equipamentos Nikon e ópticas prime.",
   },
   {
     n: "03",
-    title: "Videomaking",
-    desc: "Cobertura completa com equipe técnica, operação multicâmera e entrega editada com identidade.",
-  },
-  {
-    n: "04",
-    title: "Roteiros",
-    desc: "Roteiros para vídeos institucionais, conteúdo e coberturas temáticas. A narrativa começa antes da câmera ligar.",
-  },
-  {
-    n: "05",
-    title: "Direção",
-    desc: "Tradução de um objetivo de comunicação em escolhas concretas de enquadramento, luz, movimento e composição.",
-  },
-  {
-    n: "06",
-    title: "Cobertura de Eventos",
-    desc: "Presença completa nos eventos dos clientes — antes, durante e depois.",
+    title: "Pós & Distribuição",
+    desc: "Color Science e tratamento autoral, storymaking, reels e formatos sociais verticais pensados para converter e reter atenção.",
   },
 ]
 
@@ -57,10 +42,10 @@ export const CANONICAL_HOME_PROCESS = [
 ]
 
 export const CANONICAL_HOME_STATS = [
-  { value: "+120", label: "Projetos Autorais" },
+  { value: "+120", label: "Projetos Realizados" },
   { value: "25+", label: "Marcas Atendidas" },
-  { value: "18", label: "Estados Cobertos" },
-  { value: "5+", label: "Anos de Operação" },
+  { value: "18", label: "Estados Alcançados" },
+  { value: "5+", label: "Anos em Operação" },
 ]
 
 export const CANONICAL_PORTFOLIO_FILTERS = [

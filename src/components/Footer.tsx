@@ -11,34 +11,38 @@ export default function Footer() {
     <>
       <footer className="border-t border-off/10 bg-ink">
         <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-10 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr]">
-            {/* Brand */}
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_1.4fr_0.9fr]">
+            {/* Brand & Direct Contact */}
             <div>
               <Logo variant="white" className="block h-10 w-auto" />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
-                Hub Criativo · Vídeo · Fotografia · Storymaking. Da cena ao frame,
-                em todo o Brasil.
+                Estratégia, Produção Audiovisual & Pós-Produção Autoral. Da cena ao frame,
+                no Rio de Janeiro e em todo o Brasil.
               </p>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
-              >
-                WhatsApp · {WHATSAPP_LABEL}
-              </a>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="mt-1 inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
-              >
-                {EMAIL}
-              </a>
+              <div className="mt-6 flex flex-col gap-1.5">
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-2 text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                >
+                  <span className="font-mono text-xs text-teal">WhatsApp</span>
+                  <span>{WHATSAPP_LABEL}</span>
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex min-h-[44px] items-center gap-2 text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
+                >
+                  <span className="font-mono text-xs text-teal">E-mail</span>
+                  <span>{EMAIL}</span>
+                </a>
+              </div>
             </div>
 
-            {/* Segments */}
+            {/* Segments (2-Column Grid) */}
             <nav aria-label="Segmentos">
               <p className="u-eyebrow mb-4 text-mist">Segmentos</p>
-              <ul className="grid gap-1">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
                 {SEGMENT_NAV.map((s) => (
                   <li key={s.to}>
                     <Link
@@ -53,28 +57,10 @@ export default function Footer() {
               </ul>
             </nav>
 
-            {/* Contact & Governance */}
-            <nav aria-label="Contato e navegação">
-              <p className="u-eyebrow mb-4 text-mist">Contato & Governança</p>
+            {/* Navigation & Governance */}
+            <nav aria-label="Navegação e governança">
+              <p className="u-eyebrow mb-4 text-mist">Navegação & Governança</p>
               <ul className="grid gap-1">
-                <li>
-                  <a
-                    href={WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
-                  >
-                    WhatsApp · {WHATSAPP_LABEL}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${EMAIL}`}
-                    className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
-                  >
-                    {EMAIL}
-                  </a>
-                </li>
                 <li>
                   <Link
                     to="/portfolio"
@@ -90,7 +76,7 @@ export default function Footer() {
                     viewTransition
                     className="inline-flex min-h-[44px] items-center text-sm text-mist transition-colors duration-200 ease-out hover:text-off"
                   >
-                    Diagnóstico gratuito
+                    Diagnóstico & Proposta
                   </Link>
                 </li>
                 <li>
@@ -108,7 +94,7 @@ export default function Footer() {
 
           <div className="mt-14 flex flex-col gap-3 border-t border-off/10 pt-6 text-xs text-mist/80 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap items-center gap-4">
-              <span>© 2026 VERSAVISUAL — Hub Criativo Audiovisual</span>
+              <span>© 2026 VERSAVISUAL — Operação Audiovisual</span>
               <button
                 type="button"
                 onClick={() => setIsPrivacyOpen(true)}
@@ -118,7 +104,7 @@ export default function Footer() {
               </button>
             </div>
             <span className="u-wordmark tracking-widest text-mist/80">
-              Rio de Janeiro · Brasil
+              Rio de Janeiro — RJ · Brasil
             </span>
           </div>
         </div>

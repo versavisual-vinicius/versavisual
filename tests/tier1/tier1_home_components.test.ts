@@ -55,14 +55,13 @@ export async function runTier1HomeComponentsTests() {
     const serviceGridCode = readProjectFile("src/components/ServiceGrid.tsx")
     const homeCode = readProjectFile("src/pages/Home.tsx")
 
-    it("F14.1: ServiceGrid renders all 6 institutional services (01 to 06)", () => {
-      expect(CANONICAL_HOME_SERVICES).toHaveLength(6)
+    it("F14.1: ServiceGrid renders the 3 strategic capability pillars (01 to 03)", () => {
+      expect(CANONICAL_HOME_SERVICES).toHaveLength(3)
       expect(homeCode).toContain("<ServiceGrid")
     })
 
-    it("F14.2: ServiceGrid applies responsive grid layout (1 col mobile, 2 col sm, 3 col lg)", () => {
-      expect(serviceGridCode).toContain("sm:grid-cols-2")
-      expect(serviceGridCode).toContain("lg:grid-cols-3")
+    it("F14.2: ServiceGrid applies responsive 3-column grid layout on sm+", () => {
+      expect(serviceGridCode).toContain("sm:grid-cols-3")
     })
 
     it("F14.3: Service cards feature hover accent animation line", () => {
@@ -82,20 +81,30 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain("s.label")
     })
 
-    it("F14.6: Mobile service groups preserve the approved photography and video offers", () => {
+    it("F14.6: Mobile service groups preserve the 3 approved capability pillars", () => {
       expect(HOME_SERVICE_GROUPS).toEqual([
         {
-          title: "Fotografia",
-          items: ["Cobertura de eventos", "Direção"],
+          title: "Estratégia & Direção",
+          items: [
+            "Diagnóstico visual e intenção",
+            "Roteiro e estrutura narrativa",
+            "Direção de cena e conceito estético",
+          ],
         },
         {
-          title: "Vídeo",
+          title: "Produção & Captação",
           items: [
-            "Direção",
-            "Roteiro",
-            "Videomaking",
-            "Storymaking",
-            "Cobertura de eventos",
+            "Fotografia editorial e institucional",
+            "Produção e captação de vídeo",
+            "Cobertura de eventos e ativações",
+          ],
+        },
+        {
+          title: "Pós & Distribuição",
+          items: [
+            "Color Science e tratamento autoral",
+            "Storymaking e reels de alto impacto",
+            "Formatos verticais prontos para redes",
           ],
         },
       ])
@@ -120,12 +129,13 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain("mobileGroups={HOME_SERVICE_GROUPS}")
     })
 
-    it("F14.11: Authority stats use an accessible continuous marquee", () => {
+    it("F14.11: Authority stats use an accessible continuous marquee with hover pause", () => {
       const cssCode = readProjectFile("src/index.css")
 
       expect(homeCode).toContain("u-marquee-track")
       expect(homeCode).toContain('aria-hidden="true"')
       expect(cssCode).toContain("@keyframes vv-marquee")
+      expect(cssCode).toContain("animation-play-state: paused")
       expect(cssCode).toContain("prefers-reduced-motion: reduce")
       expect(cssCode).toContain(".u-marquee-track")
     })
@@ -219,7 +229,7 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F16.5.2: Preserves Babado Novo RAW simulation and backstage photo assets", () => {
-      expect(beforeAfterCode).toContain("Sensor RAW Nikon D780 · NEF Direto")
+      expect(beforeAfterCode).toContain("RAW Nikon D780 · Perfil Flat")
       expect(beforeAfterCode).toContain(
         "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
       )

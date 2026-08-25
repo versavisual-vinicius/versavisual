@@ -294,14 +294,14 @@ export default function Diagnostico() {
               Antes da câmera, uma conversa que vale a produção inteira.
             </p>
             <p className="mt-5 max-w-sm text-mist/90">
-              O diagnóstico é gratuito e sem compromisso. Quanto mais contexto
-              você der, mais preciso será o caminho visual que devolvemos.
+              Analisamos o seu briefing para estruturar a viabilidade estética e
+              comercial do projeto, com foco em resultado real.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-mist/90">
               {[
-                "Leitura do seu objetivo de comunicação",
-                "Recomendação de formato e linguagem",
-                "Proposta por faixa de investimento",
+                "Análise de viabilidade do objetivo visual",
+                "Recomendação de formato, linguagem e lentes",
+                "Proposta comercial por faixa de investimento",
               ].map((li) => (
                 <li key={li} className="flex gap-3">
                   <span
@@ -318,9 +318,9 @@ export default function Diagnostico() {
         {/* Form */}
         <div className="bg-off/94 px-5 py-10 shadow-2xl backdrop-blur-md lg:min-h-[calc(100vh-72px)] lg:px-12 lg:py-14">
           <div>
-            <p className="u-eyebrow">Diagnóstico Visual Gratuito</p>
+            <p className="u-eyebrow">Briefing & Diagnóstico Visual</p>
             <h1 className="mb-8 mt-3 text-3xl leading-tight sm:text-4xl text-ink">
-              Conte seu contexto. Devolvemos um caminho visual.
+              Conte seu contexto. Devolvemos um caminho visual e proposta sob medida.
             </h1>
           </div>
 
