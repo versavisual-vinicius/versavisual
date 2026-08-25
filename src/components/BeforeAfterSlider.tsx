@@ -148,11 +148,11 @@ export default function BeforeAfterSlider() {
   return (
     <div className="w-full">
       {/* Category Pills Header */}
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
         <div
           role="tablist"
           aria-label="Categorias do comparador de pós-produção"
-          className="flex flex-wrap items-center gap-2"
+          className="-mx-5 flex items-center gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0 scrollbar-none"
         >
           {BEFORE_AFTER_CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.id
@@ -171,7 +171,7 @@ export default function BeforeAfterSlider() {
                         )
                   if (matching) setActiveItemId(matching.id)
                 }}
-                className={`min-h-[40px] px-4 py-1.5 text-xs font-medium uppercase tracking-wider font-head transition-all duration-200 ${
+                className={`min-h-[38px] shrink-0 px-3.5 py-1.5 text-xs font-medium uppercase tracking-wider font-head transition-all duration-200 ${
                   isActive
                     ? "border border-teal bg-teal text-off shadow-sm"
                     : "border border-mist/20 bg-ink/60 text-mist hover:border-teal/40 hover:text-off"
@@ -184,7 +184,7 @@ export default function BeforeAfterSlider() {
         </div>
 
         {/* Quick Position Presets */}
-        <div className="flex items-center gap-1.5 text-xs font-mono text-mist">
+        <div className="flex items-center gap-1.5 self-end sm:self-auto text-xs font-mono text-mist">
           <span className="hidden sm:inline text-mist/60 mr-1">
             Ajuste rápido:
           </span>
@@ -345,8 +345,8 @@ export default function BeforeAfterSlider() {
         </div>
       </div>
 
-      {/* Thumbnails Selector */}
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* Thumbnails Selector (Horizontal Scroll on Mobile, Grid on Desktop) */}
+      <div className="-mx-5 mt-4 flex gap-2.5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 scrollbar-none snap-x snap-mandatory">
         {filteredItems.map((item) => {
           const isCurrent = item.id === activeItem.id
           return (
@@ -356,7 +356,7 @@ export default function BeforeAfterSlider() {
                 setActiveItemId(item.id)
                 setSliderPosition(50)
               }}
-              className={`group relative flex items-center gap-2.5 overflow-hidden border p-2 text-left transition-all duration-200 ${
+              className={`group relative flex w-[210px] shrink-0 snap-start items-center gap-2.5 overflow-hidden border p-2 text-left transition-all duration-200 sm:w-auto ${
                 isCurrent
                   ? "border-teal bg-navy/60 text-off ring-1 ring-teal"
                   : "border-mist/20 bg-ink/40 text-mist hover:border-mist/50 hover:bg-navy/30"
@@ -391,7 +391,7 @@ export default function BeforeAfterSlider() {
       </div>
 
       {/* Technical Specs & Production Details Card */}
-      <div className="mt-6 border border-mist/15 bg-navy/30 p-5 sm:p-6">
+      <div className="mt-5 border border-mist/15 bg-navy/30 p-4 sm:mt-6 sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl">
             <div className="flex items-center gap-2">
@@ -399,17 +399,17 @@ export default function BeforeAfterSlider() {
                 <Layers className="h-3 w-3" /> Ficha Técnica de Tratamento
               </span>
             </div>
-            <h3 className="mt-1 text-xl font-medium font-head text-off">
+            <h3 className="mt-1 text-lg font-medium font-head text-off sm:text-xl">
               {activeItem.title}
             </h3>
-            <p className="mt-2 text-sm text-mist leading-relaxed">
+            <p className="mt-2 text-xs leading-relaxed text-mist sm:text-sm">
               {activeItem.description}
             </p>
           </div>
 
-          {/* Technical Specs Pill Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-mist/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:border-mist/10 lg:pl-6">
-            <div className="flex items-start gap-2.5">
+          {/* Technical Specs Pill Matrix (2 Columns on Mobile) */}
+          <div className="grid grid-cols-2 gap-3 border-t border-mist/10 pt-4 lg:border-t-0 lg:pt-0 lg:border-l lg:border-mist/10 lg:pl-6">
+            <div className="flex items-start gap-2">
               <Camera className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">
@@ -424,7 +424,7 @@ export default function BeforeAfterSlider() {
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5">
+            <div className="flex items-start gap-2">
               <Sliders className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">
@@ -441,7 +441,7 @@ export default function BeforeAfterSlider() {
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5 sm:col-span-2">
+            <div className="col-span-2 flex items-start gap-2 border-t border-mist/10 pt-2.5">
               <Layers2 className="h-4 w-4 shrink-0 text-teal-400 mt-0.5" />
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-mist/60">

@@ -37,12 +37,12 @@ export default function CTASection({
         />
       </div>
       <div className="absolute inset-0 bg-ink/80" aria-hidden="true" />
-      <div className="relative mx-auto max-w-[900px] px-5 py-24 text-center lg:px-10 lg:py-32">
+      <div className="relative mx-auto max-w-[900px] px-5 py-16 text-center sm:py-24 lg:px-10 lg:py-32">
         <p className="u-eyebrow text-mist">{eyebrow}</p>
-        <h2 className="mt-5 text-balance text-3xl leading-[1.05] text-off sm:text-4xl lg:text-5xl">
+        <h2 className="mt-4 text-balance text-2xl leading-[1.08] text-off sm:mt-5 sm:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-pretty text-mist">{text}</p>
+        <p className="mx-auto mt-4 max-w-xl text-pretty text-sm text-mist sm:mt-5 sm:text-base">{text}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/diagnostico-visual"
