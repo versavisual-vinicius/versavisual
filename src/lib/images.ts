@@ -106,9 +106,7 @@ export const CAMAROTE_ONDINA_PHOTOS: readonly string[] = [
   "/images/Ativações & Eventos - Camarote Ondina/Camarote-Ondina-Salvador-Bahia-Carnaval17.jpg",
 ]
 
-export const ENSAIO_AUTORAL_PHOTOS: readonly string[] = [
-  "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
-  "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral2.jpg",
+export const ENSAIO_GESTANTE_PRAIA_PHOTOS: readonly string[] = [
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral3.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral4.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral5.jpg",
@@ -148,6 +146,11 @@ export const ENSAIO_AUTORAL_PHOTOS: readonly string[] = [
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral39.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral40.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
+]
+
+export const ENSAIO_AUTORAL_PHOTOS: readonly string[] = [
+  "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
+  "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral2.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-autoral42.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-autoral43.jpg",
   "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-autoral44.jpg",
@@ -517,10 +520,7 @@ export const WEDDING_PHOTOS: readonly string[] = [
   "/images/Casamentos/CASAMENTO16.jpg",
 ]
 
-export const MATERNITY_PHOTOS: readonly string[] = Array.from(
-  { length: 39 },
-  (_, index) => `/images/Gestantes/Gestante${index + 1}.jpg`,
-)
+export const MATERNITY_PHOTOS: readonly string[] = ENSAIO_GESTANTE_PRAIA_PHOTOS
 
 // ── COLEÇÕES CURADAS POR SEGMENTO ─────────────────────────────
 export const PHOTOS = {
@@ -529,6 +529,7 @@ export const PHOTOS = {
     ...BONFIM_HOUSE_PHOTOS,
     ...CAMAROTE_ONDINA_PHOTOS,
     ...LANCAMENTO_DRINKBALL_PHOTOS,
+    ...LOJA_FRIDA_PHOTOS,
     ...MEGABLOCO_CHA_DA_ALICE_PHOTOS,
     ...SYN_ICE_PHOTOS,
   ],
@@ -544,13 +545,12 @@ export const PHOTOS = {
   artists: [CLIPE_E_O_TCHAN_COVER, ...BACKSTAGE_CLIPE_SURURU_PHOTOS],
 
   // Posicionamento Profissional
-  professional: LOJA_FRIDA_PHOTOS,
+  professional: ENSAIO_STREET_PHOTOS,
 
   // Imagem Pessoal & Lifestyle
   personal: [
-    ...ENSAIO_AUTORAL_PHOTOS.slice(41),
+    ...ENSAIO_AUTORAL_PHOTOS,
     ...ENSAIO_STREET_PHOTOS,
-    ...ENSAIO_AUTORAL_PHOTOS.slice(0, 41),
   ],
 
   // Casamentos
