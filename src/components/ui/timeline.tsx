@@ -100,7 +100,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                 </div>
 
                 <div
-                  className={`absolute left-1 z-20 flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-off/15 bg-ink shadow-xs sm:left-4 md:left-4 ${
+                  className={`absolute left-1.5 z-20 flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-off/20 bg-ink shadow-xs sm:left-4 md:left-4 ${
                     index === 0 ? "top-0 md:top-0" : "top-8 sm:top-10 md:top-20"
                   }`}
                   aria-hidden="true"
@@ -108,16 +108,16 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
                   <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-teal" />
                 </div>
 
-                <div className="w-full pl-10 sm:pl-16 md:pl-4">
-                  <div className="border-l border-line bg-off p-4 sm:p-6 lg:p-8">
-                    <div className="mb-3 sm:mb-5 flex items-baseline justify-between gap-4">
+                <div className="w-full pl-11 sm:pl-16 md:pl-4">
+                  <div className="border-l-2 border-teal/30 bg-off p-4.5 sm:p-6 lg:p-8">
+                    <div className="mb-2.5 sm:mb-5 flex items-baseline justify-between gap-3">
                       <div>
                         {item.eyebrow && (
-                          <span className="u-display text-xs sm:text-sm text-navy md:hidden">
+                          <span className="u-display text-xs sm:text-sm text-navy/80 font-medium md:hidden">
                             {item.eyebrow}
                           </span>
                         )}
-                        <h3 className="mt-1 sm:mt-2 text-xl font-semibold text-ink sm:text-2xl lg:text-3xl">
+                        <h3 className="mt-1 sm:mt-2 text-lg font-semibold text-ink sm:text-2xl lg:text-3xl leading-snug">
                           {item.title}
                         </h3>
                       </div>
@@ -131,7 +131,7 @@ export function Timeline({ eyebrow, title, text, media, data }: TimelineProps) {
 
             <div
               style={{ height }}
-              className="absolute left-4.5 sm:left-8 top-0 w-[2px] overflow-hidden bg-gradient-to-b from-transparent via-off/25 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_92%,transparent_100%)]"
+              className="absolute left-[19px] sm:left-[33px] top-0 w-[2px] overflow-hidden bg-gradient-to-b from-transparent via-off/25 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_92%,transparent_100%)]"
               aria-hidden="true"
             >
               <div

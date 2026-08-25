@@ -1,7 +1,12 @@
 import { lazy, Suspense } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useSeo, SITE_URL, professionalServiceSchema } from "../lib/seo"
+import {
+  useSeo,
+  SITE_URL,
+  professionalServiceSchema,
+  itemListSchema,
+} from "../lib/seo"
 import { img } from "../lib/images"
 import {
   HOME_SERVICES,
@@ -41,6 +46,14 @@ export default function Home() {
           "Hub audiovisual autoral: fotografia, vídeo, storymaking e direção visual.",
         inLanguage: "pt-BR",
       },
+      itemListSchema(
+        SEGMENTS.map((s) => ({
+          name: s.nav,
+          url: `/${s.slug}`,
+          description: s.intro,
+        })),
+        "Segmentos Audiovisuais VERSAVISUAL",
+      ),
     ],
   })
 
@@ -174,14 +187,14 @@ export default function Home() {
           {/* Mobile Visual Cards Carousel */}
           <div
             aria-label="Escolha seu contexto"
-            className="-mx-5 flex gap-3 overflow-x-auto px-5 pb-3 sm:hidden snap-x snap-mandatory scrollbar-none"
+            className="-mx-5 flex gap-3.5 overflow-x-auto px-5 pb-4 pt-1 sm:hidden snap-x snap-mandatory scrollbar-none"
           >
             {SEGMENTS.map((s) => (
               <Link
                 key={s.slug}
                 to={`/${s.slug}`}
                 viewTransition
-                className="group relative flex aspect-[4/5] w-[230px] shrink-0 snap-start overflow-hidden border border-off/10 bg-navy"
+                className="group relative flex aspect-[4/5] w-[240px] shrink-0 snap-start overflow-hidden border border-off/15 bg-navy shadow-md transition-all active:scale-[0.98]"
               >
                 <img
                   src={img(s.heroPhoto || s.photos[0], 500, 625)}
@@ -192,9 +205,9 @@ export default function Home() {
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <span className="u-grade absolute inset-0" />
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <span className="text-xs font-medium text-teal-400/90">
+                <span className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4.5">
+                  <span className="text-xs font-mono font-medium text-teal-400">
                     {s.index}
                   </span>
                   <div className="mt-1 flex items-center justify-between gap-2">

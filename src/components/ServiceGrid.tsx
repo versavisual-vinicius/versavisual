@@ -10,36 +10,41 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
   return (
     <>
       {mobileGroups && (
-        <div className="border-y border-line bg-off sm:hidden">
+        <div className="space-y-2.5 sm:hidden">
           {mobileGroups.map((group, idx) => (
             <details
               key={group.title}
-              className="group border-b border-line last:border-b-0 transition-colors"
+              className="group border border-line bg-off transition-all open:border-teal/40 open:shadow-xs"
             >
-              <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-4 py-3.5 text-ink marker:content-none select-none active:bg-line/20">
+              <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-4 px-4.5 py-4 text-ink marker:content-none select-none active:bg-line/20">
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="shrink-0 text-xs font-mono font-medium text-teal">
+                  <span className="shrink-0 font-mono text-xs font-semibold text-teal">
                     0{idx + 1}
                   </span>
-                  <span className="font-semibold text-sm leading-snug">
+                  <span className="font-semibold text-base leading-snug">
                     {group.title}
                   </span>
                 </div>
-                <span className="flex shrink-0 items-center gap-1.5 text-xs text-navy/70">
-                  <span>{group.items.length} itens</span>
+                <span className="flex shrink-0 items-center gap-2 text-xs font-medium text-navy/70">
+                  <span className="rounded-full bg-navy/5 px-2 py-0.5 text-[0.7rem]">
+                    {group.items.length} entregas
+                  </span>
                   <ChevronDown
                     aria-hidden="true"
-                    className="size-4 text-navy transition-transform duration-200 group-open:rotate-180"
+                    className="size-4 text-navy transition-transform duration-200 group-open:rotate-180 group-open:text-teal"
                   />
                 </span>
               </summary>
-              <ol className="list-decimal space-y-2.5 px-9 pb-5 pt-1 text-sm leading-relaxed text-navy">
-                {group.items.map((item) => (
-                  <li key={item} className="pl-1">
-                    {item}
-                  </li>
-                ))}
-              </ol>
+              <div className="border-t border-line/60 bg-surface/30 px-5 py-4">
+                <ul className="space-y-2.5 text-sm leading-relaxed text-navy">
+                  {group.items.map((item, itemIdx) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                      <span className="font-medium text-ink/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </details>
           ))}
         </div>
