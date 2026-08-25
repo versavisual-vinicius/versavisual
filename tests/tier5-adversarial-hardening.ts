@@ -829,7 +829,9 @@ export async function runTier5AdversarialHardeningTests() {
       )
       expect(sitemap).toContain("https://www.versavisual.com.br/")
       expect(sitemap).toContain("https://www.versavisual.com.br/portfolio")
-      expect(sitemap).toContain("https://www.versavisual.com.br/diagnostico-visual")
+      expect(sitemap).toContain(
+        "https://www.versavisual.com.br/diagnostico-visual",
+      )
     })
   })
 }

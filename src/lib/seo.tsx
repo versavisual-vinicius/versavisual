@@ -263,7 +263,7 @@ export function imageGallerySchema(options: {
   }
 }
 
-export function faqPageSchema(faqs: { q: string; a: string }[]) {
+export function faqPageSchema(faqs: { q: string a: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

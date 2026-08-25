@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Revisão de Imagens - Comparador VERSA</title>
+  <style>
+    body { background: #0c1017; color: #e2e8f0; font-family: sans-serif; padding: 20px; }
+    h1, h2 { color: #5eead4; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .card { background: #161e2e; border: 1px solid #334155; padding: 10px; border-radius: 4px; }
+    .img-box { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .title { font-size: 12px; font-weight: bold; margin-top: 8px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Revisão de Imagens Candidatas para o Comparador</h1>
+
+  <h2>1. Moda & Editorial</h2>
+  <div class="grid" id="moda-grid"></div>
+
+  <h2>2. Artistas & Cinema (Shows, Palco, Backstage, Performance)</h2>
+  <div class="grid" id="artistas-grid"></div>
+
+  <h2>3. Retrato & Direção</h2>
+  <div class="grid" id="retrato-grid"></div>
+
+  <h2>4. Gastronomia & Hotelaria</h2>
+  <div class="grid" id="hotelaria-grid"></div>
+
+  <script>
+    const data = {
+      moda: [
+        "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
+        "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners3.jpg",
+        "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners9.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT3.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT4.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT7.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT14.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT16.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT18.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT40.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT71.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT91.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT93.jpg",
+        "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT99.jpg"
+      ],
+      artistas: [
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval10.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval14.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval15.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval18.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval21.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval23.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval24.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval26.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval27.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval29.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval31.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval32.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval43.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval53.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval71.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval72.jpg",
+        "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval74.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo10.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo11.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo12.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo14.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo15.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo25.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo26.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo27.jpg",
+        "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo30.jpg"
+      ],
+      retrato: [
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral11.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral12.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral13.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral32.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral33.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral34.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral37.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral38.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral39.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral40.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-autoral45.jpg",
+        "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-autoral76.jpg",
+        "/images/Posicionamento Profissional - Loja Frida/Loja-Frida4.jpg",
+        "/images/Posicionamento Profissional - Loja Frida/Loja-Frida6.jpg"
+      ],
+      hotelaria: [
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo3.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo6.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo7.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo8.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo9.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo10.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo13.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo14.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo15.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo16.jpg",
+        "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo29.jpg",
+        "/images/Hotelaria & Lifestyle/Hotelaria-life-style2.jpg"
+      ]
+    };
+
+    function render(secId, list) {
+      const el = document.getElementById(secId);
+      list.forEach(src => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const fname = src.split("/").pop();
+        card.innerHTML = `
+          <div class="img-box">
+            <img src="${src}" alt="${fname}" loading="lazy">
+          </div>
+          <div class="title">${fname}</div>
+        `;
+        el.appendChild(card);
+      });
+    }
+
+    render("moda-grid", data.moda);
+    render("artistas-grid", data.artistas);
+    render("retrato-grid", data.retrato);
+    render("hotelaria-grid", data.hotelaria);
+  </script>
+</body>
+</html>
