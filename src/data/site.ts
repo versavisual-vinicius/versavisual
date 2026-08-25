@@ -16,8 +16,9 @@ import {
   SYN_ICE_PHOTOS,
 } from "../lib/images.ts"
 
-export const WHATSAPP = "https://wa.me/5511950747192"
-export const WHATSAPP_LABEL = "11 95074-7192"
+export const WHATSAPP = "https://wa.me/5522997624631"
+export const WHATSAPP_LABEL = "22 99762-4631"
+export const TELEPHONE = "+5522997624631"
 export const EMAIL = "hub@versavisual.com.br"
 
 export type NavItem = {

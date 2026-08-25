@@ -76,7 +76,7 @@ export default function Diagnostico() {
         mainEntity: {
           "@type": "ProfessionalService",
           name: "VERSAVISUAL",
-          telephone: "+5511950747192",
+          telephone: "+5522997624631",
           email: "hub@versavisual.com.br",
         },
       },
@@ -608,10 +608,14 @@ export default function Diagnostico() {
                 Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
               </a>
             </div>
-            <p className="text-xs text-navy/60">
-              Ao enviar, você concorda em ser contatado pela VERSAVISUAL sobre
-              este diagnóstico.
-            </p>
+            <div className="rounded-xs border border-line bg-surface/60 p-3.5 text-xs leading-relaxed text-navy">
+              <p className="font-semibold text-ink flex items-center gap-1.5 mb-1">
+                <span>🔒</span> Proteção de Dados & Privacidade (LGPD)
+              </p>
+              <p>
+                Os dados fornecidos neste formulário são coletados exclusivamente para fins de análise técnica, elaboração da proposta e comunicação direta com a equipe VERSAVISUAL, em estrito cumprimento à Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Não compartilhamos suas informações com terceiros. Você pode solicitar a atualização ou exclusão dos seus dados a qualquer momento enviando uma mensagem para <a href="mailto:hub@versavisual.com.br" className="underline font-medium text-teal hover:text-teal-400">hub@versavisual.com.br</a>.
+              </p>
+            </div>
           </form>
         </div>
       </div>

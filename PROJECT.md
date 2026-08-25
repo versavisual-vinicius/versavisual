@@ -97,4 +97,4 @@
 - Payload JSON: `{ nome: string, whatsapp: string, email: string, empresa?: string, cidade?: string, segmento?: string, tipo?: string, data?: string, uso?: string, objetivo?: string, investimento?: string, mensagem?: string, _gotcha?: string }`
 - Honeypot `_gotcha`: Se presente e não-vazio, resposta imediata `200 { ok: true }` sem disparo de e-mail.
 - Validação: Erro 400 se `nome`, `whatsapp` ou `email` estiverem ausentes ou e-mail inválido.
-- Sucesso: Redirecionamento formatado para WhatsApp `https://wa.me/5511950747192?text=...`.
+- Sucesso: Redirecionamento formatado para WhatsApp `https://wa.me/5522997624631?text=...`.

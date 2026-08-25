@@ -317,12 +317,12 @@ describe("Challenger M3/M4 — d) Diagnostic Form, Honeypot & WhatsApp URL", () 
     ].filter(Boolean) as string[]
 
     const text = lines.join("\n")
-    const waBase = "https://wa.me/5511950747192"
+    const waBase = "https://wa.me/5522997624631"
     const waUrl = `${waBase}?text=${encodeURIComponent(text)}`
 
-    expect(waUrl.startsWith("https://wa.me/5511950747192?text=")).toBe(true)
+    expect(waUrl.startsWith("https://wa.me/5522997624631?text=")).toBe(true)
     const parsed = parseWhatsAppUrl(waUrl)
-    expect(parsed.phoneNumber).toBe("5511950747192")
+    expect(parsed.phoneNumber).toBe("5522997624631")
     expect(parsed.params["Nome"]).toContain("Renata Vasconcellos")
     expect(parsed.params["WhatsApp"]).toBe("(11) 98765-4321")
     expect(parsed.params["E-mail"]).toBe("renata@boutiquejoias.com.br")

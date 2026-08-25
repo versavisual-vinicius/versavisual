@@ -141,7 +141,7 @@ export function professionalServiceSchema() {
     image: `${SITE_URL}/brand-assets/logo-og.png`,
     "@id": `${SITE_URL}/#corporation`,
     url: SITE_URL,
-    telephone: "+5511950747192",
+    telephone: "+5522997624631",
     email: "hub@versavisual.com.br",
     priceRange: "$$$$",
     address: {
@@ -219,7 +219,7 @@ export function professionalServiceSchema() {
         },
       ],
     },
-    sameAs: ["https://wa.me/5511950747192"],
+    sameAs: ["https://wa.me/5522997624631"],
   }
 }
 

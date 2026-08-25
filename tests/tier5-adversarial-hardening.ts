@@ -134,7 +134,7 @@ export async function runTier5AdversarialHardeningTests() {
           body: JSON.stringify({
             nome: unicodeStr,
             empresa: unicodeStr,
-            whatsapp: "+55 (11) 95074-7192",
+            whatsapp: "+55 (22) 99762-4631",
             email: "unicode@versavisual.com.br",
             mensagem: unicodeStr,
           }),
