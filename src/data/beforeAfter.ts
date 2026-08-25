@@ -9,6 +9,7 @@ export interface BeforeAfterItem {
   afterImage: string
   beforeFilter?: string
   afterFilter?: string
+  objectPosition?: string
   beforeLabel: string
   afterLabel: string
   specs: {
@@ -39,11 +40,12 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Equalização de altas luzes no tecido, separação de frequências em microtexturas de pele e calibração de paleta tonal fria com destaque aos detalhes da alta costura.",
     beforeImage:
-      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners1.jpg",
+      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
     afterImage:
-      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners1.jpg",
+      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
     beforeFilter: "saturate(0.5) contrast(0.72) brightness(1.1) sepia(0.06)",
     afterFilter: "none",
+    objectPosition: "center center",
     beforeLabel: "RAW Nikon Z9 · N-Log Flat",
     afterLabel: "Master Editorial · Color Graded",
     specs: {
@@ -64,11 +66,12 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Transformação do sinal plano de câmera (flat log) em uma curva tonal densa, com preservação dos tons de pele sob luzes saturadas de LED e emulação de filme Kodak 2383.",
     beforeImage:
-      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo1.jpg",
+      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     afterImage:
-      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo1.jpg",
+      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     beforeFilter: "saturate(0.48) contrast(0.68) brightness(1.12)",
     afterFilter: "none",
+    objectPosition: "center center",
     beforeLabel: "Sensor RAW · Perfil Flat N-Log",
     afterLabel: "Master Final · Emulação Kodak 2383",
     specs: {
@@ -94,6 +97,7 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
     beforeFilter: "saturate(0.55) contrast(0.74) brightness(1.08)",
     afterFilter: "none",
+    objectPosition: "center center",
     beforeLabel: "RAW 45.7MP · Sem Tratamento",
     afterLabel: "Master Retouch · 100% Autoral",
     specs: {
@@ -114,11 +118,12 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Harmonização da temperatura de cor entre luz natural das janelas e iluminação quente de tungstênio interior, com realce de texturas nobres de madeira e pedra.",
     beforeImage:
-      "/images/Hotelaria & Lifestyle - Bonfim House/Bonfim-house1.jpg",
+      "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
     afterImage:
-      "/images/Hotelaria & Lifestyle - Bonfim House/Bonfim-house1.jpg",
+      "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
     beforeFilter: "saturate(0.52) contrast(0.7) brightness(1.14)",
     afterFilter: "none",
+    objectPosition: "center center",
     beforeLabel: "RAW Arquitetura · Flat",
     afterLabel: "Master Comercial · Atmosfera Quente",
     specs: {

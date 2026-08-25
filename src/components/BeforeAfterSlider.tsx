@@ -31,7 +31,9 @@ export default function BeforeAfterSlider() {
   const filteredItems =
     selectedCategory === "all"
       ? BEFORE_AFTER_ITEMS
-      : BEFORE_AFTER_ITEMS.filter((item) => item.categorySlug === selectedCategory)
+      : BEFORE_AFTER_ITEMS.filter(
+          (item) => item.categorySlug === selectedCategory,
+        )
 
   // Get active item
   const activeItem =
@@ -183,7 +185,9 @@ export default function BeforeAfterSlider() {
 
         {/* Quick Position Presets */}
         <div className="flex items-center gap-1.5 text-xs font-mono text-mist">
-          <span className="hidden sm:inline text-mist/60 mr-1">Ajuste rápido:</span>
+          <span className="hidden sm:inline text-mist/60 mr-1">
+            Ajuste rápido:
+          </span>
           <button
             onClick={() => {
               isInteractedRef.current = true
@@ -245,9 +249,10 @@ export default function BeforeAfterSlider() {
           <img
             src={activeItem.afterImage}
             alt={`${activeItem.title} - Master Final Graded`}
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover"
             style={{
               filter: activeItem.afterFilter || "none",
+              objectPosition: activeItem.objectPosition || "center",
             }}
             loading="lazy"
             draggable={false}
@@ -264,9 +269,10 @@ export default function BeforeAfterSlider() {
           <img
             src={activeItem.beforeImage}
             alt={`${activeItem.title} - RAW Flat`}
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover"
             style={{
               filter: activeItem.beforeFilter || "none",
+              objectPosition: activeItem.objectPosition || "center",
             }}
             loading="lazy"
             draggable={false}
@@ -281,7 +287,9 @@ export default function BeforeAfterSlider() {
           <div className="flex items-center gap-1.5 rounded-none border border-mist/30 bg-ink/80 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-mist backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-mist/60 animate-pulse" />
             <span className="font-semibold text-off">RAW / FLAT</span>
-            <span className="hidden sm:inline text-mist/60">· {activeItem.beforeLabel}</span>
+            <span className="hidden sm:inline text-mist/60">
+              · {activeItem.beforeLabel}
+            </span>
           </div>
         </div>
 
@@ -293,7 +301,9 @@ export default function BeforeAfterSlider() {
           <div className="flex items-center gap-1.5 rounded-none border border-teal/50 bg-teal/90 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-off shadow-lg backdrop-blur-md">
             <Sparkles className="h-3 w-3 text-off" />
             <span className="font-bold">MASTER FINAL</span>
-            <span className="hidden sm:inline text-off/80">· {activeItem.afterLabel}</span>
+            <span className="hidden sm:inline text-off/80">
+              · {activeItem.afterLabel}
+            </span>
           </div>
         </div>
 
@@ -357,6 +367,9 @@ export default function BeforeAfterSlider() {
                   src={item.afterImage}
                   alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    objectPosition: item.objectPosition || "center",
+                  }}
                   loading="lazy"
                 />
               </div>
@@ -405,7 +418,9 @@ export default function BeforeAfterSlider() {
                 <p className="text-xs font-medium text-off">
                   {activeItem.specs.camera}
                 </p>
-                <p className="text-[11px] text-mist/80">{activeItem.specs.lens}</p>
+                <p className="text-[11px] text-mist/80">
+                  {activeItem.specs.lens}
+                </p>
               </div>
             </div>
 
