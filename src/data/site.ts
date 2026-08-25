@@ -1,5 +1,6 @@
 import {
   PHOTOS,
+  CLIPE_E_O_TCHAN_COVER,
   BACKSTAGE_CLIPE_SURURU_PHOTOS,
   BONFIM_HOUSE_PHOTOS,
   CAMAROTE_ONDINA_PHOTOS,
@@ -687,7 +688,7 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: BONFIM_HOUSE_PHOTOS[1] || PHOTOS.professional[0],
+    heroPhoto: LOJA_FRIDA_PHOTOS[0] || PHOTOS.professional[0],
     photos: PHOTOS.professional,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
   },
@@ -925,7 +926,7 @@ export const SEGMENTS: Segment[] = [
     ],
     heroPhoto: PHOTOS.weddings[7],
     photos: PHOTOS.weddings,
-    regions: ["Rio de Janeiro", "Macaé", "Destination weddings"],
+    regions: ["Rio de Janeiro", "Destination weddings", "Operação nacional"],
   },
   {
     slug: "gestantes",
@@ -1228,11 +1229,10 @@ export const CASE_ALIASES: Record<string, string> = {
   "ensaio-street-sp": "ensaio-street-sp",
   "ensaio-autoral-estudio": "ensaio-autoral-lifestyle-instagram",
   "casamento-destination-wedding": "casamento-ao-ar-livre",
-  "casamento-urbano-contemporaneo": "casamento-urbano-contemporaneo",
+  "casamento-urbano-contemporaneo": "casamento-ao-ar-livre",
   "maternidade-ensaio-intimo": "ensaio-gestante-praia",
-  "bonfim-house-boutique": "hotelaria-espacos-cafe-spa",
-  "retratos-posicionamento-marca-pessoal":
-    "retratos-posicionamento-marca-pessoal",
+  "bonfim-house-boutique": "festival-bon-cobertura-corporativa",
+  "retratos-posicionamento-marca-pessoal": "loja-frida-sao-joao",
   "ensaio-feminino-frida": "loja-frida-sao-joao",
 }
 
@@ -1311,12 +1311,12 @@ export const PORTFOLIO: PortfolioItem[] = [
     gallery: MODA_SANTALOLA_PHOTOS,
   },
   {
-    category: "Ativações & Eventos",
-    title: "Loja Frida — Evento de São João da marca",
+    category: "Posicionamento Profissional",
+    title: "Loja Frida — Posicionamento de Marca & Espaço",
     city: "Rio de Janeiro · RJ",
-    photo: LOJA_FRIDA_PHOTOS[0] || P.events[6],
+    photo: LOJA_FRIDA_PHOTOS[0] || P.professional[0],
     caseSlug: "loja-frida-sao-joao",
-    segmentSlug: "ativacoes-eventos",
+    segmentSlug: "posicionamento-profissional",
     gallery: LOJA_FRIDA_PHOTOS,
   },
   {
@@ -1332,10 +1332,10 @@ export const PORTFOLIO: PortfolioItem[] = [
     category: "Artistas & Videoclipes",
     title: "Videoclipes Oficiais — É O Tchan & Babado Novo",
     city: "Brasil",
-    photo: BACKSTAGE_CLIPE_SURURU_PHOTOS[9] || P.artists[0],
+    photo: CLIPE_E_O_TCHAN_COVER,
     caseSlug: "videoclipes-oficiais-e-o-tchan-babado-novo",
     segmentSlug: "artistas-videoclipes",
-    gallery: BACKSTAGE_CLIPE_SURURU_PHOTOS,
+    gallery: [CLIPE_E_O_TCHAN_COVER, ...BACKSTAGE_CLIPE_SURURU_PHOTOS],
     youtubeVideos: [
       {
         id: "xaF6i9lGeSY",
@@ -1370,15 +1370,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     video: "/videos/hero.mp4",
   },
   {
-    category: "Posicionamento Profissional",
-    title: "Bonfim House — Liderança e Ambiente Corporativo",
-    city: "Salvador · BA",
-    photo: BONFIM_HOUSE_PHOTOS[1] || P.professional[1],
-    caseSlug: "retratos-posicionamento-marca-pessoal",
-    segmentSlug: "posicionamento-profissional",
-    gallery: BONFIM_HOUSE_PHOTOS,
-  },
-  {
     category: "Imagem Pessoal & Lifestyle",
     title: "Ensaio Autoral — Lifestyle e Retratos para Redes",
     city: "Rio de Janeiro · RJ",
@@ -1402,15 +1393,6 @@ export const PORTFOLIO: PortfolioItem[] = [
     city: "Rio de Janeiro · RJ",
     photo: P.weddings[0],
     caseSlug: "casamento-ao-ar-livre",
-    segmentSlug: "casamentos",
-    gallery: P.weddings,
-  },
-  {
-    category: "Casamentos",
-    title: "Casamento na Praia — Luz e Emoção",
-    city: "Macaé · RJ",
-    photo: P.weddings[1],
-    caseSlug: "casamento-urbano-contemporaneo",
     segmentSlug: "casamentos",
     gallery: P.weddings,
   },

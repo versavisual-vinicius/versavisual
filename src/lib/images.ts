@@ -29,6 +29,9 @@ export function getImageAlt(
 }
 
 // ── ALBUMS COMPLETOS POR PRODUÇÃO ───────────────────────────
+export const CLIPE_E_O_TCHAN_COVER =
+  "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Capa-clipe-e-o-tchan-jogadinha.jpg"
+
 export const BACKSTAGE_CLIPE_SURURU_PHOTOS: readonly string[] = [
   "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo1.jpg",
   "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo2.jpg",
@@ -538,7 +541,7 @@ export const PHOTOS = {
   ],
 
   // Artistas & Videoclipes
-  artists: BACKSTAGE_CLIPE_SURURU_PHOTOS,
+  artists: [CLIPE_E_O_TCHAN_COVER, ...BACKSTAGE_CLIPE_SURURU_PHOTOS],
 
   // Posicionamento Profissional
   professional: LOJA_FRIDA_PHOTOS,
