@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import Logo from "./Logo"
 
@@ -14,6 +14,9 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [hiddenHeader, setHiddenHeader] = useState(false)
   const { pathname } = useLocation()
+
+  const toggleBtnRef = useRef<HTMLButtonElement>(null)
+  const drawerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setOpen(false)
@@ -50,19 +53,84 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
+    const mainEl = document.querySelector("main")
+    const footerEl = document.querySelector("footer")
+
+    if (open) {
+      if (mainEl) mainEl.setAttribute("aria-hidden", "true")
+      if (footerEl) footerEl.setAttribute("aria-hidden", "true")
+    } else {
+      if (mainEl) mainEl.removeAttribute("aria-hidden")
+      if (footerEl) footerEl.removeAttribute("aria-hidden")
+    }
+
     return () => {
       document.body.style.overflow = ""
+      if (mainEl) mainEl.removeAttribute("aria-hidden")
+      if (footerEl) footerEl.removeAttribute("aria-hidden")
     }
   }, [open])
 
+  // Focus trap & Escape handling for Mobile Navigation
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false)
+
+    // Move focus to first nav item inside drawer
+    const focusable = drawerRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button, [tabindex]:not([tabindex="-1"])',
+    )
+    if (focusable && focusable.length > 0) {
+      focusable[0].focus()
     }
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false)
+        toggleBtnRef.current?.focus()
+        return
+      }
+
+      if (e.key === "Tab") {
+        const focusableElements = [
+          toggleBtnRef.current,
+          ...(drawerRef.current
+            ? Array.from(
+                drawerRef.current.querySelectorAll<HTMLElement>(
+                  'a[href], button, [tabindex]:not([tabindex="-1"])',
+                ),
+              )
+            : []),
+        ].filter(Boolean) as HTMLElement[]
+
+        if (focusableElements.length === 0) return
+
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault()
+            lastElement.focus()
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault()
+            firstElement.focus()
+          }
+        }
+      }
+    }
+
     document.addEventListener("keydown", onKey)
-    return () => document.removeEventListener("keydown", onKey)
+    return () => {
+      document.removeEventListener("keydown", onKey)
+    }
   }, [open])
+
+  const handleCloseMenu = () => {
+    setOpen(false)
+    toggleBtnRef.current?.focus()
+  }
 
   const [activeSection, setActiveSection] = useState<string>("")
 
@@ -166,12 +234,19 @@ export default function Header() {
 
         {/* Mobile toggle */}
         <button
+          ref={toggleBtnRef}
           type="button"
           className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center text-off lg:hidden focus-visible:ring-2 focus-visible:ring-teal"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="mobile-navigation-drawer"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            if (open) {
+              handleCloseMenu()
+            } else {
+              setOpen(true)
+            }
+          }}
         >
           <span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
           <svg
@@ -197,11 +272,15 @@ export default function Header() {
         <>
           <div
             className="fixed inset-0 top-[72px] z-40 bg-ink/60 lg:hidden"
-            onClick={() => setOpen(false)}
+            onClick={handleCloseMenu}
             aria-hidden="true"
           />
           <div
+            ref={drawerRef}
             id="mobile-navigation-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação móvel"
             className="relative z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-t border-off/10 bg-ink lg:hidden"
           >
             <nav aria-label="Navegação móvel" className="px-5 py-6">
@@ -210,8 +289,8 @@ export default function Header() {
                   key={l.href}
                   to={l.href}
                   viewTransition={!l.hash}
-                  onClick={() => setOpen(false)}
-                  className="block border-b border-off/10 py-3.5 text-lg text-off transition-colors hover:text-teal"
+                  onClick={handleCloseMenu}
+                  className="block border-b border-off/10 py-3.5 text-lg text-off transition-colors hover:text-teal focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
                 >
                   {l.label}
                 </Link>
@@ -219,8 +298,8 @@ export default function Header() {
               <Link
                 to="/diagnostico-visual"
                 viewTransition
-                onClick={() => setOpen(false)}
-                className="mt-6 flex min-h-[44px] items-center justify-center border border-teal bg-teal px-4 py-3 text-center font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
+                onClick={handleCloseMenu}
+                className="mt-6 flex min-h-[44px] items-center justify-center border border-teal bg-teal px-4 py-3 text-center font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
               >
                 Iniciar projeto
               </Link>

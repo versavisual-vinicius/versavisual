@@ -452,7 +452,10 @@ export default function InfiniteCanvas() {
     window.dispatchEvent(new CustomEvent("vv:canvas-drag-end"))
   }
 
-  const handleCardInteraction = (node: CanvasNode) => {
+  const lastFocusedElementRef = useRef<HTMLElement | null>(null)
+  const modalCloseBtnRef = useRef<HTMLButtonElement>(null)
+
+  const handleCardInteraction = (node: CanvasNode, triggerEl?: HTMLElement | null) => {
     if (hasMovedRef.current) return
 
     const now = performance.now()
@@ -470,6 +473,7 @@ export default function InfiniteCanvas() {
       if (lastTapRef.current?.timer) clearTimeout(lastTapRef.current.timer)
       const timer = setTimeout(() => {
         if (!hasMovedRef.current) {
+          if (triggerEl) lastFocusedElementRef.current = triggerEl
           setActiveItem(node.item)
         }
         lastTapRef.current = null
@@ -478,11 +482,35 @@ export default function InfiniteCanvas() {
     }
   }
 
-  const handleCardClick = (item: PortfolioItem) => {
-    if (!hasMovedRef.current) {
-      setActiveItem(item)
-    }
+  const openItemModal = (node: CanvasNode, triggerEl?: HTMLElement | null) => {
+    if (triggerEl) lastFocusedElementRef.current = triggerEl
+    smoothFocusNode(node, 1.15)
+    setActiveItem(node.item)
   }
+
+  const closeItemModal = () => {
+    setActiveItem(null)
+    setTimeout(() => {
+      lastFocusedElementRef.current?.focus()
+    }, 50)
+  }
+
+  useEffect(() => {
+    if (!activeItem) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeItemModal()
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [activeItem])
+
+  useEffect(() => {
+    if (activeItem) {
+      modalCloseBtnRef.current?.focus()
+    }
+  }, [activeItem])
 
   const toggleFullscreen = () => {
     setIsFullscreen((prev) => !prev)
@@ -497,37 +525,48 @@ export default function InfiniteCanvas() {
           : "h-[74vh] min-h-[580px] rounded-sm border border-off/15 shadow-2xl"
       }`}
     >
-      {/* 1. Header Toolbar */}
+      {/* 1. Header Toolbar com indicador visual de scroll */}
       <div className="absolute top-4 left-4 right-4 z-30 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
-        <div className="flex items-center gap-1.5 overflow-x-auto rounded-full border border-off/15 bg-ink/80 p-1.5 backdrop-blur-md pointer-events-auto scrollbar-none max-w-full">
-          <span className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-400">
-            <Sparkles className="h-3.5 w-3.5" />
-            360°
-          </span>
-          {categories.map((cat) => {
-            const active = filterCategory === cat
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setFilterCategory(cat)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 whitespace-nowrap min-h-[32px] ${
-                  active
-                    ? "bg-teal text-off shadow-md"
-                    : "text-mist hover:bg-off/10 hover:text-off"
-                }`}
-              >
-                {cat}
-              </button>
-            )
-          })}
+        <div className="relative max-w-full pointer-events-auto">
+          {/* Scroll fade hints laterais para mobile */}
+          <div className="pointer-events-none absolute left-0 inset-y-0 w-4 bg-gradient-to-r from-ink/90 to-transparent rounded-l-full z-10 sm:hidden" />
+          <div className="pointer-events-none absolute right-0 inset-y-0 w-6 bg-gradient-to-l from-ink/90 to-transparent rounded-r-full z-10 sm:hidden" />
+
+          <div
+            role="toolbar"
+            aria-label="Filtros do Canvas 360°"
+            className="flex items-center gap-1.5 overflow-x-auto rounded-full border border-off/15 bg-ink/85 p-1.5 pr-4 backdrop-blur-md scrollbar-none max-w-full"
+          >
+            <span className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-400">
+              <Sparkles className="h-3.5 w-3.5" />
+              360°
+            </span>
+            {categories.map((cat) => {
+              const active = filterCategory === cat
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setFilterCategory(cat)}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 whitespace-nowrap min-h-[32px] focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none ${
+                    active
+                      ? "bg-teal text-off shadow-md font-semibold"
+                      : "text-mist hover:bg-off/10 hover:text-off"
+                  }`}
+                  aria-pressed={active}
+                >
+                  {cat}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         <div className="flex items-center gap-2 pointer-events-auto">
           <button
             type="button"
             onClick={toggleFullscreen}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-off/15 bg-ink/80 text-off backdrop-blur-md transition-colors hover:bg-off/20"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-off/15 bg-ink/80 text-off backdrop-blur-md transition-colors hover:bg-off/20 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
             title={
               isFullscreen ? "Sair da Tela Cheia" : "Expandir em Tela Cheia"
             }
@@ -589,11 +628,26 @@ export default function InfiniteCanvas() {
               ? "opacity-100 scale-100"
               : "opacity-25 grayscale scale-95 pointer-events-none"
 
+            const cardLabel = `${node.item.title} — ${node.item.category}, ${node.item.city}. Pressione Enter para abrir detalhes.`
+
             return (
               <div
                 key={node.item.title + node.x}
-                onClick={() => handleCardInteraction(node)}
-                className={`absolute group cursor-pointer transition-all duration-300 ${opacityClass}`}
+                role="button"
+                tabIndex={isMatch ? 0 : -1}
+                aria-haspopup="dialog"
+                aria-label={cardLabel}
+                onClick={(e) => handleCardInteraction(node, e.currentTarget)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    openItemModal(node, e.currentTarget)
+                  }
+                }}
+                onFocus={() => {
+                  smoothFocusNode(node, 1.15)
+                }}
+                className={`absolute group cursor-pointer transition-all duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${opacityClass}`}
                 style={{
                   left: node.x,
                   top: node.y,
@@ -601,7 +655,7 @@ export default function InfiniteCanvas() {
                   height: node.height,
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-sm border border-off/15 bg-navy/90 p-2 shadow-2xl backdrop-blur-sm transition-all duration-500 group-hover:border-teal group-hover:shadow-teal/20 group-hover:shadow-xl group-hover:-translate-y-1">
+                <div className="relative h-full w-full overflow-hidden rounded-sm border border-off/15 bg-navy/90 p-2 shadow-2xl backdrop-blur-sm transition-all duration-500 group-hover:border-teal group-hover:shadow-teal/20 group-hover:shadow-xl group-hover:-translate-y-1 group-focus-visible:border-teal">
                   <div className="relative h-full w-full overflow-hidden rounded-xs bg-ink">
                     <img
                       src={img(node.item.photo, 900)}
@@ -645,7 +699,7 @@ export default function InfiniteCanvas() {
         <div className="pointer-events-none absolute bottom-6 inset-x-0 flex justify-center z-20 transition-opacity duration-500 animate-pulse">
           <div className="flex items-center gap-2 rounded-full border border-off/20 bg-ink/90 px-4 py-2 text-xs font-medium text-off shadow-2xl backdrop-blur-md">
             <Move className="h-4 w-4 text-teal-400" />
-            <span>Arraste para explorar · Scroll/Pinch para zoom</span>
+            <span>Arraste ou use Tab/Enter · Scroll/Pinch para zoom</span>
           </div>
         </div>
       )}
@@ -655,7 +709,7 @@ export default function InfiniteCanvas() {
         <button
           type="button"
           onClick={() => zoomAtPoint(1.2)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
           title="Zoom In (+)"
           aria-label="Aproximar visualização"
         >
@@ -669,7 +723,7 @@ export default function InfiniteCanvas() {
         <button
           type="button"
           onClick={() => zoomAtPoint(0.83)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
           title="Zoom Out (-)"
           aria-label="Afastar visualização"
         >
@@ -681,7 +735,7 @@ export default function InfiniteCanvas() {
         <button
           type="button"
           onClick={() => centerCanvas(0.85)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-off transition-colors hover:bg-off/15 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
           title="Centralizar Acervo"
           aria-label="Centralizar acervo na tela"
         >
@@ -699,14 +753,16 @@ export default function InfiniteCanvas() {
             const leftPct = (node.x / WORLD_WIDTH) * 100
             const topPct = (node.y / WORLD_HEIGHT) * 100
             return (
-              <div
+              <button
                 key={idx}
+                type="button"
                 onClick={() => focusNode(node)}
-                className={`absolute h-1.5 w-2 -translate-x-1/2 -translate-y-1/2 rounded-[1px] transition-colors cursor-pointer ${
+                className={`absolute h-1.5 w-2 -translate-x-1/2 -translate-y-1/2 rounded-[1px] transition-colors cursor-pointer focus-visible:ring-1 focus-visible:ring-teal focus-visible:outline-none ${
                   isMatch ? "bg-teal-400 hover:bg-off" : "bg-off/15"
                 }`}
                 style={{ left: `${leftPct}%`, top: `${topPct}%` }}
                 title={node.item.title}
+                aria-label={`Centralizar em ${node.item.title}`}
               />
             )
           })}
@@ -733,13 +789,14 @@ export default function InfiniteCanvas() {
         >
           <div
             className="absolute inset-0 bg-ink/90 backdrop-blur-2xl transition-opacity duration-300"
-            onClick={() => setActiveItem(null)}
+            onClick={closeItemModal}
           />
 
           <button
+            ref={modalCloseBtnRef}
             type="button"
-            onClick={() => setActiveItem(null)}
-            className="absolute right-4 top-4 z-50 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-off/20 bg-off/10 text-off backdrop-blur-md transition-colors hover:bg-off/20 sm:right-6 sm:top-6"
+            onClick={closeItemModal}
+            className="absolute right-4 top-4 z-50 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-off/20 bg-off/10 text-off backdrop-blur-md transition-colors hover:bg-off/20 sm:right-6 sm:top-6 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
             aria-label="Fechar visualização"
           >
             <X className="h-5 w-5" />
@@ -782,7 +839,7 @@ export default function InfiniteCanvas() {
                 {activeItem.caseSlug && (
                   <Link
                     to={`/portfolio/${activeItem.caseSlug}`}
-                    className="inline-flex items-center gap-2 rounded-xs bg-teal px-5 py-2.5 text-sm font-medium text-off transition-colors hover:bg-teal-400"
+                    className="inline-flex items-center gap-2 rounded-xs bg-teal px-5 py-2.5 text-sm font-medium text-off transition-colors hover:bg-teal-400 focus-visible:ring-2 focus-visible:ring-off focus-visible:outline-none"
                   >
                     <span>Ver Estudo de Caso</span>
                     <ExternalLink className="h-4 w-4" />
@@ -790,8 +847,8 @@ export default function InfiniteCanvas() {
                 )}
                 <button
                   type="button"
-                  onClick={() => setActiveItem(null)}
-                  className="rounded-xs border border-off/20 px-4 py-2.5 text-sm font-medium text-off hover:bg-off/10"
+                  onClick={closeItemModal}
+                  className="rounded-xs border border-off/20 px-4 py-2.5 text-sm font-medium text-off hover:bg-off/10 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
                 >
                   Voltar ao Canvas
                 </button>
