@@ -11,6 +11,7 @@ import {
   SEGMENTS,
   segmentImageAlt,
 } from "../data/site"
+import BeforeAfterSlider from "../components/BeforeAfterSlider"
 import ServiceGrid from "../components/ServiceGrid"
 import CTASection from "../components/CTASection"
 import { useParallax } from "../lib/useParallax"
@@ -224,6 +225,26 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* BEFORE & AFTER / COLOR GRADING SHOWCASE */}
+      <section
+        id="pos-producao"
+        className="border-b border-off/10 bg-ink"
+      >
+        <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
+          <div className="mb-12 max-w-2xl">
+            <p className="u-eyebrow text-mist">Pós-Produção & Color Science</p>
+            <h2 className="mt-4 text-3xl leading-tight text-off sm:text-4xl lg:text-5xl">
+              A imagem ganha peso e intenção na pós.
+            </h2>
+            <p className="mt-4 text-mist">
+              Do sensor RAW ao master final calibrado. Arraste o divisor para comparar
+              o sinal bruto da câmera com a direção de cor, texturização e retoque autoral da VERSAVISUAL.
+            </p>
+          </div>
+          <BeforeAfterSlider />
         </div>
       </section>
 
