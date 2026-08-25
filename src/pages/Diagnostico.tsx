@@ -318,8 +318,12 @@ export default function Diagnostico() {
         {/* Form */}
         <div className="bg-off/94 px-5 py-10 shadow-2xl backdrop-blur-md lg:min-h-[calc(100vh-72px)] lg:px-12 lg:py-14">
           <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1.5 text-xs font-semibold text-teal-800 mb-3">
+              <span className="flex h-2 w-2 rounded-full bg-teal animate-pulse" />
+              <span>⏱️ Retorno da análise de viabilidade em até 1 dia útil (24h)</span>
+            </div>
             <p className="u-eyebrow">Briefing & Diagnóstico Visual</p>
-            <h1 className="mb-8 mt-3 text-3xl leading-tight sm:text-4xl text-ink">
+            <h1 className="mb-8 mt-2 text-3xl leading-tight sm:text-4xl text-ink">
               Conte seu contexto. Devolvemos um caminho visual e proposta sob medida.
             </h1>
           </div>
@@ -345,7 +349,7 @@ export default function Diagnostico() {
                   : ""}
           </div>
 
-          <form onSubmit={onSubmit} noValidate className="grid gap-6">
+          <form onSubmit={onSubmit} noValidate className="grid gap-8">
             {/* Honeypot field for anti-spam */}
             <input
               type="text"
@@ -355,259 +359,306 @@ export default function Diagnostico() {
               autoComplete="off"
             />
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="nome" className={labelCls}>
-                  Nome <span className="text-navy">*</span>
-                </label>
-                <input
-                  id="nome"
-                  name="nome"
-                  required
-                  autoComplete="name"
-                  className={`${field} ${
-                    errors.nome
-                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
-                      : ""
-                  }`}
-                  placeholder="Seu nome"
-                  aria-invalid={errors.nome || undefined}
-                  aria-describedby={
-                    errors.nome ? fieldErrorId("nome") : undefined
-                  }
-                />
-                {errors.nome && (
-                  <p
-                    id={fieldErrorId("nome")}
-                    className="mt-1.5 text-xs font-medium text-rose-600"
-                  >
-                    Informe seu nome.
-                  </p>
-                )}
+            {/* Bloco 1: Contato */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  01
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Identificação & Contato
+                </h2>
               </div>
-              <div>
-                <label htmlFor="empresa" className={labelCls}>
-                  Empresa / Projeto
-                </label>
-                <input
-                  id="empresa"
-                  name="empresa"
-                  autoComplete="organization"
-                  className={field}
-                  placeholder="Marca, projeto ou artista"
-                />
-              </div>
-            </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="whatsapp" className={labelCls}>
-                  WhatsApp <span className="text-navy">*</span>
-                </label>
-                <input
-                  id="whatsapp"
-                  name="whatsapp"
-                  type="tel"
-                  required
-                  inputMode="tel"
-                  autoComplete="tel"
-                  className={`${field} ${
-                    errors.whatsapp
-                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
-                      : ""
-                  }`}
-                  placeholder="(00) 00000-0000"
-                  aria-invalid={errors.whatsapp || undefined}
-                  aria-describedby={
-                    errors.whatsapp ? fieldErrorId("whatsapp") : undefined
-                  }
-                />
-                {errors.whatsapp && (
-                  <p
-                    id={fieldErrorId("whatsapp")}
-                    className="mt-1.5 text-xs font-medium text-rose-600"
-                  >
-                    Informe um WhatsApp para contato.
-                  </p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="email" className={labelCls}>
-                  E-mail <span className="text-navy">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className={`${field} ${
-                    errors.email
-                      ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
-                      : ""
-                  }`}
-                  placeholder="voce@email.com"
-                  aria-invalid={errors.email || undefined}
-                  aria-describedby={
-                    errors.email ? fieldErrorId("email") : undefined
-                  }
-                />
-                {errors.email && (
-                  <p
-                    id={fieldErrorId("email")}
-                    className="mt-1.5 text-xs font-medium text-rose-600"
-                  >
-                    Informe um e-mail válido.
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="cidade" className={labelCls}>
-                  Cidade
-                </label>
-                <input
-                  id="cidade"
-                  name="cidade"
-                  autoComplete="address-level2"
-                  className={field}
-                  placeholder="Cidade / Estado"
-                />
-              </div>
-              <div>
-                <label htmlFor="segmento" className={labelCls}>
-                  Segmento
-                </label>
-                <select
-                  id="segmento"
-                  name="segmento"
-                  className={field}
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Selecione um segmento
-                  </option>
-                  {SEGMENT_NAV.map((s) => (
-                    <option key={s.to} value={s.label}>
-                      {s.label}
-                    </option>
-                  ))}
-                  <option value="Outro / não sei">Outro / não sei</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="tipo" className={labelCls}>
-                  Tipo de projeto
-                </label>
-                <select id="tipo" name="tipo" className={field} defaultValue="">
-                  <option value="" disabled>
-                    Selecione o tipo
-                  </option>
-                  {PROJECT_TYPES.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="data" className={labelCls}>
-                  Data desejada
-                </label>
-                <input id="data" name="data" type="date" className={field} />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="uso" className={labelCls}>
-                Onde o conteúdo será usado?
-              </label>
-              <input
-                id="uso"
-                name="uso"
-                className={field}
-                placeholder="Instagram, site, mídia paga, OTAs, impressão…"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="objetivo" className={labelCls}>
-                Qual o principal objetivo?
-              </label>
-              <input
-                id="objetivo"
-                name="objetivo"
-                className={field}
-                placeholder="Vender, posicionar, registrar, lançar…"
-              />
-            </div>
-
-            <fieldset>
-              <legend className={labelCls}>
-                Faixa de investimento estimada
-              </legend>
-              <div className="grid gap-2.5 sm:grid-cols-2">
-                {BUDGETS.map((b, index) => (
-                  <label
-                    key={b}
-                    htmlFor={`investimento-${index}`}
-                    className="flex cursor-pointer items-center gap-3 rounded-xs border border-line-strong bg-white px-4 py-3 text-sm text-navy transition-colors hover:border-teal/60 has-[:checked]:border-teal has-[:checked]:text-ink"
-                  >
+              <div className="grid gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="nome" className={labelCls}>
+                      Nome <span className="text-navy">*</span>
+                    </label>
                     <input
-                      id={`investimento-${index}`}
-                      type="radio"
-                      name="investimento"
-                      value={b}
-                      className="accent-teal-400"
+                      id="nome"
+                      name="nome"
+                      required
+                      autoComplete="name"
+                      className={`${field} ${
+                        errors.nome
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="Seu nome"
+                      aria-invalid={errors.nome || undefined}
+                      aria-describedby={
+                        errors.nome ? fieldErrorId("nome") : undefined
+                      }
                     />
-                    {b}
+                    {errors.nome && (
+                      <p
+                        id={fieldErrorId("nome")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe seu nome.
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="empresa" className={labelCls}>
+                      Empresa / Projeto
+                    </label>
+                    <input
+                      id="empresa"
+                      name="empresa"
+                      autoComplete="organization"
+                      className={field}
+                      placeholder="Marca, projeto ou artista"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="whatsapp" className={labelCls}>
+                      WhatsApp <span className="text-navy">*</span>
+                    </label>
+                    <input
+                      id="whatsapp"
+                      name="whatsapp"
+                      type="tel"
+                      required
+                      inputMode="tel"
+                      autoComplete="tel"
+                      className={`${field} ${
+                        errors.whatsapp
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="(00) 00000-0000"
+                      aria-invalid={errors.whatsapp || undefined}
+                      aria-describedby={
+                        errors.whatsapp ? fieldErrorId("whatsapp") : undefined
+                      }
+                    />
+                    {errors.whatsapp && (
+                      <p
+                        id={fieldErrorId("whatsapp")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe um WhatsApp para contato.
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="email" className={labelCls}>
+                      E-mail <span className="text-navy">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      className={`${field} ${
+                        errors.email
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="voce@email.com"
+                      aria-invalid={errors.email || undefined}
+                      aria-describedby={
+                        errors.email ? fieldErrorId("email") : undefined
+                      }
+                    />
+                    {errors.email && (
+                      <p
+                        id={fieldErrorId("email")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe um e-mail válido.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="cidade" className={labelCls}>
+                    Cidade / Região do Projeto
                   </label>
-                ))}
+                  <input
+                    id="cidade"
+                    name="cidade"
+                    autoComplete="address-level2"
+                    className={field}
+                    placeholder="Ex: Rio de Janeiro / RJ, Cabo Frio, São Paulo…"
+                  />
+                </div>
               </div>
-            </fieldset>
-
-            <div>
-              <label htmlFor="mensagem" className={labelCls}>
-                Mensagem adicional
-              </label>
-              <textarea
-                id="mensagem"
-                name="mensagem"
-                rows={4}
-                className={`${field} resize-none`}
-                placeholder="Conte mais sobre o seu projeto, referências e expectativas."
-              />
             </div>
 
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off transition-colors hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {isSubmitting ? (
-                  <>
-                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-off border-t-transparent" />
-                    <span>Enviando...</span>
-                  </>
-                ) : (
-                  "Enviar diagnóstico"
-                )}
-              </button>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] items-center text-sm font-medium text-navy transition-colors hover:text-teal"
-              >
-                Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
-              </a>
+            {/* Bloco 2: Escopo */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  02
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Escopo & Contexto do Projeto
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="segmento" className={labelCls}>
+                      Segmento
+                    </label>
+                    <select
+                      id="segmento"
+                      name="segmento"
+                      className={field}
+                      defaultValue=""
+                    >
+                      <option value="" disabled>
+                        Selecione um segmento
+                      </option>
+                      {SEGMENT_NAV.map((s) => (
+                        <option key={s.to} value={s.label}>
+                          {s.label}
+                        </option>
+                      ))}
+                      <option value="Outro / não sei">Outro / não sei</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="tipo" className={labelCls}>
+                      Tipo de projeto
+                    </label>
+                    <select id="tipo" name="tipo" className={field} defaultValue="">
+                      <option value="" disabled>
+                        Selecione o tipo
+                      </option>
+                      {PROJECT_TYPES.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="data" className={labelCls}>
+                    Data desejada / Previsão
+                  </label>
+                  <input id="data" name="data" type="date" className={field} />
+                </div>
+
+                <div>
+                  <label htmlFor="uso" className={labelCls}>
+                    Onde o conteúdo será usado?
+                  </label>
+                  <input
+                    id="uso"
+                    name="uso"
+                    className={field}
+                    placeholder="Instagram, site, mídia paga, OTAs, impressão…"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="objetivo" className={labelCls}>
+                    Qual o principal objetivo?
+                  </label>
+                  <input
+                    id="objetivo"
+                    name="objetivo"
+                    className={field}
+                    placeholder="Vender, posicionar, registrar, lançar…"
+                  />
+                </div>
+              </div>
             </div>
+
+            {/* Bloco 3: Investimento & Mensagem */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  03
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Investimento & Detalhes
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                <fieldset>
+                  <legend className={labelCls}>
+                    Faixa de investimento estimada
+                  </legend>
+                  <div className="grid gap-2.5 sm:grid-cols-2">
+                    {BUDGETS.map((b, index) => (
+                      <label
+                        key={b}
+                        htmlFor={`investimento-${index}`}
+                        className="flex cursor-pointer items-center gap-3 rounded-xs border border-line-strong bg-white px-4 py-3 text-sm text-navy transition-colors hover:border-teal/60 has-[:checked]:border-teal has-[:checked]:text-ink"
+                      >
+                        <input
+                          id={`investimento-${index}`}
+                          type="radio"
+                          name="investimento"
+                          value={b}
+                          className="accent-teal-400"
+                        />
+                        {b}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <div>
+                  <label htmlFor="mensagem" className={labelCls}>
+                    Mensagem adicional
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows={4}
+                    className={`${field} resize-none`}
+                    placeholder="Conte mais sobre o seu projeto, referências e expectativas."
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 pt-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off transition-colors hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-off border-t-transparent" />
+                      <span>Enviando...</span>
+                    </>
+                  ) : (
+                    "Enviar diagnóstico gratuito"
+                  )}
+                </button>
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center text-sm font-medium text-navy transition-colors hover:text-teal"
+                >
+                  Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
+                </a>
+              </div>
+              <p className="text-xs text-mist">
+                ⚡ Retornamos a resposta e proposta detalhada em até <strong>1 dia útil (24h)</strong> por WhatsApp ou e-mail.
+              </p>
+            </div>
+
             <div className="rounded-xs border border-line bg-surface/60 p-3.5 text-xs leading-relaxed text-navy">
               <p className="font-semibold text-ink flex items-center gap-1.5 mb-1">
                 <span>🔒</span> Proteção de Dados & Privacidade (LGPD)

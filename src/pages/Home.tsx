@@ -18,6 +18,7 @@ import {
 } from "../data/site"
 import BeforeAfterSlider from "../components/BeforeAfterSlider"
 import ServiceGrid from "../components/ServiceGrid"
+import FounderSection from "../components/FounderSection"
 import CTASection from "../components/CTASection"
 import { useParallax } from "../lib/useParallax"
 
@@ -321,6 +322,9 @@ export default function Home() {
           />
         </Suspense>
       </section>
+
+      {/* FOUNDER / DOSSIER */}
+      <FounderSection />
 
       <CTASection
         title="Não sabe por onde começar? Comece pelo diagnóstico."

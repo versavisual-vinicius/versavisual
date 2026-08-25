@@ -18,34 +18,55 @@ export default function PortfolioGrid({
     () => PORTFOLIO.filter((p) => matchesFilter(p, filter)),
     [filter],
   )
-  const featuredVideo = items.find((it) => it.video)
+  const featuredVideo =
+    items.find((it) => it.video) ||
+    (filter === "Artistas & Videoclipes" ? { video: "/videos/hero.mp4" } : undefined)
 
   return (
     <div>
-      <div
-        className="mb-10 flex items-center gap-5 overflow-x-auto border-b border-off/15 pb-3 scrollbar-none sm:flex-wrap"
-        role="tablist"
-        aria-label="Filtrar portfólio"
-      >
-        {PORTFOLIO_FILTERS.map((f) => {
-          const on = f === filter
-          return (
-            <button
-              key={f}
-              type="button"
-              role="tab"
-              aria-selected={on}
-              onClick={() => setFilter(f)}
-              className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap border-b pb-1 text-sm transition-colors duration-200 ${
-                on
-                  ? "border-teal font-medium text-off"
-                  : "border-transparent text-mist hover:border-teal hover:text-off"
-              }`}
-            >
-              {f}
-            </button>
-          )
-        })}
+      {/* Barra de Filtros com Indicador de Overflow e Contador */}
+      <div className="mb-8">
+        <div className="relative">
+          {/* Scroll fade hints laterais para mobile */}
+          <div className="pointer-events-none absolute left-0 inset-y-0 w-4 bg-gradient-to-r from-ink to-transparent z-10 sm:hidden" />
+          <div className="pointer-events-none absolute right-0 inset-y-0 w-8 bg-gradient-to-l from-ink to-transparent z-10 sm:hidden" />
+
+          <div
+            className="flex items-center gap-5 overflow-x-auto border-b border-off/15 pb-3 pr-6 scrollbar-none sm:flex-wrap"
+            role="tablist"
+            aria-label="Filtrar portfólio"
+          >
+            {PORTFOLIO_FILTERS.map((f) => {
+              const on = f === filter
+              return (
+                <button
+                  key={f}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  onClick={() => setFilter(f)}
+                  className={`inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap border-b-2 pb-1 text-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none ${
+                    on
+                      ? "border-teal font-semibold text-off"
+                      : "border-transparent text-mist hover:border-teal/50 hover:text-off"
+                  }`}
+                >
+                  {f}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Contador de resultados e contexto */}
+        <div className="mt-3 flex items-center justify-between text-xs text-mist">
+          <p>
+            Exibindo{" "}
+            <span className="font-semibold text-off">{items.length}</span>{" "}
+            {items.length === 1 ? "projeto" : "projetos"} em{" "}
+            <span className="text-teal-400 font-medium">"{filter}"</span>
+          </p>
+        </div>
       </div>
 
       {filter === "Artistas & Videoclipes" && featuredVideo?.video && (
@@ -94,13 +115,15 @@ export default function PortfolioGrid({
               </div>
             </>
           )
-          const cls = "group block h-full w-full"
+          const cls =
+            "group block h-full w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm"
           return it.caseSlug ? (
             <Link
               key={it.title}
               to={`/portfolio/${it.caseSlug}`}
               viewTransition
               className={cls}
+              aria-label={`Ver case de ${it.title} (${it.category}, ${it.city})`}
             >
               {inner}
             </Link>
