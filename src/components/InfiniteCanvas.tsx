@@ -241,20 +241,63 @@ export default function InfiniteCanvas() {
     [applyTransform],
   )
 
-  const focusNode = useCallback(
-    (node: CanvasNode) => {
+  const lastTapRef = useRef<{
+    time: number
+    nodeId: string
+    timer?: ReturnType<typeof setTimeout>
+  } | null>(null)
+
+  const smoothFocusNode = useCallback(
+    (node: CanvasNode, targetZoom = 1.2) => {
       if (!containerRef.current) return
       const rect = containerRef.current.getBoundingClientRect()
-      const scale = transformRef.current.scale
       const nodeCenterX = node.x + node.width / 2
       const nodeCenterY = node.y + node.height / 2
 
-      transformRef.current.x = rect.width / 2 - nodeCenterX * scale
-      transformRef.current.y = rect.height / 2 - nodeCenterY * scale
+      const targetX = rect.width / 2 - nodeCenterX * targetZoom
+      const targetY = rect.height / 2 - nodeCenterY * targetZoom
+
+      const startX = transformRef.current.x
+      const startY = transformRef.current.y
+      const startScale = transformRef.current.scale
+      const startTime = performance.now()
+      const duration = 380
+
       velocityRef.current = { vx: 0, vy: 0 }
-      applyTransform()
+
+      const animate = (now: number) => {
+        const elapsed = now - startTime
+        const progress = Math.min(1, elapsed / duration)
+        const ease = 1 - Math.pow(1 - progress, 3)
+
+        transformRef.current.x = startX + (targetX - startX) * ease
+        transformRef.current.y = startY + (targetY - startY) * ease
+        transformRef.current.scale =
+          startScale + (targetZoom - startScale) * ease
+        transformRef.current.targetScale = transformRef.current.scale
+
+        applyTransform()
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+
+      requestAnimationFrame(animate)
+      if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+        try {
+          navigator.vibrate(15)
+        } catch {}
+      }
     },
     [applyTransform],
+  )
+
+  const focusNode = useCallback(
+    (node: CanvasNode) => {
+      smoothFocusNode(node, 1.15)
+    },
+    [smoothFocusNode],
   )
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -276,6 +319,7 @@ export default function InfiniteCanvas() {
     if (containerRef.current) {
       containerRef.current.style.cursor = "grabbing"
     }
+    window.dispatchEvent(new CustomEvent("vv:canvas-drag-start"))
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -312,6 +356,7 @@ export default function InfiniteCanvas() {
     if (containerRef.current) {
       containerRef.current.style.cursor = "grab"
     }
+    window.dispatchEvent(new CustomEvent("vv:canvas-drag-end"))
   }
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -321,6 +366,7 @@ export default function InfiniteCanvas() {
   }
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    window.dispatchEvent(new CustomEvent("vv:canvas-drag-start"))
     if (e.touches.length === 1) {
       const touch = e.touches[0]
       isDraggingRef.current = true
@@ -403,6 +449,33 @@ export default function InfiniteCanvas() {
     isDraggingRef.current = false
     touchDistanceRef.current = null
     touchCenterRef.current = null
+    window.dispatchEvent(new CustomEvent("vv:canvas-drag-end"))
+  }
+
+  const handleCardInteraction = (node: CanvasNode) => {
+    if (hasMovedRef.current) return
+
+    const now = performance.now()
+    const nodeId = `${node.item.title}-${node.x}`
+
+    if (
+      lastTapRef.current &&
+      lastTapRef.current.nodeId === nodeId &&
+      now - lastTapRef.current.time < 320
+    ) {
+      if (lastTapRef.current.timer) clearTimeout(lastTapRef.current.timer)
+      lastTapRef.current = null
+      smoothFocusNode(node, 1.22)
+    } else {
+      if (lastTapRef.current?.timer) clearTimeout(lastTapRef.current.timer)
+      const timer = setTimeout(() => {
+        if (!hasMovedRef.current) {
+          setActiveItem(node.item)
+        }
+        lastTapRef.current = null
+      }, 250)
+      lastTapRef.current = { time: now, nodeId, timer }
+    }
   }
 
   const handleCardClick = (item: PortfolioItem) => {
@@ -519,7 +592,7 @@ export default function InfiniteCanvas() {
             return (
               <div
                 key={node.item.title + node.x}
-                onClick={() => handleCardClick(node.item)}
+                onClick={() => handleCardInteraction(node)}
                 className={`absolute group cursor-pointer transition-all duration-300 ${opacityClass}`}
                 style={{
                   left: node.x,
