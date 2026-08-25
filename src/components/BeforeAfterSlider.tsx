@@ -252,13 +252,14 @@ export default function BeforeAfterSlider() {
             className="h-full w-full object-cover"
             style={{
               objectPosition: activeItem.objectPosition || "center",
+              filter: activeItem.afterFilter || "none",
             }}
             loading="lazy"
             decoding="async"
           />
         </div>
 
-        {/* Layer 2: BEFORE / FLAT RAW (Clipped overlay layer) */}
+        {/* Layer 2: BEFORE / RAW CRU (Clipped overlay layer) */}
         <div
           className="absolute inset-0 h-full overflow-hidden will-change-[clip-path]"
           style={{
@@ -267,10 +268,11 @@ export default function BeforeAfterSlider() {
         >
           <img
             src={activeItem.beforeImage}
-            alt={`${activeItem.title} - Flat RAW`}
+            alt={`${activeItem.title} - RAW Cru`}
             className="absolute inset-0 h-full w-full max-w-none object-cover"
             style={{
               objectPosition: activeItem.objectPosition || "center",
+              filter: activeItem.beforeFilter || "saturate(0.5) contrast(0.82) brightness(0.78)",
             }}
             loading="lazy"
             decoding="async"
@@ -284,7 +286,7 @@ export default function BeforeAfterSlider() {
         >
           <div className="flex items-center gap-1.5 rounded-none border border-mist/30 bg-ink/80 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-mist shadow-lg backdrop-blur-md">
             <Film className="h-3 w-3 text-mist/70" />
-            <span className="font-bold">FLAT RAW</span>
+            <span className="font-bold">RAW CRU</span>
             <span className="hidden sm:inline text-mist/60">
               · {activeItem.beforeLabel}
             </span>

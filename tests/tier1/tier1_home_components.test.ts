@@ -229,12 +229,12 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F16.5.2: Preserves Babado Novo RAW simulation and backstage photo assets", () => {
-      expect(beforeAfterCode).toContain("RAW Nikon D780 · Perfil Flat")
+      expect(beforeAfterCode).toContain("RAW Nikon D780 · Sem Tratamento")
       expect(beforeAfterCode).toContain(
         "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
       )
       expect(beforeAfterCode).toContain(
-        "saturate(0.48) contrast(0.68) brightness(1.12)",
+        "saturate(0.50) contrast(0.82) brightness(0.75)",
       )
     })
   })

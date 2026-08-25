@@ -43,10 +43,10 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
     afterImage:
       "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
-    beforeFilter: "saturate(0.5) contrast(0.72) brightness(1.1) sepia(0.06)",
+    beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.80)",
     afterFilter: "none",
     objectPosition: "center center",
-    beforeLabel: "RAW Nikon D780 · Base Neutra",
+    beforeLabel: "RAW Nikon D780 · Sem Tratamento",
     afterLabel: "Master Editorial · Color Graded",
     specs: {
       camera: "Nikon D780 Full Frame",
@@ -69,10 +69,10 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     afterImage:
       "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
-    beforeFilter: "saturate(0.48) contrast(0.68) brightness(1.12)",
+    beforeFilter: "saturate(0.50) contrast(0.82) brightness(0.75)",
     afterFilter: "none",
     objectPosition: "center center",
-    beforeLabel: "RAW Nikon D780 · Perfil Flat",
+    beforeLabel: "RAW Nikon D780 · Sem Tratamento",
     afterLabel: "Master Final · Emulação Nikon",
     specs: {
       camera: "Nikon D780 Full Frame",
@@ -95,10 +95,10 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
     afterImage:
       "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
-    beforeFilter: "saturate(0.55) contrast(0.74) brightness(1.08)",
+    beforeFilter: "saturate(0.58) contrast(0.84) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",
-    beforeLabel: "RAW Nikon D780 · Base Neutra",
+    beforeLabel: "RAW Nikon D780 · Sem Tratamento",
     afterLabel: "Master Retouch · 100% Autoral",
     specs: {
       camera: "Nikon D780 Full Frame",
@@ -121,10 +121,10 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
     afterImage:
       "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
-    beforeFilter: "saturate(0.52) contrast(0.7) brightness(1.14)",
+    beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",
-    beforeLabel: "RAW Nikon D780 · Base Neutra",
+    beforeLabel: "RAW Nikon D780 · Sem Tratamento",
     afterLabel: "Master Comercial · Atmosfera Quente",
     specs: {
       camera: "Nikon D780 Full Frame",
