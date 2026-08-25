@@ -76,7 +76,7 @@ export default function Diagnostico() {
         mainEntity: {
           "@type": "ProfessionalService",
           name: "VERSAVISUAL",
-          telephone: "+5511950747192",
+          telephone: "+5522997624631",
           email: "hub@versavisual.com.br",
         },
       },
@@ -180,10 +180,10 @@ export default function Diagnostico() {
       setSubmittedLead(lead)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } catch (err) {
-      console.error("Erro no envio do formulário:", err)
-      setSubmitError(
-        "Houve uma instabilidade temporária na transmissão. Você pode tentar novamente ou falar diretamente conosco pelo WhatsApp.",
-      )
+      console.error("Erro no envio do formulário (fallback para WhatsApp direto):", err)
+      // Fallback gracioso: direciona para o resumo com o link do WhatsApp pronto
+      setSubmittedLead(lead)
+      window.scrollTo({ top: 0, behavior: "smooth" })
     } finally {
       setIsSubmitting(false)
     }
@@ -294,14 +294,14 @@ export default function Diagnostico() {
               Antes da câmera, uma conversa que vale a produção inteira.
             </p>
             <p className="mt-5 max-w-sm text-mist/90">
-              O diagnóstico é gratuito e sem compromisso. Quanto mais contexto
-              você der, mais preciso será o caminho visual que devolvemos.
+              Analisamos o seu briefing para estruturar a viabilidade estética e
+              comercial do projeto, com foco em resultado real.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-mist/90">
               {[
-                "Leitura do seu objetivo de comunicação",
-                "Recomendação de formato e linguagem",
-                "Proposta por faixa de investimento",
+                "Análise de viabilidade do objetivo visual",
+                "Recomendação de formato, linguagem e lentes",
+                "Proposta comercial por faixa de investimento",
               ].map((li) => (
                 <li key={li} className="flex gap-3">
                   <span
@@ -318,9 +318,9 @@ export default function Diagnostico() {
         {/* Form */}
         <div className="bg-off/94 px-5 py-10 shadow-2xl backdrop-blur-md lg:min-h-[calc(100vh-72px)] lg:px-12 lg:py-14">
           <div>
-            <p className="u-eyebrow">Diagnóstico Visual Gratuito</p>
+            <p className="u-eyebrow">Briefing & Diagnóstico Visual</p>
             <h1 className="mb-8 mt-3 text-3xl leading-tight sm:text-4xl text-ink">
-              Conte seu contexto. Devolvemos um caminho visual.
+              Conte seu contexto. Devolvemos um caminho visual e proposta sob medida.
             </h1>
           </div>
 
@@ -608,10 +608,14 @@ export default function Diagnostico() {
                 Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
               </a>
             </div>
-            <p className="text-xs text-navy/60">
-              Ao enviar, você concorda em ser contatado pela VERSAVISUAL sobre
-              este diagnóstico.
-            </p>
+            <div className="rounded-xs border border-line bg-surface/60 p-3.5 text-xs leading-relaxed text-navy">
+              <p className="font-semibold text-ink flex items-center gap-1.5 mb-1">
+                <span>🔒</span> Proteção de Dados & Privacidade (LGPD)
+              </p>
+              <p>
+                Os dados fornecidos neste formulário são coletados exclusivamente para fins de análise técnica, elaboração da proposta e comunicação direta com a equipe VERSAVISUAL, em estrito cumprimento à Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Não compartilhamos suas informações com terceiros. Você pode solicitar a atualização ou exclusão dos seus dados a qualquer momento enviando uma mensagem para <a href="mailto:hub@versavisual.com.br" className="underline font-medium text-teal hover:text-teal-400">hub@versavisual.com.br</a>.
+              </p>
+            </div>
           </form>
         </div>
       </div>

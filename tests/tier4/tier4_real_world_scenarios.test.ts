@@ -62,9 +62,9 @@ export async function runTier4RealWorldScenariosTests() {
         `📝 *Mensagem:* ${brideLead.mensagem}`,
       ].join("\n")
 
-      const url = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const url = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
       const parsed = parseWhatsAppUrl(url)
-      expect(parsed.phoneNumber).toBe("5511950747192")
+      expect(parsed.phoneNumber).toBe("5522997624631")
       expect(parsed.params["Segmento"]).toBe("Casamentos")
       expect(parsed.params["Faixa de Investimento"]).toBe("Acima de R$ 10.000")
       expect(parsed.params["Data Desejada"]).toBe("2026-11-20")
@@ -124,7 +124,7 @@ export async function runTier4RealWorldScenariosTests() {
         `📝 *Mensagem:* ${fashionLead.mensagem}`,
       ].join("\n")
 
-      const url = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const url = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
       const parsed = parseWhatsAppUrl(url)
       expect(parsed.params["Nome"]).toBe("Renata Silveira (AURA Beachwear)")
       expect(parsed.params["Tipo de Projeto"]).toBe("Campanha / editorial")
@@ -186,7 +186,7 @@ export async function runTier4RealWorldScenariosTests() {
         `📝 *Mensagem:* ${musicArtistLead.mensagem}`,
       ].join("\n")
 
-      const url = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const url = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
       const parsed = parseWhatsAppUrl(url)
       expect(parsed.params["Segmento"]).toBe("Artistas & Videoclipes")
       expect(parsed.params["Tipo de Projeto"]).toBe("Videoclipe")
@@ -246,7 +246,7 @@ export async function runTier4RealWorldScenariosTests() {
         `📝 *Mensagem:* ${corporateLead.mensagem}`,
       ].join("\n")
 
-      const url = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const url = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
       const parsed = parseWhatsAppUrl(url)
       expect(parsed.params["Nome"]).toBe(
         "Fernanda Albuquerque (Fintech Global)",
@@ -307,7 +307,7 @@ export async function runTier4RealWorldScenariosTests() {
         `📝 *Mensagem:* ${hotelLead.mensagem}`,
       ].join("\n")
 
-      const url = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const url = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
       const parsed = parseWhatsAppUrl(url)
       expect(parsed.params["Nome"]).toBe(
         "Rodrigo Mendonça (Pousada Vila das Dunas)",

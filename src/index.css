@@ -251,6 +251,10 @@
     animation: vv-marquee 24s linear infinite;
     will-change: transform;
   }
+  .u-marquee-track:hover,
+  .u-marquee-track:focus-within {
+    animation-play-state: paused;
+  }
   @keyframes vv-marquee {
     to { transform: translateX(-50%); }
   }

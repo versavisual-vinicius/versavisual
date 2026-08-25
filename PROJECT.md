@@ -81,7 +81,7 @@
 |---|------|-------|-------------|--------|
 | M1 | Design System, Tokens, Typography & Global Shell | Tokens Tailwind v4 (#5E7F8C), fontes locais, Header acessível com touch targets 44px, Footer, WhatsAppFloat, SkipLink, CTAs principais bg-teal text-off | none | DONE |
 | M2 | TypeScript Syntax, Site Data & Dynamic Routing Engine | Eliminação de erros TS1005 em site.ts e seo.tsx, npx tsc --noEmit limpo, alinhamento de slugs e sitemap.xml, rotas dinâmicas de segmentos e cases com 404 | M1 | DONE |
-| M3 | Interactive Pages, Components & Conversion Flow | Hero video poster/playsInline, PortfolioGrid com abas e vídeo, SegmentPage com modal acessível, Lightbox drag-to-dismiss, Timeline scroll, FAQ accordion, Diagnostico com validação/honeypot/WhatsApp lead | M2 | PLANNED |
+| M3 | Interactive Pages, Components & Conversion Flow | Hero video poster/playsInline, PortfolioGrid com abas e vídeo, SegmentPage com modal acessível, Lightbox drag-to-dismiss, Timeline scroll, FAQ accordion, Diagnostico com validação/honeypot/WhatsApp lead | M2 | DONE |
 | M4 | Performance, Contrast, Accessibility & SSG Build Verification | Auditoria rigorosa de contraste (bg-teal text-off), responsividade 360px-4k, touch targets 44px+, npm run build gerando 41 rotas estáticas em dist/ | M3 | PLANNED |
 | M5 | 100% E2E Test Suite Pass & Adversarial Hardening | Execução e aprovação de 100% dos testes E2E Tiers 1-4 + Hardening de cobertura Tier 5 com Challenger | M4, E2E | PLANNED |
 | E2E | E2E Testing Track: Infra & Test Suite (Tiers 1-4) | Criação da infraestrutura de testes opaque-box, runner automatizado, casos de teste Tiers 1-4 cobrindo todas as 32 features, publicação de TEST_READY.md | none | DONE |
@@ -97,4 +97,4 @@
 - Payload JSON: `{ nome: string, whatsapp: string, email: string, empresa?: string, cidade?: string, segmento?: string, tipo?: string, data?: string, uso?: string, objetivo?: string, investimento?: string, mensagem?: string, _gotcha?: string }`
 - Honeypot `_gotcha`: Se presente e não-vazio, resposta imediata `200 { ok: true }` sem disparo de e-mail.
 - Validação: Erro 400 se `nome`, `whatsapp` ou `email` estiverem ausentes ou e-mail inválido.
-- Sucesso: Redirecionamento formatado para WhatsApp `https://wa.me/5511950747192?text=...`.
+- Sucesso: Redirecionamento formatado para WhatsApp `https://wa.me/5522997624631?text=...`.

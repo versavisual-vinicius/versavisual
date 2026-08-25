@@ -38,12 +38,12 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     title: "Fashion Manners — Campanha Editorial",
     subtitle: "Tratamento de tom de pele, contraste zonal e textura de tecido",
     description:
-      "Equalização de altas luzes no tecido, separação de frequências em microtexturas de pele e calibração de paleta tonal fria com destaque aos detalhes da alta costura.",
+      "Equalização de altas luzes no tecido, refinamento de microtexturas de pele e calibração de paleta tonal fria com destaque aos detalhes da alta costura.",
     beforeImage:
       "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
     afterImage:
       "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
-    beforeFilter: "saturate(0.5) contrast(0.72) brightness(1.1) sepia(0.06)",
+    beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.80)",
     afterFilter: "none",
     objectPosition: "center center",
     beforeLabel: "RAW Nikon D780 · Sem Tratamento",
@@ -51,11 +51,11 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     specs: {
       camera: "Nikon D780 Full Frame",
       lens: "Nikkor 85mm f/1.4G",
-      colorScience: "DaVinci Resolve / ACEScc",
-      postProduction: "Dodge & Burn + Separação de Frequências",
+      colorScience: "Paleta Tonal Editorial",
+      postProduction: "Dodge & Burn + Acabamento de Textura",
       isoSpeed: "ISO 100 · 1/250s · f/2.0",
     },
-    tags: ["Editorial", "Separação de Frequência", "High Fashion"],
+    tags: ["Editorial", "Acabamento de Textura", "High Fashion"],
   },
   {
     id: "artistas-clipe-sururu",
@@ -64,21 +64,21 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     title: "Clipe Babado Novo — Direção de Cor",
     subtitle: "Color Grading cinematográfico para palco e iluminação cênica",
     description:
-      "Extração do alcance dinâmico do sensor RAW em curva tonal densa, com preservação dos tons de pele sob luzes saturadas de LED e emulação de filme Kodak 2383.",
+      "Extração do alcance dinâmico em curva tonal densa, com preservação dos tons de pele sob iluminação cênica de LED e emulação Nikon.",
     beforeImage:
       "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     afterImage:
       "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
-    beforeFilter: "saturate(0.48) contrast(0.68) brightness(1.12)",
+    beforeFilter: "saturate(0.50) contrast(0.82) brightness(0.75)",
     afterFilter: "none",
     objectPosition: "center center",
-    beforeLabel: "Sensor RAW Nikon D780 · NEF Direto",
-    afterLabel: "Master Final · Emulação Kodak 2383",
+    beforeLabel: "RAW Nikon D780 · Sem Tratamento",
+    afterLabel: "Master Final · Emulação Nikon",
     specs: {
       camera: "Nikon D780 Full Frame",
       lens: "Nikkor 50mm f/1.4G",
-      colorScience: "ACEScc Color Managed / DCI-P3",
-      postProduction: "Halation, Film Grain & Split Toning",
+      colorScience: "Direção de Cor Cinematográfica",
+      postProduction: "Atmosphere, Halation & Gradação Tonal",
       isoSpeed: "ISO 800 · 1/125s · f/2.0",
     },
     tags: ["Audiovisual", "Color Science", "Cinema Look"],
@@ -90,12 +90,12 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     title: "Posicionamento & Retrato Autoral",
     subtitle: "Micro-contraste escultural e preservação de textura natural",
     description:
-      "Remoção de imperfeições preservando poros naturais, iluminação de contorno enfatizada com dodge & burn manual e equilíbrio cromatico de sombras.",
+      "Refinamento estético preservando poros e textura natural, iluminação de contorno enfatizada com dodge & burn manual e equilíbrio cromático de sombras.",
     beforeImage:
       "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
     afterImage:
       "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
-    beforeFilter: "saturate(0.55) contrast(0.74) brightness(1.08)",
+    beforeFilter: "saturate(0.58) contrast(0.84) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",
     beforeLabel: "RAW Nikon D780 · Sem Tratamento",
@@ -103,7 +103,7 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     specs: {
       camera: "Nikon D780 Full Frame",
       lens: "Nikkor 70-200mm f/2.8G ED VR II",
-      colorScience: "Capture One Pro / Versa Profile",
+      colorScience: "Perfil Autoral VersaVisual",
       postProduction: "Retoque Fine Art + Iluminação Zonal",
       isoSpeed: "ISO 100 · 1/200s · f/2.8",
     },
@@ -121,7 +121,7 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
       "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
     afterImage:
       "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
-    beforeFilter: "saturate(0.52) contrast(0.7) brightness(1.14)",
+    beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",
     beforeLabel: "RAW Nikon D780 · Sem Tratamento",
@@ -129,8 +129,8 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     specs: {
       camera: "Nikon D780 Full Frame",
       lens: "Nikkor 14-24mm f/2.8G ED",
-      colorScience: "Custom LUT / Daylight Balanced",
-      postProduction: "Remoção de Flare + Mapeamento de Tons",
+      colorScience: "Equilíbrio de Luz Natural & Quente",
+      postProduction: "Controle de Reflexos + Mapeamento de Tons",
       isoSpeed: "ISO 100 · 1/60s · f/8.0",
     },
     tags: ["Arquitetura", "Lifestyle", "Hotelaria"],

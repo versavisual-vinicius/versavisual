@@ -8,6 +8,8 @@ type Props = {
   title: string
   text: string
   photo?: string
+  primaryLabel?: string
+  secondaryLabel?: string
 }
 
 export default function CTASection({
@@ -15,6 +17,8 @@ export default function CTASection({
   title,
   text,
   photo,
+  primaryLabel = "Preencher briefing de projeto",
+  secondaryLabel = "Conversa rápida no WhatsApp",
 }: Props) {
   const { ref: parallaxRef, style: parallaxStyle } = useParallax({ speed: 0.1 })
 
@@ -51,7 +55,7 @@ export default function CTASection({
             viewTransition
             className="inline-flex min-h-[46px] w-full items-center justify-center border border-teal bg-teal px-8 py-3 text-sm font-head font-medium text-off transition-all duration-200 hover:border-teal-400 hover:bg-teal-400 active:scale-[0.98] sm:w-auto"
           >
-            Fazer diagnóstico visual
+            {primaryLabel}
           </Link>
           <a
             href={WHATSAPP}
@@ -59,7 +63,7 @@ export default function CTASection({
             rel="noopener noreferrer"
             className="group inline-flex min-h-[46px] items-center gap-1.5 border-b border-transparent px-3 py-2 text-sm font-head font-medium text-off transition-all duration-200 hover:border-teal hover:text-teal-400 active:scale-[0.98]"
           >
-            <span>Falar no WhatsApp</span>
+            <span>{secondaryLabel}</span>
             <span
               aria-hidden
               className="transition-transform duration-200 group-hover:translate-x-1"

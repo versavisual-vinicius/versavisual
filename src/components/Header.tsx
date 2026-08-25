@@ -4,7 +4,6 @@ import Logo from "./Logo"
 
 const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/ativacoes-eventos", label: "Ativações & Eventos" },
   { href: "/portfolio", label: "Portfólio" },
   { href: "/#nichos", label: "Segmentos", hash: true },
   { href: "/#processo", label: "Processo", hash: true },

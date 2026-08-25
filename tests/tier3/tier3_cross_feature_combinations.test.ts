@@ -52,10 +52,10 @@ export async function runTier3CrossFeatureCombinationsTests() {
       ].filter(Boolean) as string[]
 
       const text = lines.join("\n")
-      const whatsappUrl = `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      const whatsappUrl = `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
 
       const parsed = parseWhatsAppUrl(whatsappUrl)
-      expect(parsed.phoneNumber).toBe("5511950747192")
+      expect(parsed.phoneNumber).toBe("5522997624631")
       expect(parsed.params["Nome"]).toBe("Beatriz Helena (Boutique Flores)")
       expect(parsed.params["WhatsApp"]).toBe("11987654321")
       expect(parsed.params["E-mail"]).toBe("beatriz@flores.com.br")

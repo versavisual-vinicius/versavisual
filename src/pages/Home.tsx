@@ -324,7 +324,7 @@ export default function Home() {
 
       <CTASection
         title="Não sabe por onde começar? Comece pelo diagnóstico."
-        text="Conte o seu contexto e o seu objetivo. Devolvemos um caminho visual claro e uma proposta sob medida — sem compromisso."
+        text="Conte o seu contexto e objetivo. Analisamos a viabilidade visual e devolvemos uma recomendação de formato com proposta sob medida."
       />
     </>
   )

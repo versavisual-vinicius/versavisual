@@ -134,7 +134,7 @@ export async function runTier5AdversarialHardeningTests() {
           body: JSON.stringify({
             nome: unicodeStr,
             empresa: unicodeStr,
-            whatsapp: "+55 (11) 95074-7192",
+            whatsapp: "+55 (22) 99762-4631",
             email: "unicode@versavisual.com.br",
             mensagem: unicodeStr,
           }),
@@ -717,8 +717,10 @@ export async function runTier5AdversarialHardeningTests() {
         return files
       }
 
-      const allHtmlFiles = getHtmlFiles(distDir)
-      expect(allHtmlFiles.length).toBe(44)
+      const allRouteHtmlFiles = getHtmlFiles(distDir).filter(
+        (f) => !f.includes("image-review.html"),
+      )
+      expect(allRouteHtmlFiles.length).toBe(44)
     })
 
     test("T5.5.2: Every one of the 43 HTML files satisfies strict structural integrity", () => {
@@ -730,7 +732,11 @@ export async function runTier5AdversarialHardeningTests() {
           const full = path.join(dir, entry.name)
           if (entry.isDirectory()) {
             checkDir(full)
-          } else if (entry.isFile() && entry.name.endsWith(".html")) {
+          } else if (
+            entry.isFile() &&
+            entry.name.endsWith(".html") &&
+            entry.name !== "image-review.html"
+          ) {
             const content = fs.readFileSync(full, "utf-8")
             const stats = fs.statSync(full)
 

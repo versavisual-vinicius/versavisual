@@ -150,7 +150,7 @@ npx tsc --noEmit
 
 ## 📞 Atendimento & Contato
 
-- **WhatsApp**: [+55 (11) 95074-7192](https://wa.me/5511950747192)
+- **WhatsApp**: [+55 (22) 99762-4631](https://wa.me/5522997624631)
 - **E-mail**: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
 - **Diagnóstico Visual**: [`/diagnostico-visual`](https://versavisual.com.br/diagnostico-visual)
 

@@ -61,17 +61,17 @@ export async function runTier1DiagnosticLeadApiTests() {
       ].filter(Boolean) as string[]
 
       const text = lines.join("\n")
-      return `https://wa.me/5511950747192?text=${encodeURIComponent(text)}`
+      return `https://wa.me/5522997624631?text=${encodeURIComponent(text)}`
     }
 
-    it("F25.1: Form generates valid WhatsApp URL pointing to official phone number 5511950747192", () => {
+    it("F25.1: Form generates valid WhatsApp URL pointing to official phone number 5522997624631", () => {
       const url = simulateBuildWhatsAppUrl({
         nome: "Maycon Vinicius",
-        whatsapp: "11950747192",
+        whatsapp: "22997624631",
         email: "hub@versavisual.com.br",
       })
       const parsed = parseWhatsAppUrl(url)
-      expect(parsed.phoneNumber).toBe("5511950747192")
+      expect(parsed.phoneNumber).toBe("5522997624631")
       expect(parsed.text).toContain("Novo Diagnóstico Visual — VERSAVISUAL")
     })
 

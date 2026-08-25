@@ -53,7 +53,7 @@ export default function ServiceGrid({ items, mobileGroups }: ServiceGridProps) {
       <div
         className={`${
           mobileGroups ? "hidden sm:grid" : "grid"
-        } gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-3`}
+        } gap-px border-y border-line bg-line sm:grid-cols-3`}
       >
         {items.map((s) => (
           <div

@@ -39,6 +39,15 @@ export async function runTier1NavigationShellTests() {
       expect(headerCode).toContain("top-0")
       expect(headerCode).toContain("fixed")
     })
+
+    it("F1.6: Header does not contain '/ativacoes-eventos' in primary navigation while preserving the route in site data", () => {
+      expect(headerCode).not.toContain(
+        '{ href: "/ativacoes-eventos", label: "Ativações & Eventos" }',
+      )
+      const siteCode = readProjectFile("src/data/site.ts")
+      expect(siteCode).toContain("/ativacoes-eventos")
+      expect(siteCode).toContain("Ativações & Eventos")
+    })
   })
 
   await describe("Feature 2: Menu Mobile Drawer Acessível", () => {
