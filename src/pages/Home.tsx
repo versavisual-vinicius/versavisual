@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useSeo, SITE_URL } from "../lib/seo"
+import { useSeo, SITE_URL, professionalServiceSchema } from "../lib/seo"
 import { img } from "../lib/images"
 import {
   HOME_SERVICES,
@@ -9,7 +9,6 @@ import {
   HOME_PROCESS,
   HOME_STATS,
   SEGMENTS,
-  WHATSAPP,
   segmentImageAlt,
 } from "../data/site"
 import ServiceGrid from "../components/ServiceGrid"
@@ -27,23 +26,19 @@ export default function Home() {
   useSeo({
     title: "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas",
     description:
-      "Hub audiovisual autoral. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas. Diagnóstico visual gratuito e portfólio por segmento.",
+      "Hub audiovisual autoral no Rio de Janeiro com operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas.",
     path: "/",
     jsonLd: [
+      professionalServiceSchema(),
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
         name: "VERSAVISUAL",
         url: SITE_URL,
         description:
           "Hub audiovisual autoral: fotografia, vídeo, storymaking e direção visual.",
-        sameAs: [WHATSAPP],
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "VERSAVISUAL",
-        url: SITE_URL,
+        inLanguage: "pt-BR",
       },
     ],
   })
@@ -252,7 +247,10 @@ export default function Home() {
                 <img
                   src={img(METHOD_PHOTO, 900, 700)}
                   alt="Bastidores de produção audiovisual da VERSAVISUAL"
+                  width={900}
+                  height={700}
                   loading="lazy"
+                  decoding="async"
                   className="aspect-[4/3] w-full object-cover scale-105"
                 />
               </div>

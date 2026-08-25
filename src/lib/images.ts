@@ -11,6 +11,23 @@ export function img(id: string, w = 1200, h?: number): string {
   return LOCAL_IMAGE_FALLBACK
 }
 
+export function getImageAlt(
+  src: string,
+  contextTitle = "Produção audiovisual",
+): string {
+  if (!src) return "Produção audiovisual autoral VERSAVISUAL"
+  const filename = src.split("/").pop() || ""
+  const cleanName = decodeURIComponent(filename)
+    .replace(/\.[^/.]+$/, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\d+$/, "")
+    .trim()
+  if (cleanName && cleanName.length > 3) {
+    return `${cleanName} — ${contextTitle} VERSAVISUAL`
+  }
+  return `${contextTitle} — Direção audiovisual VERSAVISUAL`
+}
+
 // ── ALBUMS COMPLETOS POR PRODUÇÃO ───────────────────────────
 export const BACKSTAGE_CLIPE_SURURU_PHOTOS: readonly string[] = [
   "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo1.jpg",

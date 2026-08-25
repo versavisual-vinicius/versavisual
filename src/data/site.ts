@@ -176,6 +176,9 @@ export type Segment = {
   galleryIntro?: string
   galleryPreviewLimit?: number
   portfolioGroups?: readonly SegmentPortfolioGroup[]
+  creativeProposal?: string
+  artDirection?: string
+  creativeConcept?: string
   ctaEyebrow: string
   ctaTitle: string
   ctaText: string
@@ -303,6 +306,12 @@ export const SEGMENTS: Segment[] = [
         previewCount: 4,
       },
     ],
+    creativeProposal:
+      "Transformamos ativações e eventos corporativos em ativos perenes de posicionamento. Nossa proposta integra cobertura em tempo real para redes sociais e captação de alta fidelidade para relatórios e peças comerciais.",
+    artDirection:
+      "Direção de fotografia dinâmica que valoriza a cenografia, interação espontânea do público e detalhes da marca. Iluminação balanceada e color grading alinhado à identidade corporativa.",
+    creativeConcept:
+      "A narrativa visual foca no impacto da experiência humana e na grandiosidade do evento, convertendo momentos efêmeros em autoridade contínua e prova social indiscutível.",
     ctaEyebrow: "Próxima ativação",
     ctaTitle: "Sua próxima ativação merece um registro à altura.",
     ctaText:
@@ -418,6 +427,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Tratamento de cor e entrega por formato e plataforma.",
       },
     ],
+    creativeProposal:
+      "Construímos campanhas e editoriais de moda com estética apurada e forte apelo comercial, conectando a identidade da coleção ao desejo do consumidor final em múltiplos canais.",
+    artDirection:
+      "Composição rigorosa, estudo refinado de luz e texturas têxteis, direção de casting e poses que valorizam caimento, conceito de styling e atmosfera da temporada.",
+    creativeConcept:
+      "A imagem como veículo principal de posicionamento da marca, traduzindo tendências globais e autenticidade autoral em frames de alto impacto para lookbooks, e-commerce e mídias pagas.",
     ctaEyebrow: "Sua próxima campanha",
     ctaTitle: "Sua marca merece uma imagem que vende.",
     ctaText:
@@ -527,6 +542,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Montagem, cor e entrega de clipe, teaser e cortes para redes.",
       },
     ],
+    creativeProposal:
+      "Desenvolvemos a identidade audiovisual de artistas, bandas e selos por meio de videoclipes cinematográficos, capas conceituais, teasers e cobertura completa de shows e turnês.",
+    artDirection:
+      "Linguagem visual expressiva e dramática, jogos de luz e sombra, movimentação de câmera envolvente e montagem ritmada no compasso da música.",
+    creativeConcept:
+      "Materializar o universo sonoro em narrativa imagética envolvente, amplificando o alcance orgânico do release e consolidando a presença artística no ecossistema digital.",
     ctaEyebrow: "Seu próximo release",
     ctaTitle: "Transforme sua música em um universo visual.",
     ctaText:
@@ -641,6 +662,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Tratamento e entrega de retratos, vídeo e material para redes.",
       },
     ],
+    creativeProposal:
+      "Sistemas visuais completos para executivos, médicos, consultores e líderes que precisam comunicar credibilidade, sofisticação e autoridade inquestionável em seus mercados.",
+    artDirection:
+      "Iluminação dimensional suave, direção empática de expressão e postura, cenários contemporâneos e pós-produção que preserva a naturalidade da pele com acabamento premium.",
+    creativeConcept:
+      "Substituir retratos engessados por uma presença executiva autêntica e confiável, que fecha negócios e gera conexão antes do primeiro aperto de mão.",
     ctaEyebrow: "Sua marca pessoal",
     ctaTitle: "Comunique autoridade antes da primeira conversa.",
     ctaText:
@@ -750,6 +777,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Curadoria, tratamento e entrega das imagens para usar no feed, perfil ou memória pessoal.",
       },
     ],
+    creativeProposal:
+      "Ensaios autorais e retratos lifestyle com direção acolhedora, capturando personalidade, estilo e beleza natural para redes sociais, novos momentos de vida e autoestima.",
+    artDirection:
+      "Luz natural, locações urbanas e arquitetônicas marcantes, direção de pose fluida e color grading caloroso que destaca o melhor ângulo de quem está em cena.",
+    creativeConcept:
+      "A celebração da individualidade sem filtros artificiais: imagens espontâneas e honestas que constroem uma presença digital marcante e autêntica.",
     ctaEyebrow: "Seu ensaio",
     ctaTitle: "Você merece se ver bem na própria imagem.",
     ctaText:
@@ -865,6 +898,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Curadoria, tratamento e organização das imagens e filmes para guardar e compartilhar.",
       },
     ],
+    creativeProposal:
+      "Documentação sensível e sofisticada de casamentos e destination weddings, registrando o afeto genuíno e a atmosfera inesquecível da celebração com olhar cinematográfico.",
+    artDirection:
+      "Estética documental com acabamento editorial, leitura precisa da luz natural, enquadramentos poéticos e paleta atemporal que resiste ao passar das décadas.",
+    creativeConcept:
+      "Contar a história real do dia — das lágrimas discretas da cerimônia à euforia da pista —, criando uma herança visual viva que emociona por gerações.",
     ctaEyebrow: "Seu casamento",
     ctaTitle: "O dia passa. A imagem fica.",
     ctaText:
@@ -974,6 +1013,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Curadoria, tratamento natural e imagens prontas para guardar, imprimir e compartilhar.",
       },
     ],
+    creativeProposal:
+      "Ensaios de maternidade que honram o corpo, a transformação e a poesia da espera, criando memórias íntimas e acolhedoras com profundo respeito ao tempo da mulher.",
+    artDirection:
+      "Minimalismo visual, iluminação suave, tons orgânicos e direção delicada de mãos, curvas e expressões, valorizando a conexão familiar e o vínculo materno.",
+    creativeConcept:
+      "Eternizar a transição para a maternidade com elegância atemporal e sensibilidade artística, livre de clichês e centrada na potência feminina.",
     ctaEyebrow: "Seu ensaio gestante",
     ctaTitle: "Você merece lembrar dessa fase com carinho.",
     ctaText:
@@ -1089,6 +1134,12 @@ export const SEGMENTS: Segment[] = [
         desc: "Tratamento e entrega por formato para site, OTAs e redes.",
       },
     ],
+    creativeProposal:
+      "Produção audiovisual para hotéis boutique, resorts, gastronomia e experiências turísticas, traduzindo hospitalidade e conforto em imagens que impulsionam reservas.",
+    artDirection:
+      "Fotografia e vídeo que exaltam arquitetura, luz de golden hour, texturas gastronômicas e o lifestyle do hóspede vivenciando cada espaço.",
+    creativeConcept:
+      "Vender a experiência sensorial antes do check-in: despertar o desejo irresistível de estar presente, relaxar e vivenciar cada detalhe do destino.",
     ctaEyebrow: "Sua próxima temporada",
     ctaTitle: "Faça o hóspede desejar antes de chegar.",
     ctaText:
@@ -1150,7 +1201,7 @@ export function getSegment(slug?: string): Segment | undefined {
 }
 
 export function segmentImageAlt(segment: Segment): string {
-  return `${segment.nav}: fotografia de referência para ${segment.category.toLowerCase()} pela VERSAVISUAL`
+  return `${segment.nav} — Direção visual e produção audiovisual autoral de ${segment.category.toLowerCase()} pela VERSAVISUAL`
 }
 
 // ---- Portfolio ----
@@ -1388,7 +1439,7 @@ export const PORTFOLIO: PortfolioItem[] = [
 ]
 
 export function portfolioImageAlt(item: PortfolioItem): string {
-  return `${item.title} em ${item.city}, case de ${item.category.toLowerCase()} da VERSAVISUAL`
+  return `${item.title} (${item.city}) — Fotografia e produção audiovisual de ${item.category.toLowerCase()} da VERSAVISUAL`
 }
 
 export const PORTFOLIO_FILTERS = [

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { LayoutGrid, Sparkles } from "lucide-react"
-import { useSeo, breadcrumb } from "../lib/seo"
+import { useSeo, breadcrumb, imageGallerySchema } from "../lib/seo"
 import PortfolioGrid from "../components/PortfolioGrid"
 import InfiniteCanvas from "../components/InfiniteCanvas"
 import CTASection from "../components/CTASection"
@@ -63,8 +63,8 @@ export default function Portfolio({ initialView }: PortfolioProps) {
               </h1>
               <p className="mt-5 max-w-xl text-mist">
                 Uma seleção de cases autorais em fotografia, vídeo, ativações,
-                campanhas e projetos pessoais. Alterne entre o grid tradicional e o
-                Canvas 360° para uma exploração não-linear do acervo.
+                campanhas e projetos pessoais. Alterne entre o grid tradicional
+                e o Canvas 360° para uma exploração não-linear do acervo.
               </p>
             </div>
 
@@ -113,4 +113,3 @@ export default function Portfolio({ initialView }: PortfolioProps) {
     </>
   )
 }
-
