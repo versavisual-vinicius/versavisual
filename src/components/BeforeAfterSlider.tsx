@@ -259,7 +259,7 @@ export default function BeforeAfterSlider() {
           />
         </div>
 
-        {/* Layer 2: BEFORE / RAW FLAT (Clipped on top) */}
+        {/* Layer 2: BEFORE / RAW (Clipped on top) */}
         <div
           className="absolute inset-0 h-full w-full overflow-hidden will-change-[clip-path]"
           style={{
@@ -268,7 +268,7 @@ export default function BeforeAfterSlider() {
         >
           <img
             src={activeItem.beforeImage}
-            alt={`${activeItem.title} - RAW Flat`}
+            alt={`${activeItem.title} - RAW Original`}
             className="h-full w-full object-cover"
             style={{
               filter: activeItem.beforeFilter || "none",
@@ -286,7 +286,7 @@ export default function BeforeAfterSlider() {
         >
           <div className="flex items-center gap-1.5 rounded-none border border-mist/30 bg-ink/80 px-2.5 py-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-mist backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-mist/60 animate-pulse" />
-            <span className="font-semibold text-off">RAW / FLAT</span>
+            <span className="font-semibold text-off">RAW NEF</span>
             <span className="hidden sm:inline text-mist/60">
               · {activeItem.beforeLabel}
             </span>
