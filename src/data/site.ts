@@ -14,7 +14,7 @@ import {
   MEGABLOCO_CHA_DA_ALICE_PHOTOS,
   MODA_SANTALOLA_PHOTOS,
   SYN_ICE_PHOTOS,
-} from "../lib/images.ts"
+} from "../lib/images"
 
 export const WHATSAPP = "https://wa.me/5511950747192"
 export const WHATSAPP_LABEL = "11 95074-7192"

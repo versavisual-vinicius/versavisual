@@ -13,14 +13,37 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hiddenHeader, setHiddenHeader] = useState(false)
   const { pathname } = useLocation()
 
   useEffect(() => {
     setOpen(false)
+    setHiddenHeader(false)
   }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    let lastY = window.scrollY
+    let ticking = false
+
+    const onScroll = () => {
+      const currentY = window.scrollY
+      setScrolled(currentY > 12)
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const delta = currentY - lastY
+          if (currentY > 80 && delta > 6) {
+            setHiddenHeader(true)
+          } else if (delta < -4 || currentY <= 40) {
+            setHiddenHeader(false)
+          }
+          lastY = currentY
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -88,7 +111,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
+      className={`fixed inset-x-0 top-0 z-50 transform transition-all duration-300 ease-out ${
+        hiddenHeader && !open ? "-translate-y-full" : "translate-y-0"
+      } ${
         transparent
           ? "border-b border-off/10 bg-ink/60 backdrop-blur-md"
           : "border-b border-off/10 bg-ink/95"

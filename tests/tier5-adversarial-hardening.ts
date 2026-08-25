@@ -718,7 +718,7 @@ export async function runTier5AdversarialHardeningTests() {
       }
 
       const allHtmlFiles = getHtmlFiles(distDir)
-      expect(allHtmlFiles.length).toBe(43)
+      expect(allHtmlFiles.length).toBe(44)
     })
 
     test("T5.5.2: Every one of the 43 HTML files satisfies strict structural integrity", () => {
@@ -820,16 +820,16 @@ export async function runTier5AdversarialHardeningTests() {
       const robots = fs.readFileSync(path.join(distDir, "robots.txt"), "utf-8")
       expect(robots).toContain("User-agent: *")
       expect(robots).toContain(
-        "Sitemap: https://versavisual.com.br/sitemap.xml",
+        "Sitemap: https://www.versavisual.com.br/sitemap.xml",
       )
 
       const sitemap = fs.readFileSync(
         path.join(distDir, "sitemap.xml"),
         "utf-8",
       )
-      expect(sitemap).toContain("https://versavisual.com.br/")
-      expect(sitemap).toContain("https://versavisual.com.br/portfolio")
-      expect(sitemap).toContain("https://versavisual.com.br/diagnostico-visual")
+      expect(sitemap).toContain("https://www.versavisual.com.br/")
+      expect(sitemap).toContain("https://www.versavisual.com.br/portfolio")
+      expect(sitemap).toContain("https://www.versavisual.com.br/diagnostico-visual")
     })
   })
 }

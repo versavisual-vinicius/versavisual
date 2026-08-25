@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react"
 import { WHATSAPP } from "../data/site"
 
 export default function WhatsAppFloat() {
+  const [isInteracting, setIsInteracting] = useState(false)
+
+  useEffect(() => {
+    const onStart = () => setIsInteracting(true)
+    const onEnd = () => setIsInteracting(false)
+
+    window.addEventListener("vv:canvas-drag-start", onStart)
+    window.addEventListener("vv:canvas-drag-end", onEnd)
+    return () => {
+      window.removeEventListener("vv:canvas-drag-start", onStart)
+      window.removeEventListener("vv:canvas-drag-end", onEnd)
+    }
+  }, [])
+
   return (
     <a
       href={WHATSAPP}
-      className="group fixed bottom-5 right-5 z-40 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center border border-off/30 bg-ink/95 transition-colors duration-200 hover:border-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
+      className={`group fixed bottom-5 right-5 z-40 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center border border-off/30 bg-ink/95 transition-all duration-300 hover:border-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 ${
+        isInteracting
+          ? "pointer-events-none scale-90 opacity-20"
+          : "scale-100 opacity-100"
+      }`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
