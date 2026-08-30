@@ -12,7 +12,25 @@
       "canonicalPath": "/ativacoes-eventos",
       "image": "/images/Ativações & Eventos - Camarote Ondina/Camarote-Ondina-Salvador-Bahia-Carnaval3.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês entregam conteúdo durante o evento?",
+          "a": "Sim. O storymaking em tempo real é parte central do serviço — publicamos stories, reels e posts enquanto a ativação acontece, alinhados ao tom da marca."
+        },
+        {
+          "q": "Atendem fora do Rio de Janeiro?",
+          "a": "Sim. A operação é nacional — vamos onde a história acontece. Logística e equipe são dimensionadas no briefing."
+        },
+        {
+          "q": "Qual o prazo de entrega do material editado?",
+          "a": "Conteúdo em tempo real sai durante o evento. O material editado completo é definido em briefing conforme o uso — normalmente entre 3 e 10 dias úteis."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "moda-campanhas",
@@ -26,7 +44,25 @@
       "canonicalPath": "/moda-campanhas",
       "image": "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT27.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês fazem direção criativa ou só fotografam?",
+          "a": "Fazemos direção criativa completa — conceito, referências, styling e linguagem visual. A fotografia é a execução de uma estratégia, não um clique isolado."
+        },
+        {
+          "q": "Atendem e-commerce e catálogo?",
+          "a": "Sim. Produzimos desde editorial de campanha até lifestyle de produto e imagens para e-commerce, com tratamento coeso entre os materiais."
+        },
+        {
+          "q": "Fazem fashion film?",
+          "a": "Sim. Produzimos vídeo de moda e campanha para redes e mídia paga, com a mesma direção visual da fotografia."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "artistas-videoclipes",
@@ -40,7 +76,25 @@
       "canonicalPath": "/artistas-videoclipes",
       "image": "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo8.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês produzem o clipe do conceito à entrega?",
+          "a": "Sim. Fazemos conceito, roteiro, direção, captação e pós-produção do videoclipe, além do material de divulgação."
+        },
+        {
+          "q": "Fazem cobertura de shows e turnê?",
+          "a": "Sim. Cobrimos shows e turnês com registro de palco, bastidor e público, entregando vídeo e fotografia."
+        },
+        {
+          "q": "Entregam conteúdo para redes além do clipe?",
+          "a": "Sim. Teaser, making of e cortes verticais fazem parte do pacote para sustentar o lançamento nas plataformas."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "posicionamento-profissional",
@@ -54,7 +108,25 @@
       "canonicalPath": "/posicionamento-profissional",
       "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Street/Ensaio-street1.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Atendem clínicas e equipes, não só indivíduos?",
+          "a": "Sim. Produzimos retratos individuais, de equipe e registro de ambiente para clínicas e consultórios."
+        },
+        {
+          "q": "Fazem vídeo institucional além de foto?",
+          "a": "Sim. Produzimos vídeo de apresentação e conteúdo de autoridade alinhados à identidade visual."
+        },
+        {
+          "q": "A sessão é dirigida? Não sou modelo.",
+          "a": "Totalmente dirigida. Conduzimos pose, expressão e luz — você não precisa saber posar, nós conduzimos."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "imagem-pessoal-lifestyle",
@@ -68,7 +140,25 @@
       "canonicalPath": "/imagem-pessoal-lifestyle",
       "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Eu nunca fiz ensaio. Vocês dirigem tudo?",
+          "a": "Sim. A sessão é totalmente dirigida: pose, expressão, movimento e ritmo. Você não precisa chegar sabendo o que fazer."
+        },
+        {
+          "q": "Serve para fotos de Instagram?",
+          "a": "Sim. Pensamos a entrega para perfil, feed, stories e presença digital, sem deixar a imagem artificial."
+        },
+        {
+          "q": "Pode ser um ensaio sem objetivo profissional?",
+          "a": "Pode. O ensaio pode ser por autoestima, aniversário, fase nova, dating profile ou simplesmente para se ver bem."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "casamentos",
@@ -82,7 +172,25 @@
       "canonicalPath": "/casamentos",
       "image": "/images/Casamentos/CASAMENTO8.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês dirigem os retratos do casal?",
+          "a": "Sim. A direção é leve e natural, para o casal se sentir confortável sem perder espontaneidade."
+        },
+        {
+          "q": "Fazem foto e vídeo no mesmo pacote?",
+          "a": "Sim. Montamos cobertura integrada de fotografia e vídeo conforme o tamanho do casamento e os momentos prioritários."
+        },
+        {
+          "q": "Atendem mini wedding e casamento ao ar livre?",
+          "a": "Sim. A linguagem funciona muito bem para celebrações íntimas, externas e destination weddings."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico entendemos data, local, duração, número de convidados e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "gestantes",
@@ -96,7 +204,25 @@
       "canonicalPath": "/gestantes",
       "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral23.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Qual o melhor período para fazer o ensaio?",
+          "a": "Geralmente entre 28 e 34 semanas, mas ajustamos conforme conforto, saúde e intenção visual da gestante."
+        },
+        {
+          "q": "Eu não sei posar. Vocês dirigem?",
+          "a": "Sim. A sessão é totalmente dirigida com cuidado para corpo, mãos, olhar e movimento."
+        },
+        {
+          "q": "Pode incluir família?",
+          "a": "Pode. Parceiro, filhos e vínculos importantes podem entrar no ensaio de forma natural."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     },
     {
       "slug": "hotelaria-lifestyle",
@@ -110,7 +236,25 @@
       "canonicalPath": "/hotelaria-lifestyle",
       "image": "/images/Hotelaria & Lifestyle/Hotelaria-life-style2.jpg",
       "ogType": "website",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês produzem para site e OTAs (Booking, Airbnb)?",
+          "a": "Sim. Entregamos imagens nos formatos certos para site próprio, OTAs e mídia, com tratamento coeso."
+        },
+        {
+          "q": "Fotografam gastronomia além do espaço?",
+          "a": "Sim. Gastronomia, bar e experiências fazem parte do pacote, com foco em desejo e detalhe."
+        },
+        {
+          "q": "Conseguem captar com hóspedes no local?",
+          "a": "Sim. Trabalhamos com momento real e direção discreta, respeitando a operação e a privacidade."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, diárias de captação e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
     }
   ],
   "cases": [

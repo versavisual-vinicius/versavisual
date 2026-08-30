@@ -234,7 +234,7 @@ export function buildRouteJsonLd(route, meta) {
 
   // Segment route (e.g. /ativacoes-eventos)
   if (!cleanPath.startsWith("/portfolio/")) {
-    return [
+    const schemas = [
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -268,6 +268,23 @@ export function buildRouteJsonLd(route, meta) {
         },
       },
     ]
+
+    if (meta.faqs && Array.isArray(meta.faqs) && meta.faqs.length > 0) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: meta.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.a,
+          },
+        })),
+      })
+    }
+
+    return schemas
   }
 
   // Case route (e.g. /portfolio/ativacao-drinkball)

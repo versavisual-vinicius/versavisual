@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /404
+Disallow: /api/
 
 Sitemap: https://www.versavisual.com.br/sitemap.xml
-

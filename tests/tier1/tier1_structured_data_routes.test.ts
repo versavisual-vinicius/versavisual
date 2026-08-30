@@ -30,14 +30,20 @@ export async function runTier1StructuredDataRoutesTests() {
       expect(website["@id"]).toBe(`${SITE_URL}/#website`)
     })
 
-    it("LD.2: Segment routes generate BreadcrumbList and Service schema with linked provider", () => {
+    it("LD.2: Segment routes generate BreadcrumbList, Service and FAQPage schema with linked provider", () => {
       const schemas = buildRouteJsonLd("/ativacoes-eventos", {
         title: "Ativações & Eventos | VERSAVISUAL",
         navTitle: "Ativações & Eventos",
         description: "Cobertura audiovisual",
+        faqs: [
+          { q: "Qual o prazo de entrega?", a: "Entrega prévia em 48h." },
+          { q: "Atendem fora do Rio?", a: "Sim, atendemos todo o Brasil." },
+        ],
       }) as any[]
 
       expect(Array.isArray(schemas)).toBe(true)
+      expect(schemas.length).toBe(3)
+
       const breadcrumbs = schemas.find((s) => s["@type"] === "BreadcrumbList")
       expect(Boolean(breadcrumbs)).toBe(true)
       expect(breadcrumbs.itemListElement.length).toBe(2)
@@ -48,6 +54,12 @@ export async function runTier1StructuredDataRoutesTests() {
       expect(Boolean(service)).toBe(true)
       expect(service.provider["@id"]).toBe(`${SITE_URL}/#professional-service`)
       expect(service.areaServed).toBe("BR")
+
+      const faqPage = schemas.find((s) => s["@type"] === "FAQPage")
+      expect(Boolean(faqPage)).toBe(true)
+      expect(faqPage.mainEntity.length).toBe(2)
+      expect(faqPage.mainEntity[0].name).toBe("Qual o prazo de entrega?")
+      expect(faqPage.mainEntity[0].acceptedAnswer.text).toBe("Entrega prévia em 48h.")
     })
 
     it("LD.3: Case study routes generate BreadcrumbList with 3 levels and CreativeWork schema", () => {
