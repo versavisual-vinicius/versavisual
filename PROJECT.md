@@ -1,100 +1,142 @@
 # Project: VersaVisual Website Redesign & Production Consolidation
 
-## Architecture
+## 1. Visão Geral & Arquitetura
+
+O projeto **VERSAVISUAL Website** é uma aplicação web autoral de alta performance e apelo estético desenvolvida para a marca e estúdio de fotografia, vídeo e direção criativa **VERSAVISUAL**, liderado pelo fotógrafo e diretor criativo **Vinicius Cunha (Vini)**.
+
+### Stack Tecnológica & Decisões de Arquitetura:
 - **Framework & Core**: React 19, Vite 8, TypeScript 5.7, Tailwind CSS v4 (`@tailwindcss/vite`).
-- **Routing**: React Router 7 (`react-router-dom`), Hash navigation, dynamic segment aliases, case study lookup, custom 404 handler.
-- **Styling & Design System**: Tailwind v4 `@theme` with strict brand tokens (`ink: #050A0D`, `navy: #253540`, `teal: #5E7F8C`, `teal-400: #70909c`, `mist: #A4B8BF`, `off: #F2F2F2`), Self-hosted fonts (`Righteous`, `Outfit`, `DM Sans`), WCAG AA contrast compliance (`bg-teal text-off`).
-- **Media & Animation**: Full-bleed background video with fallback poster, Framer Motion 13 lightbox & scroll animations, Lucide React icons.
-- **Conversion & API**: Diagnostic form with client-side validation, honeypot spam protection, structured WhatsApp lead encoding, Resend serverless endpoint `/api/diagnostico`.
-- **SSG / Static Generation**: Post-build route prerenderer `scripts/emit-route-html.mjs` generating static HTML for all sitemap routes in `dist/`.
+- **Roteamento & Resolução de URLs**: React Router 7 (`react-router-dom`), suporte a rotas estáticas e dinâmicas, canonicalização de aliases legados e fallback para página 404 sem quebra de estado.
+- **Navegação Espacial (Infinite Canvas 360°)**: Experiência interativa de tela cheia sem libs 3D pesadas, calculada via matemática vetorial, aceleração por GPU (`transform: translate3d(...)`), inércia com desaceleração exponencial, zoom dinâmico (mouse wheel / pinch gesture) e minimap radar HUD interativo.
+- **Tratamento de Imagem & Color Science (BeforeAfterSlider)**: Comparador de tratamento fotográfico e color grading com especificações reais (ex: ACEScc / DaVinci Resolve, Dodge & Burn manual, Separação de Frequências e emulação Kodak 2383).
+- **Design System & Tokens**: Tailwind v4 `@theme` com tokens de cores calibrados (`ink: #050A0D`, `navy: #253540`, `teal: #5E7F8C`, `teal-400: #70909C`, `mist: #A4B8BF`, `off: #F2F2F2`), tipografia self-hosted WOFF2 (`Righteous`, `Outfit`, `DM Sans`) e garantia de contraste estrito WCAG AA (`bg-teal text-off`).
+- **SEO Técnico & SSG (Static Site Generation)**: Pós-processador ESM `scripts/emit-route-html.mjs` que lê o catálogo SEO (`src/data/catalog-seo.json`, `src/data/seo-routes.json` e `public/sitemap.xml`), pré-renderizando **47 arquivos HTML estáticos** em `dist/` com metadados `<title>`, `<meta name="description">`, OpenGraph, Twitter Cards, Canonical URLs e dados estruturados Schema.org JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
+- **Conversão & Triagem de Leads**: Formulário `/diagnostico-visual` com validação de campos client-side, proteção anti-spam via honeypot invisível, gerador de link formatado para WhatsApp direto e endpoint serverless `/api/diagnostico` integrado ao Resend.
+- **Testes & Qualidade**: Suíte com 256 testes automatizados (Tiers 1 a 5), cobrindo contratos unitários, limites de segurança, combinações cross-feature, jornadas reais e hardening adversarial.
 
-## Code Layout
-- `src/main.tsx` — Application entrypoint, font wiring and global CSS mounting.
-- `src/App.tsx` — Root router shell, Layout wrapper, Skip-link and route switch.
-- `src/index.css` — Global styles, Tailwind v4 theme variables (`@theme`), typography rules, utility overlays (`.u-grade`).
-- `src/data/site.ts` — Central data dictionary: navigation, segments, services, portfolio, case studies, FAQ, metrics.
-- `src/lib/` — Helper utilities:
-  - `seo.tsx` — Dynamic SEO meta tags, OpenGraph, Canonical and JSON-LD schema injector.
-  - `images.ts` — Image path helper with safe local fallback.
-  - `motion.ts` — Viewport & animation configurations.
-- `src/components/` — Shared UI components:
-  - `Header.tsx` — Sticky header with scroll blur, desktop nav, accessible mobile drawer.
-  - `Footer.tsx` — 3-column footer with brand, segments and contact links.
-  - `WhatsAppFloat.tsx` — Fixed floating WhatsApp direct conversion button.
-  - `Logo.tsx` — Vector Righteous wordmark component.
-  - `CTASection.tsx` — Conversion banner with parallax background and high-contrast CTAs.
-  - `FAQAccordion.tsx` — Accessible question/answer accordion.
-  - `PortfolioGrid.tsx` — Filterable portfolio grid with video feature.
-  - `ServiceGrid.tsx` — Institutional service grid with hover effects.
-  - `Gallery.tsx` / `ui/shared-element-gallery.tsx` — Photo gallery with full-screen portal lightbox.
-  - `ui/timeline.tsx` — Execution process timeline with scroll progress.
-  - `ScrollToTop.tsx` — Route transition scroll reset and anchor compensator.
-  - `Reveal.tsx` — Progressive scroll observer with reduced-motion support.
-- `src/pages/` — Core route pages:
-  - `Home.tsx` — Institutional home with full-bleed hero video, segments, services, timeline and CTAs.
-  - `Portfolio.tsx` — Filterable portfolio showcase with videoclip spotlight.
-  - `CaseStudy.tsx` — Dedicated case study page with photo gallery and production metadata.
-  - `SegmentPage.tsx` — Niche landing page for each of the 8 segments with problem/solution, services, modal, FAQ.
-  - `Diagnostico.tsx` — Split-screen diagnostic form with validation and WhatsApp briefing builder.
-  - `NotFound.tsx` — Immersive 404 recovery page with segment shortcuts.
-- `api/diagnostico.ts` — Serverless function for email notification via Resend.
-- `scripts/emit-route-html.mjs` — Static HTML route generator for production deployment.
+---
 
-## Feature Inventory
-| # | Feature | Description | Milestone | Source |
-|---|---------|-------------|-----------|--------|
-| 1 | Header Responsivo & Scroll Blur | Header fixo com logo, links de navegação, blur dinâmico no scroll (>12px) e CTA | M1 | survey |
-| 2 | Menu Mobile Drawer Acessível | Gaveta mobile com animação, aria-expanded, bloqueio de scroll no body e tecla Escape | M1 | survey |
-| 3 | Skip Link para Conteúdo | Link de acessibilidade no topo visível por teclado via Tab | M1 | survey |
-| 4 | Scroll To Top & Anchor Offset | Redefinição de rolagem no topo em trocas de rota e offset de 76px para âncoras | M1 | survey |
-| 5 | Botão Flutuante WhatsApp | Botão fixo no canto inferior direito com link direto seguro para WhatsApp | M1 | survey |
-| 6 | Tokens & Tema Tailwind v4 | Variáveis de tema (@theme) com teal (#5E7F8C), ink, navy, mist e off alinhados ao DESIGN.md | M1 | survey |
-| 7 | Tipografia Self-Hosted | Fontes Righteous, Outfit e DM Sans com preload e renderização sem fontes externas | M1 | survey |
-| 8 | Tipagem TypeScript Estrita | Eliminação de 9 erros TS1005 em site.ts e seo.tsx, zero erros em tsc --noEmit | M2 | survey |
-| 9 | Sincronização de Slugs & Sitemap | Alinhamento de caseSlugs e rotas entre site.ts e sitemap.xml | M2 | survey |
-| 10 | Roteamento Dinâmico de Segmentos | Suporte aos 8 segmentos e aliases legados com resolução instantânea | M2 | survey |
-| 11 | Roteamento de Cases de Portfólio | Suporte a rotas /portfolio/:caseSlug com fallback para 404 em slugs inválidos | M2 | survey |
-| 12 | Roteamento e Página 404 | Página 404 personalizada para rotas inexistentes com atalhos para todos os segmentos | M2 | survey |
-| 13 | Hero Vídeo Full-Bleed | Hero em vídeo loop com autoplay, muted, playsInline, poster de fallback e overlay | M3 | survey |
-| 14 | Grid de Serviços & TiltCard | Grid de 6 serviços institucionais com linha de acento animada no hover | M3 | survey |
-| 15 | Seletor de Segmentos Home | Cards dos 8 segmentos com aspect-[16/11] no mobile e aspect-[3/4] em desktop | M3 | survey |
-| 16 | Timeline do Método de Execução | Timeline interativa com barra de progresso vertical reativa ao scroll | M3 | survey |
-| 17 | Filtros de Portfólio por Aba | Sistema de abas com role="tablist" e aria-selected para filtragem instantânea | M3 | survey |
-| 18 | Vídeo Destaque Artistas | Banner de vídeo exibido dinamicamente na aba de Artistas & Videoclipes | M3 | survey |
-| 19 | Landing Pages de 8 Segmentos | Páginas temáticas completas com comparativo, serviços, modal, cases e FAQ | M3 | survey |
-| 20 | Modal de Detalhes do Serviço | Modal interativo com aria-modal, foco acessível e touch targets de 44px+ | M3 | survey |
-| 21 | Galeria com Lightbox Fullscreen | Lightbox em portal com Framer Motion, drag-to-dismiss e tecla Escape | M3 | survey |
-| 22 | Acordeão de FAQ Temático | Acordeão acessível com perguntas e respostas sanfonadas | M3 | survey |
-| 23 | Estudo de Caso Individual | Página detalhada com galeria, ficha técnica e cases relacionados | M3 | survey |
-| 24 | Formulário de Diagnóstico | Validação client-side em tempo real, honeypot anti-spam e aria-live de status | M3 | survey |
-| 25 | Gerador de Lead WhatsApp | Geração de URL formatada com dados completos do briefing para atendimento | M3 | survey |
-| 26 | Transmissão de Lead API | Endpoint serverless /api/diagnostico com validação e envio via Resend | M3 | survey |
-| 27 | Injeção de SEO & JSON-LD | Hook useSeo atualizando metadados, canonical e schemas Schema.org | M4 | survey |
-| 28 | Auditoria Estrita de Contraste | Aplicação da regra WCAG AA com bg-teal text-off em todos os botões e CTAs | M4 | survey |
-| 29 | Auditoria de Responsividade 360px-4k | Zero overflow horizontal em todas as páginas, touch targets >= 44px | M4 | survey |
-| 30 | Build de Produção & Emissão SSG | Build npm run build gerando dist/ e emitindo todas as 27 rotas estáticas | M4 | survey |
-| 31 | Suíte de Testes E2E (Tiers 1-4) | 100% de aprovação nos testes funcionais, de borda, combinatórios e cenários reais | M5 | survey |
-| 32 | Hardening Adversarial (Tier 5) | Testes adversariais de estresse e cobertura completa de código | M5 | survey |
+## 2. Estrutura de Código (Code Layout)
 
-## Milestones
-| # | Name | Scope | Dependencies | Status |
-|---|------|-------|-------------|--------|
-| M1 | Design System, Tokens, Typography & Global Shell | Tokens Tailwind v4 (#5E7F8C), fontes locais, Header acessível com touch targets 44px, Footer, WhatsAppFloat, SkipLink, CTAs principais bg-teal text-off | none | DONE |
-| M2 | TypeScript Syntax, Site Data & Dynamic Routing Engine | Eliminação de erros TS1005 em site.ts e seo.tsx, npx tsc --noEmit limpo, alinhamento de slugs e sitemap.xml, rotas dinâmicas de segmentos e cases com 404 | M1 | DONE |
-| M3 | Interactive Pages, Components & Conversion Flow | Hero video poster/playsInline, PortfolioGrid com abas e vídeo, SegmentPage com modal acessível, Lightbox drag-to-dismiss, Timeline scroll, FAQ accordion, Diagnostico com validação/honeypot/WhatsApp lead | M2 | DONE |
-| M4 | Performance, Contrast, Accessibility & SSG Build Verification | Auditoria rigorosa de contraste (bg-teal text-off), responsividade 360px-4k, touch targets 44px+, npm run build gerando 41 rotas estáticas em dist/ | M3 | PLANNED |
-| M5 | 100% E2E Test Suite Pass & Adversarial Hardening | Execução e aprovação de 100% dos testes E2E Tiers 1-4 + Hardening de cobertura Tier 5 com Challenger | M4, E2E | PLANNED |
-| E2E | E2E Testing Track: Infra & Test Suite (Tiers 1-4) | Criação da infraestrutura de testes opaque-box, runner automatizado, casos de teste Tiers 1-4 cobrindo todas as 32 features, publicação de TEST_READY.md | none | DONE |
+- `src/main.tsx` — Ponto de entrada da aplicação, carregamento de fontes locais e CSS global.
+- `src/App.tsx` — Shell raiz da aplicação com layout global, `ScrollToTop`, `SkipLink`, roteador com lazy loading e Vercel Analytics.
+- `src/index.css` — Estilos globais, importação do Tailwind v4 (`@import "tailwindcss";`), tokens `@theme`, regras tipográficas e utilitários (`.u-grade`, custom scrollbars).
+- `src/data/` — Dicionários de dados e metadados centralizados:
+  - `site.ts` — Dicionário principal: navegação, 8 segmentos, 19 cases de portfólio, serviços, dados do fundador, depoimentos e FAQ.
+  - `beforeAfter.ts` — Dados dos ensaios com comparativo antes/depois, especificações de color grading e tratamentos.
+  - `catalog-seo.json` — Base central de metadados, títulos, descrições, imagens de compartilhamento e FAQs por rota.
+  - `seo-routes.json` — Manifesto ordenado das 47 rotas estáticas indexáveis.
+- `src/lib/` — Módulos utilitários:
+  - `images.ts` — Resolução segura de URLs de fotos com fallback local (`/images/foto-a-producao-nao-falha.webp`) e segregação de ensaios.
+  - `seo.tsx` — Hook `useSeo` para injeção dinâmica de metadados no `<head>` e geração de schemas JSON-LD.
+  - `useParallax.ts` — Hook de efeito de profundidade reativo ao scroll.
+  - `utils.ts` — Utilitários para concatenação de classes e helpers.
+- `src/components/` — Componentes reutilizáveis de interface:
+  - `Header.tsx` — Cabeçalho fixo com detecção de scroll (>12px) para efeito glassmorphism e menu mobile drawer acessível.
+  - `Footer.tsx` — Rodapé com mapa de segmentos, links de contato, dados da marca e botão de políticas de privacidade.
+  - `FounderSection.tsx` — Seção institucional com foto, biografia, visão do diretor criativo Vini Cunha e equipamentos Nikon.
+  - `BeforeAfterSlider.tsx` — Slider interativo antes/depois com suporte a drag, touch, zoom e alternância de modos.
+  - `InfiniteCanvas.tsx` — Canvas espacial 360° com arrasto acelerado por GPU, inércia, zoom e minimap radar HUD.
+  - `PortfolioGrid.tsx` — Grid de portfólio com filtros por nicho, spotlight para vídeos e links para estudos de caso.
+  - `ServiceGrid.tsx` — Grid de serviços institucionais com cards interativos e linhas de acento no hover.
+  - `Gallery.tsx` / `ui/shared-element-gallery.tsx` — Galeria de imagens de alta resolução com Lightbox fullscreen em portal (Framer Motion).
+  - `CTASection.tsx` — Banner de conversão de alto impacto com fotografia de fundo e botões de alta legibilidade.
+  - `FAQAccordion.tsx` — Acordeão acessível de perguntas frequentes com animação de altura.
+  - `PrivacyModal.tsx` — Modal de termos de serviço e privacidade com foco gerenciado e tecla Escape.
+  - `WhatsAppFloat.tsx` — Botão flutuante direto de WhatsApp no canto inferior direito.
+  - `Logo.tsx` — Wordmark vetorial oficial com tipografia Righteous.
+  - `ScrollToTop.tsx` — Gerenciador de scroll em trocas de rotas e compensador de âncoras.
+  - `Reveal.tsx` — Observador de interseção para animações de entrada suaves com suporte a `prefers-reduced-motion`.
+- `src/pages/` — Páginas da aplicação:
+  - `Home.tsx` — Página inicial institucional completa com hero em vídeo full-bleed, nichos, serviços, timeline, fundador e CTAs.
+  - `About.tsx` — Página Sobre Nós dedicada com visão, manifesto, perfil de Vini Cunha, linha do tempo e câmeras Nikon.
+  - `Portfolio.tsx` — Página de portfólio com alternador de modo (Grid Tradicional vs. Canvas 360°).
+  - `CaseStudy.tsx` — Estudo de caso autoral detalhado com galeria técnica, ficha de produção, embeds de vídeo oficial e cases relacionados.
+  - `SegmentPage.tsx` — Landing pages completas para os 8 nichos de atuação com comparativo de mercado, serviços detalhados, modal, galeria e FAQ.
+  - `Diagnostico.tsx` — Formulário de briefing e onboarding guiado com validação em tempo real e redirecionamento para WhatsApp.
+  - `NotFound.tsx` — Página 404 personalizada e estilizada com links rápidos de recuperação.
+- `api/diagnostico.ts` — Endpoint serverless Vercel para envio seguro de e-mails de lead via Resend.
+- `scripts/` — Ferramentas de automação e validação:
+  - `emit-route-html.mjs` — Gerador SSG pós-build que injeta `<head>` estático e schemas em todos os 47 arquivos HTML.
+  - `verify-built-seo.mjs` — Validador de integridade das 47 rotas emitidas em `dist/`.
+- `tests/` — Infraestrutura de testes automatizados com suítes Tiers 1 a 5.
 
-## Interface Contracts
-### Route Resolution Contract (`App.tsx` ↔ `src/data/site.ts`)
-- `SEGMENTS`: Array<{ slug: string; name: string; title: string; subtitle: string; ... }>
-- `SEGMENT_ALIASES`: Record<string, string> mapeando aliases de URL para o slug canônico.
-- `PORTFOLIO`: Array<{ id: string; title: string; category: string; segment: string; caseSlug?: string; ... }>
-- Rotas inválidas em `/:slug` ou `/portfolio/:caseSlug` devem retornar `NotFound` sem travar a renderização.
+---
 
-### Diagnostic Form & API Contract (`Diagnostico.tsx` ↔ `/api/diagnostico.ts`)
-- Payload JSON: `{ nome: string, whatsapp: string, email: string, empresa?: string, cidade?: string, segmento?: string, tipo?: string, data?: string, uso?: string, objetivo?: string, investimento?: string, mensagem?: string, _gotcha?: string }`
-- Honeypot `_gotcha`: Se presente e não-vazio, resposta imediata `200 { ok: true }` sem disparo de e-mail.
-- Validação: Erro 400 se `nome`, `whatsapp` ou `email` estiverem ausentes ou e-mail inválido.
-- Sucesso: Redirecionamento formatado para WhatsApp `https://wa.me/5522997624631?text=...`.
+## 3. Inventário de Features
+
+| # | Feature | Descrição Técnica | Status |
+|---|---------|-------------------|--------|
+| 1 | Header Responsivo & Scroll Blur | Header fixo com logo, links de navegação, blur dinâmico (>12px) e CTA `bg-teal text-off` | ✅ Concluído |
+| 2 | Menu Mobile Drawer Acessível | Gaveta mobile com animação, aria-expanded, bloqueio de scroll no body e suporte a tecla Escape | ✅ Concluído |
+| 3 | Skip Link de Acessibilidade | Atalho no topo visível por teclado via Tab (`href="#main"`) | ✅ Concluído |
+| 4 | Scroll To Top & Anchor Offset | Reset de rolagem no topo em trocas de rota e compensação de altura do header em âncoras | ✅ Concluído |
+| 5 | Botão Flutuante WhatsApp | Botão fixo no canto inferior direito com link direto seguro e aria-label | ✅ Concluído |
+| 6 | Tokens & Tema Tailwind v4 | Variáveis de tema `@theme` (`ink`, `navy`, `teal`, `mist`, `off`) alinhadas ao DESIGN.md | ✅ Concluído |
+| 7 | Tipografia Self-Hosted WOFF2 | Fontes `Righteous`, `Outfit` e `DM Sans` renderizadas localmente sem fontes externas | ✅ Concluído |
+| 8 | Tipagem TypeScript Estrita | Compilação com `npx tsc --noEmit` sem qualquer erro de tipagem | ✅ Concluído |
+| 9 | Sincronização de Slugs & Sitemap | Alinhamento de rotas, slugs de cases e sitemap.xml canônico | ✅ Concluído |
+| 10 | Roteamento Dinâmico de 8 Segmentos | Suporte aos 8 nichos oficiais e aliases legados com resolução instantânea | ✅ Concluído |
+| 11 | Roteamento de 19 Cases de Portfólio | Suporte a rotas `/portfolio/:caseSlug` com galeria e ficha de produção | ✅ Concluído |
+| 12 | Página 404 Personalizada | Tratamento de rotas inexistentes com atalhos para todos os segmentos e HTTP 404 SSG | ✅ Concluído |
+| 13 | Hero Vídeo Full-Bleed | Hero em vídeo loop com autoplay, muted, playsInline, poster fallback e overlay escuro | ✅ Concluído |
+| 14 | Grid de Serviços Institucionais | Grid de 6 serviços com hover effects e linha de acento animada | ✅ Concluído |
+| 15 | Seletor de Segmentos Home | Cards dos 8 segmentos com aspect-[16/11] no mobile e aspect-[3/4] em desktop | ✅ Concluído |
+| 16 | Timeline do Método de Execução | Linha do tempo interativa com barra de progresso vertical reativa ao scroll | ✅ Concluído |
+| 17 | Filtros de Portfólio por Aba | Sistema de abas com `role="tablist"` e `aria-selected` para filtragem instantânea | ✅ Concluído |
+| 18 | Vídeo Destaque Artistas | Banner de vídeo integrado dinamicamente na aba de Artistas & Videoclipes | ✅ Concluído |
+| 19 | Landing Pages dos 8 Nichos | Páginas temáticas completas com comparativo, serviços, modal, cases e FAQ | ✅ Concluído |
+| 20 | Modal de Detalhes do Serviço | Modal interativo com foco acessível e touch targets de 44px+ | ✅ Concluído |
+| 21 | Galeria com Lightbox Fullscreen | Lightbox em portal com Framer Motion, drag-to-dismiss e tecla Escape | ✅ Concluído |
+| 22 | Acordeão de FAQ Acessível | Acordeão com expansão suave de perguntas e respostas | ✅ Concluído |
+| 23 | Estudo de Caso Individual | Página detalhada com galeria, ficha técnica e cases relacionados | ✅ Concluído |
+| 24 | Formulário de Diagnóstico Visual | Validação client-side em tempo real, honeypot anti-spam e aria-live de status | ✅ Concluído |
+| 25 | Gerador de Lead WhatsApp | Geração de URL formatada com dados completos do briefing para atendimento | ✅ Concluído |
+| 26 | Transmissão de Lead API Serverless | Endpoint `/api/diagnostico` com validação e envio via Resend | ✅ Concluído |
+| 27 | Injeção Dinâmica de SEO & JSON-LD | Hook `useSeo` atualizando metadados, canonical e schemas Schema.org | ✅ Concluído |
+| 28 | Auditoria Estrita de Contraste | Conformidade WCAG AA com `bg-teal text-off` em todos os botões e CTAs | ✅ Concluído |
+| 29 | Responsividade 360px a 4K | Zero overflow horizontal em todas as páginas, touch targets >= 44px | ✅ Concluído |
+| 30 | Build SSG de 47 Rotas Estáticas | `npm run build` gerando `dist/` e emitindo 47 rotas estáticas completas | ✅ Concluído |
+| 31 | Infinite Canvas 360° | Navegação espacial 360° em tela cheia com aceleração GPU, inércia e minimap radar HUD | ✅ Concluído |
+| 32 | Before/After Slider Interativo | Comparador de tratamento de imagem RAW vs Color Grading com especificações técnicas | ✅ Concluído |
+| 33 | Página Sobre Nós (`/sobre`) | Página com visão autoral, manifesto, biografia de Vini Cunha e equipamentos Nikon | ✅ Concluído |
+| 34 | Seção Founder (Vini Cunha) | Destaque do fundador, direção criativa, posicionamento e credenciais | ✅ Concluído |
+| 35 | Modal de Privacidade & Termos | Componente de transparência com políticas de uso acessíveis | ✅ Concluído |
+| 36 | Suíte de Testes E2E (Tiers 1-5) | 256 testes automatizados cobrindo todas as features e cenários com 100% de aprovação | ✅ Concluído |
+
+---
+
+## 4. Contratos de Dados & Interfaces
+
+### Contrato de Rotas e Segmentos (`src/data/site.ts`)
+- `SEGMENTS`: Lista dos 8 nichos canônicos (`ativacoes-eventos`, `moda-campanhas`, `artistas-videoclipes`, `posicionamento-profissional`, `imagem-pessoal-lifestyle`, `casamentos`, `gestantes`, `hotelaria-lifestyle`).
+- `SEGMENT_ALIASES`: Dicionário que mapeia aliases legados (ex: `/eventos`, `/moda`, `/posicionamento`) para os slugs canônicos.
+- `PORTFOLIO`: Coleção de 19 itens de portfólio catalogados com fotos locais em `public/images/`, categorias, slugs de cases e metadados.
+- `getSegment(slug)` e `getCase(caseSlug)`: Funções utilitárias seguras com tolerância a formatações e fallback limpo para `undefined` (acionando `NotFound`).
+
+### Contrato de Diagnóstico e API (`src/pages/Diagnostico.tsx` ↔ `api/diagnostico.ts`)
+- **Payload**:
+  ```json
+  {
+    "nome": "string",
+    "whatsapp": "string",
+    "email": "string",
+    "empresa": "string (opcional)",
+    "cidade": "string (opcional)",
+    "segmento": "string (opcional)",
+    "tipo": "string (opcional)",
+    "data": "string (opcional)",
+    "uso": "string (opcional)",
+    "objetivo": "string (opcional)",
+    "investimento": "string (opcional)",
+    "mensagem": "string (opcional)",
+    "_gotcha": "string (honeypot invisível)"
+  }
+  ```
+- **Honeypot `_gotcha`**: Se preenchido por robôs, a API responde `200 OK` silenciosamente sem disparar e-mail.
+- **Validação**: Rejeita requisições com campos obrigatórios ausentes (`nome`, `whatsapp`, `email`) ou e-mail inválido com status `400 Bad Request`. Limita payloads a 40KB (`413 Payload Too Large`).
+- **Sucesso no Cliente**: Exibe tela de confirmação e constrói link formatado para conversa no WhatsApp oficial `https://wa.me/5522997624631?text=...`.
+
+### Contrato de Metadados e SEO (`src/data/catalog-seo.json` / `scripts/emit-route-html.mjs`)
+- Cada rota mapeada possui: `title`, `description`, `canonicalPath`, `ogImage`, `robots` e schemas JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
+- Scripts validam a existência física de todas as imagens sociais em `public/` e conformidade canônica com `public/sitemap.xml`.

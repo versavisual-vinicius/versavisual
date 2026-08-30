@@ -1,68 +1,81 @@
-# figma-make-app
+# AGENTS.md — Guia de Desenvolvimento & Diretrizes Técnicas
 
-React + Vite + Tailwind CSS project running inside Figma Make.
-
-## Development Server
-
-A Vite development server is **already running** on `$PORT` (default 8443). You don't need to start it manually.
-
-- Preview URL: The user can access the running app through the preview panel
-- Hot reload: Changes to source files are reflected immediately
-
-## Project Structure
-
-This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
-
-- `src/main.tsx` - React entrypoint; imports `src/index.css` and mounts `src/App.tsx` into the `#root` element
-- `src/App.tsx` - Primary application component and the usual starting point for UI work
-- `src/index.css` - Global CSS entrypoint and Tailwind CSS v4 import
-- `index.html` - Vite HTML shell containing the `#root` element and loading `src/main.tsx`
-- `package.json` - Project dependencies and the Vite build, development, preview, and formatting scripts
-- `vite.config.ts` - Vite configuration with React, Tailwind CSS v4, and Figma Make plugins plus the `@` alias for `src`
-- `.mise.toml` - Toolchain versions for Node.js and pnpm
-
-## Dependencies
-
-- Runtime: React 19 and React DOM 19
-- Styling: Tailwind CSS v4 with the `@tailwindcss/vite` plugin
-- Build tooling: Vite 8, TypeScript 5.7, and `@vitejs/plugin-react`
-- Formatting: oxfmt
-
-## Styling
-
-This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin configured in `vite.config.ts`. `src/index.css` imports Tailwind with `@import 'tailwindcss';`. Use Tailwind utility classes directly in JSX and put global CSS or Tailwind v4 theme customization in `src/index.css`. This scaffold does not need a Tailwind config file or PostCSS config.
-
-`src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
-
-## Code quality
-
-- Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
-- Ensure JSX tags are closed and braces are balanced.
-- Export components as default exports.
+Este documento estabelece as diretrizes de código, arquitetura, padrões visuais e regras operacionais para qualquer agente de inteligência artificial ou desenvolvedor trabalhando no repositório **VERSAVISUAL Website**.
 
 ---
 
-# Diretrizes para Vini (VersaVisual)
+## 1. Visão Geral do Projeto & Stack
 
-## Perfil e Comunicação
-- Chame o usuário de **Vini** quando natural.
-- Responda sempre em **Português do Brasil (pt-BR)**.
-- Vini é fotógrafo, diretor criativo, fundador da **VersaVisual** e desenvolvedor de produtos, automações e operações digitais; usa Nikon e trabalha também no EventManager.
-- Comece sempre pelo resultado. Seja prático, claro, conciso e direto ao ponto.
-- Ao fornecer comandos, informe a pasta/ambiente (`Cwd`). Pergunte apenas quando necessário para a execução.
+- **Aplicação**: Website institucional, portfólio autoral e plataforma de posicionamento da **VERSAVISUAL**.
+- **Fundador & Diretor Criativo**: **Vinicius Cunha (Vini)** — Fotógrafo, diretor criativo, fundador da VersaVisual e desenvolvedor de automações e produtos digitais.
+- **Stack**: React 19, Vite 8, TypeScript 5.7, Tailwind CSS v4 (`@tailwindcss/vite`), Framer Motion 13, Lucide React.
+- **Roteamento**: React Router 7 (`react-router-dom`).
+- **Geração Estática**: Pré-renderização SSG de 47 rotas estáticas via `scripts/emit-route-html.mjs`.
 
-## Escopo e Boas Práticas
-- Entenda a arquitetura existente antes de implementar e preserve código não relacionado.
-- Priorize soluções limpas, visuais, econômicas e profissionais com Tailwind CSS e React.
-- Não introduza dependências desnecessárias ou serviços externos sem solicitação expressa.
-- Não exclua arquivos essenciais sem autorização.
+---
 
-## Padrões Técnicos e Identidade VersaVisual
-- **Equipamentos:** Câmera base **Nikon D780 Full Frame** e lentes **Nikkor** (85mm f/1.4G, 50mm f/1.4G, 24-70mm f/2.8).
-- **Color Science & Grading:** ACEScc / DaVinci Resolve, emulações de película (ex: Kodak 2383), Dodge & Burn manual e Separação de Frequências (microtexturas e tom de pele sem perda de textura natural).
-- **Estrutura de Cases (`beforeAfter.ts`):** Manter fidelidade ao schema `BeforeAfterItem` com especificações técnicas detalhadas (`specs`), categorias canônicas (`all`, `moda`, `retrato`, `videoclipe`, `lifestyle`) e filtros RAW calibrados.
-- **Mobile-first & Layout:** Cards compactos com `aspect-[16/11]` no mobile e `aspect-[3/4]` em `sm+`. Manter suporte a `objectPosition` em imagens com enquadramento específico.
-- **Assets e Imagens:** Armazenamento sob `public/images/`, centralizados via `src/lib/images.ts` e `src/data/site.ts`, sempre com textos alternativos semânticos.
-- **Curadoria e Segmentação de Imagens (`images.ts`):** Manter constantes isoladas para cada ensaio/campanha específica (ex: separar gestantes de ensaios autorais). Nunca agrupar fotos com propósitos visuais distintos no mesmo array base sem desmembramento semântico.
-- **Mídia e Vídeos de Artistas / Videoclipes:** Cases com videoclipes oficiais devem utilizar a estrutura `youtubeVideos` (com IDs e títulos corretos) para embeds dedicados em `CaseStudy.tsx`. Reservar `/videos/hero.mp4` para destaques institucionais globais ou do segmento, sem misturar com clipes independentes.
-- **Consistência de Testes e Rotas:** Sempre que novos cases, slugs ou grupos forem criados ou reorganizados em `site.ts`, sincronizar os utilitários de teste (`tests/utils/site-data.ts`, `domain-helpers.ts`) e o `sitemap.xml`.
+## 2. Comunicação & Diretrizes de Atuação
+
+- **Tratamento**: Chame o usuário de **Vini** de forma natural e profissional.
+- **Idioma**: Responda SEMPRE em **Português do Brasil (pt-BR)**.
+- **Estilo**: Comece pelo resultado. Seja conciso, direto ao ponto, técnico e orientado à ação prática sem enrolação.
+- **Terminal & Execução**: Sempre informe o diretório correto (`Cwd`) ao propor comandos. Valide alterações com testes e verificação de tipos antes de concluir a tarefa.
+
+---
+
+## 3. Padrões Técnicos & Identidade VersaVisual
+
+### 3.1. Equipamentos & Filosofia de Imagem
+- **Câmeras & Ópticas**: Equipamento base **Nikon D780 Full Frame** e lentes **Nikkor** prime/zoom (85mm f/1.4G, 50mm f/1.4G, 24-70mm f/2.8).
+- **Color Science & Retouching**: ACEScc / DaVinci Resolve, emulações de película (ex: Kodak 2383), Dodge & Burn manual e Separação de Frequências (preservação de microtexturas e tons de pele naturais sem suavização artificial).
+
+### 3.2. Estrutura de Dados e Assets
+- **Centralização de Dados**: Todo o conteúdo institucional, nichos, cases e depoimentos residem em `src/data/site.ts`, `src/data/beforeAfter.ts` e `src/data/catalog-seo.json`.
+- **Assets de Imagem**: Todas as fotos ficam armazenadas localmente sob `public/images/` e são resolvidas via helper seguro `src/lib/images.ts`. Nunca depender de imagens externas ou Unsplash.
+- **Segregação de Ensaios (`images.ts`)**: Manter constantes isoladas para cada ensaio/campanha específica. Nunca misturar fotos com propósitos distintos em um mesmo array genérico.
+- **Mídia em Vídeo**: Videoclipes de artistas devem usar a estrutura `youtubeVideos` (com IDs e títulos corretos) para embeds dedicados em `CaseStudy.tsx`. Reservar `/videos/hero.mp4` para destaques institucionais globais ou do segmento.
+
+### 3.3. Design System & Contraste
+- **Tokens**: `ink: #050A0D`, `navy: #253540`, `teal: #5E7F8C`, `teal-400: #70909C`, `mist: #A4B8BF`, `off: #F2F2F2`.
+- **Regra de Contraste**: Botões e CTAs com fundo `bg-teal` DEVEM OBRIGATORIAMENTE ter texto `text-off`. Nunca utilizar `text-ink` ou `text-navy` sobre `bg-teal`.
+- **Tipografia**: Fontes locais em WOFF2 sem dependências externas (`Righteous`, `Outfit`, `DM Sans`).
+
+### 3.4. Ergonomia Mobile
+- Cards de segmentos usam `aspect-[16/11]` no mobile e `aspect-[3/4]` a partir de `sm`.
+- Touch targets mínimos de **44x44px** em todos os botões e áreas interativas.
+- Zero overflow horizontal em todas as larguras de tela (de 360px a 4K).
+
+---
+
+## 4. Roteamento, SEO e SSG
+
+- O sitemap canônico reside em `public/sitemap.xml`.
+- O catálogo de SEO com títulos, descrições e schemas JSON-LD reside em `src/data/catalog-seo.json`.
+- Sempre que novas rotas, nichos ou cases forem adicionados ou renomeados:
+  1. Atualizar `src/data/site.ts` com os novos slugs e dados.
+  2. Atualizar `src/data/catalog-seo.json` e `src/data/seo-routes.json`.
+  3. Atualizar `public/sitemap.xml`.
+  4. Atualizar os utilitários de teste em `tests/utils/site-data.ts`.
+  5. Rodar `npm run build` e validar a emissão com `node scripts/verify-built-seo.mjs`.
+
+---
+
+## 5. Fluxo de Verificação & Testes
+
+Antes de finalizar qualquer alteração no código:
+```bash
+# 1. Checagem estrita de tipos
+npx tsc --noEmit
+
+# 2. Build de produção e emissão SSG das 47 rotas estáticas
+npm run build
+
+# 3. Validação dos arquivos HTML gerados
+node scripts/verify-built-seo.mjs
+
+# 4. Execução da suíte completa de testes E2E (230 testes)
+npx tsx tests/run-all.ts
+
+# 5. Execução do Tier 5 de testes adversariais (26 testes)
+npx tsx tests/tier5-adversarial-hardening.ts
+```

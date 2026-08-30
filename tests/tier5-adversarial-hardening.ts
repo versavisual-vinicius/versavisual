@@ -571,8 +571,8 @@ export async function runTier5AdversarialHardeningTests() {
       }
     })
 
-    test("T5.3.3: All 20 Portfolio items have valid categories, parent segments, and existing local photos", () => {
-      expect(PORTFOLIO).toHaveLength(20)
+    test("T5.3.3: All 19 Portfolio items have valid categories, parent segments, and existing local photos", () => {
+      expect(PORTFOLIO).toHaveLength(19)
 
       const validSegmentSlugs = new Set(SEGMENTS.map((s) => s.slug))
 
@@ -720,10 +720,10 @@ export async function runTier5AdversarialHardeningTests() {
       const allRouteHtmlFiles = getHtmlFiles(distDir).filter(
         (f) => !f.includes("image-review.html"),
       )
-      expect(allRouteHtmlFiles.length).toBe(44)
+      expect(allRouteHtmlFiles.length).toBe(47)
     })
 
-    test("T5.5.2: Every one of the 43 HTML files satisfies strict structural integrity", () => {
+    test("T5.5.2: Every one of the 47 HTML files satisfies strict structural integrity", () => {
       const distDir = path.join(PROJECT_ROOT, "dist")
 
       function checkDir(dir: string) {
