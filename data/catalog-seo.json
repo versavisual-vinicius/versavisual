@@ -1,0 +1,724 @@
+{
+  "segments": [
+    {
+      "slug": "ativacoes-eventos",
+      "navTitle": "Ativações & Eventos",
+      "title": "Fotografia e Vídeo para Ativações de Marca e Eventos Corporativos | VERSAVISUAL",
+      "description": "Cobertura audiovisual para ativações, feiras, lançamentos e eventos corporativos com fotografia, vídeo, storymaking em tempo real e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Brasil",
+      "seoTitle": "Fotografia e Vídeo para Ativações de Marca e Eventos Corporativos | VERSAVISUAL",
+      "seoDesc": "Cobertura audiovisual para ativações, feiras, lançamentos e eventos corporativos com fotografia, vídeo, storymaking em tempo real e direção visual.",
+      "canonicalPath": "/ativacoes-eventos",
+      "image": "/images/Ativações & Eventos - Camarote Ondina/Camarote-Ondina-Salvador-Bahia-Carnaval3.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês entregam conteúdo durante o evento?",
+          "a": "Sim. O storymaking em tempo real é parte central do serviço — publicamos stories, reels e posts enquanto a ativação acontece, alinhados ao tom da marca."
+        },
+        {
+          "q": "Atendem fora do Rio de Janeiro?",
+          "a": "Sim. A operação é nacional — vamos onde a história acontece. Logística e equipe são dimensionadas no briefing."
+        },
+        {
+          "q": "Qual o prazo de entrega do material editado?",
+          "a": "Conteúdo em tempo real sai durante o evento. O material editado completo é definido em briefing conforme o uso — normalmente entre 3 e 10 dias úteis."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "moda-campanhas",
+      "navTitle": "Moda & Campanhas",
+      "title": "Fotografia de Moda, Beauty e Campanhas para Marcas | VERSAVISUAL",
+      "description": "Direção criativa, fotografia editorial, beauty, lifestyle, fashion film e campanhas para marcas de moda, beleza e lifestyle.",
+      "category": "Moda & Campanhas",
+      "city": "Brasil",
+      "seoTitle": "Fotografia de Moda, Beauty e Campanhas para Marcas | VERSAVISUAL",
+      "seoDesc": "Direção criativa, fotografia editorial, beauty, lifestyle, fashion film e campanhas para marcas de moda, beleza e lifestyle.",
+      "canonicalPath": "/moda-campanhas",
+      "image": "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT27.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês fazem direção criativa ou só fotografam?",
+          "a": "Fazemos direção criativa completa — conceito, referências, styling e linguagem visual. A fotografia é a execução de uma estratégia, não um clique isolado."
+        },
+        {
+          "q": "Atendem e-commerce e catálogo?",
+          "a": "Sim. Produzimos desde editorial de campanha até lifestyle de produto e imagens para e-commerce, com tratamento coeso entre os materiais."
+        },
+        {
+          "q": "Fazem fashion film?",
+          "a": "Sim. Produzimos vídeo de moda e campanha para redes e mídia paga, com a mesma direção visual da fotografia."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "artistas-videoclipes",
+      "navTitle": "Artistas & Videoclipes",
+      "title": "Videoclipes, Fotografia e Conteúdo para Artistas | VERSAVISUAL",
+      "description": "Direção e produção audiovisual para artistas, shows, videoclipes, press kits, teasers, making of e conteúdo para redes.",
+      "category": "Artistas & Videoclipes",
+      "city": "Brasil",
+      "seoTitle": "Videoclipes, Fotografia e Conteúdo para Artistas | VERSAVISUAL",
+      "seoDesc": "Direção e produção audiovisual para artistas, shows, videoclipes, press kits, teasers, making of e conteúdo para redes.",
+      "canonicalPath": "/artistas-videoclipes",
+      "image": "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo8.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês produzem o clipe do conceito à entrega?",
+          "a": "Sim. Fazemos conceito, roteiro, direção, captação e pós-produção do videoclipe, além do material de divulgação."
+        },
+        {
+          "q": "Fazem cobertura de shows e turnê?",
+          "a": "Sim. Cobrimos shows e turnês com registro de palco, bastidor e público, entregando vídeo e fotografia."
+        },
+        {
+          "q": "Entregam conteúdo para redes além do clipe?",
+          "a": "Sim. Teaser, making of e cortes verticais fazem parte do pacote para sustentar o lançamento nas plataformas."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "posicionamento-profissional",
+      "navTitle": "Posicionamento Profissional",
+      "title": "Fotografia de Posicionamento para Profissionais e Clínicas | VERSAVISUAL",
+      "description": "Retratos corporativos, vídeo institucional e direção visual para profissionais, clínicas, equipes e marcas pessoais.",
+      "category": "Posicionamento Profissional",
+      "city": "Brasil",
+      "seoTitle": "Fotografia de Posicionamento para Profissionais e Clínicas | VERSAVISUAL",
+      "seoDesc": "Retratos corporativos, vídeo institucional e direção visual para profissionais, clínicas, equipes e marcas pessoais.",
+      "canonicalPath": "/posicionamento-profissional",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Street/Ensaio-street1.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Atendem clínicas e equipes, não só indivíduos?",
+          "a": "Sim. Produzimos retratos individuais, de equipe e registro de ambiente para clínicas e consultórios."
+        },
+        {
+          "q": "Fazem vídeo institucional além de foto?",
+          "a": "Sim. Produzimos vídeo de apresentação e conteúdo de autoridade alinhados à identidade visual."
+        },
+        {
+          "q": "A sessão é dirigida? Não sou modelo.",
+          "a": "Totalmente dirigida. Conduzimos pose, expressão e luz — você não precisa saber posar, nós conduzimos."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "imagem-pessoal-lifestyle",
+      "navTitle": "Imagem Pessoal & Lifestyle",
+      "title": "Ensaio Fotográfico Lifestyle e Imagem Pessoal | VERSAVISUAL",
+      "description": "Ensaio fotográfico com direção de pose, luz natural e estética pessoal para Instagram, autoestima, perfil pessoal e momentos de vida.",
+      "category": "Imagem Pessoal & Lifestyle",
+      "city": "Brasil",
+      "seoTitle": "Ensaio Fotográfico Lifestyle e Imagem Pessoal | VERSAVISUAL",
+      "seoDesc": "Ensaio fotográfico com direção de pose, luz natural e estética pessoal para Instagram, autoestima, perfil pessoal e momentos de vida.",
+      "canonicalPath": "/imagem-pessoal-lifestyle",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Eu nunca fiz ensaio. Vocês dirigem tudo?",
+          "a": "Sim. A sessão é totalmente dirigida: pose, expressão, movimento e ritmo. Você não precisa chegar sabendo o que fazer."
+        },
+        {
+          "q": "Serve para fotos de Instagram?",
+          "a": "Sim. Pensamos a entrega para perfil, feed, stories e presença digital, sem deixar a imagem artificial."
+        },
+        {
+          "q": "Pode ser um ensaio sem objetivo profissional?",
+          "a": "Pode. O ensaio pode ser por autoestima, aniversário, fase nova, dating profile ou simplesmente para se ver bem."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "casamentos",
+      "navTitle": "Casamentos",
+      "title": "Fotografia e Vídeo de Casamento com Direção Sensível | VERSAVISUAL",
+      "description": "Cobertura de casamento com fotografia, filme, making of, cerimônia, festa, retratos do casal e curadoria de entrega.",
+      "category": "Casamentos",
+      "city": "Brasil",
+      "seoTitle": "Fotografia e Vídeo de Casamento com Direção Sensível | VERSAVISUAL",
+      "seoDesc": "Cobertura de casamento com fotografia, filme, making of, cerimônia, festa, retratos do casal e curadoria de entrega.",
+      "canonicalPath": "/casamentos",
+      "image": "/images/Casamentos/CASAMENTO8.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês dirigem os retratos do casal?",
+          "a": "Sim. A direção é leve e natural, para o casal se sentir confortável sem perder espontaneidade."
+        },
+        {
+          "q": "Fazem foto e vídeo no mesmo pacote?",
+          "a": "Sim. Montamos cobertura integrada de fotografia e vídeo conforme o tamanho do casamento e os momentos prioritários."
+        },
+        {
+          "q": "Atendem mini wedding e casamento ao ar livre?",
+          "a": "Sim. A linguagem funciona muito bem para celebrações íntimas, externas e destination weddings."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico entendemos data, local, duração, número de convidados e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "gestantes",
+      "navTitle": "Gestantes",
+      "title": "Ensaio Gestante com Direção Natural e Sensível | VERSAVISUAL",
+      "description": "Fotografia de maternidade com direção de pose, luz natural, família, beauty natural e entrega para memória, álbum e redes.",
+      "category": "Gestantes",
+      "city": "Brasil",
+      "seoTitle": "Ensaio Gestante com Direção Natural e Sensível | VERSAVISUAL",
+      "seoDesc": "Fotografia de maternidade com direção de pose, luz natural, família, beauty natural e entrega para memória, álbum e redes.",
+      "canonicalPath": "/gestantes",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral23.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Qual o melhor período para fazer o ensaio?",
+          "a": "Geralmente entre 28 e 34 semanas, mas ajustamos conforme conforto, saúde e intenção visual da gestante."
+        },
+        {
+          "q": "Eu não sei posar. Vocês dirigem?",
+          "a": "Sim. A sessão é totalmente dirigida com cuidado para corpo, mãos, olhar e movimento."
+        },
+        {
+          "q": "Pode incluir família?",
+          "a": "Pode. Parceiro, filhos e vínculos importantes podem entrar no ensaio de forma natural."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    },
+    {
+      "slug": "hotelaria-lifestyle",
+      "navTitle": "Hotelaria & Lifestyle",
+      "title": "Fotografia e Vídeo Lifestyle para Hotéis e Experiências | VERSAVISUAL",
+      "description": "Produção audiovisual para hotéis, pousadas, resorts, gastronomia, turismo e experiências com foco em desejo, atmosfera e conversão.",
+      "category": "Hotelaria & Lifestyle",
+      "city": "Brasil",
+      "seoTitle": "Fotografia e Vídeo Lifestyle para Hotéis e Experiências | VERSAVISUAL",
+      "seoDesc": "Produção audiovisual para hotéis, pousadas, resorts, gastronomia, turismo e experiências com foco em desejo, atmosfera e conversão.",
+      "canonicalPath": "/hotelaria-lifestyle",
+      "image": "/images/Hotelaria & Lifestyle/Hotelaria-life-style2.jpg",
+      "ogType": "website",
+      "robots": "index, follow, max-image-preview:large",
+      "faqs": [
+        {
+          "q": "Vocês produzem para site e OTAs (Booking, Airbnb)?",
+          "a": "Sim. Entregamos imagens nos formatos certos para site próprio, OTAs e mídia, com tratamento coeso."
+        },
+        {
+          "q": "Fotografam gastronomia além do espaço?",
+          "a": "Sim. Gastronomia, bar e experiências fazem parte do pacote, com foco em desejo e detalhe."
+        },
+        {
+          "q": "Conseguem captar com hóspedes no local?",
+          "a": "Sim. Trabalhamos com momento real e direção discreta, respeitando a operação e a privacidade."
+        },
+        {
+          "q": "Como funciona o orçamento?",
+          "a": "Pelo diagnóstico visual entendemos escopo, diárias de captação e entregáveis, e montamos uma proposta por faixa de investimento."
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "slug": "ativacao-drinkball",
+      "caseTitle": "Lançamento Drinkball — APAS Show com Gkay",
+      "title": "Lançamento Drinkball — APAS Show com Gkay — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Lançamento Drinkball — APAS Show com Gkay em São Paulo · SP. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "São Paulo · SP",
+      "seoTitle": "Lançamento Drinkball — APAS Show com Gkay — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Lançamento Drinkball — APAS Show com Gkay em São Paulo · SP. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ativacao-drinkball",
+      "image": "/images/Ativações & Eventos - Lançamento Drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "lancamento-drinkball",
+      "caseTitle": "Lançamento Drinkball — APAS Show com Gkay",
+      "title": "Lançamento Drinkball — APAS Show com Gkay — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Lançamento Drinkball — APAS Show com Gkay em São Paulo · SP. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "São Paulo · SP",
+      "seoTitle": "Lançamento Drinkball — APAS Show com Gkay — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Lançamento Drinkball — APAS Show com Gkay em São Paulo · SP. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/lancamento-drinkball",
+      "image": "/images/Ativações & Eventos - Lançamento Drinkball/Lanc_amentto-DrinkBall-Apas-Feira-Sa_o-Paulo-Gessika-Gkay1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "carnaval-de-rua-experiencia-publico",
+      "caseTitle": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD)",
+      "title": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/carnaval-de-rua-experiencia-publico",
+      "image": "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "megabloco-cha-da-alice",
+      "caseTitle": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD)",
+      "title": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Megabloco Chá da Alice — Babado Novo & Christian Chávez (RBD) em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/megabloco-cha-da-alice",
+      "image": "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "evento-fjt-palco-camarote",
+      "caseTitle": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações",
+      "title": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Festival de Jeans de Toritama (FJT) — Passarela & Ativações em Toritama · PE. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Toritama · PE",
+      "seoTitle": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Festival de Jeans de Toritama (FJT) — Passarela & Ativações em Toritama · PE. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/evento-fjt-palco-camarote",
+      "image": "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "festival-jeans-toritama",
+      "caseTitle": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações",
+      "title": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Festival de Jeans de Toritama (FJT) — Passarela & Ativações em Toritama · PE. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Toritama · PE",
+      "seoTitle": "Festival de Jeans de Toritama (FJT) — Passarela & Ativações — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Festival de Jeans de Toritama (FJT) — Passarela & Ativações em Toritama · PE. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/festival-jeans-toritama",
+      "image": "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "fjt-fashion-desfile-colecoes",
+      "caseTitle": "FJT Fashion — Desfile & Coleções",
+      "title": "FJT Fashion — Desfile & Coleções — Moda & Campanhas | VERSAVISUAL",
+      "description": "Case FJT Fashion — Desfile & Coleções em Toritama · PE. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Moda & Campanhas",
+      "city": "Toritama · PE",
+      "seoTitle": "FJT Fashion — Desfile & Coleções — Moda & Campanhas | VERSAVISUAL",
+      "seoDesc": "Case FJT Fashion — Desfile & Coleções em Toritama · PE. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/fjt-fashion-desfile-colecoes",
+      "image": "/images/Moda & Campanhas - Festival Jeans Toritama/Festival-de-Jeans-de-toritama-FJT16.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "festival-bon-cobertura-corporativa",
+      "caseTitle": "Bonfim House — Cobertura Corporativa",
+      "title": "Bonfim House — Cobertura Corporativa — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Bonfim House — Cobertura Corporativa em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Salvador · BA",
+      "seoTitle": "Bonfim House — Cobertura Corporativa — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Bonfim House — Cobertura Corporativa em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/festival-bon-cobertura-corporativa",
+      "image": "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "camarote-ondina-salvador",
+      "caseTitle": "Camarote Ondina — Carnaval de Salvador",
+      "title": "Camarote Ondina — Carnaval de Salvador — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Camarote Ondina — Carnaval de Salvador em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Salvador · BA",
+      "seoTitle": "Camarote Ondina — Carnaval de Salvador — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Camarote Ondina — Carnaval de Salvador em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/camarote-ondina-salvador",
+      "image": "/images/Ativações & Eventos - Camarote Ondina/Camarote-Ondina-Salvador-Bahia-Carnaval1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "symbh-evento-corporativo",
+      "caseTitle": "Syn Ice — Feiras Super Minas e Super Bahia",
+      "title": "Syn Ice — Feiras Super Minas e Super Bahia — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Syn Ice — Feiras Super Minas e Super Bahia em Belo Horizonte · MG / Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Belo Horizonte · MG / Salvador · BA",
+      "seoTitle": "Syn Ice — Feiras Super Minas e Super Bahia — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Syn Ice — Feiras Super Minas e Super Bahia em Belo Horizonte · MG / Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/symbh-evento-corporativo",
+      "image": "/images/Ativações & Eventos - Syn Ice/Syn-ice-Feira-super-minas-super-bahia1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "syn-ice-camarote",
+      "caseTitle": "Syn Ice — Feiras Super Minas e Super Bahia",
+      "title": "Syn Ice — Feiras Super Minas e Super Bahia — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Syn Ice — Feiras Super Minas e Super Bahia em Belo Horizonte · MG / Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Belo Horizonte · MG / Salvador · BA",
+      "seoTitle": "Syn Ice — Feiras Super Minas e Super Bahia — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Syn Ice — Feiras Super Minas e Super Bahia em Belo Horizonte · MG / Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/syn-ice-camarote",
+      "image": "/images/Ativações & Eventos - Syn Ice/Syn-ice-Feira-super-minas-super-bahia1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "fashion-week-passarela-bastidor",
+      "caseTitle": "Fashion Manners — Editorial de Moda & Passarela",
+      "title": "Fashion Manners — Editorial de Moda & Passarela — Moda & Campanhas | VERSAVISUAL",
+      "description": "Case Fashion Manners — Editorial de Moda & Passarela em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Moda & Campanhas",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Fashion Manners — Editorial de Moda & Passarela — Moda & Campanhas | VERSAVISUAL",
+      "seoDesc": "Case Fashion Manners — Editorial de Moda & Passarela em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/fashion-week-passarela-bastidor",
+      "image": "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "fashion-manners-editorial",
+      "caseTitle": "Fashion Manners — Editorial de Moda & Passarela",
+      "title": "Fashion Manners — Editorial de Moda & Passarela — Moda & Campanhas | VERSAVISUAL",
+      "description": "Case Fashion Manners — Editorial de Moda & Passarela em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Moda & Campanhas",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Fashion Manners — Editorial de Moda & Passarela — Moda & Campanhas | VERSAVISUAL",
+      "seoDesc": "Case Fashion Manners — Editorial de Moda & Passarela em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/fashion-manners-editorial",
+      "image": "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "editorial-lifestyle-campanha",
+      "caseTitle": "Moda Santa Lolla — Editorial e Campanha",
+      "title": "Moda Santa Lolla — Editorial e Campanha — Moda & Campanhas | VERSAVISUAL",
+      "description": "Case Moda Santa Lolla — Editorial e Campanha em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Moda & Campanhas",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Moda Santa Lolla — Editorial e Campanha — Moda & Campanhas | VERSAVISUAL",
+      "seoDesc": "Case Moda Santa Lolla — Editorial e Campanha em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/editorial-lifestyle-campanha",
+      "image": "/images/Moda & Campanhas - Santa Lolla/Moda-Santalola1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "moda-santalola-verao",
+      "caseTitle": "Moda Santa Lolla — Editorial e Campanha",
+      "title": "Moda Santa Lolla — Editorial e Campanha — Moda & Campanhas | VERSAVISUAL",
+      "description": "Case Moda Santa Lolla — Editorial e Campanha em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Moda & Campanhas",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Moda Santa Lolla — Editorial e Campanha — Moda & Campanhas | VERSAVISUAL",
+      "seoDesc": "Case Moda Santa Lolla — Editorial e Campanha em Rio de Janeiro · RJ. Projeto de moda & campanhas produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/moda-santalola-verao",
+      "image": "/images/Moda & Campanhas - Santa Lolla/Moda-Santalola1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "loja-frida-sao-joao",
+      "caseTitle": "Loja Frida — São João & Experiência de Marca",
+      "title": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/loja-frida-sao-joao",
+      "image": "/images/Posicionamento Profissional - Loja Frida/Loja-Frida1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "loja-frida-campanha",
+      "caseTitle": "Loja Frida — São João & Experiência de Marca",
+      "title": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/loja-frida-campanha",
+      "image": "/images/Posicionamento Profissional - Loja Frida/Loja-Frida1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "e-o-tchan-jogadinha",
+      "caseTitle": "É O Tchan — Clipe Jogadinha",
+      "title": "É O Tchan — Clipe Jogadinha — Artistas & Videoclipes | VERSAVISUAL",
+      "description": "Case É O Tchan — Clipe Jogadinha em Brasil / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Artistas & Videoclipes",
+      "city": "Brasil / Salvador · BA",
+      "seoTitle": "É O Tchan — Clipe Jogadinha — Artistas & Videoclipes | VERSAVISUAL",
+      "seoDesc": "Case É O Tchan — Clipe Jogadinha em Brasil / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/e-o-tchan-jogadinha",
+      "image": "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Capa-clipe-e-o-tchan-jogadinha.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "videoclipes-oficiais-e-o-tchan-babado-novo",
+      "caseTitle": "É O Tchan — Clipe Jogadinha",
+      "title": "É O Tchan — Clipe Jogadinha — Artistas & Videoclipes | VERSAVISUAL",
+      "description": "Case É O Tchan — Clipe Jogadinha em Brasil / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Artistas & Videoclipes",
+      "city": "Brasil / Salvador · BA",
+      "seoTitle": "É O Tchan — Clipe Jogadinha — Artistas & Videoclipes | VERSAVISUAL",
+      "seoDesc": "Case É O Tchan — Clipe Jogadinha em Brasil / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/videoclipes-oficiais-e-o-tchan-babado-novo",
+      "image": "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Capa-clipe-e-o-tchan-jogadinha.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "babado-novo-sururu",
+      "caseTitle": "Babado Novo — Clipe Sururu & Backstage",
+      "title": "Babado Novo — Clipe Sururu & Backstage — Artistas & Videoclipes | VERSAVISUAL",
+      "description": "Case Babado Novo — Clipe Sururu & Backstage em Rio de Janeiro · RJ / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Artistas & Videoclipes",
+      "city": "Rio de Janeiro · RJ / Salvador · BA",
+      "seoTitle": "Babado Novo — Clipe Sururu & Backstage — Artistas & Videoclipes | VERSAVISUAL",
+      "seoDesc": "Case Babado Novo — Clipe Sururu & Backstage em Rio de Janeiro · RJ / Salvador · BA. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/babado-novo-sururu",
+      "image": "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo10.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "babado-novo-christian-chavez",
+      "caseTitle": "Megabloco Babado Novo & Christian Chávez — Performance",
+      "title": "Megabloco Babado Novo & Christian Chávez — Performance — Artistas & Videoclipes | VERSAVISUAL",
+      "description": "Case Megabloco Babado Novo & Christian Chávez — Performance em Rio de Janeiro · RJ. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Artistas & Videoclipes",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Megabloco Babado Novo & Christian Chávez — Performance — Artistas & Videoclipes | VERSAVISUAL",
+      "seoDesc": "Case Megabloco Babado Novo & Christian Chávez — Performance em Rio de Janeiro · RJ. Projeto de artistas & videoclipes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/babado-novo-christian-chavez",
+      "image": "/images/Ativações & Eventos - Mega Bloco Chá da Alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval10.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "retratos-posicionamento-marca-pessoal",
+      "caseTitle": "Retratos de Posicionamento — Presença e Marca Pessoal",
+      "title": "Retratos de Posicionamento — Presença e Marca Pessoal — Posicionamento Profissional | VERSAVISUAL",
+      "description": "Case Retratos de Posicionamento — Presença e Marca Pessoal em Rio de Janeiro · RJ / São Paulo · SP. Projeto de posicionamento profissional produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Posicionamento Profissional",
+      "city": "Rio de Janeiro · RJ / São Paulo · SP",
+      "seoTitle": "Retratos de Posicionamento — Presença e Marca Pessoal — Posicionamento Profissional | VERSAVISUAL",
+      "seoDesc": "Case Retratos de Posicionamento — Presença e Marca Pessoal em Rio de Janeiro · RJ / São Paulo · SP. Projeto de posicionamento profissional produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/retratos-posicionamento-marca-pessoal",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Street/Ensaio-street1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "ensaio-autoral-lifestyle-instagram",
+      "caseTitle": "Ensaio Autoral — Lifestyle e Retratos para Redes",
+      "title": "Ensaio Autoral — Lifestyle e Retratos para Redes — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "description": "Case Ensaio Autoral — Lifestyle e Retratos para Redes em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Imagem Pessoal & Lifestyle",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Ensaio Autoral — Lifestyle e Retratos para Redes — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "seoDesc": "Case Ensaio Autoral — Lifestyle e Retratos para Redes em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ensaio-autoral-lifestyle-instagram",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "ensaio-autoral-estudio",
+      "caseTitle": "Ensaio Autoral — Lifestyle e Retratos para Redes",
+      "title": "Ensaio Autoral — Lifestyle e Retratos para Redes — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "description": "Case Ensaio Autoral — Lifestyle e Retratos para Redes em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Imagem Pessoal & Lifestyle",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Ensaio Autoral — Lifestyle e Retratos para Redes — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "seoDesc": "Case Ensaio Autoral — Lifestyle e Retratos para Redes em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ensaio-autoral-estudio",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "ensaio-street-sp",
+      "caseTitle": "Retratos Urbanos — Street & Presença",
+      "title": "Retratos Urbanos — Street & Presença — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "description": "Case Retratos Urbanos — Street & Presença em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Imagem Pessoal & Lifestyle",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Retratos Urbanos — Street & Presença — Imagem Pessoal & Lifestyle | VERSAVISUAL",
+      "seoDesc": "Case Retratos Urbanos — Street & Presença em Rio de Janeiro · RJ. Projeto de imagem pessoal & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ensaio-street-sp",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Street/Ensaio-street3.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "ensaio-feminino-frida",
+      "caseTitle": "Loja Frida — São João & Experiência de Marca",
+      "title": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Loja Frida — São João & Experiência de Marca — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Loja Frida — São João & Experiência de Marca em Rio de Janeiro · RJ. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ensaio-feminino-frida",
+      "image": "/images/Posicionamento Profissional - Loja Frida/Loja-Frida1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "casamento-ao-ar-livre",
+      "caseTitle": "Casamento ao Ar Livre — Memória e Afeto",
+      "title": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "description": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Casamentos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "seoDesc": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/casamento-ao-ar-livre",
+      "image": "/images/Casamentos/CASAMENTO1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "casamento-destination-wedding",
+      "caseTitle": "Casamento ao Ar Livre — Memória e Afeto",
+      "title": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "description": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Casamentos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "seoDesc": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/casamento-destination-wedding",
+      "image": "/images/Casamentos/CASAMENTO1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "casamento-urbano-contemporaneo",
+      "caseTitle": "Casamento ao Ar Livre — Memória e Afeto",
+      "title": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "description": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Casamentos",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Casamento ao Ar Livre — Memória e Afeto — Casamentos | VERSAVISUAL",
+      "seoDesc": "Case Casamento ao Ar Livre — Memória e Afeto em Rio de Janeiro · RJ. Projeto de casamentos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/casamento-urbano-contemporaneo",
+      "image": "/images/Casamentos/CASAMENTO1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "ensaio-gestante-praia",
+      "caseTitle": "Ensaio Gestante — Corpo, Praia e Memória",
+      "title": "Ensaio Gestante — Corpo, Praia e Memória — Gestantes | VERSAVISUAL",
+      "description": "Case Ensaio Gestante — Corpo, Praia e Memória em Rio de Janeiro · RJ. Projeto de gestantes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Gestantes",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Ensaio Gestante — Corpo, Praia e Memória — Gestantes | VERSAVISUAL",
+      "seoDesc": "Case Ensaio Gestante — Corpo, Praia e Memória em Rio de Janeiro · RJ. Projeto de gestantes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/ensaio-gestante-praia",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral3.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "maternidade-ensaio-intimo",
+      "caseTitle": "Ensaio Gestante — Corpo, Praia e Memória",
+      "title": "Ensaio Gestante — Corpo, Praia e Memória — Gestantes | VERSAVISUAL",
+      "description": "Case Ensaio Gestante — Corpo, Praia e Memória em Rio de Janeiro · RJ. Projeto de gestantes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Gestantes",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Ensaio Gestante — Corpo, Praia e Memória — Gestantes | VERSAVISUAL",
+      "seoDesc": "Case Ensaio Gestante — Corpo, Praia e Memória em Rio de Janeiro · RJ. Projeto de gestantes produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/maternidade-ensaio-intimo",
+      "image": "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral3.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "hotelaria-espacos-cafe-spa",
+      "caseTitle": "Hotelaria Lifestyle — Experiências e Atmosfera",
+      "title": "Hotelaria Lifestyle — Experiências e Atmosfera — Hotelaria & Lifestyle | VERSAVISUAL",
+      "description": "Case Hotelaria Lifestyle — Experiências e Atmosfera em Rio de Janeiro · RJ. Projeto de hotelaria & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Hotelaria & Lifestyle",
+      "city": "Rio de Janeiro · RJ",
+      "seoTitle": "Hotelaria Lifestyle — Experiências e Atmosfera — Hotelaria & Lifestyle | VERSAVISUAL",
+      "seoDesc": "Case Hotelaria Lifestyle — Experiências e Atmosfera em Rio de Janeiro · RJ. Projeto de hotelaria & lifestyle produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/hotelaria-espacos-cafe-spa",
+      "image": "/images/Hotelaria & Lifestyle/Hotelaria-life-style1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    {
+      "slug": "bonfim-house-boutique",
+      "caseTitle": "Bonfim House — Cobertura Corporativa",
+      "title": "Bonfim House — Cobertura Corporativa — Ativações & Eventos | VERSAVISUAL",
+      "description": "Case Bonfim House — Cobertura Corporativa em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "category": "Ativações & Eventos",
+      "city": "Salvador · BA",
+      "seoTitle": "Bonfim House — Cobertura Corporativa — Ativações & Eventos | VERSAVISUAL",
+      "seoDesc": "Case Bonfim House — Cobertura Corporativa em Salvador · BA. Projeto de ativações & eventos produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.",
+      "canonicalPath": "/portfolio/bonfim-house-boutique",
+      "image": "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
+      "ogType": "article",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  ]
+}

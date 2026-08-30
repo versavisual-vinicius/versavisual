@@ -13,7 +13,7 @@ Plataforma digital, hub de posicionamento e portfólio autoral da **VERSAVISUAL*
 - **Navegação Espacial & Física**: Infinite Canvas 360° com aceleração por GPU (`translate3d`), inércia física exponencial, zoom contínuo com pinch/scroll e minimap radar HUD interativo.
 - **Interatividade & Tratamento Visual**: `BeforeAfterSlider` para inspeção comparativa de tratamento RAW vs. Color Grading (ACEScc / DaVinci Resolve, Dodge & Burn e Separação de Frequências).
 - **Mídia & Animação**: Framer Motion 13 lightbox fullscreen em Portal com suporte a drag-to-dismiss, touch gestures, teclado e vídeos em loop com poster fallback.
-- **SEO Técnico & SSG**: Pré-renderização SSG de **47 rotas estáticas** pós-build (`scripts/emit-route-html.mjs`), injeção dinâmica de metadados OpenGraph, Twitter Cards, Canonical e dados estruturados Schema.org JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
+- **SEO Técnico & SSG**: Pré-renderização SSG de **33 rotas estáticas** pós-build (`scripts/emit-route-html.mjs`), injeção dinâmica de metadados OpenGraph, Twitter Cards, Canonical e dados estruturados Schema.org JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
 - **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), headers de cache imutável para assets estáticos e redirects 301 para URLs legadas em `vercel.json`.
 - **Brand Typography**: Fontes self-hosted em WOFF2 sem dependências externas (`Righteous`, `Outfit`, `DM Sans`).
 
@@ -47,7 +47,7 @@ A interface segue estritamente as diretrizes do **Brand System da VERSAVISUAL**:
 
 ## 🗺️ Mapa de Rotas do Projeto
 
-O site conta com **47 rotas estáticas** pré-renderizadas via SSG para máxima velocidade e indexação:
+O site conta com **33 rotas estáticas** pré-renderizadas via SSG para máxima velocidade e indexação (32 canônicas indexáveis + página 404):
 
 | Rota | Descrição |
 |---|---|

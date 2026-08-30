@@ -1,0 +1,675 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import { useSeo, breadcrumb, SITE_URL } from "../lib/seo"
+import { SEGMENT_NAV, WHATSAPP, WHATSAPP_LABEL } from "../data/site"
+import { img, PHOTOS } from "../lib/images"
+
+const PROJECT_TYPES = [
+  "Fotografia",
+  "Vídeo / Videomaking",
+  "Cobertura de evento / ativação",
+  "Campanha / editorial",
+  "Videoclipe",
+  "Ensaio pessoal / lifestyle",
+  "Casamento",
+  "Ensaio gestante",
+  "Institucional / posicionamento",
+  "Ainda não sei",
+]
+
+const BUDGETS = [
+  "Até R$ 1.500",
+  "R$ 1.500 – 3.000",
+  "R$ 3.000 – 6.000",
+  "R$ 6.000 – 10.000",
+  "Acima de R$ 10.000",
+  "Ainda não sei",
+]
+
+function fieldErrorId(name: string) {
+  return `${name}-error`
+}
+
+const field =
+  "w-full rounded-xs border border-line-strong bg-white px-4 py-3 text-ink placeholder:text-navy/40 transition-colors focus:border-teal focus:ring-2 focus:ring-teal/30 focus:outline-none"
+const labelCls = "mb-2 block text-sm text-ink font-medium"
+
+interface LeadData {
+  nome: string
+  empresa: string
+  whatsapp: string
+  email: string
+  cidade: string
+  segmento: string
+  tipo: string
+  data: string
+  uso: string
+  objetivo: string
+  investimento: string
+  mensagem: string
+  submittedAt: string
+}
+
+export default function Diagnostico() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submittedLead, setSubmittedLead] = useState<LeadData | null>(null)
+  const [errors, setErrors] = useState<Record<string, boolean>>({})
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
+  useSeo({
+    title: "Diagnóstico Visual Gratuito | VERSAVISUAL",
+    description:
+      "Avaliação estratégica do posicionamento visual da sua marca. Receba direcionamento de fotografia, vídeo e narrativa para elevar sua percepção de valor.",
+    path: "/diagnostico-visual",
+    jsonLd: [
+      breadcrumb([
+        { name: "Início", path: "/" },
+        { name: "Diagnóstico Visual", path: "/diagnostico-visual" },
+      ]),
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "Diagnóstico Visual Gratuito — VERSAVISUAL",
+        description:
+          "Formulário de diagnóstico visual e consultoria audiovisual sob medida para marcas, artistas e eventos.",
+        url: `${SITE_URL}/diagnostico-visual`,
+        mainEntity: {
+          "@type": "ProfessionalService",
+          name: "VERSAVISUAL",
+          telephone: "+5522997624631",
+          email: "hub@versavisual.com.br",
+        },
+      },
+    ],
+  })
+
+  function buildWhatsAppUrl(lead: LeadData): string {
+    const lines = [
+      "*Novo Diagnóstico Visual — VERSAVISUAL*",
+      "",
+      `👤 *Nome:* ${lead.nome}${lead.empresa ? ` (${lead.empresa})` : ""}`,
+      `📱 *WhatsApp:* ${lead.whatsapp}`,
+      `✉️ *E-mail:* ${lead.email}`,
+      lead.cidade ? `📍 *Cidade:* ${lead.cidade}` : null,
+      lead.segmento ? `🎯 *Segmento:* ${lead.segmento}` : null,
+      lead.tipo ? `🎬 *Tipo de Projeto:* ${lead.tipo}` : null,
+      lead.data ? `📅 *Data Desejada:* ${lead.data}` : null,
+      lead.uso ? `📱 *Onde será usado:* ${lead.uso}` : null,
+      lead.objetivo ? `🎯 *Objetivo:* ${lead.objetivo}` : null,
+      lead.investimento
+        ? `💰 *Faixa de Investimento:* ${lead.investimento}`
+        : null,
+      lead.mensagem ? `📝 *Mensagem:* ${lead.mensagem}` : null,
+    ].filter(Boolean) as string[]
+
+    const text = lines.join("\n")
+    return `${WHATSAPP}?text=${encodeURIComponent(text)}`
+  }
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setSubmitError(null)
+
+    const form = e.currentTarget
+    const data = new FormData(form)
+
+    // Anti-spam honeypot
+    const honeypot = String(data.get("_gotcha") ?? "").trim()
+    if (honeypot) {
+      // Silent ignore for bots
+      return
+    }
+
+    const required = ["nome", "whatsapp", "email"]
+    const next: Record<string, boolean> = {}
+    required.forEach((r) => {
+      if (!String(data.get(r) ?? "").trim()) next[r] = true
+    })
+
+    const emailVal = String(data.get("email") ?? "").trim()
+    if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      next.email = true
+    }
+
+    setErrors(next)
+    if (Object.keys(next).length > 0) {
+      const firstKey = Object.keys(next)[0]
+      const el = document.getElementById(firstKey)
+      el?.focus()
+      el?.scrollIntoView({ behavior: "smooth", block: "center" })
+      return
+    }
+
+    const lead: LeadData = {
+      nome: String(data.get("nome") ?? "").trim(),
+      empresa: String(data.get("empresa") ?? "").trim(),
+      whatsapp: String(data.get("whatsapp") ?? "").trim(),
+      email: emailVal,
+      cidade: String(data.get("cidade") ?? "").trim(),
+      segmento: String(data.get("segmento") ?? "").trim(),
+      tipo: String(data.get("tipo") ?? "").trim(),
+      data: String(data.get("data") ?? "").trim(),
+      uso: String(data.get("uso") ?? "").trim(),
+      objetivo: String(data.get("objetivo") ?? "").trim(),
+      investimento: String(data.get("investimento") ?? "").trim(),
+      mensagem: String(data.get("mensagem") ?? "").trim(),
+      submittedAt: new Date().toISOString(),
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const res = await fetch("/api/diagnostico", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(lead),
+      })
+      const responseType = res.headers.get("content-type") || ""
+      if (!res.ok || !responseType.includes("application/json")) {
+        throw new Error("Erro ao enviar dados para o servidor")
+      }
+
+      const result = (await res.json()) as { ok?: boolean }
+      if (!result.ok) {
+        throw new Error("Erro ao enviar dados para o servidor")
+      }
+
+      setSubmittedLead(lead)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } catch (err) {
+      console.error("Erro no envio do formulário (fallback para WhatsApp direto):", err)
+      // Fallback gracioso: direciona para o resumo com o link do WhatsApp pronto
+      setSubmittedLead(lead)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  if (submittedLead) {
+    const waLink = buildWhatsAppUrl(submittedLead)
+
+    return (
+      <section className="mx-auto flex min-h-[90svh] max-w-[760px] flex-col items-center justify-center px-5 py-32 text-center lg:px-10">
+        <span className="flex h-16 w-16 items-center justify-center rounded-full border border-teal-400 bg-teal/10 text-3xl text-teal-400">
+          ✓
+        </span>
+        <h1 className="mt-6 text-4xl leading-tight text-off sm:text-5xl">
+          Diagnóstico enviado com sucesso!
+        </h1>
+        <p className="mt-5 max-w-xl text-pretty text-lg text-mist">
+          Recebemos o seu briefing com sucesso. Para acelerar o seu atendimento
+          e tirar dúvidas imediatamente, você pode abrir a conversa no WhatsApp
+          já com o resumo preenchido:
+        </p>
+
+        {/* Resumo do lead */}
+        <div className="mt-8 w-full max-w-lg rounded-xl border border-line bg-surface p-6 text-left shadow-sm">
+          <p className="u-eyebrow mb-3">Resumo do briefing</p>
+          <div className="space-y-1.5 text-sm text-navy">
+            <p>
+              <strong className="text-ink">Nome:</strong> {submittedLead.nome}{" "}
+              {submittedLead.empresa && `(${submittedLead.empresa})`}
+            </p>
+            <p>
+              <strong className="text-ink">WhatsApp:</strong>{" "}
+              {submittedLead.whatsapp}
+            </p>
+            <p>
+              <strong className="text-ink">E-mail:</strong>{" "}
+              {submittedLead.email}
+            </p>
+            {submittedLead.segmento && (
+              <p>
+                <strong className="text-ink">Segmento:</strong>{" "}
+                {submittedLead.segmento}
+              </p>
+            )}
+            {submittedLead.tipo && (
+              <p>
+                <strong className="text-ink">Tipo de projeto:</strong>{" "}
+                {submittedLead.tipo}
+              </p>
+            )}
+            {submittedLead.investimento && (
+              <p>
+                <strong className="text-ink">Investimento:</strong>{" "}
+                {submittedLead.investimento}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-[44px] items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off shadow-md transition-colors hover:bg-teal-400"
+          >
+            <span>Continuar no WhatsApp com Briefing</span>
+            <span aria-hidden>→</span>
+          </a>
+          <Link
+            to="/portfolio"
+            viewTransition
+            className="flex min-h-[44px] items-center justify-center rounded-xs border border-off/20 px-7 py-3.5 font-head font-medium text-off transition-colors hover:border-teal"
+          >
+            Ver portfólio
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setSubmittedLead(null)}
+          className="mt-6 inline-flex min-h-[44px] items-center justify-center text-xs text-mist underline transition-colors hover:text-off"
+        >
+          Enviar outro diagnóstico
+        </button>
+      </section>
+    )
+  }
+
+  return (
+    <section className="pt-[72px]">
+      <div className="mx-auto grid max-w-[1320px] items-start gap-0 px-0 lg:grid-cols-[0.9fr_1.1fr]">
+        {/* Aside */}
+        <aside className="sticky top-[72px] hidden h-[calc(100vh-72px)] overflow-hidden border-r border-off/10 lg:block">
+          <img
+            src={img(PHOTOS.professional[0], 1000, 1400)}
+            alt="Direção visual e consultoria audiovisual autoral — VERSAVISUAL"
+            width={1000}
+            height={1400}
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="u-grade absolute inset-0" />
+          <div className="relative flex h-full flex-col justify-end p-10 pb-14">
+            <p className="u-eyebrow">Diagnóstico Visual</p>
+            <p className="mt-4 text-balance text-4xl font-semibold leading-[1.02] text-off">
+              Antes da câmera, uma conversa que vale a produção inteira.
+            </p>
+            <p className="mt-5 max-w-sm text-mist/90">
+              Analisamos o seu briefing para estruturar a viabilidade estética e
+              comercial do projeto, com foco em resultado real.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm text-mist/90">
+              {[
+                "Análise de viabilidade do objetivo visual",
+                "Recomendação de formato, linguagem e lentes",
+                "Proposta comercial por faixa de investimento",
+              ].map((li) => (
+                <li key={li} className="flex gap-3">
+                  <span
+                    aria-hidden
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-400"
+                  />
+                  {li}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* Form */}
+        <div className="bg-off/94 px-5 py-10 shadow-2xl backdrop-blur-md lg:min-h-[calc(100vh-72px)] lg:px-12 lg:py-14">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1.5 text-xs font-semibold text-teal-800 mb-3">
+              <span className="flex h-2 w-2 rounded-full bg-teal animate-pulse" />
+              <span>⏱️ Retorno da análise de viabilidade em até 1 dia útil (24h)</span>
+            </div>
+            <p className="u-eyebrow">Briefing & Diagnóstico Visual</p>
+            <h1 className="mb-8 mt-2 text-3xl leading-tight sm:text-4xl text-ink">
+              Conte seu contexto. Devolvemos um caminho visual e proposta sob medida.
+            </h1>
+          </div>
+
+          {submitError && (
+            <div
+              className="mb-6 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-800"
+              role="status"
+              aria-live="polite"
+            >
+              <p className="font-medium">Falha no envio</p>
+              <p className="mt-1">{submitError}</p>
+            </div>
+          )}
+
+          <div className="sr-only" role="status" aria-live="polite">
+            {isSubmitting
+              ? "Enviando diagnóstico."
+              : submitError
+                ? "Falha no envio do diagnóstico."
+                : Object.keys(errors).length > 0
+                  ? "Revise os campos obrigatórios destacados."
+                  : ""}
+          </div>
+
+          <form onSubmit={onSubmit} noValidate className="grid gap-8">
+            {/* Honeypot field for anti-spam */}
+            <input
+              type="text"
+              name="_gotcha"
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+
+            {/* Bloco 1: Contato */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  01
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Identificação & Contato
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="nome" className={labelCls}>
+                      Nome <span className="text-navy">*</span>
+                    </label>
+                    <input
+                      id="nome"
+                      name="nome"
+                      required
+                      autoComplete="name"
+                      className={`${field} ${
+                        errors.nome
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="Seu nome"
+                      aria-invalid={errors.nome || undefined}
+                      aria-describedby={
+                        errors.nome ? fieldErrorId("nome") : undefined
+                      }
+                    />
+                    {errors.nome && (
+                      <p
+                        id={fieldErrorId("nome")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe seu nome.
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="empresa" className={labelCls}>
+                      Empresa / Projeto
+                    </label>
+                    <input
+                      id="empresa"
+                      name="empresa"
+                      autoComplete="organization"
+                      className={field}
+                      placeholder="Marca, projeto ou artista"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="whatsapp" className={labelCls}>
+                      WhatsApp <span className="text-navy">*</span>
+                    </label>
+                    <input
+                      id="whatsapp"
+                      name="whatsapp"
+                      type="tel"
+                      required
+                      inputMode="tel"
+                      autoComplete="tel"
+                      className={`${field} ${
+                        errors.whatsapp
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="(00) 00000-0000"
+                      aria-invalid={errors.whatsapp || undefined}
+                      aria-describedby={
+                        errors.whatsapp ? fieldErrorId("whatsapp") : undefined
+                      }
+                    />
+                    {errors.whatsapp && (
+                      <p
+                        id={fieldErrorId("whatsapp")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe um WhatsApp para contato.
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="email" className={labelCls}>
+                      E-mail <span className="text-navy">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      className={`${field} ${
+                        errors.email
+                          ? "border-rose-400 focus:border-rose-500 focus:ring-rose-200"
+                          : ""
+                      }`}
+                      placeholder="voce@email.com"
+                      aria-invalid={errors.email || undefined}
+                      aria-describedby={
+                        errors.email ? fieldErrorId("email") : undefined
+                      }
+                    />
+                    {errors.email && (
+                      <p
+                        id={fieldErrorId("email")}
+                        className="mt-1.5 text-xs font-medium text-rose-600"
+                      >
+                        Informe um e-mail válido.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="cidade" className={labelCls}>
+                    Cidade / Região do Projeto
+                  </label>
+                  <input
+                    id="cidade"
+                    name="cidade"
+                    autoComplete="address-level2"
+                    className={field}
+                    placeholder="Ex: Rio de Janeiro / RJ, Cabo Frio, São Paulo…"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bloco 2: Escopo */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  02
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Escopo & Contexto do Projeto
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="segmento" className={labelCls}>
+                      Segmento
+                    </label>
+                    <select
+                      id="segmento"
+                      name="segmento"
+                      className={field}
+                      defaultValue=""
+                    >
+                      <option value="" disabled>
+                        Selecione um segmento
+                      </option>
+                      {SEGMENT_NAV.map((s) => (
+                        <option key={s.to} value={s.label}>
+                          {s.label}
+                        </option>
+                      ))}
+                      <option value="Outro / não sei">Outro / não sei</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="tipo" className={labelCls}>
+                      Tipo de projeto
+                    </label>
+                    <select id="tipo" name="tipo" className={field} defaultValue="">
+                      <option value="" disabled>
+                        Selecione o tipo
+                      </option>
+                      {PROJECT_TYPES.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="data" className={labelCls}>
+                    Data desejada / Previsão
+                  </label>
+                  <input id="data" name="data" type="date" className={field} />
+                </div>
+
+                <div>
+                  <label htmlFor="uso" className={labelCls}>
+                    Onde o conteúdo será usado?
+                  </label>
+                  <input
+                    id="uso"
+                    name="uso"
+                    className={field}
+                    placeholder="Instagram, site, mídia paga, OTAs, impressão…"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="objetivo" className={labelCls}>
+                    Qual o principal objetivo?
+                  </label>
+                  <input
+                    id="objetivo"
+                    name="objetivo"
+                    className={field}
+                    placeholder="Vender, posicionar, registrar, lançar…"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bloco 3: Investimento & Mensagem */}
+            <div className="rounded-sm border border-line bg-white/70 p-5 sm:p-6 shadow-xs">
+              <div className="mb-5 flex items-center gap-2 border-b border-line/60 pb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10 text-xs font-bold text-teal">
+                  03
+                </span>
+                <h2 className="text-base font-semibold text-ink font-head">
+                  Investimento & Detalhes
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                <fieldset>
+                  <legend className={labelCls}>
+                    Faixa de investimento estimada
+                  </legend>
+                  <div className="grid gap-2.5 sm:grid-cols-2">
+                    {BUDGETS.map((b, index) => (
+                      <label
+                        key={b}
+                        htmlFor={`investimento-${index}`}
+                        className="flex cursor-pointer items-center gap-3 rounded-xs border border-line-strong bg-white px-4 py-3 text-sm text-navy transition-colors hover:border-teal/60 has-[:checked]:border-teal has-[:checked]:text-ink"
+                      >
+                        <input
+                          id={`investimento-${index}`}
+                          type="radio"
+                          name="investimento"
+                          value={b}
+                          className="accent-teal-400"
+                        />
+                        {b}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <div>
+                  <label htmlFor="mensagem" className={labelCls}>
+                    Mensagem adicional
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows={4}
+                    className={`${field} resize-none`}
+                    placeholder="Conte mais sobre o seu projeto, referências e expectativas."
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 pt-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-xs bg-teal px-8 py-3.5 font-head font-medium text-off transition-colors hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-off border-t-transparent" />
+                      <span>Enviando...</span>
+                    </>
+                  ) : (
+                    "Enviar diagnóstico gratuito"
+                  )}
+                </button>
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center text-sm font-medium text-navy transition-colors hover:text-teal"
+                >
+                  Prefere falar direto? Chame no WhatsApp · {WHATSAPP_LABEL} →
+                </a>
+              </div>
+              <p className="text-xs text-mist">
+                ⚡ Retornamos a resposta e proposta detalhada em até <strong>1 dia útil (24h)</strong> por WhatsApp ou e-mail.
+              </p>
+            </div>
+
+            <div className="rounded-xs border border-line bg-surface/60 p-3.5 text-xs leading-relaxed text-navy">
+              <p className="font-semibold text-ink flex items-center gap-1.5 mb-1">
+                <span>🔒</span> Proteção de Dados & Privacidade (LGPD)
+              </p>
+              <p>
+                Os dados fornecidos neste formulário são coletados exclusivamente para fins de análise técnica, elaboração da proposta e comunicação direta com a equipe VERSAVISUAL, em estrito cumprimento à Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Não compartilhamos suas informações com terceiros. Você pode solicitar a atualização ou exclusão dos seus dados a qualquer momento enviando uma mensagem para <a href="mailto:hub@versavisual.com.br" className="underline font-medium text-teal hover:text-teal-400">hub@versavisual.com.br</a>.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,23 @@
+{
+  "name": "VERSAVISUAL — Hub Audiovisual",
+  "short_name": "VERSAVISUAL",
+  "description": "Hub audiovisual autoral. Fotografia, vídeo, storymaking e direção visual.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111a1f",
+  "theme_color": "#111a1f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ]
+}
