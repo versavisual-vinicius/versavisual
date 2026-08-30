@@ -1,6 +1,6 @@
 # VERSAVISUAL — Website Institucional & Portfólio de Luxo
 
-Plataforma digital, hub de posicionamento e portfólio autoral da **VERSAVISUAL**, desenvolvida em React 19, Vite 8, TypeScript 5.7 e Tailwind CSS v4. Projetada com estética minimalista de alto contraste, navegação espacial não-linear (**Infinite Canvas 360°**), comparador interativo de tratamento de cor e fotografia (**Before/After Slider**), arquitetura de SEO técnico com **SSG de 47 rotas estáticas** e funil de conversão com **Diagnóstico Visual**.
+Plataforma digital, hub de posicionamento e portfólio autoral da **VERSAVISUAL**, desenvolvida em React 19, Vite 8, TypeScript 5.7 e Tailwind CSS v4. Projetada com estética minimalista de alto contraste, navegação espacial não-linear (**Infinite Canvas 360°**), comparador interativo de tratamento de cor e fotografia (**Before/After Slider**), arquitetura de SEO técnico com **SSG de 33 rotas estáticas** e funil de conversão com **Diagnóstico Visual**.
 
 > *Imagem não é registro. É posicionamento.*
 
@@ -14,8 +14,44 @@ Plataforma digital, hub de posicionamento e portfólio autoral da **VERSAVISUAL*
 - **Interatividade & Tratamento Visual**: `BeforeAfterSlider` para inspeção comparativa de tratamento RAW vs. Color Grading (ACEScc / DaVinci Resolve, Dodge & Burn e Separação de Frequências).
 - **Mídia & Animação**: Framer Motion 13 lightbox fullscreen em Portal com suporte a drag-to-dismiss, touch gestures, teclado e vídeos em loop com poster fallback.
 - **SEO Técnico & SSG**: Pré-renderização SSG de **33 rotas estáticas** pós-build (`scripts/emit-route-html.mjs`), injeção dinâmica de metadados OpenGraph, Twitter Cards, Canonical e dados estruturados Schema.org JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
-- **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), headers de cache imutável para assets estáticos e redirects 301 para URLs legadas em `vercel.json`.
+- **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), headers de cache imutável para assets estáticos e redirects 308 permanentes para URLs legadas em `vercel.json`.
 - **Brand Typography**: Fontes self-hosted em WOFF2 sem dependências externas (`Righteous`, `Outfit`, `DM Sans`).
+
+---
+
+## 🚀 SEO Técnico, Rotas Canônicas e Redirects
+
+A VERSAVISUAL utiliza `https://www.versavisual.com.br` como domínio canônico oficial.
+
+O sitemap público contém exclusivamente **32 URLs canônicas indexáveis**:
+- 5 rotas institucionais e funcionais;
+- 8 landing pages de segmentos;
+- 19 estudos de caso do portfólio.
+
+O build gera também uma página 404 estática, totalizando **33 arquivos HTML emitidos**.
+
+### Estado Validado em Produção
+- `https://www.versavisual.com.br/sitemap.xml`: HTTP 200.
+- Todas as 32 URLs do sitemap: HTTP 200.
+- Rotas inexistentes: HTTP 404 real.
+- Canonicals da home e dos cases: apontam para URLs com `www`.
+- Imagem usada no schema `ProfessionalService`: asset local válido (`/brand-assets/vv-profilelogo-dark-square.png`).
+- Aliases antigos não aparecem mais no sitemap.
+- 16 aliases históricos de cases redirecionam por HTTP 308 para os respectivos cases canônicos.
+- Aliases de segmentos também utilizam redirects permanentes.
+
+### Domínio Oficial
+```text
+https://www.versavisual.com.br
+```
+
+O domínio apex redireciona para a versão com `www`:
+```text
+https://versavisual.com.br
+→ https://www.versavisual.com.br/
+```
+
+No momento da última validação, esse redirect ainda respondia com HTTP 307. A alteração para HTTP 308 permanente permanece como configuração operacional pendente no painel da Vercel.
 
 ---
 
@@ -57,7 +93,7 @@ O site conta com **33 rotas estáticas** pré-renderizadas via SSG para máxima 
 | `/portfolio/canvas` | Acesso direto ao **Infinite Canvas 360°** em tela cheia com minimap radar |
 | `/portfolio/:caseSlug` | 19 estudos de caso detalhados com galeria de alta resolução, fichas técnicas e vídeos oficiais |
 | `/diagnostico-visual` | Formulário interativo de onboarding e briefing guiado com direcionamento para WhatsApp |
-| `/:slug` | 8 landing pages dedicadas aos nichos de atuação (veja tabela abaixo) |
+| `/:slug` | 8 landing pages dedicadas aos nichos de atuação (veja lista abaixo) |
 | `/404` | Página de erro 404 personalizada com atalhos de recuperação inteligentes |
 
 ### Landing Pages de Nichos (Segmentos)
@@ -70,8 +106,6 @@ O site conta com **33 rotas estáticas** pré-renderizadas via SSG para máxima 
 7. `/gestantes` — Ensaios conceituais e elegantes de maternidade.
 8. `/hotelaria-lifestyle` — Fotografia e vídeo para hotéis boutique, resorts e gastronomia premium.
 
-*(Todos os aliases legados como `/eventos`, `/moda`, `/artistas`, `/posicionamento`, `/corporativo`, `/casamento` possuem redirecionamento canônico 301 configurado no `vercel.json` e fallback instantâneo no cliente).*
-
 ---
 
 ## 📁 Estrutura do Projeto
@@ -80,17 +114,17 @@ O site conta com **33 rotas estáticas** pré-renderizadas via SSG para máxima 
 seo-tecnico-rotas/
 ├── api/
 │   └── diagnostico.ts            # Endpoint serverless Vercel para triagem de leads com Resend
-├── dist/                         # Bundle de produção e 47 páginas estáticas pré-renderizadas (SSG)
+├── dist/                         # Bundle de produção e 33 páginas estáticas pré-renderizadas (SSG)
 ├── public/
-│   ├── brand-assets/             # Logos vetoriais e ícones da marca
+│   ├── brand-assets/             # Logos vetoriais e ícones da marca (vv-profilelogo-dark-square.png)
 │   ├── fonts/                    # Fontes locais em WOFF2 (Righteous, Outfit, DM Sans)
 │   ├── images/                   # Acervo fotográfico de alta resolução catalogado
 │   ├── videos/                   # Vídeos em loop nativos (Hero e videoclipes)
 │   ├── favicon.svg / favicon.ico # Ícones de navegação
 │   ├── robots.txt                # Diretivas de indexação para motores de busca
-│   └── sitemap.xml               # Sitemap XML canônico completo com todas as rotas
+│   └── sitemap.xml               # Sitemap XML canônico com as 32 rotas indexáveis
 ├── scripts/
-│   ├── emit-route-html.mjs       # Gerador SSG de 47 rotas estáticas pós-build
+│   ├── emit-route-html.mjs       # Gerador SSG de 33 rotas estáticas pós-build
 │   └── verify-built-seo.mjs      # Validador automatizado de integridade SEO dos arquivos dist
 ├── src/
 │   ├── components/
@@ -160,13 +194,12 @@ npm install
 ```bash
 npm run dev
 ```
-*O servidor iniciará em `http://localhost:5173` com hot reload instantâneo.*
 
 ### Build de Produção & Geração SSG
 ```bash
 npm run build
 ```
-*Executa o `vite build` e em seguida o script `scripts/emit-route-html.mjs`, gerando os 47 arquivos `.html` estáticos em `dist/` com metadados e Schema JSON-LD pré-injetados.*
+*Executa o `vite build` e em seguida o script `scripts/emit-route-html.mjs`, gerando os 33 arquivos `.html` estáticos em `dist/` com metadados e Schema JSON-LD pré-injetados.*
 
 ### Verificação de SEO dos Arquivos Gerados
 ```bash

@@ -16,7 +16,143 @@ O projeto **VERSAVISUAL Website** é uma aplicação web autoral de alta perform
 
 ---
 
-## 2. Estrutura de Código (Code Layout)
+## 2. Arquitetura de SEO e Geração Estática
+
+O projeto combina metadados dinâmicos no cliente com geração de HTML estático após o build do Vite.
+
+### Fontes de Dados
+- `src/data/site.ts`: segmentos, cases, aliases e conteúdo institucional.
+- `src/data/catalog-seo.json`: metadados SEO por rota.
+- `src/data/seo-routes.json`: manifesto de rotas estáticas.
+- `public/sitemap.xml`: URLs canônicas publicadas.
+- `src/lib/seo.tsx`: metadados e schemas usados em navegação SPA.
+- `scripts/emit-route-html.mjs`: geração de HTML estático por rota.
+- `scripts/verify-built-seo.mjs`: validação do resultado em `dist/`.
+
+### Invariantes
+1. Apenas URLs canônicas podem aparecer no sitemap.
+2. Aliases históricos não devem ser indexáveis.
+3. Aliases conhecidos devem redirecionar permanentemente para o destino canônico.
+4. Toda URL do sitemap deve responder com HTTP 200.
+5. Uma URL desconhecida deve responder com HTTP 404 e usar `noindex`.
+6. Cada página indexável deve possuir:
+   - title;
+   - description;
+   - canonical;
+   - Open Graph;
+   - Twitter Card;
+   - JSON-LD apropriado.
+7. Imagens referenciadas em Open Graph e JSON-LD devem existir em `public/`.
+8. A versão canônica do domínio deve ser sempre `www.versavisual.com.br`.
+
+### Composição das Rotas
+
+| Categoria | Quantidade |
+|---|---:|
+| Rotas principais | 5 |
+| Segmentos | 8 |
+| Cases canônicos | 19 |
+| Total indexável | 32 |
+| Página 404 | 1 |
+| Total de HTMLs emitidos | 33 |
+
+### Redirects de Cases Publicados (HTTP 308 Permanente)
+```text
+/portfolio/lancamento-drinkball
+→ /portfolio/ativacao-drinkball
+
+/portfolio/megabloco-cha-da-alice
+→ /portfolio/carnaval-de-rua-experiencia-publico
+
+/portfolio/festival-jeans-toritama
+→ /portfolio/evento-fjt-palco-camarote
+
+/portfolio/syn-ice-camarote
+→ /portfolio/symbh-evento-corporativo
+
+/portfolio/moda-santalola-verao
+→ /portfolio/editorial-lifestyle-campanha
+
+/portfolio/fashion-manners-editorial
+→ /portfolio/fashion-week-passarela-bastidor
+
+/portfolio/loja-frida-campanha
+→ /portfolio/loja-frida-sao-joao
+
+/portfolio/ensaio-feminino-frida
+→ /portfolio/loja-frida-sao-joao
+
+/portfolio/ensaio-autoral-estudio
+→ /portfolio/ensaio-autoral-lifestyle-instagram
+
+/portfolio/casamento-destination-wedding
+→ /portfolio/casamento-ao-ar-livre
+
+/portfolio/casamento-urbano-contemporaneo
+→ /portfolio/casamento-ao-ar-livre
+
+/portfolio/maternidade-ensaio-intimo
+→ /portfolio/ensaio-gestante-praia
+
+/portfolio/bonfim-house-boutique
+→ /portfolio/festival-bon-cobertura-corporativa
+
+/portfolio/videoclipes-oficiais-e-o-tchan-babado-novo
+→ /portfolio/e-o-tchan-jogadinha
+
+/portfolio/clipe-e-o-tchan-jogadinha
+→ /portfolio/e-o-tchan-jogadinha
+
+/portfolio/clipe-babado-novo-sururu
+→ /portfolio/babado-novo-sururu
+```
+*Todos esses redirects foram verificados externamente com HTTP 308 e destino correto.*
+
+---
+
+## 3. Diagnóstico Visual e API
+
+O formulário `/diagnostico-visual` envia o briefing para `/api/diagnostico`.
+
+### Campos Obrigatórios
+- `nome`
+- `whatsapp`
+- `email`
+
+### Proteções Implementadas
+- honeypot `_gotcha`;
+- limite de payload de 40 KB;
+- validação sintática de e-mail;
+- truncamento de campos;
+- escape de HTML;
+- rejeição de métodos diferentes de POST;
+- respostas sem cache;
+- tratamento de indisponibilidade do Resend.
+
+O destinatário configurado no código é:
+```text
+hub@versavisual.com.br
+```
+
+---
+
+## 4. Assets Estruturados
+
+O schema `ProfessionalService` utiliza:
+```text
+/brand-assets/vv-profilelogo-dark-square.png
+```
+O asset foi verificado em produção com HTTP 200.
+
+A referência antiga abaixo não deve voltar a ser utilizada:
+```text
+/brand-assets/logo-og.png
+```
+Ela não existe e retorna HTTP 404.
+
+---
+
+## 5. Estrutura de Código (Code Layout)
 
 - `src/main.tsx` — Ponto de entrada da aplicação, carregamento de fontes locais e CSS global.
 - `src/App.tsx` — Shell raiz da aplicação com layout global, `ScrollToTop`, `SkipLink`, roteador com lazy loading e Vercel Analytics.
@@ -25,7 +161,7 @@ O projeto **VERSAVISUAL Website** é uma aplicação web autoral de alta perform
   - `site.ts` — Dicionário principal: navegação, 8 segmentos, 19 cases de portfólio, serviços, dados do fundador, depoimentos e FAQ.
   - `beforeAfter.ts` — Dados dos ensaios com comparativo antes/depois, especificações de color grading e tratamentos.
   - `catalog-seo.json` — Base central de metadados, títulos, descrições, imagens de compartilhamento e FAQs por rota.
-  - `seo-routes.json` — Manifesto ordenado das 47 rotas estáticas indexáveis.
+  - `seo-routes.json` — Manifesto ordenado das rotas estáticas.
 - `src/lib/` — Módulos utilitários:
   - `images.ts` — Resolução segura de URLs de fotos com fallback local (`/images/foto-a-producao-nao-falha.webp`) e segregação de ensaios.
   - `seo.tsx` — Hook `useSeo` para injeção dinâmica de metadados no `<head>` e geração de schemas JSON-LD.
@@ -57,86 +193,6 @@ O projeto **VERSAVISUAL Website** é uma aplicação web autoral de alta perform
   - `NotFound.tsx` — Página 404 personalizada e estilizada com links rápidos de recuperação.
 - `api/diagnostico.ts` — Endpoint serverless Vercel para envio seguro de e-mails de lead via Resend.
 - `scripts/` — Ferramentas de automação e validação:
-  - `emit-route-html.mjs` — Gerador SSG pós-build que injeta `<head>` estático e schemas em todos os 47 arquivos HTML.
-  - `verify-built-seo.mjs` — Validador de integridade das 47 rotas emitidas em `dist/`.
-- `tests/` — Infraestrutura de testes automatizados com suítes Tiers 1 a 5.
-
----
-
-## 3. Inventário de Features
-
-| # | Feature | Descrição Técnica | Status |
-|---|---------|-------------------|--------|
-| 1 | Header Responsivo & Scroll Blur | Header fixo com logo, links de navegação, blur dinâmico (>12px) e CTA `bg-teal text-off` | ✅ Concluído |
-| 2 | Menu Mobile Drawer Acessível | Gaveta mobile com animação, aria-expanded, bloqueio de scroll no body e suporte a tecla Escape | ✅ Concluído |
-| 3 | Skip Link de Acessibilidade | Atalho no topo visível por teclado via Tab (`href="#main"`) | ✅ Concluído |
-| 4 | Scroll To Top & Anchor Offset | Reset de rolagem no topo em trocas de rota e compensação de altura do header em âncoras | ✅ Concluído |
-| 5 | Botão Flutuante WhatsApp | Botão fixo no canto inferior direito com link direto seguro e aria-label | ✅ Concluído |
-| 6 | Tokens & Tema Tailwind v4 | Variáveis de tema `@theme` (`ink`, `navy`, `teal`, `mist`, `off`) alinhadas ao DESIGN.md | ✅ Concluído |
-| 7 | Tipografia Self-Hosted WOFF2 | Fontes `Righteous`, `Outfit` e `DM Sans` renderizadas localmente sem fontes externas | ✅ Concluído |
-| 8 | Tipagem TypeScript Estrita | Compilação com `npx tsc --noEmit` sem qualquer erro de tipagem | ✅ Concluído |
-| 9 | Sincronização de Slugs & Sitemap | Alinhamento de rotas, slugs de cases e sitemap.xml canônico | ✅ Concluído |
-| 10 | Roteamento Dinâmico de 8 Segmentos | Suporte aos 8 nichos oficiais e aliases legados com resolução instantânea | ✅ Concluído |
-| 11 | Roteamento de 19 Cases de Portfólio | Suporte a rotas `/portfolio/:caseSlug` com galeria e ficha de produção | ✅ Concluído |
-| 12 | Página 404 Personalizada | Tratamento de rotas inexistentes com atalhos para todos os segmentos e HTTP 404 SSG | ✅ Concluído |
-| 13 | Hero Vídeo Full-Bleed | Hero em vídeo loop com autoplay, muted, playsInline, poster fallback e overlay escuro | ✅ Concluído |
-| 14 | Grid de Serviços Institucionais | Grid de 6 serviços com hover effects e linha de acento animada | ✅ Concluído |
-| 15 | Seletor de Segmentos Home | Cards dos 8 segmentos com aspect-[16/11] no mobile e aspect-[3/4] em desktop | ✅ Concluído |
-| 16 | Timeline do Método de Execução | Linha do tempo interativa com barra de progresso vertical reativa ao scroll | ✅ Concluído |
-| 17 | Filtros de Portfólio por Aba | Sistema de abas com `role="tablist"` e `aria-selected` para filtragem instantânea | ✅ Concluído |
-| 18 | Vídeo Destaque Artistas | Banner de vídeo integrado dinamicamente na aba de Artistas & Videoclipes | ✅ Concluído |
-| 19 | Landing Pages dos 8 Nichos | Páginas temáticas completas com comparativo, serviços, modal, cases e FAQ | ✅ Concluído |
-| 20 | Modal de Detalhes do Serviço | Modal interativo com foco acessível e touch targets de 44px+ | ✅ Concluído |
-| 21 | Galeria com Lightbox Fullscreen | Lightbox em portal com Framer Motion, drag-to-dismiss e tecla Escape | ✅ Concluído |
-| 22 | Acordeão de FAQ Acessível | Acordeão com expansão suave de perguntas e respostas | ✅ Concluído |
-| 23 | Estudo de Caso Individual | Página detalhada com galeria, ficha técnica e cases relacionados | ✅ Concluído |
-| 24 | Formulário de Diagnóstico Visual | Validação client-side em tempo real, honeypot anti-spam e aria-live de status | ✅ Concluído |
-| 25 | Gerador de Lead WhatsApp | Geração de URL formatada com dados completos do briefing para atendimento | ✅ Concluído |
-| 26 | Transmissão de Lead API Serverless | Endpoint `/api/diagnostico` com validação e envio via Resend | ✅ Concluído |
-| 27 | Injeção Dinâmica de SEO & JSON-LD | Hook `useSeo` atualizando metadados, canonical e schemas Schema.org | ✅ Concluído |
-| 28 | Auditoria Estrita de Contraste | Conformidade WCAG AA com `bg-teal text-off` em todos os botões e CTAs | ✅ Concluído |
-| 29 | Responsividade 360px a 4K | Zero overflow horizontal em todas as páginas, touch targets >= 44px | ✅ Concluído |
-| 30 | Build SSG de 47 Rotas Estáticas | `npm run build` gerando `dist/` e emitindo 47 rotas estáticas completas | ✅ Concluído |
-| 31 | Infinite Canvas 360° | Navegação espacial 360° em tela cheia com aceleração GPU, inércia e minimap radar HUD | ✅ Concluído |
-| 32 | Before/After Slider Interativo | Comparador de tratamento de imagem RAW vs Color Grading com especificações técnicas | ✅ Concluído |
-| 33 | Página Sobre Nós (`/sobre`) | Página com visão autoral, manifesto, biografia de Vini Cunha e equipamentos Nikon | ✅ Concluído |
-| 34 | Seção Founder (Vini Cunha) | Destaque do fundador, direção criativa, posicionamento e credenciais | ✅ Concluído |
-| 35 | Modal de Privacidade & Termos | Componente de transparência com políticas de uso acessíveis | ✅ Concluído |
-| 36 | Suíte de Testes E2E (Tiers 1-5) | 256 testes automatizados cobrindo todas as features e cenários com 100% de aprovação | ✅ Concluído |
-
----
-
-## 4. Contratos de Dados & Interfaces
-
-### Contrato de Rotas e Segmentos (`src/data/site.ts`)
-- `SEGMENTS`: Lista dos 8 nichos canônicos (`ativacoes-eventos`, `moda-campanhas`, `artistas-videoclipes`, `posicionamento-profissional`, `imagem-pessoal-lifestyle`, `casamentos`, `gestantes`, `hotelaria-lifestyle`).
-- `SEGMENT_ALIASES`: Dicionário que mapeia aliases legados (ex: `/eventos`, `/moda`, `/posicionamento`) para os slugs canônicos.
-- `PORTFOLIO`: Coleção de 19 itens de portfólio catalogados com fotos locais em `public/images/`, categorias, slugs de cases e metadados.
-- `getSegment(slug)` e `getCase(caseSlug)`: Funções utilitárias seguras com tolerância a formatações e fallback limpo para `undefined` (acionando `NotFound`).
-
-### Contrato de Diagnóstico e API (`src/pages/Diagnostico.tsx` ↔ `api/diagnostico.ts`)
-- **Payload**:
-  ```json
-  {
-    "nome": "string",
-    "whatsapp": "string",
-    "email": "string",
-    "empresa": "string (opcional)",
-    "cidade": "string (opcional)",
-    "segmento": "string (opcional)",
-    "tipo": "string (opcional)",
-    "data": "string (opcional)",
-    "uso": "string (opcional)",
-    "objetivo": "string (opcional)",
-    "investimento": "string (opcional)",
-    "mensagem": "string (opcional)",
-    "_gotcha": "string (honeypot invisível)"
-  }
-  ```
-- **Honeypot `_gotcha`**: Se preenchido por robôs, a API responde `200 OK` silenciosamente sem disparar e-mail.
-- **Validação**: Rejeita requisições com campos obrigatórios ausentes (`nome`, `whatsapp`, `email`) ou e-mail inválido com status `400 Bad Request`. Limita payloads a 40KB (`413 Payload Too Large`).
-- **Sucesso no Cliente**: Exibe tela de confirmação e constrói link formatado para conversa no WhatsApp oficial `https://wa.me/5522997624631?text=...`.
-
-### Contrato de Metadados e SEO (`src/data/catalog-seo.json` / `scripts/emit-route-html.mjs`)
-- Cada rota mapeada possui: `title`, `description`, `canonicalPath`, `ogImage`, `robots` e schemas JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
-- Scripts validam a existência física de todas as imagens sociais em `public/` e conformidade canônica com `public/sitemap.xml`.
+  - `emit-route-html.mjs` — Gerador SSG pós-build que injeta `<head>` estático e schemas em todos os 33 arquivos HTML.
+  - `verify-built-seo.mjs` — Validador de integridade das rotas emitidas em `dist/`.
+- `tests/` — Infraestrutura de testes automatizados com suítes Tiers 1 a 5 (256 testes).
