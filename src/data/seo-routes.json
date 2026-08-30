@@ -1,0 +1,50 @@
+{
+  "/": {
+    "title": "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas",
+    "description": "Hub audiovisual autoral no Rio de Janeiro com operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, ativações, artistas e pessoas.",
+    "canonicalPath": "/",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "index, follow, max-image-preview:large"
+  },
+  "/sobre": {
+    "title": "Sobre Vinicius Cunha — Fundador & Diretor Criativo | VERSAVISUAL",
+    "description": "Conheça Vinicius Cunha, fundador e diretor criativo da VERSAVISUAL. Trajetória híbrida entre direção cinematográfica, fotografia autoral Nikon/ACEScc e tecnologia criativa.",
+    "canonicalPath": "/sobre",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "index, follow, max-image-preview:large"
+  },
+  "/portfolio": {
+    "title": "Portfólio — Fotografia, Vídeo e Direção Visual | VERSAVISUAL",
+    "description": "Cases de fotografia, vídeo, ativações, campanhas, videoclipes, casamentos e mais. Explore no Grid tradicional ou navegue no Canvas Infinito 360°.",
+    "canonicalPath": "/portfolio",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "index, follow, max-image-preview:large"
+  },
+  "/portfolio/canvas": {
+    "title": "Galeria 360° — Infinite Canvas de Fotografia e Audiovisual | VERSAVISUAL",
+    "description": "Cases de fotografia, vídeo, ativações, campanhas, videoclipes, casamentos e mais. Explore no Grid tradicional ou navegue no Canvas Infinito 360°.",
+    "canonicalPath": "/portfolio/canvas",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "index, follow, max-image-preview:large"
+  },
+  "/diagnostico-visual": {
+    "title": "Diagnóstico Visual Gratuito | VERSAVISUAL",
+    "description": "Avaliação estratégica do posicionamento visual da sua marca. Receba direcionamento de fotografia, vídeo e narrativa para elevar sua percepção de valor.",
+    "canonicalPath": "/diagnostico-visual",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "index, follow, max-image-preview:large"
+  },
+  "/404": {
+    "title": "Página Não Encontrada | VERSAVISUAL",
+    "description": "A página que você está procurando não existe ou foi movida. Explore nosso portfólio de fotografia, vídeo e direção visual.",
+    "canonicalPath": "/404",
+    "ogType": "website",
+    "image": "/images/foto-a-producao-nao-falha.webp",
+    "robots": "noindex, nofollow"
+  }
+}

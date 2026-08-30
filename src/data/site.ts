@@ -1246,7 +1246,7 @@ export const CASE_ALIASES: Record<string, string> = {
   "casamento-urbano-contemporaneo": "casamento-ao-ar-livre",
   "maternidade-ensaio-intimo": "ensaio-gestante-praia",
   "bonfim-house-boutique": "festival-bon-cobertura-corporativa",
-  "retratos-posicionamento-marca-pessoal": "loja-frida-sao-joao",
+  "retratos-posicionamento-marca-pessoal": "retratos-posicionamento-marca-pessoal",
   "ensaio-feminino-frida": "loja-frida-sao-joao",
 }
 

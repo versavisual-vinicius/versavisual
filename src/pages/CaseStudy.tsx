@@ -32,6 +32,8 @@ export default function CaseStudy() {
     title: `${item.title} — ${item.category} | VERSAVISUAL`,
     description: `Case ${item.title} em ${item.city}. Projeto de ${item.category.toLowerCase()} produzido pela VERSAVISUAL — fotografia, vídeo e direção visual.`,
     path: `/portfolio/${caseSlug}`,
+    image: item.photo,
+    ogType: "article",
     jsonLd: [
       breadcrumb([
         { name: "Início", path: "/" },

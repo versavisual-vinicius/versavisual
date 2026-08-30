@@ -59,7 +59,7 @@ export default function Diagnostico() {
   useSeo({
     title: "Diagnóstico Visual Gratuito | VERSAVISUAL",
     description:
-      "Conte seu contexto e objetivo. Devolvemos um caminho visual claro e uma proposta sob medida em fotografia, vídeo e direção visual. Sem compromisso.",
+      "Avaliação estratégica do posicionamento visual da sua marca. Receba direcionamento de fotografia, vídeo e narrativa para elevar sua percepção de valor.",
     path: "/diagnostico-visual",
     jsonLd: [
       breadcrumb([

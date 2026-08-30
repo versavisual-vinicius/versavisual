@@ -44,11 +44,31 @@ export default function Portfolio({ initialView }: PortfolioProps) {
         : "Portfólio — Fotografia, Vídeo e Direção Visual | VERSAVISUAL",
     description:
       "Cases de fotografia, vídeo, ativações, campanhas, videoclipes, casamentos e mais. Explore no Grid tradicional ou navegue no Canvas Infinito 360°.",
-    path: viewMode === "canvas" ? "/portfolio?view=canvas" : "/portfolio",
-    jsonLd: breadcrumb([
-      { name: "Início", path: "/" },
-      { name: "Portfólio", path: "/portfolio" },
-    ]),
+    path: viewMode === "canvas" ? "/portfolio/canvas" : "/portfolio",
+    jsonLd: [
+      breadcrumb(
+        viewMode === "canvas"
+          ? [
+              { name: "Início", path: "/" },
+              { name: "Portfólio", path: "/portfolio" },
+              { name: "Canvas Infinito 360°", path: "/portfolio/canvas" },
+            ]
+          : [
+              { name: "Início", path: "/" },
+              { name: "Portfólio", path: "/portfolio" },
+            ],
+      ),
+      imageGallerySchema({
+        name:
+          viewMode === "canvas"
+            ? "Galeria 360° — Infinite Canvas de Fotografia e Audiovisual | VERSAVISUAL"
+            : "Portfólio — Fotografia, Vídeo e Direção Visual | VERSAVISUAL",
+        description:
+          "Cases de fotografia, vídeo, ativações, campanhas, videoclipes, casamentos e mais. Explore no Grid tradicional ou navegue no Canvas Infinito 360°.",
+        photos: ["/images/foto-a-producao-nao-falha.webp"],
+        url: viewMode === "canvas" ? "/portfolio/canvas" : "/portfolio",
+      }),
+    ],
   })
 
   return (

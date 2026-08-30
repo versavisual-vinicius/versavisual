@@ -33,7 +33,7 @@ export default function Home() {
   useSeo({
     title: "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas",
     description:
-      "Hub audiovisual autoral no Rio de Janeiro com operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas.",
+      "Hub audiovisual autoral no Rio de Janeiro com operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, ativações, artistas e pessoas.",
     path: "/",
     jsonLd: [
       professionalServiceSchema(),

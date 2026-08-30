@@ -14,6 +14,9 @@ import { runTier1PortfolioFeaturesTests } from "./tier1/tier1_portfolio_features
 import { runTier1SegmentPagesInteractiveTests } from "./tier1/tier1_segment_pages_interactive.test.ts"
 import { runTier1DiagnosticLeadApiTests } from "./tier1/tier1_diagnostic_lead_api.test.ts"
 import { runTier1SeoBuildSsgTests } from "./tier1/tier1_seo_build_ssg.test.ts"
+import { runTier1SeoRouteManifestTests } from "./tier1/tier1_seo_route_manifest.test.ts"
+import { runTier1SeoEmitterTests } from "./tier1/tier1_seo_emitter.test.ts"
+import { runTier1StructuredDataRoutesTests } from "./tier1/tier1_structured_data_routes.test.ts"
 import { runTier2BoundaryCornerCasesTests } from "./tier2/tier2_boundary_corner_cases.test.ts"
 import { runTier3CrossFeatureCombinationsTests } from "./tier3/tier3_cross_feature_combinations.test.ts"
 import { runTier4RealWorldScenariosTests } from "./tier4/tier4_real_world_scenarios.test.ts"
@@ -38,6 +41,9 @@ async function main() {
   await runTier1SegmentPagesInteractiveTests()
   await runTier1DiagnosticLeadApiTests()
   await runTier1SeoBuildSsgTests()
+  await runTier1SeoRouteManifestTests()
+  await runTier1SeoEmitterTests()
+  await runTier1StructuredDataRoutesTests()
 
   // --- TIER 2: BOUNDARY & CORNER CASES ---
   await runTier2BoundaryCornerCasesTests()
