@@ -1,5 +1,239 @@
 {
   "framework": "vite",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/segmentos/:slug",
+      "destination": "/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/ativacoes-e-eventos",
+      "destination": "/ativacoes-eventos",
+      "permanent": true
+    },
+    {
+      "source": "/eventos",
+      "destination": "/ativacoes-eventos",
+      "permanent": true
+    },
+    {
+      "source": "/ativacoes",
+      "destination": "/ativacoes-eventos",
+      "permanent": true
+    },
+    {
+      "source": "/moda",
+      "destination": "/moda-campanhas",
+      "permanent": true
+    },
+    {
+      "source": "/campanhas",
+      "destination": "/moda-campanhas",
+      "permanent": true
+    },
+    {
+      "source": "/artistas",
+      "destination": "/artistas-videoclipes",
+      "permanent": true
+    },
+    {
+      "source": "/videoclipes",
+      "destination": "/artistas-videoclipes",
+      "permanent": true
+    },
+    {
+      "source": "/musica",
+      "destination": "/artistas-videoclipes",
+      "permanent": true
+    },
+    {
+      "source": "/posicionamento",
+      "destination": "/posicionamento-profissional",
+      "permanent": true
+    },
+    {
+      "source": "/profissional",
+      "destination": "/posicionamento-profissional",
+      "permanent": true
+    },
+    {
+      "source": "/corporativo",
+      "destination": "/posicionamento-profissional",
+      "permanent": true
+    },
+    {
+      "source": "/lifestyle",
+      "destination": "/imagem-pessoal-lifestyle",
+      "permanent": true
+    },
+    {
+      "source": "/imagem-pessoal",
+      "destination": "/imagem-pessoal-lifestyle",
+      "permanent": true
+    },
+    {
+      "source": "/pessoal",
+      "destination": "/imagem-pessoal-lifestyle",
+      "permanent": true
+    },
+    {
+      "source": "/casamento",
+      "destination": "/casamentos",
+      "permanent": true
+    },
+    {
+      "source": "/gestante",
+      "destination": "/gestantes",
+      "permanent": true
+    },
+    {
+      "source": "/maternidade",
+      "destination": "/gestantes",
+      "permanent": true
+    },
+    {
+      "source": "/hotelaria",
+      "destination": "/hotelaria-lifestyle",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/lancamento-drinkball",
+      "destination": "/portfolio/ativacao-drinkball",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/megabloco-cha-da-alice",
+      "destination": "/portfolio/carnaval-de-rua-experiencia-publico",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/festival-jeans-toritama",
+      "destination": "/portfolio/evento-fjt-palco-camarote",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/syn-ice-camarote",
+      "destination": "/portfolio/symbh-evento-corporativo",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/moda-santalola-verao",
+      "destination": "/portfolio/editorial-lifestyle-campanha",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/fashion-manners-editorial",
+      "destination": "/portfolio/fashion-week-passarela-bastidor",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/loja-frida-campanha",
+      "destination": "/portfolio/loja-frida-sao-joao",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/ensaio-feminino-frida",
+      "destination": "/portfolio/loja-frida-sao-joao",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/ensaio-autoral-estudio",
+      "destination": "/portfolio/ensaio-autoral-lifestyle-instagram",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/casamento-destination-wedding",
+      "destination": "/portfolio/casamento-ao-ar-livre",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/casamento-urbano-contemporaneo",
+      "destination": "/portfolio/casamento-ao-ar-livre",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/maternidade-ensaio-intimo",
+      "destination": "/portfolio/ensaio-gestante-praia",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/bonfim-house-boutique",
+      "destination": "/portfolio/festival-bon-cobertura-corporativa",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/videoclipes-oficiais-e-o-tchan-babado-novo",
+      "destination": "/portfolio/e-o-tchan-jogadinha",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/clipe-e-o-tchan-jogadinha",
+      "destination": "/portfolio/e-o-tchan-jogadinha",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/clipe-babado-novo-sururu",
+      "destination": "/portfolio/babado-novo-sururu",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate, s-maxage=0"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
 }
