@@ -1,10 +1,40 @@
 # ROADMAP.md — VERSAVISUAL Roadmap de Desenvolvimento
 
-Este documento mapeia o histórico de fases concluídas e as oportunidades de evolução futura para a plataforma **VERSAVISUAL Website**.
+Este documento mapeia o histórico de fases concluídas, marcos de SEO técnico e as pendências operacionais para a plataforma **VERSAVISUAL Website**.
 
 ---
 
-## 🚀 Fases de Desenvolvimento
+## 🚀 SEO Técnico e Consolidação de Produção
+
+### Concluído
+- [x] Definição de `www.versavisual.com.br` como domínio canônico oficial.
+- [x] Limpeza do sitemap e redução para 32 URLs canônicas indexáveis.
+- [x] Validação HTTP 200 de todas as 32 URLs do sitemap.
+- [x] Emissão de 33 arquivos HTML estáticos, incluindo a página 404.
+- [x] Remoção dos aliases de cases do sitemap.
+- [x] Implementação de 16 redirects permanentes de cases no `vercel.json`.
+- [x] Validação externa dos 16 redirects com HTTP 308.
+- [x] Redirects permanentes para aliases de segmentos no `vercel.json`.
+- [x] Canonicals corretos na home e nos cases apontando para URLs com `www`.
+- [x] HTTP 404 real para rotas desconhecidas em produção.
+- [x] Substituição do logo inexistente no JSON-LD (`/brand-assets/vv-profilelogo-dark-square.png`).
+- [x] Validação do novo logo em produção com HTTP 200.
+- [x] Alteração do destinatário da API de leads para `hub@versavisual.com.br`.
+- [x] Build SSG e suítes automatizadas (256 testes) 100% aprovadas durante a implementação.
+- [x] Deployment de produção dos redirects de cases.
+
+### Pendente
+- [ ] Alterar o redirect do domínio apex de HTTP 307 para HTTP 308 permanente no painel da Vercel.
+- [ ] Confirmar novamente a resposta pública após a alteração (`curl -I https://versavisual.com.br/`).
+- [ ] Verificar a propriedade de domínio `versavisual.com.br` no Google Search Console por DNS TXT.
+- [ ] Enviar `sitemap.xml` ao Google Search Console.
+- [ ] Confirmar o processamento do sitemap e acompanhar páginas descobertas/indexadas.
+- [ ] Realizar um teste controlado de entrega do formulário via Resend.
+- [ ] Confirmar recebimento no endereço `hub@versavisual.com.br`.
+
+---
+
+## 🎨 Fases de Desenvolvimento Concluídas
 
 ### Fase 1: Fundação, Design System & Shell Global (Concluída ✅)
 - [x] Configuração da stack React 19, Vite 8, TypeScript 5.7 e Tailwind CSS v4 (`@theme`).
@@ -30,7 +60,7 @@ Este documento mapeia o histórico de fases concluídas e as oportunidades de ev
 
 ### Fase 4: SEO Técnico, Dados Estruturados & Geração SSG (Concluída ✅)
 - [x] Criação do catálogo SEO centralizado em `src/data/catalog-seo.json` e manifesto `seo-routes.json`.
-- [x] Implementação do gerador SSG pós-build `scripts/emit-route-html.mjs` para **47 rotas estáticas**.
+- [x] Implementação do gerador SSG pós-build `scripts/emit-route-html.mjs` para **33 rotas estáticas**.
 - [x] Injeção de metadados OpenGraph, Twitter Cards, Canonical e Schemas JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
 - [x] Criação do validador de integridade SEO `scripts/verify-built-seo.mjs`.
 
@@ -38,14 +68,3 @@ Este documento mapeia o histórico de fases concluídas e as oportunidades de ev
 - [x] Construção da suíte com **256 testes automatizados** distribuídos nos Tiers 1 a 5.
 - [x] Hardening de segurança contra SQLi, XSS, poluição de protótipo e payloads maliciosos.
 - [x] 100% de aprovação em todos os testes funcionais, de limites, de jornadas de conversão e de integridade do build.
-
----
-
-## 🔮 Backlog & Evoluções Futuras (Planejado / Opcional)
-
-1. **Dashboard de Leads & Notificações**:
-   - Integração opcional de webhook do Discord / Slack para notificação instantânea quando um diagnóstico for concluído.
-2. **Compressão Automatizada de Mídia AVIF / WebP**:
-   - Pipeline de build com geração opcional de versões AVIF para navegadores modernos que suportam maior compressão com fidelidade de cor.
-3. **Internacionalização (i18n)**:
-   - Suporte futuro a seletor de idioma (PT-BR / EN) para contratação de produções internacionais e destination weddings.
