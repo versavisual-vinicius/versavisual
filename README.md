@@ -1,6 +1,6 @@
 # VERSAVISUAL — Website Institucional & Portfólio de Luxo
 
-Plataforma digital e portfólio autoral da **VERSAVISUAL**, estruturada em React 19, Vite 8, TypeScript e Tailwind CSS v4, com foco em estética minimalista de alto contraste, navegação espacial não-linear (**Infinite Canvas 360°**) e funil de conversão com **Diagnóstico Visual**.
+Plataforma digital, hub de posicionamento e portfólio autoral da **VERSAVISUAL**, desenvolvida em React 19, Vite 8, TypeScript 5.7 e Tailwind CSS v4. Projetada com estética minimalista de alto contraste, navegação espacial não-linear (**Infinite Canvas 360°**), comparador interativo de tratamento de cor e fotografia (**Before/After Slider**), arquitetura de SEO técnico com **SSG de 47 rotas estáticas** e funil de conversão com **Diagnóstico Visual**.
 
 > *Imagem não é registro. É posicionamento.*
 
@@ -9,150 +9,203 @@ Plataforma digital e portfólio autoral da **VERSAVISUAL**, estruturada em React
 ## ⚡ Stack Tecnológica
 
 - **Framework & Core**: React 19, Vite 8, TypeScript 5.7, Tailwind CSS v4 (`@tailwindcss/vite`).
-- **Roteamento**: React Router 7 (`react-router-dom`), resolução dinâmica de segmentos e estudos de caso.
-- **Interação & Física**: Infinite Canvas 360° com aceleração por GPU (`translate3d`), inércia física exponencial, zoom contínuo e minimap radar HUD.
-- **Mídia & Animação**: Vídeos em loop nativos com poster fallback, Framer Motion 13 lightbox fullscreen em Portal com drag-to-dismiss.
-- **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), pré-renderização SSG de 42 rotas estáticas (`scripts/emit-route-html.mjs`).
+- **Roteamento**: React Router 7 (`react-router-dom`), resolução dinâmica de segmentos canônicos, estudos de caso e aliases de URL.
+- **Navegação Espacial & Física**: Infinite Canvas 360° com aceleração por GPU (`translate3d`), inércia física exponencial, zoom contínuo com pinch/scroll e minimap radar HUD interativo.
+- **Interatividade & Tratamento Visual**: `BeforeAfterSlider` para inspeção comparativa de tratamento RAW vs. Color Grading (ACEScc / DaVinci Resolve, Dodge & Burn e Separação de Frequências).
+- **Mídia & Animação**: Framer Motion 13 lightbox fullscreen em Portal com suporte a drag-to-dismiss, touch gestures, teclado e vídeos em loop com poster fallback.
+- **SEO Técnico & SSG**: Pré-renderização SSG de **47 rotas estáticas** pós-build (`scripts/emit-route-html.mjs`), injeção dinâmica de metadados OpenGraph, Twitter Cards, Canonical e dados estruturados Schema.org JSON-LD (`ProfessionalService`, `Service`, `FAQPage`, `BreadcrumbList`, `CreativeWork`, `ImageGallery`).
+- **Analytics & Deploy**: Vercel Analytics (`@vercel/analytics/react`), headers de cache imutável para assets estáticos e redirects 301 para URLs legadas em `vercel.json`.
 - **Brand Typography**: Fontes self-hosted em WOFF2 sem dependências externas (`Righteous`, `Outfit`, `DM Sans`).
 
 ---
 
 ## 🎨 Design System & Identidade Visual
 
-A interface segue estritamente as diretrizes do **Brand System v3 da VERSAVISUAL**:
+A interface segue estritamente as diretrizes do **Brand System da VERSAVISUAL**:
 
 ### Paleta de Cores
-- `Brand Black (ink)`: `#050A0D` (fundo principal e molduras)
-- `Deep Navy (navy)`: `#253540` (cards, elevações e modais)
-- `Accent Teal (teal)`: `#5E7F8C` (acento e botões primários com `text-off`)
-- `Teal Light (teal-400)`: `#70909C` (badges e subtítulos de destaque)
-- `Mist (mist)`: `#A4B8BF` (textos secundários e metadados)
-- `Off-White (off)`: `#F2F2F2` (textos de títulos e superfícies claras)
+
+| Token | Hex | Aplicação |
+|---|---|---|
+| `Brand Black (ink)` | `#050A0D` | Fundo principal da aplicação, molduras e containers base |
+| `Deep Navy (navy)` | `#253540` | Cards secundários, elevações e modais |
+| `Accent Teal (teal)` | `#5E7F8C` | Acentos visuais e botões de ação primária com `text-off` |
+| `Teal Light (teal-400)` | `#70909C` | Badges, indicadores de status e subtítulos de destaque |
+| `Mist (mist)` | `#A4B8BF` | Textos secundários, legendas e metadados |
+| `Off-White (off)` | `#F2F2F2` | Textos de títulos, superfícies claras e texto em botões `bg-teal` |
+
+### Regra de Ouro de Contraste (WCAG AA / AAA)
+- **Botões e CTAs com `bg-teal`**: Utilizam OBRIGATORIAMENTE `text-off` para garantir legibilidade e conformidade de contraste.
+- **Fundos escuros (`bg-ink`)**: Títulos em `text-off` e textos auxiliares em `text-mist`.
 
 ### Tipografia
-- **Display & Wordmark**: `Righteous` (identidade e logotipo)
-- **Headlines, UI, Botões e Eyebrows**: `Outfit` (títulos e elementos interativos)
-- **Corpo, Legendas e Rodapé**: `DM Sans` (parágrafos e leitura)
+- **Display & Wordmark**: `Righteous` (identidade, logo e números de impacto)
+- **Headlines, UI, Botões e Eyebrows**: `Outfit` (títulos H1/H2/H3, menus e elementos interativos)
+- **Corpo, Legendas e Rodapé**: `DM Sans` (parágrafos, fichas técnicas e leitura longa)
 
 ---
 
-## 🗺️ Mapa de Rotas
+## 🗺️ Mapa de Rotas do Projeto
+
+O site conta com **47 rotas estáticas** pré-renderizadas via SSG para máxima velocidade e indexação:
 
 | Rota | Descrição |
 |---|---|
-| `/` | Home institucional com hero full-bleed, nichos, serviços, timeline e CTAs |
-| `/portfolio` | Portfólio com alternador de visualização (**Grid Tradicional** ↔ **Canvas 360°**) |
-| `/portfolio/canvas` | Acesso direto ao **Infinite Canvas 360°** em tela cheia |
-| `/portfolio/:caseSlug` | Estudo de caso autoral detalhado com galeria técnica e fichas |
-| `/diagnostico-visual` | Formulário interativo de onboarding e briefing guiado para WhatsApp |
-| `/:slug` ou `/segmentos/:slug` | Landing pages dedicadas para os 8 nichos de atuação |
-| `/404` | Página de erro 404 personalizada com atalhos de recuperação |
+| `/` | Home institucional com hero full-bleed, seletor de nichos, serviços, timeline de método, fundador e CTAs |
+| `/sobre` | Página institucional com visão autoral, manifesto, biografia do fundador Vini Cunha, timeline e equipamentos Nikon |
+| `/portfolio` | Portfólio com alternador de visualização (**Grid Tradicional** ↔ **Canvas 360°**) e filtros por nicho |
+| `/portfolio/canvas` | Acesso direto ao **Infinite Canvas 360°** em tela cheia com minimap radar |
+| `/portfolio/:caseSlug` | 19 estudos de caso detalhados com galeria de alta resolução, fichas técnicas e vídeos oficiais |
+| `/diagnostico-visual` | Formulário interativo de onboarding e briefing guiado com direcionamento para WhatsApp |
+| `/:slug` | 8 landing pages dedicadas aos nichos de atuação (veja tabela abaixo) |
+| `/404` | Página de erro 404 personalizada com atalhos de recuperação inteligentes |
+
+### Landing Pages de Nichos (Segmentos)
+1. `/ativacoes-eventos` — Cobertura estratégica para festivais, ativações e marcas corporativas.
+2. `/moda-campanhas` — Ensaios editoriais, lookbooks e campanhas de moda autoral.
+3. `/artistas-videoclipes` — Direção criativa, capas de lançamentos e videoclipes para artistas musicais.
+4. `/posicionamento-profissional` — Retratos executivos de alto impacto e posicionamento de líderes.
+5. `/imagem-pessoal-lifestyle` — Ensaios autorais e narrativas visuais para personalidades.
+6. `/casamentos` — Cobertura cinematográfica para casamentos e destination weddings.
+7. `/gestantes` — Ensaios conceituais e elegantes de maternidade.
+8. `/hotelaria-lifestyle` — Fotografia e vídeo para hotéis boutique, resorts e gastronomia premium.
+
+*(Todos os aliases legados como `/eventos`, `/moda`, `/artistas`, `/posicionamento`, `/corporativo`, `/casamento` possuem redirecionamento canônico 301 configurado no `vercel.json` e fallback instantâneo no cliente).*
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```text
-home-mobile-ajustes/
+seo-tecnico-rotas/
 ├── api/
-│   └── diagnostico.ts         # Endpoint serverless para triagem de leads
-├── dist/                      # Bundle de produção e páginas estáticas (SSG)
+│   └── diagnostico.ts            # Endpoint serverless Vercel para triagem de leads com Resend
+├── dist/                         # Bundle de produção e 47 páginas estáticas pré-renderizadas (SSG)
 ├── public/
-│   ├── brand-assets/          # Logos e ícones exportados
-│   ├── images/                # Fotografias de alta resolução catalogadas
-│   ├── logos/                 # Wordmarks vetoriais
-│   ├── fonts/                 # Righteous, Outfit e DM Sans em WOFF2
-│   ├── videos/                # Mídias em vídeo (Hero e videoclipes)
-│   ├── robots.txt             # Diretivas de indexação
-│   └── sitemap.xml            # Sitemap canônico com todas as rotas
+│   ├── brand-assets/             # Logos vetoriais e ícones da marca
+│   ├── fonts/                    # Fontes locais em WOFF2 (Righteous, Outfit, DM Sans)
+│   ├── images/                   # Acervo fotográfico de alta resolução catalogado
+│   ├── videos/                   # Vídeos em loop nativos (Hero e videoclipes)
+│   ├── favicon.svg / favicon.ico # Ícones de navegação
+│   ├── robots.txt                # Diretivas de indexação para motores de busca
+│   └── sitemap.xml               # Sitemap XML canônico completo com todas as rotas
 ├── scripts/
-│   └── emit-route-html.mjs    # Gerador SSG de rotas estáticas pós-build
+│   ├── emit-route-html.mjs       # Gerador SSG de 47 rotas estáticas pós-build
+│   └── verify-built-seo.mjs      # Validador automatizado de integridade SEO dos arquivos dist
 ├── src/
 │   ├── components/
-│   │   ├── InfiniteCanvas.tsx # Canvas 360° interativo com física e minimap
-│   │   ├── PortfolioGrid.tsx  # Grid de portfólio com filtros e spotlight
-│   │   ├── Header.tsx         # Header com blur no scroll e menu mobile acessível
-│   │   ├── Footer.tsx         # Rodapé com links e contatos
-│   │   ├── Gallery.tsx        # Galeria com Lightbox em portal
-│   │   ├── WhatsAppFloat.tsx  # Botão flutuante direto de WhatsApp
-│   │   └── ...
+│   │   ├── BeforeAfterSlider.tsx # Comparador interativo de tratamento RAW vs Color Grading
+│   │   ├── CTASection.tsx        # Seção de conversão com fundo parallax e CTAs de alto contraste
+│   │   ├── FAQAccordion.tsx      # Acordeão de perguntas frequentes acessível (WAI-ARIA)
+│   │   ├── Footer.tsx            # Rodapé institucional com links de navegação e redes
+│   │   ├── FounderSection.tsx    # Seção sobre o fundador (Vini Cunha), visão e equipamentos
+│   │   ├── Gallery.tsx           # Galeria de fotos com Lightbox em portal
+│   │   ├── Header.tsx            # Header com blur no scroll e menu drawer mobile acessível
+│   │   ├── InfiniteCanvas.tsx    # Canvas 360° interativo com aceleração GPU, inércia e radar HUD
+│   │   ├── Logo.tsx              # Wordmark vetorial oficial com tipografia Righteous
+│   │   ├── PortfolioGrid.tsx     # Grid de portfólio com filtros por categoria e spotlight
+│   │   ├── PrivacyModal.tsx      # Modal acessível com políticas e termos de privacidade
+│   │   ├── Reveal.tsx            # Wrapper de animação suave na rolagem com reduced-motion
+│   │   ├── ScrollToTop.tsx       # Reset de rolagem e compensador de âncoras em trocas de rota
+│   │   ├── ServiceGrid.tsx       # Grid de serviços institucionais com hover effects
+│   │   ├── WhatsAppFloat.tsx     # Botão flutuante para conversão direta no WhatsApp
+│   │   └── ui/
+│   │       ├── shared-element-gallery.tsx # Lightbox fullscreen com Framer Motion
+│   │       └── timeline.tsx               # Linha do tempo de processo com scroll progress
 │   ├── data/
-│   │   └── site.ts            # Dicionário único de segmentos, cases e dados
+│   │   ├── beforeAfter.ts        # Dados dos comparativos antes/depois e especificações técnicas
+│   │   ├── catalog-seo.json      # Catálogo centralizado de metadados SEO, descrições e FAQs
+│   │   ├── seo-routes.json       # Manifesto de rotas para geração SSG
+│   │   └── site.ts               # Dicionário de dados da marca: segmentos, cases, serviços e FAQ
 │   ├── lib/
-│   │   ├── images.ts          # Helper e fallback seguro de imagens
-│   │   ├── seo.tsx            # Injeção dinâmica de SEO, OpenGraph e JSON-LD
-│   │   └── utils.ts           # Utilitários globais
-│   ├── pages/                 # Home, Portfolio, SegmentPage, CaseStudy, Diagnostico, NotFound
-│   ├── App.tsx                # Roteador principal e shell da aplicação
-│   ├── index.css              # Tokens do Tailwind v4 (@theme) e utilitários
-│   └── main.tsx               # Ponto de entrada da aplicação
-├── tests/                     # Suíte de testes automatizados (Tiers 1 a 5)
-├── AGENTS.md                  # Diretrizes locais de código e desenvolvimento
-├── DESIGN.md                  # Especificação oficial do Design System
-├── PROJECT.md                 # Arquitetura detalhada e inventário de features
-├── package.json               # Dependências e scripts de execução
-├── pnpm-lock.yaml             # Lockfile de dependências
-├── tsconfig.json              # Configuração estrita do TypeScript
-├── vercel.json                # Configuração de deploy da Vercel
-└── vite.config.ts             # Configuração otimizada do Vite 8 + Tailwind v4
+│   │   ├── images.ts             # Helper de resolução segura de fotos locais com fallback
+│   │   ├── seo.tsx               # Injetor de tags SEO, OpenGraph e Schema.org JSON-LD
+│   │   ├── useParallax.ts        # Hook de efeito parallax reativo ao scroll
+│   │   └── utils.ts              # Utilitários de classes CSS e formatação
+│   ├── pages/
+│   │   ├── About.tsx             # Página Sobre Nós com biografia, manifesto e equipamentos
+│   │   ├── CaseStudy.tsx         # Página de Estudo de Caso individual com galeria e ficha
+│   │   ├── Diagnostico.tsx       # Formulário de diagnóstico visual e gerador de lead WhatsApp
+│   │   ├── Home.tsx              # Página inicial institucional completa
+│   │   ├── NotFound.tsx          # Página 404 personalizada com atalhos de recuperação
+│   │   ├── Portfolio.tsx         # Página de portfólio com alternador Grid / Canvas 360°
+│   │   └── SegmentPage.tsx       # Landing page temática dos 8 nichos de atuação
+│   ├── App.tsx                   # Roteador raiz da aplicação e lazy loading de páginas
+│   ├── index.css                 # Import Tailwind v4, tokens `@theme`, fontes e classes utilitárias
+│   └── main.tsx                  # Ponto de entrada da aplicação React 19
+├── tests/                        # Suíte de testes automatizados (Tiers 1 a 5 — 256 testes)
+├── AGENTS.md                     # Guia de desenvolvimento e regras técnicas para agentes AI
+├── DECISIONS.md                  # Registro de decisões de arquitetura e design
+├── DESIGN.md                     # Especificação oficial do Design System VersaVisual
+├── PROJECT.md                    # Arquitetura detalhada, inventário de features e contratos
+├── ROADMAP.md                    # Histórico de entregas e fases futuras
+├── TEST_INFRA.md                 # Documentação da infraestrutura de testes automatizados
+├── TODO.md                       # Status de tarefas, checklist e pendências operacionais
+├── package.json                  # Dependências e scripts de execução
+├── tsconfig.json                 # Configuração estrita do compilador TypeScript
+├── vercel.json                   # Configuração de headers, redirecionamentos e deploy Vercel
+└── vite.config.ts                # Configuração do Vite 8 com Tailwind CSS v4
 ```
 
 ---
 
 ## 🛠️ Comandos de Desenvolvimento
 
-### Instalação
+### Instalação de Dependências
 ```bash
-pnpm install
-# ou
 npm install
 ```
 
-### Executar em Desenvolvimento
+### Executar Servidor Local de Desenvolvimento
 ```bash
-pnpm run dev
-# ou
 npm run dev
 ```
+*O servidor iniciará em `http://localhost:5173` com hot reload instantâneo.*
 
 ### Build de Produção & Geração SSG
 ```bash
-pnpm run build
-# ou
 npm run build
+```
+*Executa o `vite build` e em seguida o script `scripts/emit-route-html.mjs`, gerando os 47 arquivos `.html` estáticos em `dist/` com metadados e Schema JSON-LD pré-injetados.*
+
+### Verificação de SEO dos Arquivos Gerados
+```bash
+node scripts/verify-built-seo.mjs
 ```
 
 ### Suíte de Testes Automatizados
 ```bash
-# Executar todos os testes E2E (Tiers 1 a 4 — 209 testes)
+# Executar todos os testes E2E Tiers 1 a 4 (230 testes)
 npx tsx tests/run-all.ts
 
-# Executar testes adversariais de estresse (Tier 5 — 26 testes)
+# Executar testes adversariais de estresse Tier 5 (26 testes)
 npx tsx tests/tier5-adversarial-hardening.ts
 
-# Checagem estrita de tipos TypeScript
+# Verificação estrita de tipos TypeScript (zero erros esperados)
 npx tsc --noEmit
 ```
 
 ---
 
-## 📋 Checklist de Publicação em Produção
+## 📋 Resumo da Cobertura de Testes
 
-- [ ] `npx tsc --noEmit` executa com **0 erros de tipagem**.
-- [ ] `pnpm run build` conclui gerando todas as rotas estáticas em `dist/`.
-- [ ] Testes E2E `npx tsx tests/run-all.ts` aprovados com 100% de sucesso.
-- [ ] Contraste WCAG AA verificado em botões (`bg-teal text-off`).
-- [ ] Navegação mobile responsiva (360px a 4K) sem overflow horizontal.
-- [ ] Infinite Canvas 360° fluido com arraste, zoom e Lightbox responsivo.
-- [ ] Formulário `/diagnostico-visual` validado com honeypot anti-spam.
+| Tier | Escopo de Teste | Testes | Status |
+|---|---|---|---|
+| **Tier 1** | Cobertura de Features & Contratos Unitários | 194 | ✅ 100% Pass |
+| **Tier 2** | Limites, Casos de Borda, Validações e Fuzzing | 18 | ✅ 100% Pass |
+| **Tier 3** | Combinações Cross-Feature e Fluxos de Navegação | 13 | ✅ 100% Pass |
+| **Tier 4** | Cenários de Usuário Reais (Jornadas Completas de Conversão) | 5 | ✅ 100% Pass |
+| **Tier 5** | Adversarial Hardening (Segurança, Injeção, Integridade SSG) | 26 | ✅ 100% Pass |
+| **Total** | **Suíte Completa de Testes Automatizados** | **256** | **✅ 100% Pass (0 falhas)** |
 
 ---
 
 ## 📞 Atendimento & Contato
 
-- **WhatsApp**: [+55 (22) 99762-4631](https://wa.me/5522997624631)
+- **Diretor Criativo**: Vinicius Cunha (Vini)
+- **WhatsApp Oficial**: [+55 (22) 99762-4631](https://wa.me/5522997624631)
 - **E-mail**: [hub@versavisual.com.br](mailto:hub@versavisual.com.br)
-- **Diagnóstico Visual**: [`/diagnostico-visual`](https://versavisual.com.br/diagnostico-visual)
+- **Diagnóstico Visual**: [`/diagnostico-visual`](https://www.versavisual.com.br/diagnostico-visual)
 
 ---
 
