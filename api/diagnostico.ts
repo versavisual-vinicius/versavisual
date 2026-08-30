@@ -1,4 +1,4 @@
-const LEAD_RECIPIENT = "mayconviniciuscunha@icloud.com"
+const LEAD_RECIPIENT = "hub@versavisual.com.br"
 
 const REQUIRED_FIELDS = ["nome", "whatsapp", "email"] as const
 

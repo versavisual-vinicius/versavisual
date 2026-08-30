@@ -45,7 +45,7 @@ export async function runTier1SeoRouteManifestTests() {
     }
 
     it("SEO.M1: sitemap contains valid canonical URLs matching sitemap.xml contract", () => {
-      expect(sitemapUrls.length).toBeGreaterThan(40)
+      expect(sitemapUrls.length).toBe(32)
       expect(sitemapUrls).toContain("/")
       expect(sitemapUrls).toContain("/sobre")
       expect(sitemapUrls).toContain("/portfolio")

@@ -107,7 +107,7 @@ export function buildRouteJsonLd(route, meta) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "VERSAVISUAL",
-    image: `${SITE_URL}/brand-assets/logo-og.png`,
+    image: `${SITE_URL}/brand-assets/vv-profilelogo-dark-square.png`,
     "@id": organizationId,
     url: SITE_URL,
     telephone: "+5522997624631",

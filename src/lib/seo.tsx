@@ -149,7 +149,7 @@ export function professionalServiceSchema() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "VERSAVISUAL",
-    image: `${SITE_URL}/brand-assets/logo-og.png`,
+    image: `${SITE_URL}/brand-assets/vv-profilelogo-dark-square.png`,
     "@id": `${SITE_URL}/#professional-service`,
     url: SITE_URL,
     telephone: "+5522997624631",
