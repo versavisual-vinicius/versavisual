@@ -1,6 +1,6 @@
 import { readFile, access } from "node:fs/promises"
 import path from "node:path"
-import { routeOutputPath, SITE_URL } from "./emit-route-html.mjs"
+import { routeOutputPath, SITE_URL } from "./scripts/emit-route-html.mjs"
 
 async function main() {
   const root = process.cwd()

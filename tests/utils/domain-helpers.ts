@@ -5,14 +5,21 @@ export const PROJECT_ROOT = process.cwd()
 
 export function readProjectFile(relPath: string): string {
   const fullPath = path.join(PROJECT_ROOT, relPath)
-  if (!fs.existsSync(fullPath)) {
-    throw new Error(`File not found: ${fullPath}`)
+  if (fs.existsSync(fullPath)) {
+    return fs.readFileSync(fullPath, "utf-8")
   }
-  return fs.readFileSync(fullPath, "utf-8")
+  const altPath = path.join(PROJECT_ROOT, relPath.replace(/^src\//, ""))
+  if (fs.existsSync(altPath)) {
+    return fs.readFileSync(altPath, "utf-8")
+  }
+  throw new Error(`File not found: ${fullPath}`)
 }
 
 export function fileExists(relPath: string): boolean {
-  return fs.existsSync(path.join(PROJECT_ROOT, relPath))
+  return (
+    fs.existsSync(path.join(PROJECT_ROOT, relPath)) ||
+    fs.existsSync(path.join(PROJECT_ROOT, relPath.replace(/^src\//, "")))
+  )
 }
 
 /**

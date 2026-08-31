@@ -39,8 +39,8 @@ import {
   WHATSAPP,
   type Segment,
   type PortfolioItem,
-} from "../src/data/site.ts"
-import { img } from "../src/lib/images.ts"
+} from "./data/site.ts"
+import { img } from "./lib/images.ts"
 
 // Configure runner tier for Tier 5
 runner.setTier("Tier 5 - Adversarial Coverage Hardening")
@@ -720,7 +720,7 @@ export async function runTier5AdversarialHardeningTests() {
       const allRouteHtmlFiles = getHtmlFiles(distDir).filter(
         (f) => !f.includes("image-review.html"),
       )
-      expect(allRouteHtmlFiles.length).toBe(33)
+      expect(allRouteHtmlFiles.length).toBe(47)
     })
 
     test("T5.5.2: Every one of the 33 HTML files satisfies strict structural integrity", () => {

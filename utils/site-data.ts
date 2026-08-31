@@ -60,7 +60,7 @@ export const CANONICAL_PORTFOLIO_FILTERS = [
   "Hotelaria & Lifestyle",
 ]
 
-import { PORTFOLIO } from "../../src/data/site.ts"
+import { PORTFOLIO } from "../data/site.ts"
 
 export const CANONICAL_CASES = PORTFOLIO.filter((p) => Boolean(p.caseSlug)).map(
   (p) => ({

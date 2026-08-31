@@ -33,7 +33,7 @@ export async function runTier1SegmentPagesInteractiveTests() {
     })
 
     it("F19.6: SegmentPage supports portfolioGroups declared by segment data without slug-specific branching", async () => {
-      const { SEGMENTS, PORTFOLIO } = await import("../../src/data/site.ts")
+      const { SEGMENTS, PORTFOLIO } = await import("../data/site.ts")
       const events = SEGMENTS.find((seg) => seg.slug === "ativacoes-eventos")
 
       expect(events).toBeDefined()

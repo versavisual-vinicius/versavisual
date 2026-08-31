@@ -59,7 +59,7 @@ export default function Diagnostico() {
   useSeo({
     title: "Diagnóstico Visual Gratuito | VERSAVISUAL",
     description:
-      "Conte seu contexto e objetivo. Devolvemos um caminho visual claro e uma proposta sob medida em fotografia, vídeo e direção visual. Sem compromisso.",
+      "Avaliação estratégica do posicionamento visual da sua marca. Receba direcionamento de fotografia, vídeo e narrativa para elevar sua percepção de valor.",
     path: "/diagnostico-visual",
     jsonLd: [
       breadcrumb([
@@ -180,10 +180,10 @@ export default function Diagnostico() {
       setSubmittedLead(lead)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } catch (err) {
-      console.error("Erro no envio do formulário (fallback para WhatsApp direto):", err)
-      // Fallback gracioso: direciona para o resumo com o link do WhatsApp pronto
-      setSubmittedLead(lead)
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      console.error("Erro no envio do formulário:", err)
+      setSubmitError(
+        "Não foi possível enviar automaticamente para o servidor. Por favor, tente novamente ou fale diretamente pelo WhatsApp abaixo.",
+      )
     } finally {
       setIsSubmitting(false)
     }

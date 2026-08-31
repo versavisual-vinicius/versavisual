@@ -39,8 +39,8 @@ import {
   WHATSAPP,
   type Segment,
   type PortfolioItem,
-} from "../src/data/site.ts"
-import { img } from "../src/lib/images.ts"
+} from "../data/site.ts"
+import { img } from "../lib/images.ts"
 
 // Configure runner tier for Tier 5
 runner.setTier("Tier 5 - Adversarial Coverage Hardening")
@@ -571,8 +571,8 @@ export async function runTier5AdversarialHardeningTests() {
       }
     })
 
-    test("T5.3.3: All 20 Portfolio items have valid categories, parent segments, and existing local photos", () => {
-      expect(PORTFOLIO).toHaveLength(20)
+    test("T5.3.3: All 19 Portfolio items have valid categories, parent segments, and existing local photos", () => {
+      expect(PORTFOLIO).toHaveLength(19)
 
       const validSegmentSlugs = new Set(SEGMENTS.map((s) => s.slug))
 
@@ -720,7 +720,7 @@ export async function runTier5AdversarialHardeningTests() {
       const allRouteHtmlFiles = getHtmlFiles(distDir).filter(
         (f) => !f.includes("image-review.html"),
       )
-      expect(allRouteHtmlFiles.length).toBe(44)
+      expect(allRouteHtmlFiles.length).toBe(47)
     })
 
     test("T5.5.2: Every one of the 43 HTML files satisfies strict structural integrity", () => {

@@ -16,8 +16,8 @@ export default function Footer() {
             <div>
               <Logo variant="white" className="block h-10 w-auto" />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
-                Estratégia, Produção Audiovisual & Pós-Produção Autoral. Da cena ao frame,
-                no Rio de Janeiro e em todo o Brasil.
+                Fotografia, vídeo, storymaking e direção visual para marcas,
+                eventos e entretenimento.
               </p>
               <div className="mt-6 flex flex-col gap-1.5">
                 <a
@@ -103,7 +103,7 @@ export default function Footer() {
 
           <div className="mt-14 flex flex-col gap-3 border-t border-off/10 pt-6 text-xs text-mist/80 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap items-center gap-4">
-              <span>© 2026 VERSAVISUAL — Operação Audiovisual</span>
+              <span>© VERSAVISUAL</span>
               <button
                 type="button"
                 onClick={() => setIsPrivacyOpen(true)}
@@ -113,7 +113,7 @@ export default function Footer() {
               </button>
             </div>
             <span className="u-wordmark tracking-widest text-mist/80">
-              Rio de Janeiro — RJ · Brasil
+              Rio de Janeiro · operação nacional
             </span>
           </div>
         </div>

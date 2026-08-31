@@ -5,7 +5,7 @@ import {
   CANONICAL_HOME_PROCESS,
   CANONICAL_HOME_STATS,
 } from "../utils/site-data.ts"
-import { HOME_SERVICE_GROUPS } from "../../src/data/site.ts"
+import { HOME_SERVICE_GROUPS } from "../../data/site.ts"
 
 export async function runTier1HomeComponentsTests() {
   runner.setTier("Tier 1 - Feature Coverage")
@@ -37,8 +37,8 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain("Imagem não é registro. É posicionamento.")
     })
 
-    it("F13.6: Hero section renders conversion CTAs ('Fazer diagnóstico visual' and 'Ver portfólio')", () => {
-      expect(homeCode).toContain("Fazer diagnóstico visual")
+    it("F13.6: Hero section renders conversion CTAs ('Iniciar projeto' and 'Ver portfólio')", () => {
+      expect(homeCode).toContain("Iniciar projeto")
       expect(homeCode).toContain("Ver portfólio")
       expect(homeCode).toContain("/diagnostico-visual")
       expect(homeCode).toContain("/portfolio")
@@ -103,7 +103,7 @@ export async function runTier1HomeComponentsTests() {
           title: "Pós & Distribuição",
           items: [
             "Color Science e tratamento autoral",
-            "Storymaking e reels de alto impacto",
+            "Storymaking (quando previsto no escopo)",
             "Formatos verticais prontos para redes",
           ],
         },

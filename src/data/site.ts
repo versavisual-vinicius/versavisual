@@ -54,18 +54,18 @@ export type Service = {
 export const HOME_SERVICES: Service[] = [
   {
     n: "01",
-    title: "Estratégia & Direção",
-    desc: "Diagnóstico de posicionamento, estrutura narrativa, roteiro e direção de cena. A intenção visual é definida antes da câmera ligar.",
+    title: "Estratégia e direção visual",
+    desc: "Diagnóstico visual, alinhamento de intenção estética, roteiro e decupagem. A direção de cena é definida antes do set.",
   },
   {
     n: "02",
-    title: "Produção & Captação",
-    desc: "Fotografia editorial e institucional, produção em vídeo e cobertura de presença. Execução disciplinada com equipamentos Nikon e ópticas prime.",
+    title: "Fotografia e produção em vídeo",
+    desc: "Captação técnica em alta resolução para marcas, eventos corporativos, palcos e ritos. Cobertura com direção e sensibilidade.",
   },
   {
     n: "03",
-    title: "Pós & Distribuição",
-    desc: "Color Science e tratamento autoral, storymaking, reels e formatos sociais verticais pensados para converter e reter atenção.",
+    title: "Pós-produção e Color Science",
+    desc: "Tratamento de cor autoral, finalização de campanha e formatos multicanais (9:16, 1:1, 16:9) prontos para distribuição.",
   },
 ]
 
@@ -95,7 +95,7 @@ export const HOME_SERVICE_GROUPS: readonly ServiceGroup[] = [
     title: "Pós & Distribuição",
     items: [
       "Color Science e tratamento autoral",
-      "Storymaking e reels de alto impacto",
+      "Storymaking (quando previsto no escopo)",
       "Formatos verticais prontos para redes",
     ],
   },
@@ -104,23 +104,33 @@ export const HOME_SERVICE_GROUPS: readonly ServiceGroup[] = [
 export const HOME_PROCESS = [
   {
     n: "01",
-    title: "Briefing",
-    desc: "A maioria das produções falha não na captação — falha no que veio antes dela. Na VERSAVISUAL, o planejamento é parte do produto entregue.",
+    title: "Contexto e briefing",
+    desc: "Alinhamento de objetivo, referências, mensagem e prioridades da imagem antes de qualquer decisão técnica.",
   },
   {
     n: "02",
-    title: "Pré-produção",
-    desc: "Alinhamento de briefing, roteiro ou pauta de cobertura, reconhecimento de locação, definição de linguagem visual e organização logística da equipe.",
+    title: "Diagnóstico inicial gratuito",
+    desc: "Avaliação do cenário, viabilidade, formato ideal e recomendações de direção para o projeto.",
   },
   {
     n: "03",
-    title: "Execução",
-    desc: "Chegamos ao set com briefing definido, pauta estruturada e linguagem visual alinhada. A execução em campo é disciplinada — mas sensível.",
+    title: "Proposta sob medida",
+    desc: "Dimensionamento exato de equipe, diárias, deslocamento, equipamentos, volume de entregáveis e prazos.",
   },
   {
     n: "04",
-    title: "Pós & entrega",
-    desc: "Transformamos material bruto em entrega com identidade — tratamento de cor coeso, curadoria autoral e formatos por plataforma.",
+    title: "Planejamento e direção",
+    desc: "Pauta de cobertura, roteiro, decupagem, plano de luz e definição de linguagem visual alinhada.",
+  },
+  {
+    n: "05",
+    title: "Captação",
+    desc: "Execução no set com rigor estético, discrição, sensibilidade de enquadramento e domínio de luz.",
+  },
+  {
+    n: "06",
+    title: "Edição e entrega",
+    desc: "Curadoria autoral, tratamento de cor coeso (Color Science) e exportação organizada por formato e canal.",
   },
 ]
 
@@ -215,7 +225,7 @@ export const SEGMENTS: Segment[] = [
       "Equipes generalistas, sem direção, gerando volume de fotos sem narrativa. Conteúdo que chega tarde demais para as redes. Material bruto que ninguém edita. A ativação acaba e a marca não tem o que mostrar.",
     solutionTitle: "Direção, captação e entrega — integradas.",
     solutionText:
-      "Chegamos com pauta de cobertura definida, hierarquia de momentos e linguagem visual alinhada. Operação multicâmera, storymaking em tempo real para as redes e entrega editada por formato e plataforma.",
+      "A cobertura pode incluir pauta de momentos, leitura de iluminação e alinhamento de linguagem conforme o projeto. Operação calibrada, storymaking (quando previsto no escopo) e entrega editada por formato e plataforma.",
     servicesTitle: "Uma operação, cobertura completa.",
     services: [
       {
@@ -226,12 +236,12 @@ export const SEGMENTS: Segment[] = [
       {
         n: "02",
         title: "Vídeo",
-        desc: "Cobertura multicâmera, aftermovie e cortes verticais para redes. Identidade visual da marca preservada.",
+        desc: "Captação em vídeo, aftermovie e cortes verticais para redes conforme o escopo do projeto.",
       },
       {
         n: "03",
         title: "Storymaking",
-        desc: "Conteúdo em tempo real durante o evento — stories, reels e posts publicados enquanto a ação acontece.",
+        desc: "Conteúdo durante o evento (quando previsto no escopo) — cortes e fotos organizadas para publicação rápida.",
       },
       {
         n: "04",
@@ -258,12 +268,12 @@ export const SEGMENTS: Segment[] = [
       {
         n: "02",
         title: "Pauta",
-        desc: "Hierarquia de captação, posicionamento de câmera e estimativa por cena.",
+        desc: "Hierarquia de captação, posicionamento de câmera e estimativa por cena conforme o projeto.",
       },
       {
         n: "03",
         title: "Operação",
-        desc: "Equipe coordenada em campo, com storymaking publicado em tempo real.",
+        desc: "Equipe coordenada em campo, com storymaking quando previsto no escopo.",
       },
       {
         n: "04",
@@ -557,19 +567,19 @@ export const SEGMENTS: Segment[] = [
     faqs: [
       {
         q: "Vocês produzem o clipe do conceito à entrega?",
-        a: "Sim. Fazemos conceito, roteiro, direção, captação e pós-produção do videoclipe, além do material de divulgação.",
+        a: "Conforme o escopo do projeto, podemos assumir desde o conceito e roteiro até a direção, captação e pós-produção do videoclipe.",
       },
       {
         q: "Fazem cobertura de shows e turnê?",
-        a: "Sim. Cobrimos shows e turnês com registro de palco, bastidor e público, entregando vídeo e fotografia.",
+        a: "Sim. Cobrimos shows e apresentações com registro de palco, bastidores e público conforme a estrutura acordada.",
       },
       {
         q: "Entregam conteúdo para redes além do clipe?",
-        a: "Sim. Teaser, making of e cortes verticais fazem parte do pacote para sustentar o lançamento nas plataformas.",
+        a: "Sim. Teaser, making of e cortes verticais podem ser incluídos no escopo para sustentar o lançamento nas plataformas digitais.",
       },
       {
         q: "Como funciona o orçamento?",
-        a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e montamos uma proposta por faixa de investimento.",
+        a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e preparamos uma proposta sob medida.",
       },
     ],
     heroPhoto: BACKSTAGE_CLIPE_SURURU_PHOTOS[7] || PHOTOS.artists[0],
@@ -1246,7 +1256,7 @@ export const CASE_ALIASES: Record<string, string> = {
   "casamento-urbano-contemporaneo": "casamento-ao-ar-livre",
   "maternidade-ensaio-intimo": "ensaio-gestante-praia",
   "bonfim-house-boutique": "festival-bon-cobertura-corporativa",
-  "retratos-posicionamento-marca-pessoal": "loja-frida-sao-joao",
+  "retratos-posicionamento-marca-pessoal": "retratos-posicionamento-marca-pessoal",
   "ensaio-feminino-frida": "loja-frida-sao-joao",
 }
 
@@ -1504,7 +1514,7 @@ export const FOUNDER_DATA = {
   name: "Vinicius Cunha",
   title: "Fundador & Diretor Criativo",
   roleHeadline: "Direção Visual · Fotografia Autoral · Engenharia de Produto & Automações",
-  location: "Rio de Janeiro · RJ · Operação Nacional",
+  location: "VERSAVISUAL · Rio de Janeiro · operação nacional",
   photo: FOUNDER_PHOTO,
   manifestoQuote: "Imagem não é registro. É posicionamento estratégico construído com precisão visual e técnica.",
   bioShort:

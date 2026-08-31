@@ -1,6 +1,6 @@
 import { describe, it, expect, runner } from "../utils/test-framework.ts"
 import { readProjectFile, fileExists } from "../utils/domain-helpers.ts"
-import { SEGMENTS, PORTFOLIO, getCase } from "../../src/data/site.ts"
+import { SEGMENTS, PORTFOLIO, getCase } from "../data/site.ts"
 import path from "node:path"
 import fs from "node:fs"
 

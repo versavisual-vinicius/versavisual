@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Building2, Users } from "lucide-react"
 import { Link } from "react-router-dom"
 import {
   useSeo,
@@ -33,7 +33,7 @@ export default function Home() {
   useSeo({
     title: "VERSAVISUAL — Fotografia, Vídeo e Storymaking para Marcas",
     description:
-      "Hub audiovisual autoral no Rio de Janeiro com operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, artistas e pessoas.",
+      "VERSAVISUAL · Rio de Janeiro · operação nacional. Fotografia, vídeo, storymaking e direção visual para marcas, eventos e entretenimento.",
     path: "/",
     jsonLd: [
       professionalServiceSchema(),
@@ -44,7 +44,7 @@ export default function Home() {
         name: "VERSAVISUAL",
         url: SITE_URL,
         description:
-          "Hub audiovisual autoral: fotografia, vídeo, storymaking e direção visual.",
+          "Operação audiovisual: fotografia, vídeo, storymaking e direção visual.",
         inLanguage: "pt-BR",
       },
       itemListSchema(
@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
+      {/* 1. HERO */}
       <section className="relative overflow-hidden sm:flex sm:min-h-[88svh] sm:items-end">
         <div className="relative h-[44svh] min-h-[290px] max-h-[380px] sm:absolute sm:inset-0 sm:h-full sm:max-h-none sm:min-h-0">
           <video
@@ -82,15 +82,14 @@ export default function Home() {
         </div>
         <div className="relative mx-auto w-full max-w-[1320px] bg-ink px-5 py-7 sm:bg-transparent sm:pb-12 sm:pt-28 lg:px-10 lg:pb-16">
           <p className="u-eyebrow u-fade-in text-mist/90">
-            Hub audiovisual autoral · Rio de Janeiro · Operação nacional
+            Rio de Janeiro · operação nacional
           </p>
           <h1 className="u-fade-in mt-4 max-w-3xl text-balance text-3xl leading-[1.05] text-off sm:mt-5 sm:text-5xl lg:text-[4.2rem]">
             Imagem não é registro. É posicionamento.
           </h1>
           <p className="u-fade-in mt-4 max-w-xl text-pretty text-base text-mist sm:mt-6 sm:text-lg">
             Fotografia, vídeo, storymaking e direção visual para marcas,
-            artistas e pessoas que tratam a própria imagem como decisão
-            estratégica.
+            eventos e entretenimento — do briefing à entrega final.
           </p>
           <div className="u-fade-in mt-6 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
             <Link
@@ -98,7 +97,7 @@ export default function Home() {
               viewTransition
               className="inline-flex min-h-[46px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
             >
-              Fazer diagnóstico visual
+              Iniciar projeto
             </Link>
             <Link
               to="/portfolio"
@@ -111,16 +110,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* 2. O QUE FAZEMOS */}
       <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
         <div className="mb-10 max-w-2xl sm:mb-12">
-          <p className="u-eyebrow text-mist">O que fazemos</p>
+          <p className="u-eyebrow text-mist">Operação integrada</p>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-            Uma estrutura audiovisual completa, do briefing à entrega.
+            Uma só direção. Do briefing à cor final.
           </h2>
           <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
-            Reunimos direção, captação e pós-produção em uma operação só — para
-            que a imagem comunique com coerência em cada ponto de contato.
+            A VERSAVISUAL planeja, capta e finaliza a imagem do projeto como um
+            sistema. Estratégia e direção visual, fotografia, vídeo, cobertura de
+            ativações e eventos, storymaking (quando previsto no escopo), pós-produção
+            e Color Science — com formatos prontos para campanha e canais digitais.
+          </p>
+          <p className="mt-3 text-sm text-mist/80">
+            Não entregamos serviços soltos. Entregamos a imagem que a marca, o
+            evento ou o artista passam a usar depois.
           </p>
         </div>
         <ServiceGrid items={HOME_SERVICES} mobileGroups={HOME_SERVICE_GROUPS} />
@@ -163,7 +168,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEGMENTS */}
+      {/* 3. PARA QUEM */}
+      <section className="border-b border-off/10 bg-ink/40 py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
+          <div className="max-w-3xl">
+            <p className="u-eyebrow text-mist">Quem contrata o projeto</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
+              Falamos com quem decide a imagem — de grandes marcas a histórias reais.
+            </h2>
+            <p className="mt-4 text-pretty text-sm text-mist sm:text-base leading-relaxed">
+              A VERSAVISUAL atua com o mesmo rigor de direção em duas frentes complementares:
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <div className="border border-off/10 bg-navy/20 p-6 sm:p-8">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xs border border-teal/40 bg-teal/10 text-teal-400">
+                  <Building2 className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-semibold text-off sm:text-xl">
+                  Empresas e mercado
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-mist">
+                Marketing de marcas, agências, produtoras de eventos, festivais
+                e equipes de artistas que precisam de cobertura estratégica,
+                presença em tempo real e ativos de campanha.
+              </p>
+            </div>
+
+            <div className="border border-off/10 bg-navy/20 p-6 sm:p-8">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xs border border-teal/40 bg-teal/10 text-teal-400">
+                  <Users className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-semibold text-off sm:text-xl">
+                  Pessoas e histórias
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-mist">
+                Profissionais, pequenos empreendedores, noivas e famílias que
+                buscam posicionamento, retrato autoral e memória sem fórmulas
+                prontas.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-6 text-xs text-mist/70">
+            A escala da equipe e os equipamentos acompanham o porte de cada projeto.
+            O cuidado estético e a precisão técnica são exatamente os mesmos.
+          </p>
+        </div>
+      </section>
+
+      {/* SEGMENTOS */}
       <section
         id="nichos"
         className="u-defer-render border-y border-off/10 bg-ink"
@@ -282,7 +341,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROCESS */}
+      {/* 4. COMO TRABALHAMOS / PROCESSO */}
       <section id="processo" className="u-defer-render">
         <Suspense
           fallback={
@@ -290,9 +349,9 @@ export default function Home() {
           }
         >
           <Timeline
-            eyebrow="Método"
-            title="A produção falha antes da câmera ligar."
-            text="Por isso o planejamento é parte do produto. Cada etapa existe para que a captação chegue ao set já resolvida."
+            eyebrow="Processo"
+            title="Antes do set, o recorte. Depois do set, a tese."
+            text="Cada projeto entra por contexto e sai por entrega definida. A proposta é sob medida: duração, complexidade, equipe, deslocamento, formatos, volume, prazo e uso do material."
             media={
               <div
                 ref={btsParallaxRef}
@@ -323,12 +382,16 @@ export default function Home() {
         </Suspense>
       </section>
 
-      {/* FOUNDER / DOSSIER */}
+      {/* 8. SOBRE O FUNDADOR / OPERAÇÃO */}
       <FounderSection />
 
+      {/* 9. DIAGNÓSTICO VISUAL / CTA */}
       <CTASection
-        title="Não sabe por onde começar? Comece pelo diagnóstico."
-        text="Conte o seu contexto e objetivo. Analisamos a viabilidade visual e devolvemos uma recomendação de formato com proposta sob medida."
+        eyebrow="Briefing inicial · gratuito"
+        title="Conte o projeto. Devolvemos o caminho."
+        text="O Diagnóstico Visual é o briefing inicial da VERSAVISUAL. Serve para receber o contexto, qualificar a oportunidade, identificar objetivo, data e local, orientar o primeiro contato e preparar uma proposta sob medida."
+        primaryLabel="Preencher briefing de projeto"
+        secondaryLabel="Falar no WhatsApp"
       />
     </>
   )
