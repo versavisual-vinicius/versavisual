@@ -1,33 +1,17 @@
-import { lazy, Suspense } from "react"
-import { ArrowUpRight, Building2, Users } from "lucide-react"
 import { Link } from "react-router-dom"
-import {
-  useSeo,
-  SITE_URL,
-  professionalServiceSchema,
-  itemListSchema,
-} from "../lib/seo"
+import { ArrowRight } from "lucide-react"
+import { useSeo, SITE_URL, professionalServiceSchema, itemListSchema } from "../lib/seo"
 import { img } from "../lib/images"
+import { SEGMENTS } from "../data/site"
 import {
-  HOME_SERVICES,
-  HOME_SERVICE_GROUPS,
-  HOME_PROCESS,
-  HOME_STATS,
-  SEGMENTS,
-  segmentImageAlt,
-} from "../data/site"
-import BeforeAfterSlider from "../components/BeforeAfterSlider"
-import ServiceGrid from "../components/ServiceGrid"
-import FounderSection from "../components/FounderSection"
-import CTASection from "../components/CTASection"
-import { useParallax } from "../lib/useParallax"
-
-const METHOD_PHOTO = "/images/foto-a-producao-nao-falha.webp"
-
-const Timeline = lazy(async () => {
-  const module = await import("../components/ui/timeline")
-  return { default: module.Timeline }
-})
+  MEGABLOCO_CHA_DA_ALICE_PHOTOS,
+  CLIPE_E_O_TCHAN_COVER,
+  FASHION_MANNERS_PHOTOS,
+  LANCAMENTO_DRINKBALL_PHOTOS,
+  CAMAROTE_ONDINA_PHOTOS,
+  BACKSTAGE_CLIPE_SURURU_PHOTOS,
+  FOUNDER_PHOTO
+} from "../lib/images"
 
 export default function Home() {
   useSeo({
@@ -53,346 +37,452 @@ export default function Home() {
           url: `/${s.slug}`,
           description: s.intro,
         })),
-        "Segmentos Audiovisuais VERSAVISUAL",
+        "Segmentos Audiovisuais VERSAVISUAL"
       ),
     ],
   })
 
-  const { ref: btsParallaxRef, style: btsParallaxStyle } = useParallax({
-    speed: 0.08,
-  })
-
   return (
     <>
-      {/* 1. HERO */}
-      <section className="relative overflow-hidden sm:flex sm:min-h-[88svh] sm:items-end">
-        <div className="relative h-[44svh] min-h-[290px] max-h-[380px] sm:absolute sm:inset-0 sm:h-full sm:max-h-none sm:min-h-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="h-full w-full object-cover"
+      {/* 2. HERO SECTION */}
+      <section id="inicio" className="relative min-h-screen flex items-end pb-16 md:pb-24 pt-28 overflow-hidden">
+        
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover object-top filter brightness-[0.95]"
           >
             <source src="/videos/hero.webm" type="video/webm" />
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
-          <div className="u-grade absolute inset-0 hidden sm:block" />
+          {/* Overlays de Contraste e Atmosfera */}
+          <div className="absolute inset-0 hero-gradient"></div>
+          <div className="absolute inset-0 bg-ink/30"></div>
         </div>
-        <div className="relative mx-auto w-full max-w-[1320px] bg-ink px-5 py-7 sm:bg-transparent sm:pb-12 sm:pt-28 lg:px-10 lg:pb-16">
-          <p className="u-eyebrow u-fade-in text-mist/90">
-            Rio de Janeiro · operação nacional
-          </p>
-          <h1 className="u-fade-in mt-4 max-w-3xl text-balance text-3xl leading-[1.05] text-off sm:mt-5 sm:text-5xl lg:text-[4.2rem]">
-            Imagem não é registro. É posicionamento.
-          </h1>
-          <p className="u-fade-in mt-4 max-w-xl text-pretty text-base text-mist sm:mt-6 sm:text-lg">
-            Fotografia, vídeo, storymaking e direção visual para marcas,
-            eventos e entretenimento — do briefing à entrega final.
-          </p>
-          <div className="u-fade-in mt-6 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-            <Link
-              to="/diagnostico-visual"
-              viewTransition
-              className="inline-flex min-h-[46px] items-center justify-center border border-teal bg-teal px-6 py-3 text-center text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400"
-            >
-              Iniciar projeto
-            </Link>
-            <Link
-              to="/portfolio"
-              viewTransition
-              className="inline-flex min-h-[46px] items-center justify-center gap-2 border border-off/15 bg-navy/30 px-5 py-3 text-sm font-medium font-head text-off transition-colors duration-200 hover:border-teal hover:text-teal-400 sm:border-transparent sm:bg-transparent sm:px-0 sm:py-1 sm:border-b"
-            >
-              Ver portfólio <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* 2. O QUE FAZEMOS */}
-      <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
-        <div className="mb-10 max-w-2xl sm:mb-12">
-          <p className="u-eyebrow text-mist">Operação integrada</p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-            Uma só direção. Do briefing à cor final.
-          </h2>
-          <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
-            A VERSAVISUAL planeja, capta e finaliza a imagem do projeto como um
-            sistema. Estratégia e direção visual, fotografia, vídeo, cobertura de
-            ativações e eventos, storymaking (quando previsto no escopo), pós-produção
-            e Color Science — com formatos prontos para campanha e canais digitais.
-          </p>
-          <p className="mt-3 text-sm text-mist/80">
-            Não entregamos serviços soltos. Entregamos a imagem que a marca, o
-            evento ou o artista passam a usar depois.
-          </p>
-        </div>
-        <ServiceGrid items={HOME_SERVICES} mobileGroups={HOME_SERVICE_GROUPS} />
-      </section>
+        {/* Conteúdo do Hero */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          <div className="max-w-3xl space-y-6">
+            
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-teal"></span>
+              <p className="font-head text-xs md:text-sm font-semibold uppercase tracking-widest text-mist">
+                Rio de Janeiro · operação nacional
+              </p>
+            </div>
 
-      {/* STATS */}
-      <section className="overflow-hidden border-y border-off/10">
-        <ul className="sr-only">
-          {HOME_STATS.map((s) => (
-            <li key={s.label}>
-              {s.value} {s.label}
-            </li>
-          ))}
-        </ul>
-        <div aria-hidden="true" className="overflow-hidden">
-          <div className="u-marquee-track">
-            {[0, 1].map((group) => (
-              <div
-                key={group}
-                className={`${
-                  group === 0 ? "u-marquee-primary" : "u-marquee-duplicate"
-                } flex w-max shrink-0`}
-              >
-                {HOME_STATS.map((s) => (
-                  <div
-                    key={s.label}
-                    className="u-marquee-item flex min-w-[170px] shrink-0 items-center gap-2.5 border-r border-off/10 px-4 py-5 sm:min-w-[240px] sm:gap-3 sm:px-8 lg:py-7"
-                  >
-                    <p className="u-display text-xl text-off sm:text-2xl lg:text-3xl">
-                      {s.value}
-                    </p>
-                    <p className="text-[0.65rem] font-medium uppercase tracking-[0.14em] text-mist sm:text-[0.68rem] sm:tracking-[0.16em]">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* Headline Principal */}
+            <h1 className="font-head font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[1.08] text-off tracking-tight text-balance">
+              Imagem não é registro.<br/>
+              <span className="text-off">É posicionamento.</span>
+            </h1>
 
-      {/* 3. PARA QUEM */}
-      <section className="border-b border-off/10 bg-ink/40 py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
-          <div className="max-w-3xl">
-            <p className="u-eyebrow text-mist">Quem contrata o projeto</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-              Falamos com quem decide a imagem — de grandes marcas a histórias reais.
-            </h2>
-            <p className="mt-4 text-pretty text-sm text-mist sm:text-base leading-relaxed">
-              A VERSAVISUAL atua com o mesmo rigor de direção em duas frentes complementares:
+            {/* Linha de Apoio Curta */}
+            <p className="font-body text-base sm:text-lg md:text-xl text-mist leading-relaxed max-w-2xl text-pretty">
+              Fotografia, vídeo, storymaking e direção visual para marcas, eventos e entretenimento — do briefing à entrega final.
             </p>
-          </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="border border-off/10 bg-navy/20 p-6 sm:p-8">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xs border border-teal/40 bg-teal/10 text-teal-400">
-                  <Building2 className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold text-off sm:text-xl">
-                  Empresas e mercado
-                </h3>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-mist">
-                Marketing de marcas, agências, produtoras de eventos, festivais
-                e equipes de artistas que precisam de cobertura estratégica,
-                presença em tempo real e ativos de campanha.
-              </p>
+            {/* Botões de Ação */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              <Link to="/diagnostico-visual" viewTransition className="px-7 py-3.5 rounded-full text-base font-head font-semibold bg-teal text-off hover:bg-teal-400 transition shadow-xl shadow-teal/20">
+                Iniciar projeto
+              </Link>
+              <Link to="/portfolio" viewTransition className="px-6 py-3.5 rounded-full text-base font-head font-medium text-off hover:text-white bg-navy/60 hover:bg-navy/90 border border-navy transition flex items-center gap-2">
+                <span>Ver trabalhos</span>
+                <ArrowRight className="w-4 h-4 text-mist" />
+              </Link>
             </div>
 
-            <div className="border border-off/10 bg-navy/20 p-6 sm:p-8">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xs border border-teal/40 bg-teal/10 text-teal-400">
-                  <Users className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold text-off sm:text-xl">
-                  Pessoas e histórias
-                </h3>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-mist">
-                Profissionais, pequenos empreendedores, noivas e famílias que
-                buscam posicionamento, retrato autoral e memória sem fórmulas
-                prontas.
-              </p>
+          </div>
+        </div>
+
+      </section>
+
+      {/* 3. PÓS-HERO & TRANSIÇÃO */}
+      <section className="relative bg-ink py-24 md:py-32 border-t border-navy/30">
+        <div className="max-w-7xl mx-auto px-6">
+          
+          <div className="max-w-4xl space-y-4">
+            <p className="font-head text-xs md:text-sm font-semibold uppercase tracking-widest text-teal-400">
+              Depois do palco
+            </p>
+            <h2 className="font-head font-bold text-3xl sm:text-5xl lg:text-6xl text-off leading-tight tracking-tight text-balance">
+              A imagem que a marca, o palco e o artista passam a usar depois.
+            </h2>
+          </div>
+
+          <div className="mt-16 pt-10 border-t border-navy/60 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <p className="font-head font-extrabold text-4xl sm:text-5xl text-off tracking-tight">+120</p>
+              <p className="font-body text-sm text-mist mt-1">projetos entregues</p>
+            </div>
+            <div>
+              <p className="font-head font-extrabold text-4xl sm:text-5xl text-off tracking-tight">25+</p>
+              <p className="font-body text-sm text-mist mt-1">marcas e artistas</p>
+            </div>
+            <div>
+              <p className="font-head font-extrabold text-4xl sm:text-5xl text-off tracking-tight">18</p>
+              <p className="font-body text-sm text-mist mt-1">estados atendidos</p>
+            </div>
+            <div>
+              <p className="font-head font-extrabold text-4xl sm:text-5xl text-off tracking-tight">5+</p>
+              <p className="font-body text-sm text-mist mt-1">anos de operação</p>
             </div>
           </div>
 
-          <p className="mt-6 text-xs text-mist/70">
-            A escala da equipe e os equipamentos acompanham o porte de cada projeto.
-            O cuidado estético e a precisão técnica são exatamente os mesmos.
-          </p>
         </div>
       </section>
 
-      {/* SEGMENTOS */}
-      <section
-        id="nichos"
-        className="u-defer-render border-y border-off/10 bg-ink"
-      >
-        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
-            <div className="max-w-2xl">
-              <p className="u-eyebrow text-mist">Segmentos</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-                Escolha o seu contexto. A linguagem muda com ele.
+      {/* 4. TRABALHOS SELECIONADOS */}
+      <section id="trabalhos" className="py-24 bg-ink border-t border-navy/20">
+        <div className="max-w-7xl mx-auto px-6 space-y-16">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <p className="font-head text-xs md:text-sm font-semibold uppercase tracking-widest text-teal-400">
+                Curadoria
+              </p>
+              <h2 className="font-head font-bold text-3xl sm:text-4xl text-off tracking-tight">
+                Trabalhos selecionados
               </h2>
             </div>
-            <Link
-              to="/portfolio"
-              viewTransition
-              className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-mist transition-colors duration-200 hover:text-off active:scale-[0.98]"
-            >
-              <span>Ver portfólio completo</span>
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-200 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </Link>
+            <p className="font-body text-sm md:text-base text-mist max-w-md text-pretty">
+              Ativações, grandes palcos, campanhas de moda e videoclipes com direção visual cinematográfica.
+            </p>
           </div>
 
-          {/* Mobile Visual Cards Carousel */}
-          <div
-            aria-label="Escolha seu contexto"
-            className="-mx-5 flex gap-3.5 overflow-x-auto px-5 pb-4 pt-1 sm:hidden snap-x snap-mandatory scrollbar-none"
-          >
-            {SEGMENTS.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/${s.slug}`}
-                viewTransition
-                className="group relative flex aspect-[4/5] w-[240px] shrink-0 snap-start overflow-hidden border border-off/15 bg-navy shadow-md transition-all duration-200 active:scale-[0.97]"
-              >
-                <img
-                  src={img(s.heroPhoto || s.photos[0], 500, 625)}
-                  alt={segmentImageAlt(s)}
-                  width={500}
-                  height={625}
+          <div className="space-y-8">
+            
+            {/* Bloco 1: Widescreen Panorâmico */}
+            <Link to="/portfolio/carnaval-de-rua-experiencia-publico" className="block group relative rounded-2xl overflow-hidden bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+              <div className="aspect-[21/9] sm:aspect-[21/8] w-full overflow-hidden">
+                <img 
+                  src={img(MEGABLOCO_CHA_DA_ALICE_PHOTOS[0], 1600)} 
+                  alt="Megabloco Chá da Alice - Rio de Janeiro" 
+                  className="w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition duration-700 ease-out"
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <span className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4.5">
-                  <span className="text-xs font-mono font-medium text-teal-400">
-                    {s.index}
-                  </span>
-                  <div className="mt-1 flex items-center justify-between gap-2">
-                    <h3 className="text-base font-semibold leading-tight text-off">
-                      {s.nav}
-                    </h3>
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      className="size-4 shrink-0 text-mist transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-400"
-                    />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex items-end p-6 md:p-10">
+                <div>
+                  <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Grandes Palcos & Ativação</p>
+                  <h3 className="font-head font-bold text-xl md:text-3xl text-off mt-1">Megabloco Chá da Alice</h3>
+                  <p className="font-body text-sm text-mist mt-1">Rio de Janeiro · Babado Novo & Christian Chávez</p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Bloco 2: 2/3 + 1/3 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              <Link to="/portfolio/e-o-tchan-jogadinha" className="block md:col-span-2 group relative rounded-2xl overflow-hidden bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+                <div className="aspect-[16/10] w-full overflow-hidden">
+                  <img 
+                    src={img(CLIPE_E_O_TCHAN_COVER, 1200)} 
+                    alt="É O Tchan - Clipe Jogadinha" 
+                    className="w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex items-end p-6 md:p-8">
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Artistas & Videoclipe</p>
+                    <h3 className="font-head font-bold text-xl md:text-2xl text-off mt-1">É O Tchan — Clipe Jogadinha</h3>
+                    <p className="font-body text-sm text-mist mt-1">Direção de cena e cobertura audiovisual</p>
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
 
-          {/* Desktop Grid */}
-          <div className="hidden sm:grid gap-px border-y border-off/10 sm:grid-cols-2 lg:grid-cols-4">
-            {SEGMENTS.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/${s.slug}`}
-                viewTransition
-                className="group relative flex aspect-[16/11] overflow-hidden bg-navy transition-colors duration-200 sm:aspect-[3/4] active:scale-[0.99]"
-              >
-                <img
-                  src={img(s.heroPhoto || s.photos[0], 700, 900)}
-                  alt={segmentImageAlt(s)}
-                  width={700}
-                  height={900}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                />
-                <span className="u-grade absolute inset-0" />
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <span className="text-xs font-medium text-teal-400/90">
-                    {s.index}
-                  </span>
-                  <h3 className="mt-1 text-base font-semibold leading-tight text-off sm:text-lg">
-                    {s.nav}
-                  </h3>
+              <Link to="/portfolio/fashion-week-passarela-bastidor" className="block md:col-span-1 group relative rounded-2xl overflow-hidden bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+                <div className="aspect-[16/10] md:aspect-[3/4] w-full overflow-hidden">
+                  <img 
+                    src={img(FASHION_MANNERS_PHOTOS[0], 800)} 
+                    alt="Fashion Manners - Moda e Campanha" 
+                    className="w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex items-end p-6 md:p-8">
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Moda & Campanha</p>
+                    <h3 className="font-head font-bold text-xl text-off mt-1">Fashion Manners</h3>
+                    <p className="font-body text-sm text-mist mt-1">Editorial · Rio de Janeiro</p>
+                  </div>
                 </div>
               </Link>
-            ))}
+
+            </div>
+
+            {/* Bloco 3: 1/3 + 2/3 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              <Link to="/portfolio/ativacao-drinkball" className="block md:col-span-1 group relative rounded-2xl overflow-hidden bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+                <div className="aspect-[16/10] md:aspect-[3/4] w-full overflow-hidden">
+                  <img 
+                    src={img(LANCAMENTO_DRINKBALL_PHOTOS[0], 800)} 
+                    alt="Lançamento Drinkball - Ativações & Eventos" 
+                    className="w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex items-end p-6 md:p-8">
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Ativação de Marca</p>
+                    <h3 className="font-head font-bold text-xl text-off mt-1">Drinkball</h3>
+                    <p className="font-body text-sm text-mist mt-1">Feira APAS · São Paulo</p>
+                  </div>
+                </div>
+              </Link>
+
+              <Link to="/portfolio/camarote-ondina-salvador" className="block md:col-span-2 group relative rounded-2xl overflow-hidden bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+                <div className="aspect-[16/10] w-full overflow-hidden">
+                  <img 
+                    src={img(CAMAROTE_ONDINA_PHOTOS[0], 1200)} 
+                    alt="Camarote Ondina - Carnaval de Salvador" 
+                    className="w-full h-full object-cover object-center transform group-hover:scale-[1.02] transition duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex items-end p-6 md:p-8">
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Eventos & Hospitalidade</p>
+                    <h3 className="font-head font-bold text-xl md:text-2xl text-off mt-1">Camarote Ondina</h3>
+                    <p className="font-body text-sm text-mist mt-1">Carnaval · Salvador</p>
+                  </div>
+                </div>
+              </Link>
+
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* BEFORE & AFTER / COLOR GRADING SHOWCASE */}
-      <section id="pos-producao" className="border-b border-off/10 bg-ink">
-        <div className="mx-auto max-w-[1320px] px-5 py-12 sm:py-20 lg:px-10 lg:py-28">
-          <div className="mb-10 max-w-2xl sm:mb-12">
-            <p className="u-eyebrow text-mist">Pós-Produção & Color Science</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-              A imagem ganha peso e intenção na pós.
-            </h2>
-            <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
-              Do sensor RAW ao master final calibrado. Arraste o divisor para
-              comparar o sinal bruto da câmera com a direção de cor,
-              texturização e retoque autoral da VERSAVISUAL.
-            </p>
-          </div>
-          <BeforeAfterSlider />
-        </div>
-      </section>
+      {/* 5. CASE EM DESTAQUE */}
+      <section id="case" className="py-24 bg-ink border-t border-navy/30">
+        <div className="max-w-7xl mx-auto px-6">
+          
+          <div className="rounded-3xl p-8 md:p-14 border border-navy/50 case-gradient relative overflow-hidden group transition duration-500 hover:border-teal/50">
+            {/* Absolute link to cover the entire card */}
+            <Link to="/portfolio/babado-novo-sururu" className="absolute inset-0 z-10 focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-teal" aria-label="Ver case completo Babado Novo - Clipe Sururu"></Link>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-0">
+              
+              <div className="lg:col-span-6 space-y-8">
+                
+                <div>
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-head font-semibold uppercase tracking-wider bg-teal/20 text-teal-400 border border-teal/30">
+                    Case em Destaque
+                  </span>
+                  <h2 className="font-head font-extrabold text-3xl sm:text-5xl text-off mt-4 tracking-tight text-balance">
+                    Babado Novo —<br/>Clipe Sururu
+                  </h2>
+                  <p className="font-body text-sm text-mist mt-2">
+                    Artistas & Videoclipes · Rio de Janeiro / Salvador
+                  </p>
+                </div>
 
-      {/* 4. COMO TRABALHAMOS / PROCESSO */}
-      <section id="processo" className="u-defer-render">
-        <Suspense
-          fallback={
-            <div className="mx-auto min-h-[640px] max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28" />
-          }
-        >
-          <Timeline
-            eyebrow="Processo"
-            title="Antes do set, o recorte. Depois do set, a tese."
-            text="Cada projeto entra por contexto e sai por entrega definida. A proposta é sob medida: duração, complexidade, equipe, deslocamento, formatos, volume, prazo e uso do material."
-            media={
-              <div
-                ref={btsParallaxRef}
-                style={btsParallaxStyle}
-                className="overflow-hidden rounded-xs border border-line"
-              >
-                <img
-                  src={img(METHOD_PHOTO, 900, 700)}
-                  alt="Bastidores de produção audiovisual da VERSAVISUAL"
-                  width={900}
-                  height={700}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[4/3] w-full object-cover scale-105"
-                />
+                <div className="space-y-4 pt-2 border-t border-navy/60">
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-wider text-teal-400 font-semibold">Pedido</p>
+                    <p className="font-body text-sm md:text-base text-off mt-0.5 text-pretty">Direção de imagem para clipe e backstage.</p>
+                  </div>
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-wider text-teal-400 font-semibold">Contexto</p>
+                    <p className="font-body text-sm md:text-base text-off mt-0.5 text-pretty">Artista em set. Palco, luz de alta pressão e estúdio.</p>
+                  </div>
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-wider text-teal-400 font-semibold">O que foi feito</p>
+                    <p className="font-body text-sm md:text-base text-off mt-0.5 text-pretty">Fotografia · Vídeo · Direção de cena em tempo real.</p>
+                  </div>
+                  <div>
+                    <p className="font-head text-xs uppercase tracking-wider text-teal-400 font-semibold">Resultado visual</p>
+                    <p className="font-body text-sm md:text-base text-off mt-0.5 text-pretty">A imagem que o trabalho e a turnê passam a usar depois.</p>
+                  </div>
+                </div>
+
+                <div className="pt-4 relative z-20">
+                  <Link to="/diagnostico-visual" className="inline-flex items-center gap-2 font-head text-sm font-semibold text-teal-400 hover:text-off transition">
+                    <span>Solicitar estudo semelhante</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
               </div>
-            }
-            data={HOME_PROCESS.map((p) => ({
-              eyebrow: p.n,
-              title: p.title,
-              content: (
-                <p className="max-w-lg text-sm leading-relaxed text-navy">
-                  {p.desc}
-                </p>
-              ),
-            }))}
-          />
-        </Suspense>
+
+              <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+                <div className="col-span-2 rounded-xl overflow-hidden border border-navy/40 aspect-[16/10]">
+                  <img 
+                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[0], 1000)} 
+                    alt="Babado Novo - Clipe Sururu Still 1" 
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="col-span-1 rounded-xl overflow-hidden border border-navy/40 aspect-[4/3]">
+                  <img 
+                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[1], 600)} 
+                    alt="Babado Novo - Backstage e Câmera" 
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="col-span-1 rounded-xl overflow-hidden border border-navy/40 aspect-[4/3]">
+                  <img 
+                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[2], 600)} 
+                    alt="Babado Novo - Set de Gravação" 
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
       </section>
 
-      {/* 8. SOBRE O FUNDADOR / OPERAÇÃO */}
-      <FounderSection />
+      {/* 6. CAPACIDADES & ASSINATURA DO FUNDADOR */}
+      <section id="sobre" className="py-24 bg-ink border-t border-navy/30">
+        <div className="max-w-7xl mx-auto px-6 space-y-24">
+          
+          <div className="space-y-6">
+            <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">
+              O que entra no projeto
+            </p>
+            <div className="pt-6 border-t border-navy/60 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <h3 className="font-head font-bold text-2xl text-off">01. Direção visual</h3>
+                <p className="font-body text-sm text-mist mt-2 leading-relaxed text-pretty">
+                  Conceituação de cena, paleta de cor, moodboard e posicionamento de marca antes de ligar a câmera.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-head font-bold text-2xl text-off">02. Fotografia & vídeo</h3>
+                <p className="font-body text-sm text-mist mt-2 leading-relaxed text-pretty">
+                  Operação em grandes eventos, palcos, sets de clipe e campanhas com agilidade e alta precisão técnica.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-head font-bold text-2xl text-off">03. Pós & entrega</h3>
+                <p className="font-body text-sm text-mist mt-2 leading-relaxed text-pretty">
+                  Tratamento de cor cinematográfico, finalização editorial e entrega estruturada para múltiplos canais.
+                </p>
+              </div>
+            </div>
+          </div>
 
-      {/* 9. DIAGNÓSTICO VISUAL / CTA */}
-      <CTASection
-        eyebrow="Briefing inicial · gratuito"
-        title="Conte o projeto. Devolvemos o caminho."
-        text="O Diagnóstico Visual é o briefing inicial da VERSAVISUAL. Serve para receber o contexto, qualificar a oportunidade, identificar objetivo, data e local, orientar o primeiro contato e preparar uma proposta sob medida."
-        primaryLabel="Preencher briefing de projeto"
-        secondaryLabel="Falar no WhatsApp"
-      />
+          <Link to="/sobre" className="block p-8 md:p-12 rounded-3xl bg-navy/20 border border-navy/40 transition duration-500 hover:border-teal/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal group">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+              
+              <div className="md:col-span-5">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-navy/50">
+                  <img 
+                    src={img(FOUNDER_PHOTO, 800)} 
+                    alt="Vinicius Cunha no set de gravação com headset e câmera" 
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <div className="md:col-span-7 space-y-6">
+                <div>
+                  <p className="font-head text-xs uppercase tracking-widest text-teal-400 font-semibold">Direção Criativa</p>
+                  <h3 className="font-head font-extrabold text-3xl sm:text-4xl text-off mt-1">Vinicius Cunha</h3>
+                  <p className="font-body text-sm text-mist">Fundador e diretor de cena · Rio de Janeiro · operação nacional</p>
+                </div>
+
+                <p className="font-body text-base text-off/90 leading-relaxed text-pretty">
+                  Fundador da VERSAVISUAL. Une direção visual cinematográfica à disciplina rigorosa de produção. Atuação em campanhas nacionais, videoclipes de grandes artistas e eventos com público massivo.
+                </p>
+
+                <blockquote className="font-head text-xl font-bold text-teal-400 italic">
+                  “A produção não falha.”
+                </blockquote>
+
+                <div className="pt-4 border-t border-navy/60 flex items-center gap-8">
+                  <div>
+                    <p className="font-head font-extrabold text-2xl text-off">+120</p>
+                    <p className="font-body text-xs text-mist">projetos</p>
+                  </div>
+                  <div>
+                    <p className="font-head font-extrabold text-2xl text-off">25+</p>
+                    <p className="font-body text-xs text-mist">marcas</p>
+                  </div>
+                  <div>
+                    <p className="font-head font-extrabold text-2xl text-off">5+</p>
+                    <p className="font-body text-xs text-mist">anos</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </Link>
+
+        </div>
+      </section>
+
+      {/* 7. CTA & DIAGNÓSTICO FINAL */}
+      <section id="contato" className="relative py-28 md:py-36 bg-ink border-t border-navy/40 overflow-hidden">
+        
+        {/* Background Texture/Vignette */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <img 
+            src={img(LANCAMENTO_DRINKBALL_PHOTOS[0], 1600)} 
+            alt="" 
+            className="w-full h-full object-cover filter blur-sm"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="absolute inset-0 cta-gradient"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
+          
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-head font-semibold uppercase tracking-widest bg-navy/80 text-teal-400 border border-teal/30">
+            Diagnóstico Visual
+          </span>
+
+          <h2 className="font-head font-black text-4xl sm:text-6xl text-off leading-tight tracking-tight text-balance">
+            Conte o projeto.<br/>
+            <span className="text-off">Devolvemos o caminho.</span>
+          </h2>
+
+          <p className="font-body text-base sm:text-lg text-mist max-w-xl mx-auto leading-relaxed text-pretty">
+            Direção de imagem para marcas, eventos e artistas com cronograma estruturado e resposta rápida.
+          </p>
+
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/diagnostico-visual" viewTransition className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-head font-semibold bg-teal text-off hover:bg-teal-400 transition shadow-2xl shadow-teal/30">
+              Iniciar projeto
+            </Link>
+            <a href="https://wa.me/5522997624631" target="_blank" rel="noreferrer" className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-head font-medium text-off bg-navy/60 hover:bg-navy/90 border border-navy transition flex items-center justify-center gap-2">
+              <span>Conversa no WhatsApp</span>
+              <ArrowRight className="w-4 h-4 text-mist" />
+            </a>
+          </div>
+
+        </div>
+      </section>
     </>
   )
 }

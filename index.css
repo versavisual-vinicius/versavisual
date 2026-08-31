@@ -273,6 +273,16 @@
     .u-marquee-duplicate { display: none; }
     html { scroll-behavior: auto; }
   }
+
+  .hero-gradient {
+    background: linear-gradient(180deg, rgba(5,10,13,0.3) 0%, rgba(5,10,13,0.1) 40%, rgba(5,10,13,0.85) 85%, #050A0D 100%);
+  }
+  .case-gradient {
+    background: radial-gradient(circle at top right, rgba(37,53,64,0.35) 0%, rgba(5,10,13,0.95) 70%);
+  }
+  .cta-gradient {
+    background: linear-gradient(180deg, rgba(5,10,13,0.8) 0%, rgba(5,10,13,0.95) 100%);
+  }
 }
 
 /* ====== View Transitions API (SPA cross-fade & subtle elevation) ====== */
