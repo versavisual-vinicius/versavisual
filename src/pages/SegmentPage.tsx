@@ -56,15 +56,13 @@ export default function SegmentPage({
     title: `${seg.seoTitle} | VERSAVISUAL`,
     description: seg.seoDesc,
     path: `/${seg.slug}`,
-    image: seg.heroPhoto || seg.photos[0],
-    ogType: "website",
     jsonLd: [
       breadcrumb([
         { name: "Início", path: "/" },
         { name: seg.nav, path: `/${seg.slug}` },
       ]),
       serviceSchema({
-        name: seg.nav,
+        name: seg.seoTitle,
         description: seg.seoDesc,
         slug: seg.slug,
       }),

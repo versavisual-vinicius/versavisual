@@ -4,9 +4,9 @@ import { SEGMENT_NAV } from "../data/site"
 
 export default function NotFound() {
   useSeo({
-    title: "Página Não Encontrada | VERSAVISUAL",
+    title: "Página não encontrada | VERSAVISUAL",
     description:
-      "A página que você está procurando não existe ou foi movida. Explore nosso portfólio de fotografia, vídeo e direção visual.",
+      "A página que você procura não existe. Volte para o início ou explore o portfólio.",
     path: "/404",
     noindex: true,
   })

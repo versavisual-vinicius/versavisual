@@ -3,198 +3,283 @@
   <!-- Rotas Principais -->
   <url>
     <loc>https://www.versavisual.com.br/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.versavisual.com.br/sobre</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://www.versavisual.com.br/portfolio</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/canvas</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.versavisual.com.br/diagnostico-visual</loc>
-    <lastmod>2026-08-30</lastmod>
+    <loc>https://www.versavisual.com.br/sobre</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Segmentos de Atuação (Canônicos) -->
+  <url>
+    <loc>https://www.versavisual.com.br/diagnostico-visual</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Segmentos de Atuação -->
   <url>
     <loc>https://www.versavisual.com.br/ativacoes-eventos</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/moda-campanhas</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/artistas-videoclipes</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/posicionamento-profissional</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/imagem-pessoal-lifestyle</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/casamentos</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/gestantes</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/hotelaria-lifestyle</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-
-  <!-- Cases de Portfólio (Canônicos) -->
+  
+  <!-- Cases de Portfólio -->
   <url>
     <loc>https://www.versavisual.com.br/portfolio/ativacao-drinkball</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/lancamento-drinkball</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/carnaval-de-rua-experiencia-publico</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/megabloco-cha-da-alice</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/evento-fjt-palco-camarote</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://www.versavisual.com.br/portfolio/festival-jeans-toritama</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/fjt-fashion-desfile-colecoes</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.versavisual.com.br/portfolio/festival-bon-cobertura-corporativa</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/camarote-ondina-salvador</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/symbh-evento-corporativo</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/syn-ice-camarote</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/fashion-week-passarela-bastidor</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/fashion-manners-editorial</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/editorial-lifestyle-campanha</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/moda-santalola-verao</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/loja-frida-sao-joao</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.versavisual.com.br/portfolio/retratos-posicionamento-marca-pessoal</loc>
-    <lastmod>2026-08-30</lastmod>
+    <loc>https://www.versavisual.com.br/portfolio/loja-frida-campanha</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://www.versavisual.com.br/portfolio/fjt-fashion-desfile-colecoes</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/e-o-tchan-jogadinha</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/videoclipes-oficiais-e-o-tchan-babado-novo</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/babado-novo-sururu</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/babado-novo-christian-chavez</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/retratos-posicionamento-marca-pessoal</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/ensaio-autoral-lifestyle-instagram</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/ensaio-autoral-estudio</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/ensaio-street-sp</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://www.versavisual.com.br/portfolio/ensaio-feminino-frida</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.versavisual.com.br/portfolio/casamento-ao-ar-livre</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/casamento-destination-wedding</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/casamento-urbano-contemporaneo</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.versavisual.com.br/portfolio/ensaio-gestante-praia</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://www.versavisual.com.br/portfolio/maternidade-ensaio-intimo</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.versavisual.com.br/portfolio/hotelaria-espacos-cafe-spa</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.versavisual.com.br/portfolio/bonfim-house-boutique</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
+

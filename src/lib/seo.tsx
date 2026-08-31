@@ -7,10 +7,8 @@ export interface SeoProps {
   title: string
   description: string
   path: string // e.g. "/portfolio"
-  image?: string
-  ogType?: "website" | "article"
   noindex?: boolean
-  jsonLd?: Record<string, unknown> | Record<string, unknown>[] | null
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 export type Seo = SeoProps
@@ -47,24 +45,15 @@ export function useSeo({
   title,
   description,
   path,
-  image,
-  ogType,
   noindex,
   jsonLd,
 }: SeoProps) {
   const jsonLdContent = jsonLd ? JSON.stringify(jsonLd) : ""
 
   useEffect(() => {
-    const rawPath = path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`
-    const cleanPath = rawPath.split("?")[0]
-    const canonical = `${SITE_URL}${cleanPath === "" ? "/" : cleanPath}`
-    const imageUrl = image
-      ? image.startsWith("http")
-        ? image
-        : `${SITE_URL}${image.startsWith("/") ? image : `/${image}`}`
-      : OG_IMAGE
-    const typeValue = ogType || "website"
-
+    const cleanPath =
+      path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`
+    const canonical = `${SITE_URL}${cleanPath}`
     document.title = title
     document.documentElement.lang = "pt-BR"
 
@@ -89,9 +78,9 @@ export function useSeo({
       "og:description",
       description,
     )
-    upsertMeta('meta[property="og:type"]', "property", "og:type", typeValue)
+    upsertMeta('meta[property="og:type"]', "property", "og:type", "website")
     upsertMeta('meta[property="og:url"]', "property", "og:url", canonical)
-    upsertMeta('meta[property="og:image"]', "property", "og:image", imageUrl)
+    upsertMeta('meta[property="og:image"]', "property", "og:image", OG_IMAGE)
     upsertMeta(
       'meta[property="og:site_name"]',
       "property",
@@ -112,18 +101,18 @@ export function useSeo({
       "twitter:description",
       description,
     )
-    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", imageUrl)
+    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", OG_IMAGE)
 
     const prev = document.getElementById(JSON_LD_ID)
     if (prev) prev.remove()
-    if (jsonLdContent && !noindex) {
+    if (jsonLdContent) {
       const script = document.createElement("script")
       script.type = "application/ld+json"
       script.id = JSON_LD_ID
       script.textContent = jsonLdContent
       document.head.appendChild(script)
     }
-  }, [title, description, path, image, ogType, noindex, jsonLdContent])
+  }, [title, description, path, noindex, jsonLdContent])
 }
 
 export interface BreadcrumbItem {
@@ -149,8 +138,8 @@ export function professionalServiceSchema() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "VERSAVISUAL",
-    image: `${SITE_URL}/brand-assets/vv-profilelogo-dark-square.png`,
-    "@id": `${SITE_URL}/#professional-service`,
+    image: `${SITE_URL}/brand-assets/logo-og.png`,
+    "@id": `${SITE_URL}/#corporation`,
     url: SITE_URL,
     telephone: "+5522997624631",
     email: "hub@versavisual.com.br",
@@ -265,8 +254,7 @@ export function serviceSchema(options: {
     name: options.name,
     description: options.description,
     provider: {
-      "@type": "ProfessionalService",
-      "@id": `${SITE_URL}/#professional-service`,
+      "@type": "Organization",
       name: "VERSAVISUAL",
       url: SITE_URL,
     },

@@ -60,14 +60,101 @@ export const CANONICAL_PORTFOLIO_FILTERS = [
   "Hotelaria & Lifestyle",
 ]
 
-import { PORTFOLIO } from "../../src/data/site.ts"
-
-export const CANONICAL_CASES = PORTFOLIO.filter((p) => Boolean(p.caseSlug)).map(
-  (p) => ({
-    caseSlug: p.caseSlug!,
-    title: p.title,
-    category: p.category,
-    segmentSlug: p.segmentSlug,
-  }),
-)
-
+export const CANONICAL_CASES = [
+  {
+    caseSlug: "videoclipes-oficiais-e-o-tchan-babado-novo",
+    title: "Videoclipes Oficiais — É O Tchan & Babado Novo",
+    category: "Artistas & Videoclipes",
+    segmentSlug: "artistas-videoclipes",
+  },
+  {
+    caseSlug: "babado-novo-sururu",
+    title: "Babado Novo — Clipe Sururu",
+    category: "Artistas & Videoclipes",
+    segmentSlug: "artistas-videoclipes",
+  },
+  {
+    caseSlug: "camarote-ondina-salvador",
+    title: "Camarote Ondina — Carnaval Salvador",
+    category: "Ativações & Eventos",
+    segmentSlug: "ativacoes-eventos",
+  },
+  {
+    caseSlug: "megabloco-cha-da-alice",
+    title: "Megabloco Chá da Alice — Rio de Janeiro",
+    category: "Ativações & Eventos",
+    segmentSlug: "ativacoes-eventos",
+  },
+  {
+    caseSlug: "festival-jeans-toritama",
+    title: "Festival do Jeans de Toritama",
+    category: "Ativações & Eventos",
+    segmentSlug: "ativacoes-eventos",
+  },
+  {
+    caseSlug: "lancamento-drinkball",
+    title: "Lançamento Drinkball Brasil",
+    category: "Ativações & Eventos",
+    segmentSlug: "ativacoes-eventos",
+  },
+  {
+    caseSlug: "syn-ice-camarote",
+    title: "Syn Ice — Cobertura de Camarote",
+    category: "Ativações & Eventos",
+    segmentSlug: "ativacoes-eventos",
+  },
+  {
+    caseSlug: "moda-santalola-verao",
+    title: "Santa Lolla — Coleção de Verão",
+    category: "Moda & Campanhas",
+    segmentSlug: "moda-campanhas",
+  },
+  {
+    caseSlug: "loja-frida-sao-joao",
+    title: "Loja Frida — Campanha São João",
+    category: "Moda & Campanhas",
+    segmentSlug: "moda-campanhas",
+  },
+  {
+    caseSlug: "fashion-manners-editorial",
+    title: "Fashion Manners — Editorial Urbano",
+    category: "Moda & Campanhas",
+    segmentSlug: "moda-campanhas",
+  },
+  {
+    caseSlug: "ensaio-street-sp",
+    title: "Ensaio Street — São Paulo",
+    category: "Imagem Pessoal & Lifestyle",
+    segmentSlug: "imagem-pessoal-lifestyle",
+  },
+  {
+    caseSlug: "ensaio-autoral-estudio",
+    title: "Ensaio Autoral em Estúdio",
+    category: "Imagem Pessoal & Lifestyle",
+    segmentSlug: "imagem-pessoal-lifestyle",
+  },
+  {
+    caseSlug: "casamento-destination-wedding",
+    title: "Destination Wedding — Costa dos Corais",
+    category: "Casamentos",
+    segmentSlug: "casamentos",
+  },
+  {
+    caseSlug: "casamento-urbano-contemporaneo",
+    title: "Casamento Urbano Contemporâneo",
+    category: "Casamentos",
+    segmentSlug: "casamentos",
+  },
+  {
+    caseSlug: "maternidade-ensaio-intimo",
+    title: "Maternidade — Luz Natural",
+    category: "Gestantes",
+    segmentSlug: "gestantes",
+  },
+  {
+    caseSlug: "bonfim-house-boutique",
+    title: "Bonfim House — Hotelaria Boutique",
+    category: "Hotelaria & Lifestyle",
+    segmentSlug: "hotelaria-lifestyle",
+  },
+]

@@ -328,14 +328,16 @@ export function buildRouteJsonLd(route, meta) {
 }
 
 export async function loadSeoManifest(projectRoot) {
-  const seoRoutesRaw = await readFile(
-    path.join(projectRoot, "src", "data", "seo-routes.json"),
-    "utf8",
-  )
-  const catalogSeoRaw = await readFile(
-    path.join(projectRoot, "src", "data", "catalog-seo.json"),
-    "utf8",
-  )
+  const findDataFile = async (filename) => {
+    try {
+      return await readFile(path.join(projectRoot, "data", filename), "utf8")
+    } catch {
+      return await readFile(path.join(projectRoot, "src", "data", filename), "utf8")
+    }
+  }
+
+  const seoRoutesRaw = await findDataFile("seo-routes.json")
+  const catalogSeoRaw = await findDataFile("catalog-seo.json")
 
   const seoRoutes = JSON.parse(seoRoutesRaw)
   const catalogSeo = JSON.parse(catalogSeoRaw)
