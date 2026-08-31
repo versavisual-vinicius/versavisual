@@ -1,4 +1,4 @@
-import { readProjectFile } from "./domain-helpers.ts"
+import { readProjectFile } from "./domain-helpers"
 
 export const CANONICAL_HOME_SERVICES = [
   {
@@ -60,7 +60,7 @@ export const CANONICAL_PORTFOLIO_FILTERS = [
   "Hotelaria & Lifestyle",
 ]
 
-import { PORTFOLIO } from "../data/site.ts"
+import { PORTFOLIO } from "../data/site"
 
 export const CANONICAL_CASES = PORTFOLIO.filter((p) => Boolean(p.caseSlug)).map(
   (p) => ({

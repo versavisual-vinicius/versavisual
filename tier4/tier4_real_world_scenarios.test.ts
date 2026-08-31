@@ -1,10 +1,10 @@
-import { describe, it, expect, runner } from "../utils/test-framework.ts"
+import { describe, it, expect, runner } from "../utils/test-framework"
 import {
   readProjectFile,
   resolveSegmentSlug,
   parseWhatsAppUrl,
-} from "../utils/domain-helpers.ts"
-import apiHandler from "../../api/diagnostico.ts"
+} from "../utils/domain-helpers"
+import apiHandler from "../api/diagnostico"
 
 export async function runTier4RealWorldScenariosTests() {
   runner.setTier("Tier 4 - Real-World Application Scenarios")

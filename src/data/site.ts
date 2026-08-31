@@ -16,7 +16,7 @@ import {
   MODA_SANTALOLA_PHOTOS,
   SYN_ICE_PHOTOS,
   FOUNDER_PHOTO,
-} from "../lib/images.ts"
+} from "../lib/images"
 
 export const WHATSAPP = "https://wa.me/5522997624631"
 export const WHATSAPP_LABEL = "(22) 99762-4631"

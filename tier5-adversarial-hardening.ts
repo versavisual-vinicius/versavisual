@@ -14,7 +14,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
-import { describe, test, expect, runner } from "./utils/test-framework.ts"
+import { describe, test, expect, runner } from "./utils/test-framework"
 import {
   readProjectFile,
   fileExists,
@@ -23,8 +23,8 @@ import {
   OFFICIAL_SEGMENTS,
   KNOWN_SEGMENT_ALIASES,
   resolveSegmentSlug,
-} from "./utils/domain-helpers.ts"
-import apiHandler from "../api/diagnostico.ts"
+} from "./utils/domain-helpers"
+import apiHandler from "./api/diagnostico"
 import {
   SEGMENTS,
   SEGMENT_ALIASES,
@@ -39,8 +39,8 @@ import {
   WHATSAPP,
   type Segment,
   type PortfolioItem,
-} from "./data/site.ts"
-import { img } from "./lib/images.ts"
+} from "./data/site"
+import { img } from "./lib/images"
 
 // Configure runner tier for Tier 5
 runner.setTier("Tier 5 - Adversarial Coverage Hardening")
