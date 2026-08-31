@@ -11,8 +11,8 @@
  * - 5. Production Build Output & 43 Dist HTML Files Exhaustive Integrity Verification (Doctype, root mount, assets, fonts, size)
  */
 
-import fs from "node:fs"
-import path from "node:path"
+import * as fs from "node:fs"
+import * as path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, test, expect, runner } from "./utils/test-framework"
 import {
