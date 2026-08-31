@@ -1,4 +1,4 @@
-import { readProjectFile } from "./domain-helpers.ts"
+import { readProjectFile } from "./domain-helpers"
 
 export const CANONICAL_HOME_SERVICES = [
   {

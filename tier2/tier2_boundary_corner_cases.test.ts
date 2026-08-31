@@ -1,11 +1,11 @@
-import { describe, it, expect, runner } from "../utils/test-framework.ts"
+import { describe, it, expect, runner } from "../utils/test-framework"
 import {
   readProjectFile,
   resolveSegmentSlug,
   getContrastRatio,
   parseWhatsAppUrl,
-} from "../utils/domain-helpers.ts"
-import apiHandler from "../../api/diagnostico.ts"
+} from "../utils/domain-helpers"
+import apiHandler from "../api/diagnostico"
 
 export async function runTier2BoundaryCornerCasesTests() {
   runner.setTier("Tier 2 - Boundary & Corner Cases")

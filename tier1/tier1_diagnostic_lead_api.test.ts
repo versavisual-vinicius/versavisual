@@ -1,6 +1,6 @@
-import { describe, it, expect, runner } from "../utils/test-framework.ts"
-import { readProjectFile, parseWhatsAppUrl } from "../utils/domain-helpers.ts"
-import apiHandler from "../../api/diagnostico.ts"
+import { describe, it, expect, runner } from "../utils/test-framework"
+import { readProjectFile, parseWhatsAppUrl } from "../utils/domain-helpers"
+import apiHandler from "../api/diagnostico"
 
 export async function runTier1DiagnosticLeadApiTests() {
   runner.setTier("Tier 1 - Feature Coverage")
