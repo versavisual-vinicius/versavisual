@@ -201,8 +201,8 @@ export async function runTier4RealWorldScenariosTests() {
 
       // Step 2: Check authority metrics
       const homeCode = readProjectFile("src/pages/Home.tsx")
-      expect(homeCode).toContain("HOME_STATS")
-      expect(homeCode).toContain("s.label")
+      expect(homeCode).toContain("+120")
+      expect(homeCode).toContain("projetos entregues")
 
       // Step 3: Submit corporate brief
       const corporateLead = {

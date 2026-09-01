@@ -40,9 +40,9 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Equalização de altas luzes no tecido, refinamento de microtexturas de pele e calibração de paleta tonal fria com destaque aos detalhes da alta costura.",
     beforeImage:
-      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
+      "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
     afterImage:
-      "/images/Moda & Campanhas - Fashion Manners/Fashion-Manners16.jpg",
+      "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
     beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.80)",
     afterFilter: "none",
     objectPosition: "center center",
@@ -66,9 +66,9 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Extração do alcance dinâmico em curva tonal densa, com preservação dos tons de pele sob iluminação cênica de LED e emulação Nikon.",
     beforeImage:
-      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
+      "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     afterImage:
-      "/images/Artistas & Videoclipes - Backstage Clipe Sururu/Backstage-clipe-sururu-babado-novo29.jpg",
+      "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo29.jpg",
     beforeFilter: "saturate(0.50) contrast(0.82) brightness(0.75)",
     afterFilter: "none",
     objectPosition: "center center",
@@ -92,9 +92,9 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Refinamento estético preservando poros e textura natural, iluminação de contorno enfatizada com dodge & burn manual e equilíbrio cromático de sombras.",
     beforeImage:
-      "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
+      "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral41.jpg",
     afterImage:
-      "/images/Imagem Pessoal & Lifestyle - Ensaio Autoral/Ensaio-Autoral41.jpg",
+      "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral41.jpg",
     beforeFilter: "saturate(0.58) contrast(0.84) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",
@@ -118,9 +118,9 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     description:
       "Harmonização da temperatura de cor entre luz natural das janelas e iluminação quente de tungstênio interior, com realce de texturas nobres de madeira e pedra.",
     beforeImage:
-      "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
+      "/images/ativacoes-eventos/bonfim-house/Bonfim-house-salvador-bahia-corporativo1.jpg",
     afterImage:
-      "/images/Ativações & Eventos - Bonfim House/Bonfim-house-salvador-bahia-corporativo1.jpg",
+      "/images/ativacoes-eventos/bonfim-house/Bonfim-house-salvador-bahia-corporativo1.jpg",
     beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.78)",
     afterFilter: "none",
     objectPosition: "center center",

@@ -239,10 +239,10 @@ export async function runTier2BoundaryCornerCasesTests() {
       expect(headerCode).toContain("max-w-[1320px]")
     })
 
-    it("T2.18: Segment cards switch aspect ratio smoothly at the sm (640px) boundary", () => {
+    it("T2.18: Featured project cards preserve aspect ratios (16/10 and 4/3)", () => {
       const homeCode = readProjectFile("src/pages/Home.tsx")
-      expect(homeCode).toContain("aspect-[16/11]")
-      expect(homeCode).toContain("sm:aspect-[3/4]")
+      expect(homeCode).toContain("aspect-[16/10]")
+      expect(homeCode).toContain("aspect-[4/3]")
     })
   })
 }

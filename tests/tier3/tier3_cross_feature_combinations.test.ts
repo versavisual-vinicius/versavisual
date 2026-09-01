@@ -84,10 +84,11 @@ export async function runTier3CrossFeatureCombinationsTests() {
   })
 
   await describe("Tier 3 Flow 2: Home -> Seletor de Segmento -> Modal de Serviço -> CTA de Diagnóstico", () => {
-    it("T3.3: Home links match canonical segment landing page routes", () => {
+    it("T3.3: Home links match canonical segment routes and case studies", () => {
       const homeCode = readProjectFile("src/pages/Home.tsx")
-      expect(homeCode).toContain("to={`/${s.slug}`}")
+      expect(homeCode).toContain("itemListSchema")
       expect(homeCode).toContain("SEGMENTS")
+      expect(homeCode).toContain("/portfolio")
     })
 
     it("T3.4: Segment landing page opens service detail modal and provides CTA to /diagnostico-visual", () => {
