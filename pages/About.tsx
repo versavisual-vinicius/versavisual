@@ -4,6 +4,7 @@ import { FOUNDER_DATA } from "../data/site"
 import { img } from "../lib/images"
 import { useSeo, breadcrumb, SITE_URL } from "../lib/seo"
 import CTASection from "../components/CTASection"
+import BeforeAfterSlider from "../components/BeforeAfterSlider"
 
 export default function About() {
   useSeo({
@@ -246,6 +247,23 @@ export default function About() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── LABORATÓRIO & COLOR SCIENCE (BEFORE/AFTER) ────────── */}
+      <section id="color-science" className="border-b border-off/10 bg-ink py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
+          <div className="mb-12 max-w-2xl">
+            <p className="u-eyebrow text-teal-400">Laboratório & Color Science</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:text-4xl">
+              Tratamento autoral em cada frame.
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-mist">
+              Arraste o comparador para visualizar a transição entre o arquivo RAW sem pós-produção e o Master Final com color grading cinematográfico e acabamento editorial.
+            </p>
+          </div>
+
+          <BeforeAfterSlider />
         </div>
       </section>
 
