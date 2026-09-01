@@ -8,51 +8,54 @@ type PrivacyModalProps = {
 }
 
 export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    if (!isOpen) return
-    closeButtonRef.current?.focus()
+    const dialog = dialogRef.current
+    if (!dialog) return
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
+    if (isOpen) {
+      if (!dialog.open) {
+        dialog.showModal()
+      }
+      closeButtonRef.current?.focus()
+    } else {
+      if (dialog.open) {
+        dialog.close()
+      }
     }
-
-    window.addEventListener("keydown", handleKeyDown)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-      document.body.style.overflow = prevOverflow
-    }
-  }, [isOpen, onClose])
+  }, [isOpen])
 
   if (!isOpen) return null
 
   return (
-    <div
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
+    <dialog
+      ref={dialogRef}
+      onCancel={(e) => {
+        e.preventDefault()
+        onClose()
+      }}
+      onClick={(e) => {
+        if (e.target === dialogRef.current) {
+          onClose()
+        }
+      }}
       aria-labelledby="privacy-modal-title"
-      onClick={onClose}
+      className="fixed inset-0 m-auto z-[70] max-h-[90vh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto rounded-2xl border border-line bg-off p-6 shadow-2xl sm:p-8 text-ink backdrop:bg-ink/80 backdrop:backdrop-blur-sm scrollbar-thin"
     >
-      <div
-        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-line bg-off p-6 shadow-2xl sm:p-8 text-ink scrollbar-thin"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="relative">
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
           aria-label="Fechar política de privacidade"
-          className="absolute right-4 top-4 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line text-navy transition-all duration-200 hover:border-teal hover:text-teal"
+          className="absolute right-0 top-0 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-line text-navy transition-all duration-200 hover:border-teal hover:text-teal"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 pr-12">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10 text-teal">
             <Shield className="h-5 w-5" />
           </div>
@@ -124,6 +127,6 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }

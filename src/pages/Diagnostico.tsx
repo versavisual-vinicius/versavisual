@@ -622,7 +622,7 @@ export default function Diagnostico() {
                     id="mensagem"
                     name="mensagem"
                     rows={4}
-                    className={`${field} resize-none`}
+                    className={`${field} u-field-auto resize-none`}
                     placeholder="Conte mais sobre o seu projeto, referências e expectativas."
                   />
                 </div>

@@ -25,8 +25,9 @@ export async function runTier1HomeComponentsTests() {
       expect(homeCode).toContain('type="video/mp4"')
     })
 
-    it("F13.3: Hero video starts without a poster image before playback", () => {
-      expect(homeCode).not.toContain("poster=")
+    it("F13.3: Hero video configures poster image and metadata preload for initial paint", () => {
+      expect(homeCode).toContain('poster="/images/foto-a-producao-nao-falha.webp"')
+      expect(homeCode).toContain('preload="metadata"')
     })
 
     it("F13.4: Hero section includes gradient overlay (hero-gradient) for high text contrast", () => {

@@ -268,7 +268,7 @@ export default function About() {
       </section>
 
       {/* ── TIMELINE / MILESTONES ─────────────────────────── */}
-      <section className="mx-auto max-w-[1320px] px-5 py-16 sm:py-24 lg:px-10 lg:py-32">
+      <section className="mx-auto max-w-[1320px] px-5 py-16 sm:py-24 lg:px-10 lg:py-32 u-defer-render">
         <div className="mb-12 max-w-2xl">
           <p className="u-eyebrow text-teal-400">Trajetória & Marcos</p>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:text-4xl">

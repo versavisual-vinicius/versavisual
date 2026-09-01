@@ -631,7 +631,7 @@ export default function SegmentPage({
       />
 
       {/* ── FAQ ───────────────────────────────────────────── */}
-      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28">
+      <section className="relative z-10 border-b border-off/10 bg-transparent py-20 lg:py-28 u-defer-render">
         <div className="mx-auto max-w-[900px] px-5 lg:px-10">
           <Reveal>
             <p className="u-eyebrow text-mist">Dúvidas comuns</p>
@@ -644,7 +644,7 @@ export default function SegmentPage({
       </section>
 
       {/* ── OUTROS SEGMENTOS ─────────────────────────────── */}
-      <section className="relative z-10 mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-24">
+      <section className="relative z-10 mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-24 u-defer-render">
         <Reveal>
           <p className="u-eyebrow mb-8 text-mist">Explore outros segmentos</p>
           <div className="grid gap-4 sm:grid-cols-3">

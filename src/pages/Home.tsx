@@ -54,6 +54,8 @@ export default function Home() {
             loop 
             muted 
             playsInline 
+            preload="metadata"
+            poster="/images/foto-a-producao-nao-falha.webp"
             className="w-full h-full object-cover object-top filter brightness-[0.95]"
           >
             <source src="/videos/hero.webm" type="video/webm" />
@@ -359,7 +361,7 @@ export default function Home() {
       </section>
 
       {/* 6. CAPACIDADES & ASSINATURA DO FUNDADOR */}
-      <section id="sobre" className="py-24 bg-ink border-t border-navy/30">
+      <section id="sobre" className="py-24 bg-ink border-t border-navy/30 u-defer-render">
         <div className="max-w-7xl mx-auto px-6 space-y-24">
           
           <div className="space-y-6">
@@ -442,7 +444,7 @@ export default function Home() {
       </section>
 
       {/* 7. CTA & DIAGNÓSTICO FINAL */}
-      <section id="contato" className="relative py-28 md:py-36 bg-ink border-t border-navy/40 overflow-hidden">
+      <section id="contato" className="relative py-28 md:py-36 bg-ink border-t border-navy/40 overflow-hidden u-defer-render">
         
         {/* Background Texture/Vignette */}
         <div className="absolute inset-0 z-0 opacity-20">
