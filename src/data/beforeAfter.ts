@@ -39,10 +39,8 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
     subtitle: "Tratamento de tom de pele, contraste zonal e textura de tecido",
     description:
       "Equalização de altas luzes no tecido, refinamento de microtexturas de pele e calibração de paleta tonal fria com destaque aos detalhes da alta costura.",
-    beforeImage:
-      "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
-    afterImage:
-      "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
+    beforeImage: "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
+    afterImage: "/images/moda-campanhas/fashion-manners/Fashion-Manners16.jpg",
     beforeFilter: "saturate(0.55) contrast(0.85) brightness(0.80)",
     afterFilter: "none",
     objectPosition: "center center",

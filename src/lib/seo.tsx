@@ -177,8 +177,7 @@ export function professionalServiceSchema() {
           itemOffered: {
             "@type": "Service",
             name: "Storymaking",
-            description:
-              "Narrativas visuais em tempo real para redes sociais.",
+            description: "Narrativas visuais em tempo real para redes sociais.",
           },
         },
         {

@@ -5,17 +5,24 @@ import { routeOutputPath, SITE_URL } from "./scripts/emit-route-html.mjs"
 async function main() {
   const root = process.cwd()
   const distDir = path.join(root, "dist")
-  const sitemapRaw = await readFile(path.join(root, "public", "sitemap.xml"), "utf8")
+  const sitemapRaw = await readFile(
+    path.join(root, "public", "sitemap.xml"),
+    "utf8",
+  )
   const sitemapRoutes = [...sitemapRaw.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((match) => new URL(match[1]))
-    .filter((url) => url.hostname.replace(/^www\./, "") === "versavisual.com.br")
+    .filter(
+      (url) => url.hostname.replace(/^www\./, "") === "versavisual.com.br",
+    )
     .map((url) => {
       const clean = url.pathname.replace(/\/$/, "")
       return clean === "" ? "/" : clean
     })
 
   const routesToCheck = [...sitemapRoutes, "/404"]
-  console.log(`\n🔍 Verificando ${routesToCheck.length} arquivos estáticos gerados em dist/...\n`)
+  console.log(
+    `\n🔍 Verificando ${routesToCheck.length} arquivos estáticos gerados em dist/...\n`,
+  )
 
   let failed = 0
   const canonicalsSeen = new Map()
@@ -40,7 +47,9 @@ async function main() {
     }
 
     // Check canonical
-    const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/)
+    const canonicalMatch = html.match(
+      /<link\s+rel="canonical"\s+href="([^"]+)"/,
+    )
     if (!canonicalMatch) {
       console.error(`❌ [${route}] Tag <link rel="canonical"> ausente.`)
       failed++
@@ -65,7 +74,9 @@ async function main() {
     }
 
     // Check description
-    const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]*)"/)
+    const descMatch = html.match(
+      /<meta\s+name="description"\s+content="([^"]*)"/,
+    )
     if (!descMatch || !descMatch[1].trim()) {
       console.error(`❌ [${route}] Meta description vazia ou ausente.`)
       failed++
@@ -84,16 +95,22 @@ async function main() {
         }
       } else {
         if (!robotsMatch[1].includes("index")) {
-          console.error(`❌ [${route}] Rota indexável deve ter index no robots.`)
+          console.error(
+            `❌ [${route}] Rota indexável deve ter index no robots.`,
+          )
           failed++
         }
       }
     }
 
     // Check Open Graph
-    const ogTitle = html.match(/<meta\s+property="og:title"\s+content="([^"]*)"/)
+    const ogTitle = html.match(
+      /<meta\s+property="og:title"\s+content="([^"]*)"/,
+    )
     const ogUrl = html.match(/<meta\s+property="og:url"\s+content="([^"]*)"/)
-    const ogImage = html.match(/<meta\s+property="og:image"\s+content="([^"]*)"/)
+    const ogImage = html.match(
+      /<meta\s+property="og:image"\s+content="([^"]*)"/,
+    )
     if (!ogTitle || !ogUrl || !ogImage) {
       console.error(`❌ [${route}] Tags Open Graph incompletas.`)
       failed++
@@ -116,7 +133,10 @@ async function main() {
         try {
           JSON.parse(jsonLdMatch[1])
         } catch (err) {
-          console.error(`❌ [${route}] JSON-LD inválido/malformado:`, err.message)
+          console.error(
+            `❌ [${route}] JSON-LD inválido/malformado:`,
+            err.message,
+          )
           failed++
         }
       }
@@ -124,7 +144,9 @@ async function main() {
 
     // Check React shell preservation
     if (!html.includes('<div id="root"></div>')) {
-      console.error(`❌ [${route}] Shell React (<div id="root"></div>) corrompida.`)
+      console.error(
+        `❌ [${route}] Shell React (<div id="root"></div>) corrompida.`,
+      )
       failed++
     }
   }

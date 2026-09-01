@@ -125,6 +125,9 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+    accent-color: var(--color-teal);
+    interpolate-size: allow-keywords;
   }
   body {
     background-color: var(--color-ink);
@@ -224,6 +227,23 @@
   .u-defer-render {
     content-visibility: auto;
     contain-intrinsic-size: auto 720px;
+  }
+
+  .u-soft-edge {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  details::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: block-size 300ms ease, opacity 220ms ease, content-visibility 300ms allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
   }
 }
 

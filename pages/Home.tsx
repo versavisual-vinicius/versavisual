@@ -88,8 +88,8 @@ export default function Home() {
             Imagem não é registro. É posicionamento.
           </h1>
           <p className="u-fade-in mt-4 max-w-xl text-pretty text-base text-mist sm:mt-6 sm:text-lg">
-            Fotografia, vídeo, storymaking e direção visual para marcas,
-            eventos e entretenimento — do briefing à entrega final.
+            Fotografia, vídeo, storymaking e direção visual para marcas, eventos
+            e entretenimento — do briefing à entrega final.
           </p>
           <div className="u-fade-in mt-6 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
             <Link
@@ -119,9 +119,10 @@ export default function Home() {
           </h2>
           <p className="mt-3 max-w-2xl text-pretty text-sm text-mist sm:mt-4 sm:text-base leading-relaxed">
             A VERSAVISUAL planeja, capta e finaliza a imagem do projeto como um
-            sistema. Estratégia e direção visual, fotografia, vídeo, cobertura de
-            ativações e eventos, storymaking (quando previsto no escopo), pós-produção
-            e Color Science — com formatos prontos para campanha e canais digitais.
+            sistema. Estratégia e direção visual, fotografia, vídeo, cobertura
+            de ativações e eventos, storymaking (quando previsto no escopo),
+            pós-produção e Color Science — com formatos prontos para campanha e
+            canais digitais.
           </p>
           <p className="mt-3 text-sm text-mist/80">
             Não entregamos serviços soltos. Entregamos a imagem que a marca, o
@@ -174,10 +175,12 @@ export default function Home() {
           <div className="max-w-3xl">
             <p className="u-eyebrow text-mist">Quem contrata o projeto</p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
-              Falamos com quem decide a imagem — de grandes marcas a histórias reais.
+              Falamos com quem decide a imagem — de grandes marcas a histórias
+              reais.
             </h2>
             <p className="mt-4 text-pretty text-sm text-mist sm:text-base leading-relaxed">
-              A VERSAVISUAL atua com o mesmo rigor de direção em duas frentes complementares:
+              A VERSAVISUAL atua com o mesmo rigor de direção em duas frentes
+              complementares:
             </p>
           </div>
 
@@ -216,8 +219,9 @@ export default function Home() {
           </div>
 
           <p className="mt-6 text-xs text-mist/70">
-            A escala da equipe e os equipamentos acompanham o porte de cada projeto.
-            O cuidado estético e a precisão técnica são exatamente os mesmos.
+            A escala da equipe e os equipamentos acompanham o porte de cada
+            projeto. O cuidado estético e a precisão técnica são exatamente os
+            mesmos.
           </p>
         </div>
       </section>

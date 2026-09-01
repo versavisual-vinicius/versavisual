@@ -70,4 +70,3 @@ export const CANONICAL_CASES = PORTFOLIO.filter((p) => Boolean(p.caseSlug)).map(
     segmentSlug: p.segmentSlug,
   }),
 )
-

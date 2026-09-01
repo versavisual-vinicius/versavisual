@@ -22,17 +22,14 @@ export async function runTier1SeoRouteManifestTests() {
       })
 
     // Combine all manifest entries
-    const manifestMap = new Map<
-      string,
-      {
-        title: string
-        description: string
-        canonicalPath: string
-        ogType?: string
-        image: string
-        robots: string
-      }
-    >()
+    const manifestMap = new Map<string, {
+      title: string
+      description: string
+      canonicalPath: string
+      ogType?: string
+      image: string
+      robots: string
+    }>()
 
     for (const [route, meta] of Object.entries(seoRoutes)) {
       manifestMap.set(route, meta as any)

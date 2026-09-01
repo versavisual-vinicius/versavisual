@@ -320,11 +320,14 @@ export default function Diagnostico() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1.5 text-xs font-semibold text-teal-800 mb-3">
               <span className="flex h-2 w-2 rounded-full bg-teal animate-pulse" />
-              <span>⏱️ Retorno da análise de viabilidade em até 1 dia útil (24h)</span>
+              <span>
+                ⏱️ Retorno da análise de viabilidade em até 1 dia útil (24h)
+              </span>
             </div>
             <p className="u-eyebrow">Briefing & Diagnóstico Visual</p>
             <h1 className="mb-8 mt-2 text-3xl leading-tight sm:text-4xl text-ink">
-              Conte seu contexto. Devolvemos um caminho visual e proposta sob medida.
+              Conte seu contexto. Devolvemos um caminho visual e proposta sob
+              medida.
             </h1>
           </div>
 
@@ -532,7 +535,12 @@ export default function Diagnostico() {
                     <label htmlFor="tipo" className={labelCls}>
                       Tipo de projeto
                     </label>
-                    <select id="tipo" name="tipo" className={field} defaultValue="">
+                    <select
+                      id="tipo"
+                      name="tipo"
+                      className={field}
+                      defaultValue=""
+                    >
                       <option value="" disabled>
                         Selecione o tipo
                       </option>
@@ -622,7 +630,7 @@ export default function Diagnostico() {
                     id="mensagem"
                     name="mensagem"
                     rows={4}
-                    className={`${field} resize-none`}
+                    className={`${field} resize-none [field-sizing:content] min-h-32`}
                     placeholder="Conte mais sobre o seu projeto, referências e expectativas."
                   />
                 </div>
@@ -655,7 +663,8 @@ export default function Diagnostico() {
                 </a>
               </div>
               <p className="text-xs text-mist">
-                ⚡ Retornamos a resposta e proposta detalhada em até <strong>1 dia útil (24h)</strong> por WhatsApp ou e-mail.
+                ⚡ Retornamos a resposta e proposta detalhada em até{" "}
+                <strong>1 dia útil (24h)</strong> por WhatsApp ou e-mail.
               </p>
             </div>
 
@@ -664,7 +673,20 @@ export default function Diagnostico() {
                 <span>🔒</span> Proteção de Dados & Privacidade (LGPD)
               </p>
               <p>
-                Os dados fornecidos neste formulário são coletados exclusivamente para fins de análise técnica, elaboração da proposta e comunicação direta com a equipe VERSAVISUAL, em estrito cumprimento à Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Não compartilhamos suas informações com terceiros. Você pode solicitar a atualização ou exclusão dos seus dados a qualquer momento enviando uma mensagem para <a href="mailto:hub@versavisual.com.br" className="underline font-medium text-teal hover:text-teal-400">hub@versavisual.com.br</a>.
+                Os dados fornecidos neste formulário são coletados
+                exclusivamente para fins de análise técnica, elaboração da
+                proposta e comunicação direta com a equipe VERSAVISUAL, em
+                estrito cumprimento à Lei Geral de Proteção de Dados (Lei nº
+                13.709/2018). Não compartilhamos suas informações com terceiros.
+                Você pode solicitar a atualização ou exclusão dos seus dados a
+                qualquer momento enviando uma mensagem para{" "}
+                <a
+                  href="mailto:hub@versavisual.com.br"
+                  className="underline font-medium text-teal hover:text-teal-400"
+                >
+                  hub@versavisual.com.br
+                </a>
+                .
               </p>
             </div>
           </form>

@@ -59,7 +59,9 @@ export async function runTier1StructuredDataRoutesTests() {
       expect(Boolean(faqPage)).toBe(true)
       expect(faqPage.mainEntity.length).toBe(2)
       expect(faqPage.mainEntity[0].name).toBe("Qual o prazo de entrega?")
-      expect(faqPage.mainEntity[0].acceptedAnswer.text).toBe("Entrega prévia em 48h.")
+      expect(faqPage.mainEntity[0].acceptedAnswer.text).toBe(
+        "Entrega prévia em 48h.",
+      )
     })
 
     it("LD.3: Case study routes generate BreadcrumbList with 3 levels and CreativeWork schema", () => {

@@ -58,7 +58,10 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
           </div>
           <div>
             <p className="u-eyebrow text-teal">Transparência & Conformidade</p>
-            <h2 id="privacy-modal-title" className="text-2xl font-bold font-head text-ink">
+            <h2
+              id="privacy-modal-title"
+              className="text-2xl font-bold font-head text-ink"
+            >
               Política de Privacidade & LGPD
             </h2>
           </div>
@@ -67,49 +70,100 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
         <div className="mt-6 space-y-5 text-sm leading-relaxed text-navy border-t border-line pt-5">
           <section>
             <h3 className="font-semibold text-ink flex items-center gap-2 text-base">
-              <Lock className="h-4 w-4 text-teal" /> 1. Controlador e Compromisso
+              <Lock className="h-4 w-4 text-teal" /> 1. Controlador e
+              Compromisso
             </h3>
             <p className="mt-1.5">
-              A <strong>VERSAVISUAL</strong> (Rio de Janeiro / Brasil) atua como controladora dos dados pessoais coletados por este website, em total conformidade com a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD)</strong> e melhores práticas de segurança digital.
+              A <strong>VERSAVISUAL</strong> (Rio de Janeiro / Brasil) atua como
+              controladora dos dados pessoais coletados por este website, em
+              total conformidade com a{" "}
+              <strong>
+                Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD)
+              </strong>{" "}
+              e melhores práticas de segurança digital.
             </p>
           </section>
 
           <section>
             <h3 className="font-semibold text-ink flex items-center gap-2 text-base">
-              <FileText className="h-4 w-4 text-teal" /> 2. Dados Coletados e Finalidade
+              <FileText className="h-4 w-4 text-teal" /> 2. Dados Coletados e
+              Finalidade
             </h3>
             <ul className="mt-2 space-y-2 list-none">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-teal mt-0.5" />
-                <span><strong>Formulário de Diagnóstico Visual:</strong> Nome, e-mail, telefone/WhatsApp, empresa, cidade, nicho de atuação e detalhes do projeto. Finalidade: elaboração de proposta técnica sob medida, retorno de contato e planejamento audiovisual.</span>
+                <span>
+                  <strong>Formulário de Diagnóstico Visual:</strong> Nome,
+                  e-mail, telefone/WhatsApp, empresa, cidade, nicho de atuação e
+                  detalhes do projeto. Finalidade: elaboração de proposta
+                  técnica sob medida, retorno de contato e planejamento
+                  audiovisual.
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-teal mt-0.5" />
-                <span><strong>Métricas de Navegação:</strong> Dados anônimos de tráfego (Vercel Analytics) para melhoria de desempenho, tempo de resposta e usabilidade, sem cruzamento com dados pessoais identificáveis.</span>
+                <span>
+                  <strong>Métricas de Navegação:</strong> Dados anônimos de
+                  tráfego (Vercel Analytics) para melhoria de desempenho, tempo
+                  de resposta e usabilidade, sem cruzamento com dados pessoais
+                  identificáveis.
+                </span>
               </li>
             </ul>
           </section>
 
           <section>
             <h3 className="font-semibold text-ink flex items-center gap-2 text-base">
-              <Shield className="h-4 w-4 text-teal" /> 3. Base Legal e Não Compartilhamento
+              <Shield className="h-4 w-4 text-teal" /> 3. Base Legal e Não
+              Compartilhamento
             </h3>
             <p className="mt-1.5">
-              O tratamento de seus dados é fundamentado no seu <strong>consentimento expresso</strong> e nos <strong>procedimentos preliminares relacionados a contrato</strong> a pedido do titular (Art. 7º, incisos I e V da LGPD). <strong>Não vendemos, não alugamos e não compartilhamos</strong> seus dados com terceiros ou anunciantes.
+              O tratamento de seus dados é fundamentado no seu{" "}
+              <strong>consentimento expresso</strong> e nos{" "}
+              <strong>
+                procedimentos preliminares relacionados a contrato
+              </strong>{" "}
+              a pedido do titular (Art. 7º, incisos I e V da LGPD).{" "}
+              <strong>Não vendemos, não alugamos e não compartilhamos</strong>{" "}
+              seus dados com terceiros ou anunciantes.
             </p>
           </section>
 
           <section>
             <h3 className="font-semibold text-ink flex items-center gap-2 text-base">
-              <Mail className="h-4 w-4 text-teal" /> 4. Seus Direitos (Art. 18 da LGPD) e Canal de Contato
+              <Mail className="h-4 w-4 text-teal" /> 4. Seus Direitos (Art. 18
+              da LGPD) e Canal de Contato
             </h3>
             <p className="mt-1.5">
-              Você pode a qualquer momento solicitar a confirmação de existência de tratamento, acesso, correção, anonimização ou <strong>eliminação definitiva dos seus dados pessoais</strong> cadastrados.
+              Você pode a qualquer momento solicitar a confirmação de existência
+              de tratamento, acesso, correção, anonimização ou{" "}
+              <strong>eliminação definitiva dos seus dados pessoais</strong>{" "}
+              cadastrados.
             </p>
             <div className="mt-3 rounded-lg border border-line bg-surface p-4 text-xs space-y-1">
-              <p><strong>Encarregado / Canal DPO:</strong> <a href={`mailto:${EMAIL}`} className="text-teal font-medium underline">{EMAIL}</a></p>
-              <p><strong>Atendimento WhatsApp:</strong> <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="text-teal font-medium underline">{WHATSAPP_LABEL}</a></p>
-              <p><strong>Localidade:</strong> Rio de Janeiro · RJ · Brasil</p>
+              <p>
+                <strong>Encarregado / Canal DPO:</strong>{" "}
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-teal font-medium underline"
+                >
+                  {EMAIL}
+                </a>
+              </p>
+              <p>
+                <strong>Atendimento WhatsApp:</strong>{" "}
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal font-medium underline"
+                >
+                  {WHATSAPP_LABEL}
+                </a>
+              </p>
+              <p>
+                <strong>Localidade:</strong> Rio de Janeiro · RJ · Brasil
+              </p>
             </div>
           </section>
         </div>
