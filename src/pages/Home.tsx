@@ -61,7 +61,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            poster="/images/foto-a-producao-nao-falha.webp"
+            poster="/images/ativacoes-eventos/mega-bloco-cha-da-alice/Mega-Bloco-Cha-da-Alice_Rio-de-Janeiro-Babado-Novo-Mari-Antunes-Christian-Chaves-RBD-Carnaval.jpg"
             className="w-full h-full object-cover object-top filter brightness-[0.95]"
           >
             <source src="/videos/hero.webm" type="video/webm" />
