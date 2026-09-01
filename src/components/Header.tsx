@@ -6,8 +6,8 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/sobre", label: "Sobre" },
   { href: "/portfolio", label: "Portfólio" },
-  { href: "/#nichos", label: "Segmentos", hash: true },
-  { href: "/#processo", label: "Processo", hash: true },
+  { href: "/#trabalhos", label: "Segmentos", hash: true },
+  { href: "/diagnostico-visual", label: "Processo", hash: false },
 ]
 
 export default function Header() {
@@ -152,10 +152,8 @@ export default function Header() {
       { threshold: 0.25, rootMargin: "-72px 0px -40% 0px" },
     )
 
-    const elNichos = document.getElementById("nichos")
-    const elProcesso = document.getElementById("processo")
-    if (elNichos) observer.observe(elNichos)
-    if (elProcesso) observer.observe(elProcesso)
+    const elTrabalhos = document.getElementById("trabalhos")
+    if (elTrabalhos) observer.observe(elTrabalhos)
 
     return () => observer.disconnect()
   }, [pathname])
@@ -227,7 +225,7 @@ export default function Header() {
           <Link
             to="/diagnostico-visual"
             viewTransition
-            className="inline-flex min-h-[44px] items-center justify-center border border-teal bg-teal px-5 py-2.5 text-sm font-head font-medium text-off transition-colors duration-200 ease-out hover:border-teal-400 hover:bg-teal-400"
+            className="inline-flex min-h-[44px] items-center justify-center border border-teal rounded-full bg-teal px-5 py-2.5 text-sm font-head font-medium text-off transition-colors duration-200 ease-out hover:border-teal-400 hover:bg-teal-400"
           >
             Iniciar projeto
           </Link>
@@ -300,7 +298,7 @@ export default function Header() {
                 to="/diagnostico-visual"
                 viewTransition
                 onClick={handleCloseMenu}
-                className="mt-6 flex min-h-[44px] items-center justify-center border border-teal bg-teal px-4 py-3 text-center font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
+                className="mt-6 flex min-h-[44px] items-center justify-center border border-teal rounded-full bg-teal px-4 py-3 text-center font-head font-medium text-off transition-colors duration-200 hover:border-teal-400 hover:bg-teal-400 focus-visible:ring-2 focus-visible:ring-teal focus-visible:outline-none"
               >
                 Iniciar projeto
               </Link>
