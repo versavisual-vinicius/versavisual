@@ -18,7 +18,9 @@ export default function FounderSection() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="inline-block size-2 rounded-full bg-teal-400 animate-pulse" />
-              <p className="u-eyebrow text-teal-400">Dossier Autoral · Direção</p>
+              <p className="u-eyebrow text-teal-400">
+                Dossier Autoral · Direção
+              </p>
             </div>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:mt-4 sm:text-4xl lg:text-[2.75rem] leading-[1.12]">
               Direção visual com rigor de engenharia.
@@ -77,12 +79,20 @@ export default function FounderSection() {
             {/* Micro Technical Specs */}
             <div className="grid grid-cols-2 gap-2 text-xs font-mono">
               <div className="border border-off/10 bg-ink/60 p-3">
-                <span className="block text-[0.65rem] text-mist/70 uppercase">Color Pipeline</span>
-                <span className="mt-1 font-medium text-off">ACEScc · DaVinci</span>
+                <span className="block text-[0.65rem] text-mist/70 uppercase">
+                  Color Pipeline
+                </span>
+                <span className="mt-1 font-medium text-off">
+                  ACEScc · DaVinci
+                </span>
               </div>
               <div className="border border-off/10 bg-ink/60 p-3">
-                <span className="block text-[0.65rem] text-mist/70 uppercase">Câmera Base</span>
-                <span className="mt-1 font-medium text-off">Nikon Full Frame</span>
+                <span className="block text-[0.65rem] text-mist/70 uppercase">
+                  Câmera Base
+                </span>
+                <span className="mt-1 font-medium text-off">
+                  Nikon Full Frame
+                </span>
               </div>
             </div>
           </div>
@@ -107,33 +117,48 @@ export default function FounderSection() {
                 <div className="border border-off/10 bg-ink/40 p-4 transition-colors duration-200 hover:border-off/25">
                   <div className="flex items-center gap-2 text-teal-400">
                     <Film className="size-4" />
-                    <span className="text-xs font-mono font-medium">01 · Cena</span>
+                    <span className="text-xs font-mono font-medium">
+                      01 · Cena
+                    </span>
                   </div>
-                  <h3 className="mt-2 text-sm font-semibold text-off">Direção Visual</h3>
+                  <h3 className="mt-2 text-sm font-semibold text-off">
+                    Direção Visual
+                  </h3>
                   <p className="mt-1 text-xs leading-relaxed text-mist">
-                    Storymaking e decupagem alinhados à estratégia de posicionamento da marca.
+                    Storymaking e decupagem alinhados à estratégia de
+                    posicionamento da marca.
                   </p>
                 </div>
 
                 <div className="border border-off/10 bg-ink/40 p-4 transition-colors duration-200 hover:border-off/25">
                   <div className="flex items-center gap-2 text-teal-400">
                     <Camera className="size-4" />
-                    <span className="text-xs font-mono font-medium">02 · Foto</span>
+                    <span className="text-xs font-mono font-medium">
+                      02 · Foto
+                    </span>
                   </div>
-                  <h3 className="mt-2 text-sm font-semibold text-off">Autoral & ACEScc</h3>
+                  <h3 className="mt-2 text-sm font-semibold text-off">
+                    Autoral & ACEScc
+                  </h3>
                   <p className="mt-1 text-xs leading-relaxed text-mist">
-                    Sensibilidade de lente f/1.4 e color science com preservação de texturas naturais.
+                    Sensibilidade de lente f/1.4 e color science com preservação
+                    de texturas naturais.
                   </p>
                 </div>
 
                 <div className="border border-off/10 bg-ink/40 p-4 transition-colors duration-200 hover:border-off/25">
                   <div className="flex items-center gap-2 text-teal-400">
                     <Cpu className="size-4" />
-                    <span className="text-xs font-mono font-medium">03 · Tech</span>
+                    <span className="text-xs font-mono font-medium">
+                      03 · Tech
+                    </span>
                   </div>
-                  <h3 className="mt-2 text-sm font-semibold text-off">Creative Tech</h3>
+                  <h3 className="mt-2 text-sm font-semibold text-off">
+                    Creative Tech
+                  </h3>
                   <p className="mt-1 text-xs leading-relaxed text-mist">
-                    Engenharia de software e automações para eliminar gargalos e erros operacionais.
+                    Engenharia de software e automações para eliminar gargalos e
+                    erros operacionais.
                   </p>
                 </div>
               </div>

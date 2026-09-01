@@ -21,7 +21,8 @@ export function escapeHtmlAttribute(value = "") {
 }
 
 export function escapeJsonLd(value) {
-  const jsonStr = typeof value === "string" ? value : JSON.stringify(value, null, 2)
+  const jsonStr =
+    typeof value === "string" ? value : JSON.stringify(value, null, 2)
   return jsonStr
     .replace(/</g, "\\u003c")
     .replace(/>/g, "\\u003e")
@@ -149,8 +150,18 @@ export function buildRouteJsonLd(route, meta) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Sobre", item: `${SITE_URL}/sobre` },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Sobre",
+            item: `${SITE_URL}/sobre`,
+          },
         ],
       },
       {
@@ -175,8 +186,18 @@ export function buildRouteJsonLd(route, meta) {
   if (cleanPath === "/portfolio" || cleanPath === "/portfolio/canvas") {
     const isCanvas = cleanPath === "/portfolio/canvas"
     const items = [
-      { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Portfólio", item: `${SITE_URL}/portfolio` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portfólio",
+        item: `${SITE_URL}/portfolio`,
+      },
     ]
     if (isCanvas) {
       items.push({
@@ -213,7 +234,12 @@ export function buildRouteJsonLd(route, meta) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: `${SITE_URL}/`,
+          },
           {
             "@type": "ListItem",
             position: 2,
@@ -239,7 +265,12 @@ export function buildRouteJsonLd(route, meta) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: `${SITE_URL}/`,
+          },
           {
             "@type": "ListItem",
             position: 2,
@@ -298,8 +329,18 @@ export function buildRouteJsonLd(route, meta) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "Portfólio", item: `${SITE_URL}/portfolio` },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: `${SITE_URL}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Portfólio",
+          item: `${SITE_URL}/portfolio`,
+        },
         {
           "@type": "ListItem",
           position: 3,
@@ -332,7 +373,10 @@ export async function loadSeoManifest(projectRoot) {
     try {
       return await readFile(path.join(projectRoot, "data", filename), "utf8")
     } catch {
-      return await readFile(path.join(projectRoot, "src", "data", filename), "utf8")
+      return await readFile(
+        path.join(projectRoot, "src", "data", filename),
+        "utf8",
+      )
     }
   }
 
@@ -376,7 +420,9 @@ export async function emitAllRouteHtml(projectRoot = process.cwd()) {
 
   const sitemapRoutes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((match) => new URL(match[1]))
-    .filter((url) => url.hostname.replace(/^www\./, "") === "versavisual.com.br")
+    .filter(
+      (url) => url.hostname.replace(/^www\./, "") === "versavisual.com.br",
+    )
     .map((url) => {
       const clean = url.pathname.replace(/\/$/, "")
       return clean === "" ? "/" : clean

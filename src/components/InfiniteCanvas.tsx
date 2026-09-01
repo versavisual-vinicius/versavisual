@@ -455,7 +455,10 @@ export default function InfiniteCanvas() {
   const lastFocusedElementRef = useRef<HTMLElement | null>(null)
   const modalCloseBtnRef = useRef<HTMLButtonElement>(null)
 
-  const handleCardInteraction = (node: CanvasNode, triggerEl?: HTMLElement | null) => {
+  const handleCardInteraction = (
+    node: CanvasNode,
+    triggerEl?: HTMLElement | null,
+  ) => {
     if (hasMovedRef.current) return
 
     const now = performance.now()

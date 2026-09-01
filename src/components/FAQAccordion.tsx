@@ -40,7 +40,7 @@ export default function FAQAccordion({
               </svg>
             </span>
           </summary>
-          <div className="pb-6 pt-1">
+          <div className="pb-6 pt-1 will-change-[block-size,opacity]">
             <p
               className={`max-w-2xl text-pretty ${
                 isDark ? "text-mist" : "text-navy"

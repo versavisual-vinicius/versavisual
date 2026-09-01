@@ -551,10 +551,7 @@ export const PHOTOS = {
   professional: ENSAIO_STREET_PHOTOS,
 
   // Imagem Pessoal & Lifestyle
-  personal: [
-    ...ENSAIO_AUTORAL_PHOTOS,
-    ...ENSAIO_STREET_PHOTOS,
-  ],
+  personal: [...ENSAIO_AUTORAL_PHOTOS, ...ENSAIO_STREET_PHOTOS],
 
   // Casamentos
   weddings: WEDDING_PHOTOS,

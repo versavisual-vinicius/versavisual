@@ -65,12 +65,22 @@ export async function runTier1SeoEmitterTests() {
         ],
       }
       const rendered = renderSeoHead(meta)
-      expect(rendered).toContain("<title>Sobre Vinicius Cunha | VERSAVISUAL</title>")
-      expect(rendered).toContain('rel="canonical" href="https://www.versavisual.com.br/sobre"')
-      expect(rendered).toContain('name="robots" content="index, follow, max-image-preview:large"')
+      expect(rendered).toContain(
+        "<title>Sobre Vinicius Cunha | VERSAVISUAL</title>",
+      )
+      expect(rendered).toContain(
+        'rel="canonical" href="https://www.versavisual.com.br/sobre"',
+      )
+      expect(rendered).toContain(
+        'name="robots" content="index, follow, max-image-preview:large"',
+      )
       expect(rendered).toContain('property="og:type" content="website"')
-      expect(rendered).toContain('property="og:url" content="https://www.versavisual.com.br/sobre"')
-      expect(rendered).toContain('property="og:image" content="https://www.versavisual.com.br/images/foto-a-producao-nao-falha.webp"')
+      expect(rendered).toContain(
+        'property="og:url" content="https://www.versavisual.com.br/sobre"',
+      )
+      expect(rendered).toContain(
+        'property="og:image" content="https://www.versavisual.com.br/images/foto-a-producao-nao-falha.webp"',
+      )
       expect(rendered).toContain('type="application/ld+json"')
       expect(rendered).toContain('"ProfilePage"')
     })
@@ -91,7 +101,9 @@ export async function runTier1SeoEmitterTests() {
 
     it("SEO.E6: routeOutputPath resolves correct index.html paths in dist directory", () => {
       const dist = "/app/dist"
-      expect(routeOutputPath(dist, "/")).toBe(path.join("/app/dist", "index.html"))
+      expect(routeOutputPath(dist, "/")).toBe(
+        path.join("/app/dist", "index.html"),
+      )
       expect(routeOutputPath(dist, "/sobre")).toBe(
         path.join("/app/dist", "sobre", "index.html"),
       )

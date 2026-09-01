@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom"
-import { ArrowUpRight, Camera, Film, Cpu, Sparkles, Sliders, CheckCircle2, ChevronRight } from "lucide-react"
+import {
+  ArrowUpRight,
+  Camera,
+  Film,
+  Cpu,
+  Sparkles,
+  Sliders,
+  CheckCircle2,
+  ChevronRight,
+} from "lucide-react"
 import { FOUNDER_DATA } from "../data/site"
 import { img } from "../lib/images"
 import { useSeo, breadcrumb, SITE_URL } from "../lib/seo"
@@ -48,8 +57,15 @@ export default function About() {
 
         <div className="relative mx-auto max-w-[1320px] px-5 lg:px-10">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-mono text-mist">
-            <Link to="/" viewTransition className="hover:text-off transition-colors">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6 flex items-center gap-2 text-xs font-mono text-mist"
+          >
+            <Link
+              to="/"
+              viewTransition
+              className="hover:text-off transition-colors"
+            >
               Início
             </Link>
             <ChevronRight className="size-3.5 text-mist/60" />
@@ -59,13 +75,17 @@ export default function About() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2">
               <span className="inline-block size-2 rounded-full bg-teal-400 animate-pulse" />
-              <p className="u-eyebrow text-teal-400">Dossier Autoral · Direção Geral</p>
+              <p className="u-eyebrow text-teal-400">
+                Dossier Autoral · Direção Geral
+              </p>
             </div>
             <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-off sm:text-5xl lg:text-[4rem] leading-[1.08]">
               A mente criativa e técnica por trás da VERSAVISUAL.
             </h1>
             <p className="mt-5 text-pretty text-base text-mist sm:text-lg lg:text-xl leading-relaxed">
-              Fotografia de precisão, direção cinematográfica e arquitetura de tecnologia unidas para criar experiências visuais que posicionam marcas e artistas no topo.
+              Fotografia de precisão, direção cinematográfica e arquitetura de
+              tecnologia unidas para criar experiências visuais que posicionam
+              marcas e artistas no topo.
             </p>
           </div>
         </div>
@@ -116,19 +136,27 @@ export default function About() {
                 <div className="mt-4 space-y-3 text-xs">
                   <div className="flex items-start justify-between border-b border-off/10 pb-2.5">
                     <span className="text-mist">Especialidade:</span>
-                    <span className="font-medium text-off text-right">Direção, Foto & Tech</span>
+                    <span className="font-medium text-off text-right">
+                      Direção, Foto & Tech
+                    </span>
                   </div>
                   <div className="flex items-start justify-between border-b border-off/10 pb-2.5">
                     <span className="text-mist">Color Pipeline:</span>
-                    <span className="font-medium text-off text-right">DaVinci Resolve / ACEScc</span>
+                    <span className="font-medium text-off text-right">
+                      DaVinci Resolve / ACEScc
+                    </span>
                   </div>
                   <div className="flex items-start justify-between border-b border-off/10 pb-2.5">
                     <span className="text-mist">Câmera Principal:</span>
-                    <span className="font-medium text-off text-right">Nikon D780 Full Frame</span>
+                    <span className="font-medium text-off text-right">
+                      Nikon D780 Full Frame
+                    </span>
                   </div>
                   <div className="flex items-start justify-between">
                     <span className="text-mist">Filosofia:</span>
-                    <span className="font-medium text-teal-400 text-right">A produção não falha.</span>
+                    <span className="font-medium text-teal-400 text-right">
+                      A produção não falha.
+                    </span>
                   </div>
                 </div>
               </div>
@@ -212,12 +240,16 @@ export default function About() {
       <section className="border-y border-off/10 bg-navy/20 py-16 sm:py-24">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <div className="mb-12 max-w-2xl">
-            <p className="u-eyebrow text-teal-400">Ficha Técnica & Rigor Operacional</p>
+            <p className="u-eyebrow text-teal-400">
+              Ficha Técnica & Rigor Operacional
+            </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:text-4xl">
               Equipamentos de ponta e color science cinema.
             </h2>
             <p className="mt-3 text-sm sm:text-base text-mist">
-              Sem amadorismo ou filtros genéricos. Cada imagem passa por uma cadeia técnica calibrada para preservar texturas, cores fiéis e impacto dramático.
+              Sem amadorismo ou filtros genéricos. Cada imagem passa por uma
+              cadeia técnica calibrada para preservar texturas, cores fiéis e
+              impacto dramático.
             </p>
           </div>
 
@@ -251,15 +283,22 @@ export default function About() {
       </section>
 
       {/* ── LABORATÓRIO & COLOR SCIENCE (BEFORE/AFTER) ────────── */}
-      <section id="color-science" className="border-b border-off/10 bg-ink py-16 sm:py-24 lg:py-32">
+      <section
+        id="color-science"
+        className="border-b border-off/10 bg-ink py-16 sm:py-24 lg:py-32"
+      >
         <div className="mx-auto max-w-[1320px] px-5 lg:px-10">
           <div className="mb-12 max-w-2xl">
-            <p className="u-eyebrow text-teal-400">Laboratório & Color Science</p>
+            <p className="u-eyebrow text-teal-400">
+              Laboratório & Color Science
+            </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-off sm:text-4xl">
               Tratamento autoral em cada frame.
             </h2>
             <p className="mt-3 text-sm sm:text-base text-mist">
-              Arraste o comparador para visualizar a transição entre o arquivo RAW sem pós-produção e o Master Final com color grading cinematográfico e acabamento editorial.
+              Arraste o comparador para visualizar a transição entre o arquivo
+              RAW sem pós-produção e o Master Final com color grading
+              cinematográfico e acabamento editorial.
             </p>
           </div>
 
@@ -275,7 +314,8 @@ export default function About() {
             Construção contínua de relevância visual.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-mist">
-            De sets independentes às maiores ativações de marca e videoclipes de projeção nacional.
+            De sets independentes às maiores ativações de marca e videoclipes de
+            projeção nacional.
           </p>
         </div>
 

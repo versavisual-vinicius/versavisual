@@ -346,7 +346,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, número de câmeras, duração e entregáveis. A partir daí montamos uma proposta personalizada por faixa de investimento.",
       },
     ],
-    heroPhoto: "/images/ativacoes-eventos/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval3.jpg",
+    heroPhoto:
+      "/images/ativacoes-eventos/camarote-ondina/Camarote-Ondina-Salvador-Bahia-Carnaval3.jpg",
     photos: PHOTOS.events,
     regions: [
       "Rio de Janeiro",
@@ -467,7 +468,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, número de looks, equipe e entregáveis, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: "/images/moda-campanhas/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT27.jpg",
+    heroPhoto:
+      "/images/moda-campanhas/festival-jeans-toritama/Festival-de-Jeans-de-toritama-FJT27.jpg",
     photos: PHOTOS.fashion,
     regions: ["Rio de Janeiro", "São Paulo", "Operação nacional"],
   },
@@ -582,7 +584,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos o escopo do release, locações e equipe, e preparamos uma proposta sob medida.",
       },
     ],
-    heroPhoto: "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo8.jpg",
+    heroPhoto:
+      "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo8.jpg",
     photos: PHOTOS.artists,
     mosaicPhotos: [
       BACKSTAGE_CLIPE_SURURU_PHOTOS[7],
@@ -702,7 +705,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos escopo, entregáveis e uso, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: "/images/imagem-pessoal-lifestyle/ensaio-street/Ensaio-street1.jpg",
+    heroPhoto:
+      "/images/imagem-pessoal-lifestyle/ensaio-street/Ensaio-street1.jpg",
     photos: PHOTOS.professional,
     mosaicPhotos: [
       ENSAIO_STREET_PHOTOS[0],
@@ -822,7 +826,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico visual entendemos locação, duração, número de looks e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral1.jpg",
+    heroPhoto:
+      "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral1.jpg",
     photos: PHOTOS.personal,
     mosaicPhotos: [
       ENSAIO_AUTORAL_PHOTOS[0],
@@ -1058,7 +1063,8 @@ export const SEGMENTS: Segment[] = [
         a: "Pelo diagnóstico entendemos locação, duração, participantes e quantidade de imagens, e montamos uma proposta por faixa de investimento.",
       },
     ],
-    heroPhoto: "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral23.jpg",
+    heroPhoto:
+      "/images/imagem-pessoal-lifestyle/ensaio-autoral/Ensaio-Autoral23.jpg",
     photos: PHOTOS.maternity,
     mosaicPhotos: [
       PHOTOS.maternity[0],
@@ -1256,7 +1262,8 @@ export const CASE_ALIASES: Record<string, string> = {
   "casamento-urbano-contemporaneo": "casamento-ao-ar-livre",
   "maternidade-ensaio-intimo": "ensaio-gestante-praia",
   "bonfim-house-boutique": "festival-bon-cobertura-corporativa",
-  "retratos-posicionamento-marca-pessoal": "retratos-posicionamento-marca-pessoal",
+  "retratos-posicionamento-marca-pessoal":
+    "retratos-posicionamento-marca-pessoal",
   "ensaio-feminino-frida": "loja-frida-sao-joao",
 }
 
@@ -1513,17 +1520,19 @@ export interface FounderPillar {
 export const FOUNDER_DATA = {
   name: "Vinicius Cunha",
   title: "Fundador & Diretor Criativo",
-  roleHeadline: "Direção Visual · Fotografia Autoral · Engenharia de Produto & Automações",
+  roleHeadline:
+    "Direção Visual · Fotografia Autoral · Engenharia de Produto & Automações",
   location: "VERSAVISUAL · Rio de Janeiro · operação nacional",
   photo: FOUNDER_PHOTO,
-  manifestoQuote: "Imagem não é registro. É posicionamento estratégico construído com precisão visual e técnica.",
+  manifestoQuote:
+    "Imagem não é registro. É posicionamento estratégico construído com precisão visual e técnica.",
   bioShort:
     "Fundador da VERSAVISUAL, fotógrafo, diretor de cena e desenvolvedor de produtos digitais. Une a sensibilidade visual cinematográfica à disciplina de engenharia, garantindo que grandes produções operem com consistência estética, fluxo sem atrito e entrega impecável.",
   bioFull: [
     "Minha formação e prática profissional transitam entre dois mundos que raramente conversam: a direção estética/cinematográfica e a arquitetura de tecnologia, produto e automações.",
     "No audiovisual, lidero a criação e execução de campanhas, videoclipes, grandes eventos e projetos de posicionamento de marca — operando com câmeras Nikon Full Frame, color grading em DaVinci Resolve (ACEScc) e pós-produção artesanal sem atalhos.",
     "Na tecnologia, construo ecossistemas digitais, ferramentas de operação e automações inteligentes que garantem escala, precisão e eliminação de gargalos do briefing à entrega final.",
-    "Essa visão híbrida é o DNA da VERSAVISUAL: onde a arte não abre mão do rigor técnico e a produção nunca falha."
+    "Essa visão híbrida é o DNA da VERSAVISUAL: onde a arte não abre mão do rigor técnico e a produção nunca falha.",
   ],
   pillars: [
     {
@@ -1532,7 +1541,12 @@ export const FOUNDER_DATA = {
       subtitle: "Construção de Narrativa & Atmosfera",
       description:
         "Concepção conceitual de projetos audiovisuais, direção de cena, decupagem e condução de equipe em sets de alta pressão.",
-      skills: ["Direção de Cena", "Roteiro & Decupagem", "Direção de Arte", "Storymaking Estratégico"],
+      skills: [
+        "Direção de Cena",
+        "Roteiro & Decupagem",
+        "Direção de Arte",
+        "Storymaking Estratégico",
+      ],
     },
     {
       number: "02",
@@ -1540,7 +1554,12 @@ export const FOUNDER_DATA = {
       subtitle: "Sensibilidade Analógica & Precisão Digital",
       description:
         "Captura com sistema Nikon Full Frame e lentes nobres de grande abertura. Color science em ACEScc e tratamento artesanal com preservação de microtexturas e tom de pele natural.",
-      skills: ["Nikon D780 Full Frame", "Lentes Nikkor f/1.4", "DaVinci Resolve / ACEScc", "Dodge & Burn / Freq. Separation"],
+      skills: [
+        "Nikon D780 Full Frame",
+        "Lentes Nikkor f/1.4",
+        "DaVinci Resolve / ACEScc",
+        "Dodge & Burn / Freq. Separation",
+      ],
     },
     {
       number: "03",
@@ -1548,7 +1567,12 @@ export const FOUNDER_DATA = {
       subtitle: "Escala, Automação & Arquitetura Digital",
       description:
         "Desenvolvimento de produtos, automações operacionais e interfaces que aceleram fluxos criativos e eliminam falhas logísticas.",
-      skills: ["Arquitetura de Software", "Automações & Pipelines", "UX/UI & Design Systems", "Operações Digitais"],
+      skills: [
+        "Arquitetura de Software",
+        "Automações & Pipelines",
+        "UX/UI & Design Systems",
+        "Operações Digitais",
+      ],
     },
   ] as FounderPillar[],
   specs: [
@@ -1556,31 +1580,36 @@ export const FOUNDER_DATA = {
       category: "CÂMERAS & ÓTICAS",
       label: "Corpo Principal",
       value: "Nikon D780 Full Frame",
-      description: "Sensor BSI com alcance dinâmico estendido e colorimetria precisa.",
+      description:
+        "Sensor BSI com alcance dinâmico estendido e colorimetria precisa.",
     },
     {
       category: "CÂMERAS & ÓTICAS",
       label: "Lentes Nobres",
       value: "Nikkor 85mm f/1.4G · 50mm f/1.4G · 24-70mm f/2.8",
-      description: "Desfoque cinematográfico, nitidez cirúrgica e bokeh orgânico.",
+      description:
+        "Desfoque cinematográfico, nitidez cirúrgica e bokeh orgânico.",
     },
     {
       category: "COLOR SCIENCE & PÓS",
       label: "Color Grading",
       value: "DaVinci Resolve Studio · ACEScc",
-      description: "Gerenciamento de cor de padrão hollywoodiano e emulações de película (Kodak 2383).",
+      description:
+        "Gerenciamento de cor de padrão hollywoodiano e emulações de película (Kodak 2383).",
     },
     {
       category: "COLOR SCIENCE & PÓS",
       label: "Retouching",
       value: "Separação de Frequências & Dodge & Burn Manual",
-      description: "Tratamento de pele e microtexturas sem filtros destrutivos ou aspecto artificial.",
+      description:
+        "Tratamento de pele e microtexturas sem filtros destrutivos ou aspecto artificial.",
     },
     {
       category: "TECH & PRODUTO",
       label: "Stack & Operações",
       value: "React · TypeScript · Vite · Tailwind · Automações",
-      description: "Engenharia de software aplicada à produtividade e experiência audiovisual.",
+      description:
+        "Engenharia de software aplicada à produtividade e experiência audiovisual.",
     },
   ] as FounderSpec[],
   milestones: [
@@ -1588,23 +1617,25 @@ export const FOUNDER_DATA = {
       period: "Presente",
       title: "Consolidação VERSAVISUAL",
       role: "Fundador & Diretor Geral",
-      impact: "Hub audiovisual autoral atendendo marcas, artistas nacionais, hotelaria e grandes eventos no RJ e em todo o Brasil.",
+      impact:
+        "Hub audiovisual autoral atendendo marcas, artistas nacionais, hotelaria e grandes eventos no RJ e em todo o Brasil.",
       tag: "Hub Criativo",
     },
     {
       period: "Trajetória",
       title: "Grandes Ativações & Videoclipes",
       role: "Diretor Audiovisual & Fotógrafo",
-      impact: "Coberturas de grande escala (Camarote Ondina, Mega Bloco Chá da Alice, Bonfim House) e videoclipes de projeção nacional.",
+      impact:
+        "Coberturas de grande escala (Camarote Ondina, Mega Bloco Chá da Alice, Bonfim House) e videoclipes de projeção nacional.",
       tag: "Produção de Escala",
     },
     {
       period: "Fundação",
       title: "Fusão Audiovisual + Tecnologia",
       role: "Creative Technologist & Fotógrafo",
-      impact: "Desenvolvimento de metodologias proprietárias de pós-produção ágil e plataformas para o setor de eventos e audiovisual.",
+      impact:
+        "Desenvolvimento de metodologias proprietárias de pós-produção ágil e plataformas para o setor de eventos e audiovisual.",
       tag: "Inovação Híbrida",
     },
   ] as FounderMilestone[],
 }
-

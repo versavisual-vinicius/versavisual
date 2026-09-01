@@ -120,7 +120,9 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F14.8: Stats strip uses high contrast off-white display typography", () => {
-      expect(homeCode).toContain("font-head font-extrabold text-4xl sm:text-5xl text-off")
+      expect(homeCode).toContain(
+        "font-head font-extrabold text-4xl sm:text-5xl text-off",
+      )
     })
 
     it("F14.9: Founder section card features responsive layout and link to /sobre", () => {
@@ -173,7 +175,9 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F15.3: Featured case cards link directly to their portfolio case studies", () => {
-      expect(homeCode).toContain("/portfolio/carnaval-de-rua-experiencia-publico")
+      expect(homeCode).toContain(
+        "/portfolio/carnaval-de-rua-experiencia-publico",
+      )
       expect(homeCode).toContain("/portfolio/e-o-tchan-jogadinha")
       expect(homeCode).toContain("/portfolio/fashion-week-passarela-bastidor")
       expect(homeCode).toContain("/portfolio/ativacao-drinkball")
@@ -186,9 +190,13 @@ export async function runTier1HomeComponentsTests() {
     })
 
     it("F15.5: All featured case images include descriptive alt attributes", () => {
-      expect(homeCode).toContain('alt="Megabloco Chá da Alice - Rio de Janeiro"')
+      expect(homeCode).toContain(
+        'alt="Megabloco Chá da Alice - Rio de Janeiro"',
+      )
       expect(homeCode).toContain('alt="Fashion Manners - Moda e Campanha"')
-      expect(homeCode).toContain('alt="Lançamento Drinkball - Ativações & Eventos"')
+      expect(homeCode).toContain(
+        'alt="Lançamento Drinkball - Ativações & Eventos"',
+      )
     })
   })
 
@@ -197,7 +205,9 @@ export async function runTier1HomeComponentsTests() {
 
     it("F16.1: Sobre section renders founder credentials and scope of operation", () => {
       expect(homeCode).toContain('id="sobre"')
-      expect(homeCode).toContain("Fundador e diretor de cena · Rio de Janeiro · operação nacional")
+      expect(homeCode).toContain(
+        "Fundador e diretor de cena · Rio de Janeiro · operação nacional",
+      )
     })
 
     it("F16.2: Founder quote 'A produção não falha' is prominently highlighted", () => {

@@ -272,7 +272,9 @@ export default function BeforeAfterSlider() {
             className="absolute inset-0 h-full w-full max-w-none object-cover"
             style={{
               objectPosition: activeItem.objectPosition || "center",
-              filter: activeItem.beforeFilter || "saturate(0.5) contrast(0.82) brightness(0.78)",
+              filter:
+                activeItem.beforeFilter ||
+                "saturate(0.5) contrast(0.82) brightness(0.78)",
             }}
             loading="lazy"
             decoding="async"

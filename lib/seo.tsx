@@ -55,7 +55,8 @@ export function useSeo({
   const jsonLdContent = jsonLd ? JSON.stringify(jsonLd) : ""
 
   useEffect(() => {
-    const rawPath = path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`
+    const rawPath =
+      path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`
     const cleanPath = rawPath.split("?")[0]
     const canonical = `${SITE_URL}${cleanPath === "" ? "/" : cleanPath}`
     const imageUrl = image
@@ -188,8 +189,7 @@ export function professionalServiceSchema() {
           itemOffered: {
             "@type": "Service",
             name: "Storymaking",
-            description:
-              "Narrativas visuais em tempo real para redes sociais.",
+            description: "Narrativas visuais em tempo real para redes sociais.",
           },
         },
         {
