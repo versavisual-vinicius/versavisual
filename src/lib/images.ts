@@ -70,6 +70,15 @@ export const BACKSTAGE_CLIPE_SURURU_PHOTOS: readonly string[] = [
   "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo33.jpg",
 ]
 
+export const BABADO_NOVO_FEATURED_PHOTOS = {
+  setCamera:
+    "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo10.jpg",
+  clipDancers:
+    "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo14.jpg",
+  stageConcert:
+    "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo30.jpg",
+} as const
+
 export const BONFIM_HOUSE_PHOTOS: readonly string[] = [
   "/images/ativacoes-eventos/bonfim-house/Bonfim-house-salvador-bahia-corporativo1.jpg",
   "/images/ativacoes-eventos/bonfim-house/Bonfim-house-salvador-bahia-corporativo2.jpg",

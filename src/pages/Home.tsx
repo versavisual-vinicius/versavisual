@@ -10,6 +10,7 @@ import {
   LANCAMENTO_DRINKBALL_PHOTOS,
   CAMAROTE_ONDINA_PHOTOS,
   BACKSTAGE_CLIPE_SURURU_PHOTOS,
+  BABADO_NOVO_FEATURED_PHOTOS,
   FOUNDER_PHOTO
 } from "../lib/images"
 
@@ -326,8 +327,8 @@ export default function Home() {
               <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                 <div className="col-span-2 rounded-xl overflow-hidden border border-navy/40 aspect-[16/10]">
                   <img 
-                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[0], 1000)} 
-                    alt="Babado Novo - Clipe Sururu Still 1" 
+                    src={img(BABADO_NOVO_FEATURED_PHOTOS.setCamera, 1000)} 
+                    alt="Mari Antunes e equipe VERSAVISUAL em set de gravação de videoclipe no Rio de Janeiro" 
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
                     decoding="async"
@@ -335,8 +336,8 @@ export default function Home() {
                 </div>
                 <div className="col-span-1 rounded-xl overflow-hidden border border-navy/40 aspect-[4/3]">
                   <img 
-                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[1], 600)} 
-                    alt="Babado Novo - Backstage e Câmera" 
+                    src={img(BABADO_NOVO_FEATURED_PHOTOS.clipDancers, 600)} 
+                    alt="Mari Antunes e bailarinos em cena do clipe Sururu em Santa Teresa" 
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
                     decoding="async"
@@ -344,8 +345,8 @@ export default function Home() {
                 </div>
                 <div className="col-span-1 rounded-xl overflow-hidden border border-navy/40 aspect-[4/3]">
                   <img 
-                    src={img(BACKSTAGE_CLIPE_SURURU_PHOTOS[2], 600)} 
-                    alt="Babado Novo - Set de Gravação" 
+                    src={img(BABADO_NOVO_FEATURED_PHOTOS.stageConcert, 600)} 
+                    alt="Mari Antunes e Babado Novo em apresentação ao vivo de show para grande público" 
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
                     decoding="async"

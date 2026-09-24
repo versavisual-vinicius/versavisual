@@ -6,6 +6,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/images/Casamentos/:path*",
+      "destination": "/images/casamentos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/images/Gestantes/:path*",
+      "destination": "/images/gestantes/:path*",
+      "permanent": true
+    },
+    {
       "source": "/segmentos/:slug",
       "destination": "/:slug",
       "permanent": true

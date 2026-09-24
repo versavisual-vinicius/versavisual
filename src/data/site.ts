@@ -585,9 +585,9 @@ export const SEGMENTS: Segment[] = [
     heroPhoto: "/images/artistas-videoclipes/backstage-clipe-sururu/Backstage-clipe-sururu-babado-novo8.jpg",
     photos: PHOTOS.artists,
     mosaicPhotos: [
-      BACKSTAGE_CLIPE_SURURU_PHOTOS[7],
-      BACKSTAGE_CLIPE_SURURU_PHOTOS[1],
-      BACKSTAGE_CLIPE_SURURU_PHOTOS[2],
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[9],
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[13],
+      BACKSTAGE_CLIPE_SURURU_PHOTOS[29],
     ],
     regions: ["Rio de Janeiro", "Salvador", "São Paulo", "Operação nacional"],
   },
